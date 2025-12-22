@@ -400,5 +400,59 @@
       </div>
     </div>
     <script src="js/app.js"></script>
+    <script>
+      // Função para inicializar as barras de progresso
+      function initializeProgressBars() {
+        // Barras de progresso das metas
+        document
+          .querySelectorAll(".goal-progress .progress-bar")
+          .forEach((bar) => {
+            const width =
+              getComputedStyle(bar).getPropertyValue("--progress-width");
+            // Aplica a largura diretamente
+            bar.style.width = width;
+          });
+
+        // Barras de fluência
+        document.querySelectorAll(".fluency-fill").forEach((bar) => {
+          const width =
+            getComputedStyle(bar).getPropertyValue("--progress-width");
+          // Aplica a largura diretamente
+          bar.style.width = width;
+        });
+      }
+
+      // Chame esta função no final do DOMContentLoaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Seu código existente...
+
+        // Inicialize as barras de progresso
+        initializeProgressBars();
+
+        // Animar barras de fluência ao carregar
+        setTimeout(() => {
+          animateFluencyBars();
+        }, 500);
+      });
+
+      // Função para animar as barras de fluência
+      function animateFluencyBars() {
+        const bars = document.querySelectorAll(".fluency-fill");
+        bars.forEach((bar) => {
+          const currentWidth = bar.style.width;
+          // Guarda a largura original
+          const targetWidth =
+            getComputedStyle(bar).getPropertyValue("--progress-width");
+
+          // Reseta para 0
+          bar.style.width = "0%";
+
+          // Anima para a largura alvo
+          setTimeout(() => {
+            bar.style.width = targetWidth;
+          }, 300);
+        });
+      }
+    </script>
   </body>
 </html>
