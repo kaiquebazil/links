@@ -173,9 +173,13 @@
       <div class="section">
         <h2 class="section-title">
           <span><i class="fas fa-code"></i> Meus Projetos</span>
-          <button class="learn-more-btn" id="projectsLearnMore">
+          <a
+            class="learn-more-btn"
+            style="text-decoration: none"
+            href="https://github.com/kaiquebazil"
+          >
             <i class="fas fa-info-circle"></i> Saiba Mais
-          </button>
+          </a>
         </h2>
         <div class="projects-grid">
           <div class="project-item">
@@ -188,35 +192,49 @@
               </div>
               <span class="project-tech">HTML/CSS/JS</span>
             </div>
-            <a href="#" target="_blank" class="project-link">
+            <a
+              href="https://kaiquebazil.github.io/portifolio/"
+              target="_blank"
+              class="project-link"
+            >
               <i class="fas fa-external-link-alt"></i>
             </a>
           </div>
           <div class="project-item">
             <div class="project-info">
               <div class="project-title">
-                <i class="fas fa-mobile-alt"></i> App To-Do
+                <i class="fas fa-mobile-alt"></i> Finance Flex
               </div>
               <div class="project-desc">
-                Aplicativo de tarefas com notificações
+                Aplicativo de gerrenciamento financeiro pessoal
               </div>
-              <span class="project-tech">React Native</span>
+              <span class="project-tech">HTML/CSS/JS</span>
             </div>
-            <a href="#" target="_blank" class="project-link">
+            <a
+              href="https://kaiquebazil.github.io/FinanceFlex/"
+              target="_blank"
+              class="project-link"
+            >
               <i class="fas fa-external-link-alt"></i>
             </a>
           </div>
           <div class="project-item">
             <div class="project-info">
               <div class="project-title">
-                <i class="fas fa-chart-line"></i> Dashboard Analytics
+                <i class="fas fa-chart-line"></i> Learning Portuguese with
+                Kaique
               </div>
               <div class="project-desc">
-                Painel de visualização de dados em tempo real
+                Aprenda frases comuns, vocabulário e gramática em português e
+                fale comigo.
               </div>
-              <span class="project-tech">Vue.js/Node.js</span>
+              <span class="project-tech">HTML/CSS/JS</span>
             </div>
-            <a href="#" target="_blank" class="project-link">
+            <a
+              href="https://kaiquebazil.github.io/LearningPortuguese/"
+              target="_blank"
+              class="project-link"
+            >
               <i class="fas fa-external-link-alt"></i>
             </a>
           </div>
@@ -227,9 +245,6 @@
       <div class="section">
         <h2 class="section-title">
           <span><i class="fas fa-flag-checkered"></i> Minhas Metas</span>
-          <button class="learn-more-btn" id="goalsLearnMore">
-            <i class="fas fa-info-circle"></i> Saiba Mais
-          </button>
         </h2>
         <div class="goals-container">
           <div class="goal-item">
@@ -365,7 +380,7 @@
         <p>
           Portfólio Digital • Atualizado em <span id="currentYear">2025</span>
         </p>
-        <div class="contact-links">
+        <!-- <div class="contact-links">
           <a href="mailto:contato@exemplo.com" class="contact-link">
             <i class="fas fa-envelope"></i>
           </a>
@@ -378,66 +393,12 @@
           <a href="#" class="contact-link">
             <i class="fas fa-share-alt"></i>
           </a>
-        </div>
+        </div> -->
         <p style="margin-top: 15px; font-size: 12px; font-weight: 500">
           Clique nas metas para marcá-las como concluídas
         </p>
       </div>
     </div>
     <script src="js/app.js"></script>
-    <script>
-      // Função para inicializar as barras de progresso
-      function initializeProgressBars() {
-        // Barras de progresso das metas
-        document
-          .querySelectorAll(".goal-progress .progress-bar")
-          .forEach((bar) => {
-            const width =
-              getComputedStyle(bar).getPropertyValue("--progress-width");
-            // Aplica a largura diretamente
-            bar.style.width = width;
-          });
-
-        // Barras de fluência
-        document.querySelectorAll(".fluency-fill").forEach((bar) => {
-          const width =
-            getComputedStyle(bar).getPropertyValue("--progress-width");
-          // Aplica a largura diretamente
-          bar.style.width = width;
-        });
-      }
-
-      // Chame esta função no final do DOMContentLoaded
-      document.addEventListener("DOMContentLoaded", function () {
-        // Seu código existente...
-
-        // Inicialize as barras de progresso
-        initializeProgressBars();
-
-        // Animar barras de fluência ao carregar
-        setTimeout(() => {
-          animateFluencyBars();
-        }, 500);
-      });
-
-      // Função para animar as barras de fluência
-      function animateFluencyBars() {
-        const bars = document.querySelectorAll(".fluency-fill");
-        bars.forEach((bar) => {
-          const currentWidth = bar.style.width;
-          // Guarda a largura original
-          const targetWidth =
-            getComputedStyle(bar).getPropertyValue("--progress-width");
-
-          // Reseta para 0
-          bar.style.width = "0%";
-
-          // Anima para a largura alvo
-          setTimeout(() => {
-            bar.style.width = targetWidth;
-          }, 300);
-        });
-      }
-    </script>
   </body>
 </html>
