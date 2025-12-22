@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfólio Links | Kaique Bazil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <!-- Modal Saiba Mais -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal">
+        <button class="modal-close" id="modalClose">
+          <i class="fas fa-times"></i>
+        </button>
+        <h2 class="modal-title">Sobre Mim</h2>
+        <div class="modal-content">
+          <div class="modal-section">
+            <h3 class="modal-section-title">👨‍💻 Experiência Profissional</h3>
+            <p>
+              Desenvolvedor Full-Stack com 3+ anos de experiência em criação de
+              aplicações web responsivas e escaláveis. Especializado em
+              JavaScript, React, Node.js e bancos de dados relacionais.
+            </p>
+          </div>
+
+          <div class="modal-section">
+            <h3 class="modal-section-title">🎓 Educação</h3>
+            <p>
+              Bacharel em Ciência da Computação pela Universidade XYZ
+              (2020-2024). Cursos complementares em UX/UI Design, Cloud
+              Computing e Machine Learning.
+            </p>
+          </div>
+
+          <div class="modal-section">
+            <h3 class="modal-section-title">🚀 Habilidades Técnicas</h3>
+            <p>
+              <strong>Frontend:</strong> React, Vue.js, HTML5, CSS3,
+              TypeScript<br />
+              <strong>Backend:</strong> Node.js, Express, Python, Django<br />
+              <strong>Banco de Dados:</strong> MongoDB, PostgreSQL, MySQL<br />
+              <strong>Ferramentas:</strong> Git, Docker, AWS, Figma
+            </p>
+          </div>
+
+          <div class="modal-section">
+            <h3 class="modal-section-title">🏆 Conquistas</h3>
+            <p>
+              • 1º lugar no Hackathon TechInnovation 2023<br />
+              • Contribuidor em projetos open-source com 500+ stars no GitHub<br />
+              • Certificação AWS Solutions Architect Associate
+            </p>
+          </div>
+
+          <div class="modal-section">
+            <h3 class="modal-section-title">📞 Contato</h3>
+            <p>
+              Disponível para oportunidades de trabalho remoto ou presencial.<br />
+              Email: contato@portfolio.dev<br />
+              Telefone: (11) 99999-9999
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Header com data, dia e botão de currículo -->
+      <div class="header">
+        <div class="app-info">
+          <div class="app-icon">
+            <i class=""> <img src="icon.jpg" width="50" alt="" /></i>
+          </div>
+          <h1 class="app-title">Kaique Bazil</h1>
+        </div>
+        <div class="header-right">
+          <div class="date-info">
+            <div class="current-day" id="currentDay">Segunda-feira</div>
+            <div class="current-date" id="currentDate">
+              21 de Dezembro de 2025
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de Pesquisa -->
+      <!-- <div class="search-section">
+        <h2 class="section-title">
+          <i class="fas fa-search"></i> Pesquisar no Portfólio
+        </h2>
+        <div class="search-container">
+          <input
+            type="text"
+            class="search-input"
+            id="searchInput"
+            placeholder="Pesquisar projetos, habilidades..."
+          />
+          <button class="search-btn" id="searchBtn">
+            <i class="fas fa-search"></i> Buscar
+          </button>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+      </div> -->
+
+      <!-- Redes Sociais -->
+      <div class="section">
+        <h2 class="section-title">
+          <span><i class="fas fa-share-alt"></i> Redes Sociais</span>
+          <!-- <button class="resume-btn" id="resumeBtn">
+            <i class="fas fa-file-download">Meu c</i>
+          </button> -->
+        </h2>
+        <div class="social-links">
+          <a
+            href="https://github.com/kaiquebazil"
+            target="_blank"
+            class="social-block"
+          >
+            <div class="social-icon" style="color: #f0f6fc">
+              <i class="fab fa-github"></i>
+            </div>
+            <div class="social-name">GitHub</div>
+            <div class="social-user">@kaiquebazil</div>
+          </a>
+          <a
+            href="https://www.tiktok.com/@kaiquesjorney"
+            target="_blank"
+            class="social-block"
+          >
+            <div class="social-icon" style="color: #723ed3">
+              <i class="fab fa-tiktok"></i>
+            </div>
+            <div class="social-name">Tiktok</div>
+            <div class="social-user">@kaiquejorney</div>
+          </a>
+          <a
+            href="https://instagram.com/kaiquebazil"
+            target="_blank"
+            class="social-block"
+          >
+            <div class="social-icon" style="color: #e4405f">
+              <i class="fab fa-instagram"></i>
+            </div>
+            <div class="social-name">Instagram</div>
+            <div class="social-user">@kaiquebazil</div>
+          </a>
+          <a
+            href="https://www.youtube.com/@KaiqueJournal/"
+            target="_blank"
+            class="social-block"
+          >
+            <div class="social-icon" style="color: #da2626">
+              <i class="fab fa-youtube"></i>
+            </div>
+            <div class="social-name">youtube</div>
+            <div class="social-user">Kaique's Growth Journal</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Meus Projetos -->
+      <div class="section">
+        <h2 class="section-title">
+          <span><i class="fas fa-code"></i> Meus Projetos</span>
+          <button class="learn-more-btn" id="projectsLearnMore">
+            <i class="fas fa-info-circle"></i> Saiba Mais
+          </button>
+        </h2>
+        <div class="projects-grid">
+          <div class="project-item">
+            <div class="project-info">
+              <div class="project-title">
+                <i class="fas fa-globe"></i> Kaique Bazil Portfólio
+              </div>
+              <div class="project-desc">
+                Site pessoal com meus trabalhos e habilidades
+              </div>
+              <span class="project-tech">HTML/CSS/JS</span>
+            </div>
+            <a href="#" target="_blank" class="project-link">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+          <div class="project-item">
+            <div class="project-info">
+              <div class="project-title">
+                <i class="fas fa-mobile-alt"></i> App To-Do
+              </div>
+              <div class="project-desc">
+                Aplicativo de tarefas com notificações
+              </div>
+              <span class="project-tech">React Native</span>
+            </div>
+            <a href="#" target="_blank" class="project-link">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+          <div class="project-item">
+            <div class="project-info">
+              <div class="project-title">
+                <i class="fas fa-chart-line"></i> Dashboard Analytics
+              </div>
+              <div class="project-desc">
+                Painel de visualização de dados em tempo real
+              </div>
+              <span class="project-tech">Vue.js/Node.js</span>
+            </div>
+            <a href="#" target="_blank" class="project-link">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Minhas Metas - COM NOVO DESIGN DE MINI CHECKS ANIMADOS -->
+      <div class="section">
+        <h2 class="section-title">
+          <span><i class="fas fa-flag-checkered"></i> Minhas Metas</span>
+          <button class="learn-more-btn" id="goalsLearnMore">
+            <i class="fas fa-info-circle"></i> Saiba Mais
+          </button>
+        </h2>
+        <div class="goals-container">
+          <div class="goal-item">
+            <div class="goal-checkbox">
+              <!-- <i class="fas fa-check"></i> -->
+            </div>
+            <div class="goal-content">
+              <a href="6meses.html" class="goal-link">
+                <div class="goal-title">Ficar Fluente em Inglês</div>
+                <div class="goal-desc">
+                  Estudar vídeos, gravar vídeos em inglês e fazer imersão.
+                </div>
+              </a>
+              <div class="goal-progress">
+                <div
+                  class="progress-bar"
+                  style="
+                    background-color: var(--accent-yellow);
+                    --progress-width: 42%;
+                  "
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="goal-item">
+            <div class="goal-checkbox">
+              <!-- <i class="fas fa-check"></i> -->
+            </div>
+            <div class="goal-content">
+              <div class="goal-title">Corpo forte e resistente</div>
+              <div class="goal-desc">Calistenia e Mobilidade skills</div>
+              <div class="goal-progress">
+                <div
+                  class="progress-bar"
+                  style="
+                    background-color: var(--accent-green);
+                    --progress-width: 10%;
+                  "
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="goal-item">
+            <div class="goal-checkbox" data-progress="66">
+              <!-- Mini checks aparecerão via JavaScript -->
+              <div class="mini-checks"></div>
+            </div>
+            <div class="goal-content">
+              <div class="goal-title">Tornar-me um programador fullstack</div>
+              <div class="goal-desc">
+                Estudar programação todos os dias | Curso.dev
+              </div>
+              <div class="goal-progress">
+                <div
+                  class="progress-bar"
+                  style="
+                    background-color: var(--accent-color);
+                    --progress-width: 56%;
+                  "
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="goal-item">
+            <div class="goal-checkbox" data-progress="40">
+              <!-- Mini checks aparecerão via JavaScript -->
+              <div class="mini-checks"></div>
+            </div>
+            <div class="goal-content">
+              <div class="goal-title">Ter 5 Mil seguidores</div>
+              <div class="goal-desc">Postar vídeos todos os dias</div>
+              <div class="goal-progress">
+                <div
+                  class="progress-bar"
+                  style="
+                    background-color: var(--accent-orange);
+                    --progress-width: 5%;
+                  "
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Seção de Fluência -->
+        <div class="fluency-section">
+          <div class="fluency-header">
+            <div class="fluency-title">Nível de Fluência</div>
+            <div class="fluency-score">5/10</div>
+          </div>
+          <div class="fluency-desc">Progresso atual nas minhas habilidades</div>
+          <div class="fluency-bars">
+            <div class="fluency-bar">
+              <div
+                class="fluency-fill"
+                id="fluencyBar1"
+                style="--progress-width: 80%"
+              ></div>
+              <div class="fluency-label">Escuta</div>
+            </div>
+            <div class="fluency-bar">
+              <div
+                class="fluency-fill"
+                id="fluencyBar2"
+                style="--progress-width: 75%"
+              ></div>
+              <div class="fluency-label">Leitura</div>
+            </div>
+            <div class="fluency-bar">
+              <div
+                class="fluency-fill"
+                id="fluencyBar3"
+                style="--progress-width: 30%"
+              ></div>
+              <div class="fluency-label">Escrita</div>
+            </div>
+            <div class="fluency-bar">
+              <div
+                class="fluency-fill"
+                id="fluencyBar3"
+                style="--progress-width: 42%"
+              ></div>
+              <div class="fluency-label">Fala</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>
+          Portfólio Digital • Atualizado em <span id="currentYear">2025</span>
+        </p>
+        <div class="contact-links">
+          <a href="mailto:contato@exemplo.com" class="contact-link">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="#" class="contact-link">
+            <i class="fas fa-file-pdf"></i>
+          </a>
+          <a href="#" class="contact-link">
+            <i class="fas fa-download"></i>
+          </a>
+          <a href="#" class="contact-link">
+            <i class="fas fa-share-alt"></i>
+          </a>
+        </div>
+        <p style="margin-top: 15px; font-size: 12px; font-weight: 500">
+          Clique nas metas para marcá-las como concluídas
+        </p>
+      </div>
+    </div>
+    <script src="js/app.js"></script>
+    <script>
+      // Função para inicializar as barras de progresso
+      function initializeProgressBars() {
+        // Barras de progresso das metas
+        document
+          .querySelectorAll(".goal-progress .progress-bar")
+          .forEach((bar) => {
+            const width =
+              getComputedStyle(bar).getPropertyValue("--progress-width");
+            // Aplica a largura diretamente
+            bar.style.width = width;
+          });
+
+        // Barras de fluência
+        document.querySelectorAll(".fluency-fill").forEach((bar) => {
+          const width =
+            getComputedStyle(bar).getPropertyValue("--progress-width");
+          // Aplica a largura diretamente
+          bar.style.width = width;
+        });
+      }
+
+      // Chame esta função no final do DOMContentLoaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Seu código existente...
+
+        // Inicialize as barras de progresso
+        initializeProgressBars();
+
+        // Animar barras de fluência ao carregar
+        setTimeout(() => {
+          animateFluencyBars();
+        }, 500);
+      });
+
+      // Função para animar as barras de fluência
+      function animateFluencyBars() {
+        const bars = document.querySelectorAll(".fluency-fill");
+        bars.forEach((bar) => {
+          const currentWidth = bar.style.width;
+          // Guarda a largura original
+          const targetWidth =
+            getComputedStyle(bar).getPropertyValue("--progress-width");
+
+          // Reseta para 0
+          bar.style.width = "0%";
+
+          // Anima para a largura alvo
+          setTimeout(() => {
+            bar.style.width = targetWidth;
+          }, 300);
+        });
+      }
+    </script>
+  </body>
+</html>
