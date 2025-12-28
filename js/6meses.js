@@ -248,6 +248,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
+  // Elementos DOM
   const monthsContainer = document.getElementById("months-container");
   const globalProgress = document.getElementById("global-progress");
   const progressText = document.getElementById("progress-text");
@@ -259,6 +260,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const resetButton = document.getElementById("reset-btn");
   const currentDayElement = document.getElementById("currentDay");
   const currentDateElement = document.getElementById("currentDate");
+
+  // Elementos do Modal
+  const fluencyBtn = document.getElementById("fluency-btn");
+  const fluencyModal = document.getElementById("fluency-modal");
+  const modalClose = document.getElementById("modal-close");
 
   // Calcular total de conteúdos
   let totalContents = 0;
@@ -532,6 +538,52 @@ document.addEventListener("DOMContentLoaded", function () {
         .classList.add("active");
     }
   });
+
+  // ========== CONTROLE DO MODAL ==========
+
+  // Função para abrir o modal
+  function openFluencyModal() {
+    console.log("Abrindo modal...");
+    fluencyModal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+
+  // Função para fechar o modal
+  function closeFluencyModal() {
+    console.log("Fechando modal...");
+    fluencyModal.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+
+  // Configurar eventos do modal
+  if (fluencyBtn && fluencyModal && modalClose) {
+    console.log("Elementos do modal encontrados!");
+
+    // Abrir modal ao clicar no botão
+    fluencyBtn.addEventListener("click", openFluencyModal);
+
+    // Fechar modal com botão X
+    modalClose.addEventListener("click", closeFluencyModal);
+
+    // Fechar modal clicando fora do conteúdo
+    fluencyModal.addEventListener("click", function (event) {
+      if (event.target === fluencyModal) {
+        closeFluencyModal();
+      }
+    });
+
+    // Fechar modal com tecla ESC
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && fluencyModal.classList.contains("active")) {
+        closeFluencyModal();
+      }
+    });
+  } else {
+    console.error("Erro: Elementos do modal não encontrados!");
+    console.log("fluencyBtn:", fluencyBtn);
+    console.log("fluencyModal:", fluencyModal);
+    console.log("modalClose:", modalClose);
+  }
 
   // Inicializar
   updateDateTime();
