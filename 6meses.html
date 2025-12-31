@@ -81,21 +81,17 @@
         </button>
       </div>
 
-      <!-- Botão para abrir o modal de Regras de Fluência -->
-      <div class="fluency-button-container">
-        <button class="fluency-btn" id="fluency-btn">
-          <i class="fas fa-lightbulb"></i> Regras de Fluência
-        </button>
-      </div>
-
       <!-- Container de Meses -->
       <div class="months-container" id="months-container">
-        <!-- Os meses serão inseridos aqui via JavaScript -->
+        <!-- O JavaScript vai inserir:
+            1. Primeiro: Os Conteúdos Adicionais (complementary-container)
+            2. Depois: Os meses do plano de estudo
+        -->
       </div>
 
       <!-- Footer -->
       <div class="footer">
-        <p>Plano de Estudo de Inglês • 6 Meses • Início: 07 de Julho de 2025</p>
+        <p>Plano de Estudo de Inglês • 6 Meses •</p>
         <div class="footer-links">
           <a href="#" class="footer-link">
             <i class="fas fa-question-circle"></i>
@@ -113,65 +109,12 @@
       </div>
     </div>
 
-    <!-- Modal de Regras de Fluência (FORA do container principal) -->
-    <div class="modal" id="fluency-modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2><i class="fas fa-lightbulb"></i> Regras de Fluência</h2>
-          <button class="modal-close" id="modal-close">&times;</button>
-        </div>
-        <div class="modal-body">
-          <div class="rules-grid">
-            <div class="rule-card">
-              <div class="rule-icon">
-                <i class="fas fa-calendar-check"></i>
-              </div>
-              <h3>Consistência Diária</h3>
-              <p>
-                Estude pelo menos 30 minutos por dia para manter o progresso
-                constante.
-              </p>
-            </div>
-            <div class="rule-card">
-              <div class="rule-icon">
-                <i class="fas fa-headphones"></i>
-              </div>
-              <h3>Ouça Ativamente</h3>
-              <p>
-                Pratique listening com séries, podcasts e conversas nativas
-                diariamente.
-              </p>
-            </div>
-            <div class="rule-card">
-              <div class="rule-icon">
-                <i class="fas fa-comments"></i>
-              </div>
-              <h3>Fale em Voz Alta</h3>
-              <p>
-                Pratique speaking mesmo sozinho. Leia em voz alta e converse com
-                você mesmo.
-              </p>
-            </div>
-            <div class="rule-card">
-              <div class="rule-icon">
-                <i class="fas fa-eye"></i>
-              </div>
-              <h3>Imersão</h3>
-              <p>
-                Mude seu celular, séries e músicas para inglês. Crie um ambiente
-                de imersão constante.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <a href="index.html" class="back-button">
       <i class="fas fa-arrow-left"></i>
       <span>Voltar</span>
     </a>
 
+    <!-- Importação dos scripts -->
     <script type="module" src="js/6meses.js"></script>
   </body>
 </html>

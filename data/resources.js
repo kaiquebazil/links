@@ -1,20 +1,34 @@
 // js/data/resources.js
 export const resourcesDatabase = {
-  // Alfabeto: {
-  //   videos: [
-  //     {
-  //       id: "Gs069dndIYk",
-  //       title: "ABC Song | Learn ABC Alphabet for Children",
-  //       duration: "2:15",
-  //       channel: "ABC Kids TV",
-  //     },
-  //   ],
-  //   materials: [
-  //     "PDF: Alfabeto Ilustrado (link: https://example.com/alfabeto.pdf)",
-  //     "Exercícios: Escrita do Alfabeto",
-  //     "Quiz: Reconhecimento de Letras",
-  //   ],
-  // },
+  Alfabeto: {
+    videos: [
+      {
+        id: "pGdos0z14aQ",
+        title: "ALFABETO EM INGLÊS: Pronúncia completa e dicas | Meu vídeo",
+        duration: "4:22",
+        channel: "Kaique's Growth Journal",
+      },
+      {
+        id: "ChqnN3cKzXQ",
+        title:
+          "ABC Phonics Chant for Children | Sounds and Actions from A to Z",
+        duration: "4:22",
+        channel: "Tora the Teacher",
+      },
+      {
+        id: "ccEpTTZW34g",
+        title: "The Alphabet Song | Learn The ABCs | Finny The Shark",
+        duration: "1:29",
+        channel: "Finny The Shark",
+      },
+    ],
+    materials: [
+      "Alfabeto: Site com Alfabeto e treinos de escuta e fala (link: https://www.languageguide.org/english/alphabet/)",
+      "Jogo: Quiz do Alfabeto (link: https://www.educaplay.com/learning-resources/7802284-alphabet_game_3b.html)",
+      "Jogo: Memory do Alfabeto (link: https://www.educaplay.com/learning-resources/23966277-alfhabet_quiz.html)",
+      "Exercícios: Soletre seu Nome Completo, Nome de Familiares. Emails E Coisas do dia a dia.",
+    ],
+  },
   // "Números (0-100)": {
   //   videos: [
   //     {
