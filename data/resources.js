@@ -5,7 +5,7 @@ export const resourcesDatabase = {
       {
         id: "pGdos0z14aQ",
         title: "ALFABETO EM INGLÊS: Pronúncia completa e dicas | Meu vídeo",
-        duration: "4:22",
+        duration: "8:42",
         channel: "Kaique's Growth Journal",
       },
       {
@@ -29,27 +29,28 @@ export const resourcesDatabase = {
       "Exercícios: Soletre seu Nome Completo, Nome de Familiares. Emails E Coisas do dia a dia.",
     ],
   },
-  // "Números (0-100)": {
-  //   videos: [
-  //     {
-  //       id: "DR-cfDsHCGA",
-  //       title: "Numbers 1-100 in English",
-  //       duration: "4:30",
-  //       channel: "Woodward English",
-  //     },
-  //     {
-  //       id: "V9QBe0GfyDU",
-  //       title: "Count to 100 Song",
-  //       duration: "3:20",
-  //       channel: "The Singing Walrus",
-  //     },
-  //   ],
-  //   materials: [
-  //     "Planilha: Números por Extenso",
-  //     "Jogo: Bingo dos Números",
-  //     "Áudio: Pronúncia dos Números",
-  //   ],
-  // },
+  Números: {
+    videos: [
+      {
+        id: "XD6n4vqVGFo",
+        title:
+          "Como Aprender os Números em Inglês: O Guia Definitivo ( DO 1 AO 1 TRILÃO)",
+        duration: "5:44",
+        channel: "Kaique's Growth Journal",
+      },
+      {
+        id: "V9QBe0GfyDU",
+        title: "Count to 100 Song",
+        duration: "3:20",
+        channel: "The Singing Walrus",
+      },
+    ],
+    materials: [
+      "Numeros: Site com Numeros e treinos de escuta e fala (link: https://www.languageguide.org/english/numbers/)",
+      "Jogo:Palavras Cruzadas de Números (link: https://www.educaplay.com/learning-resources/9030866-numbers.html)",
+      "Exercícios: escreva frases com a idade de seus familiares(Dominar de 1 a 100), frases de contas de casa e preços de produtos.",
+    ],
+  },
   // "Saudações básicas": {
   //   videos: [
   //     {

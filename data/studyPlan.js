@@ -7,7 +7,7 @@ export const studyPlan = [
         title: "Semana 1",
         contents: [
           "Alfabeto",
-          "Números (0-100)",
+          "Números",
           "Saudações básicas",
           "Apresentações pessoais",
         ],
