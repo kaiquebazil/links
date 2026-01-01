@@ -689,3 +689,220 @@ document.addEventListener("DOMContentLoaded", function () {
   // Atualizar data a cada minuto
   setInterval(updateDateTime, 60000);
 });
+
+// js/app.js
+class PWAManager {
+  constructor() {
+    this.deferredPrompt = null;
+    this.installButton = null;
+    this.installContainer = null;
+    this.init();
+  }
+
+  init() {
+    // Registrar Service Worker
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then((registration) => {
+            console.log(
+              "ServiceWorker registrado com sucesso:",
+              registration.scope
+            );
+            this.checkForUpdates(registration);
+          })
+          .catch((error) => {
+            console.log("Falha ao registrar ServiceWorker:", error);
+          });
+      });
+    }
+
+    // Detectar evento de instalação
+    window.addEventListener("beforeinstallprompt", (e) => {
+      console.log("beforeinstallprompt disparado");
+      e.preventDefault();
+      this.deferredPrompt = e;
+      this.showInstallPromotion();
+    });
+
+    // Detectar se app já está instalado
+    window.addEventListener("appinstalled", () => {
+      console.log("App instalado com sucesso!");
+      this.deferredPrompt = null;
+      this.hideInstallPromotion();
+    });
+
+    // Verificar modo standalone (se já está instalado)
+    if (window.matchMedia("(display-mode: standalone)").matches) {
+      console.log("App rodando em modo standalone");
+      this.onAppInstalled();
+    }
+  }
+
+  showInstallPromotion() {
+    // Criar botão de instalação se não existir
+    if (!this.installContainer) {
+      this.createInstallButton();
+    }
+
+    this.installContainer.style.display = "flex";
+
+    // Mostrar por 10 segundos, depois esconder
+    setTimeout(() => {
+      if (this.installContainer) {
+        this.installContainer.style.display = "none";
+      }
+    }, 10000);
+  }
+
+  createInstallButton() {
+    this.installContainer = document.createElement("div");
+    this.installContainer.className = "install-container";
+    this.installContainer.innerHTML = `
+      <div class="install-card">
+        <div class="install-icon">
+          <i class="fas fa-download"></i>
+        </div>
+        <div class="install-content">
+          <h3>Instalar App</h3>
+          <p>Instale o app para acesso offline e notificações de estudo!</p>
+          <div class="install-buttons">
+            <button class="install-btn" id="install-button">
+              <i class="fas fa-mobile-alt"></i> Instalar
+            </button>
+            <button class="install-cancel" id="install-cancel">
+              Agora não
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(this.installContainer);
+
+    this.installButton = document.getElementById("install-button");
+    const cancelButton = document.getElementById("install-cancel");
+
+    this.installButton.addEventListener("click", () => this.installApp());
+    cancelButton.addEventListener("click", () => this.hideInstallPromotion());
+  }
+
+  hideInstallPromotion() {
+    if (this.installContainer) {
+      this.installContainer.style.display = "none";
+    }
+  }
+
+  async installApp() {
+    if (!this.deferredPrompt) return;
+
+    this.deferredPrompt.prompt();
+    const { outcome } = await this.deferredPrompt.userChoice;
+
+    console.log(`Usuário ${outcome} a instalação`);
+    this.deferredPrompt = null;
+    this.hideInstallPromotion();
+  }
+
+  onAppInstalled() {
+    // Configurações específicas para quando o app está instalado
+    console.log("App está instalado, configurando...");
+
+    // Adicionar funcionalidades específicas para app instalado
+    this.setupAppFeatures();
+  }
+
+  setupAppFeatures() {
+    // Notificações diárias
+    this.setupDailyNotifications();
+
+    // Sync em background
+    this.setupBackgroundSync();
+
+    // Gerenciamento de armazenamento
+    this.setupStorageManagement();
+  }
+
+  setupDailyNotifications() {
+    // Pedir permissão para notificações
+    if ("Notification" in window && Notification.permission === "default") {
+      Notification.requestPermission().then((permission) => {
+        if (permission === "granted") {
+          console.log("Permissão para notificações concedida");
+          this.scheduleDailyReminder();
+        }
+      });
+    }
+  }
+
+  scheduleDailyReminder() {
+    // Agendar notificação diária às 19:00
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.ready.then((registration) => {
+        registration.showNotification("Hora de Estudar Inglês!", {
+          body: "Não se esqueça de completar seus estudos diários de inglês!",
+          icon: "icons/icon-192x192.png",
+          badge: "icons/icon-72x72.png",
+          tag: "daily-reminder",
+          requireInteraction: true,
+          actions: [
+            { action: "study", title: "Estudar Agora" },
+            { action: "snooze", title: "Lembrar mais tarde" },
+          ],
+        });
+      });
+    }
+  }
+
+  setupBackgroundSync() {
+    if ("serviceWorker" in navigator && "SyncManager" in window) {
+      navigator.serviceWorker.ready.then((registration) => {
+        registration.sync
+          .register("sync-progress")
+          .then(() => console.log("Background sync registrado"))
+          .catch(console.error);
+      });
+    }
+  }
+
+  setupStorageManagement() {
+    // Monitorar uso de armazenamento
+    if ("storage" in navigator && "estimate" in navigator.storage) {
+      navigator.storage.estimate().then((estimate) => {
+        console.log(`Usando ${estimate.usage} de ${estimate.quota} bytes`);
+      });
+    }
+  }
+
+  checkForUpdates(registration) {
+    // Verificar atualizações periodicamente
+    setInterval(() => {
+      registration.update();
+    }, 60 * 60 * 1000); // A cada hora
+  }
+
+  // Métodos para funcionalidades do app
+  static shareProgress() {
+    if (navigator.share) {
+      const progress = localStorage.getItem("completedContents");
+      const completed = progress ? JSON.parse(progress).length : 0;
+
+      navigator.share({
+        title: "Meu Progresso em Inglês",
+        text: `Já completei ${completed} conteúdos no app Inglês em 6 Meses!`,
+        url: window.location.href,
+      });
+    }
+  }
+
+  static addToHomeScreen() {
+    // Esta função pode ser chamada de um botão no app
+    if (window.deferredPrompt) {
+      window.deferredPrompt.prompt();
+    }
+  }
+}
+
+// Exportar para uso global
+window.PWAManager = PWAManager;

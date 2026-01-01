@@ -1,165 +1,97 @@
 // js/data/complementaryData.js
 export const complementaryMaterials = [
-  // {
-  //   id: "my-videos",
-  //   title: "🎥 Meus Vídeos Recomendados",
-  //   description:
-  //     "Vídeos selecionados pessoalmente para complementar seu aprendizado.",
-  //   type: "videos",
-  //   videos: [
-  //     {
-  //       id: "Gs069dndIYk",
-  //       title: "Aprenda Inglês em 30 Dias - Método Completo",
-  //       duration: "15:30",
-  //       channel: "Inglês com Você",
-  //       description: "Técnicas eficazes para aprender inglês rapidamente",
-  //       additionalContent: {
-  //         materials: [
-  //           "PDF: Guia do Método Completo (link: https://example.com/metodo.pdf)",
-  //           "Exercícios: Prática diária de 15 minutos",
-  //           "Checklist: Progresso semanal",
-  //           "Links Úteis: Comunidade de apoio (link: https://example.com/comunidade)",
-  //         ],
-  //         tips: [
-  //           "Assista este vídeo no início de cada semana",
-  //           "Faça anotações enquanto assiste",
-  //           "Pratique o que aprendeu imediatamente após assistir",
-  //         ],
-  //       },
-  //     },
-  //     {
-  //       id: "DR-cfDsHCGA",
-  //       title: "Conversação em Inglês para Iniciantes",
-  //       duration: "22:15",
-  //       channel: "Fale Inglês Agora",
-  //       description: "Diálogos do dia a dia com pronúncia lenta",
-  //       additionalContent: {
-  //         materials: [
-  //           "PDF: Diálogos Transcritos (link: https://example.com/dialogos.pdf)",
-  //           "Áudio: Pronúncia Lenta para Prática",
-  //           "Scripts: Situações do Dia a Dia",
-  //           "Exercício: Role-play com áudio",
-  //         ],
-  //         tips: [
-  //           "Repita cada frase 3 vezes em voz alta",
-  //           "Grave sua voz e compare com o original",
-  //           "Pratique com um amigo se possível",
-  //         ],
-  //       },
-  //     },
-  //     {
-  //       id: "V9QBe0GfyDU",
-  //       title: "Gramática Essencial - Presente Simples",
-  //       duration: "18:45",
-  //       channel: "English Master",
-  //       description: "Explicação completa do tempo presente",
-  //       additionalContent: {
-  //         materials: [
-  //           "PDF: Tabela de Conjugação (link: https://example.com/conjugacao.pdf)",
-  //           "Exercícios: Preenchimento de Lacunas",
-  //           "Quiz: Teste de Gramática",
-  //           "Infográfico: Usos do Presente Simples",
-  //         ],
-  //         tips: [
-  //           "Assista primeiro sem anotações",
-  //           "Na segunda vez, pause e faça exercícios",
-  //           "Reveja a cada 2 semanas para fixar",
-  //         ],
-  //       },
-  //     },
-  //     {
-  //       id: "2Y0P5hT_5eQ",
-  //       title: "Vocabulário para Viagens",
-  //       duration: "25:10",
-  //       channel: "Viagem com Inglês",
-  //       description: "Frases essenciais para viajantes",
-  //       additionalContent: {
-  //         materials: [
-  //           "PDF: Frases de Emergência (link: https://example.com/emergencia.pdf)",
-  //           "Flashcards: Vocabulário de Aeroporto/Hotel",
-  //           "Áudio: Pronúncia de Frases Comuns",
-  //           "Checklist: Preparação para Viagem",
-  //         ],
-  //         tips: [
-  //           "Foque nas frases mais úteis primeiro",
-  //           "Pratique em situações reais (restaurante, hotel)",
-  //           "Use aplicativos de tradução como apoio",
-  //         ],
-  //       },
-  //     },
-  //     {
-  //       id: "F5tF5QwQj5M",
-  //       title: "Listening Practice - Entenda Nativos",
-  //       duration: "30:20",
-  //       channel: "Ouvir e Aprender",
-  //       description: "Exercícios de compreensão auditiva",
-  //       additionalContent: {
-  //         materials: [
-  //           "PDF: Transcrição Completa (link: https://example.com/transcricao.pdf)",
-  //           "Áudio: Versão Lenta e Rápida",
-  //           "Exercícios: Compreensão Oral",
-  //           "Quiz: Teste seu Entendimento",
-  //         ],
-  //         tips: [
-  //           "Comece com legendas em português",
-  //           "Depois mude para legendas em inglês",
-  //           "Finalmente assista sem legendas",
-  //         ],
-  //       },
-  //     },
-  //   ],
-  //   materials: [
-  //     "Playlist completa: https://youtube.com/playlist?list=MEUS_VIDEOS",
-  //     "PDF: Transcrição dos vídeos (link: https://example.com/transcricoes.pdf)",
-  //     "Exercícios: Atividades baseadas nos vídeos",
-  //     "Quiz: Teste seu entendimento após assistir",
-  //   ],
-  // },
   {
-    id: "fluency-rules",
-    title: "💡 Regras de Fluência",
+    id: "my-videos",
+    title: "🎥 Meus Vídeos Recomendados",
     description:
-      "Princípios essenciais para alcançar fluência em inglês de forma eficiente.",
-    type: "rules",
-    rules: [
+      "Vídeos selecionados pessoalmente para complementar seu aprendizado.",
+    type: "videos",
+    videos: [
       {
-        icon: "calendar-check",
-        title: "Consistência Diária",
-        description:
-          "Estude pelo menos 30 minutos por dia para manter o progresso constante.",
+        id: "5BBnXnwUiXQ",
+        title: "Fluente em Inglês em 6 Meses | Meu Projeto Real",
+        duration: "1:10",
+        channel: "Kaique's Growth Journal",
+        description: "Vídeo introdutório do meu desafio",
       },
       {
-        icon: "headphones",
-        title: "Ouça Ativamente",
-        description:
-          "Pratique listening com séries, podcasts e conversas nativas diariamente.",
+        id: "DR-yMtXpzWjAlI",
+        title: "AS 4 REGRAS DA FLUÊNCIA EM INGLÊS | Para Aprender Rápido",
+        duration: "6:53",
+        channel: "Kaique's Growth Journal",
+        description: "Regras essenciais para acelerar seu aprendizado",
       },
-      {
-        icon: "comments",
-        title: "Fale em Voz Alta",
-        description:
-          "Pratique speaking mesmo sozinho. Leia em voz alta e converse com você mesmo.",
-      },
-      {
-        icon: "eye",
-        title: "Imersão",
-        description:
-          "Mude seu celular, séries e músicas para inglês. Crie um ambiente de imersão constante.",
-      },
-      {
-        icon: "redo",
-        title: "Repetição Espaçada",
-        description:
-          "Revise o conteúdo em intervalos crescentes para melhor memorização.",
-      },
-      {
-        icon: "smile",
-        title: "Divirta-se",
-        description:
-          "Aprenda através de temas que você gosta. O prazer acelera o aprendizado.",
-      },
+      // {
+      //   id: "F5tF5QwQj5M",
+      //   title: "Listening Practice - Entenda Nativos",
+      //   duration: "30:20",
+      //   channel: "Ouvir e Aprender",
+      //   description: "Exercícios de compreensão auditiva",
+      //   additionalContent: {
+      //     materials: [
+      //       "PDF: Transcrição Completa (link: https://example.com/transcricao.pdf)",
+      //       "Áudio: Versão Lenta e Rápida",
+      //       "Exercícios: Compreensão Oral",
+      //       "Quiz: Teste seu Entendimento",
+      //     ],
+      //     tips: [
+      //       "Comece com legendas em português",
+      //       "Depois mude para legendas em inglês",
+      //       "Finalmente assista sem legendas",
+      //     ],
+      //   },
+      // },
+    ],
+    materials: [
+      "Playlist completa: (link: https://www.youtube.com/playlist?list=PLTzvJzAFb2UzLfI71n9ebaV1AHqpwIOYH)",
+      "Exercícios: Atividades baseadas nos vídeos",
     ],
   },
+  // {
+  //   id: "fluency-rules",
+  //   title: "💡 Regras de Fluência",
+  //   description:
+  //     "Princípios essenciais para alcançar fluência em inglês de forma eficiente.",
+  //   type: "rules",
+  //   rules: [
+  //     {
+  //       icon: "calendar-check",
+  //       title: "Consistência Diária",
+  //       description:
+  //         "Estude pelo menos 30 minutos por dia para manter o progresso constante.",
+  //     },
+  //     {
+  //       icon: "headphones",
+  //       title: "Ouça Ativamente",
+  //       description:
+  //         "Pratique listening com séries, podcasts e conversas nativas diariamente.",
+  //     },
+  //     {
+  //       icon: "comments",
+  //       title: "Fale em Voz Alta",
+  //       description:
+  //         "Pratique speaking mesmo sozinho. Leia em voz alta e converse com você mesmo.",
+  //     },
+  //     {
+  //       icon: "eye",
+  //       title: "Imersão",
+  //       description:
+  //         "Mude seu celular, séries e músicas para inglês. Crie um ambiente de imersão constante.",
+  //     },
+  //     {
+  //       icon: "redo",
+  //       title: "Repetição Espaçada",
+  //       description:
+  //         "Revise o conteúdo em intervalos crescentes para melhor memorização.",
+  //     },
+  //     {
+  //       icon: "smile",
+  //       title: "Divirta-se",
+  //       description:
+  //         "Aprenda através de temas que você gosta. O prazer acelera o aprendizado.",
+  //     },
+  //   ],
+  // },
   // {
   //   id: "movies-series",
   //   title: "🎬 Filmes e Séries",

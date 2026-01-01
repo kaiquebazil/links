@@ -1,0 +1,23 @@
+{
+  "name": "ingles-6-meses-pwa",
+  "version": "1.0.0",
+  "description": "App PWA para aprendizado de inglês em 6 meses",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -c-1 -p 8080",
+    "build": "echo 'Build complete'",
+    "deploy": "echo 'Deploy to hosting service'"
+  },
+  "keywords": [
+    "pwa",
+    "english",
+    "learning",
+    "education",
+    "study"
+  ],
+  "author": "Seu Nome",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.0.0"
+  }
+}

@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Plano de Estudo de Inglês | AppBlock Style</title>
+    <title>Plano de Estudo de Inglês</title>
+    <link rel="shortcut icon" href="6icon.png" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,6 +16,28 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="css/6meses.css" />
+    <!-- Adicione estas tags no <head> do 6meses.html -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#58a6ff" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="Inglês6Meses" />
+    <link rel="apple-touch-icon" href="icons/icon-152x152.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="icons/icon-192x192.png"
+    />
+    <meta name="msapplication-TileColor" content="#58a6ff" />
+    <meta name="msapplication-TileImage" content="icons/icon-144x144.png" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
   </head>
   <body>
     <div class="container">
@@ -109,6 +132,15 @@
       </div>
     </div>
 
+    <a
+      href="https://wa.me/5521992046467"
+      target="_blank"
+      class="whatsapp-float"
+      title="Enviar mensagem no WhatsApp"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
     <a href="index.html" class="back-button">
       <i class="fas fa-arrow-left"></i>
       <span>Voltar</span>
@@ -116,5 +148,29 @@
 
     <!-- Importação dos scripts -->
     <script type="module" src="js/6meses.js"></script>
+    <script>
+      // Inicializar o app quando a página carregar
+      document.addEventListener("DOMContentLoaded", function () {
+        window.pwaManager = new PWAManager();
+
+        // Adicionar botão de compartilhar no footer
+        addShareButton();
+      });
+
+      function addShareButton() {
+        const footerLinks = document.querySelector(".footer-links");
+        if (footerLinks && navigator.share) {
+          const shareLink = document.createElement("a");
+          shareLink.href = "#";
+          shareLink.className = "footer-link";
+          shareLink.innerHTML = '<i class="fas fa-share-alt"></i>';
+          shareLink.onclick = function (e) {
+            e.preventDefault();
+            PWAManager.shareProgress();
+          };
+          footerLinks.appendChild(shareLink);
+        }
+      }
+    </script>
   </body>
 </html>
