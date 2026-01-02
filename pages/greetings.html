@@ -618,9 +618,9 @@
     </div>
 
     <!-- Botão de ação do app (agora só gerar áudio) -->
-    <button class="app-fab" id="appFab">
+    <!-- <button class="app-fab" id="appFab">
       <i class="fas fa-wave-square"></i>
-    </button>
+    </button> -->
 
     <!-- Player de áudio flutuante -->
     <div class="audio-player" id="audioPlayer">
@@ -724,7 +724,7 @@
             >Fluência em 6 Meses</a
           >
         </p>
-        <p><i class="far fa-copyright"></i> 2025 - Fluência em 6 Meses</p>
+        <p><i class="far fa-copyright"></i> 2026 - Fluência em 6 Meses</p>
       </div>
     </footer>
 
@@ -1363,24 +1363,48 @@
       }
 
       // Reproduzir áudio individual
+      // Substitua a função playAudio por esta versão:
       function playAudio(audioSrc, phraseText) {
         const player = document.getElementById("player");
         const audioPlayer = document.getElementById("audioPlayer");
         const nowPlaying = document.getElementById("nowPlaying");
 
-        player.src = audioSrc;
-        player.play();
+        // Tentar usar a API de síntese de voz do navegador
+        if ("speechSynthesis" in window) {
+          const utterance = new SpeechSynthesisUtterance(phraseText);
+          utterance.lang = "en-US";
+          utterance.rate = 1.0;
+          utterance.pitch = 1.0;
 
-        nowPlaying.textContent = `Reproduzindo: "${phraseText}"`;
+          // Encontrar uma voz em inglês
+          const voices = speechSynthesis.getVoices();
+          const englishVoice = voices.find(
+            (voice) =>
+              voice.lang.startsWith("en-") && voice.name.includes("English")
+          );
 
-        // Mostrar player de áudio
-        audioPlayer.classList.add("active");
+          if (englishVoice) {
+            utterance.voice = englishVoice;
+          }
 
-        setTimeout(() => {
-          audioPlayer.classList.remove("active");
-        }, 1500);
+          speechSynthesis.speak(utterance);
+
+          // Mostrar player de áudio
+          nowPlaying.textContent = `Reproduzindo: "${phraseText}"`;
+          audioPlayer.classList.add("active");
+
+          // Esconder após 5 segundos
+          setTimeout(() => {
+            audioPlayer.classList.remove("active");
+          }, 5000);
+        } else {
+          // Fallback para o método antigo
+          player.src = audioSrc;
+          player.play();
+          nowPlaying.textContent = `Reproduzindo: "${phraseText}"`;
+          audioPlayer.classList.add("active");
+        }
       }
-
       // Gerar áudio customizado
       function generateCustomAudio() {
         const text = customText.value.trim();
