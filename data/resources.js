@@ -69,7 +69,7 @@ export const resourcesDatabase = {
       },
     ],
     materials: [
-      "Site: Saudações comuns em inglês com aúdio (link: ../pages/greetings.html)",
+      "Site: Saudações comuns em inglês com aúdio (link: ../links/pages/greetings.html)",
       "Flashcards: Saudações Formais e Informais",
       "Exercício: Role-play de Apresentações",
     ],
