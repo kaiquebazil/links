@@ -51,21 +51,29 @@ export const resourcesDatabase = {
       "Exercícios: escreva frases com a idade de seus familiares(Dominar de 1 a 100), frases de contas de casa e preços de produtos.",
     ],
   },
-  // "Saudações básicas": {
-  //   videos: [
-  //     {
-  //       id: "2Y0P5hT_5eQ",
-  //       title: "Learn Basic English Greetings",
-  //       duration: "5:10",
-  //       channel: "English with Lucy",
-  //     },
-  //   ],
-  //   materials: [
-  //     "Diálogos: Situações Cotidianas",
-  //     "Flashcards: Saudações Formais e Informais",
-  //     "Exercício: Role-play de Apresentações",
-  //   ],
-  // },
+  "Saudações básicas": {
+    videos: [
+      {
+        id: "amxeGGNwwzE",
+        title:
+          "Learn English Greetings - English Greetings Explained in Detail",
+        duration: "10:29",
+        channel: "Learn English with Bob the Canadian",
+      },
+      {
+        id: "fI8EsEXS59w",
+        title:
+          "Learn Basic English Greetings – How to Greet Someone for the First Time",
+        duration: "5:57",
+        channel: "Professor Korten",
+      },
+    ],
+    materials: [
+      "Site: Saudações comuns em inglês com aúdio (link: ../pages/greetings.html)",
+      "Flashcards: Saudações Formais e Informais",
+      "Exercício: Role-play de Apresentações",
+    ],
+  },
   // "Apresentações pessoais": {
   //   videos: [
   //     {
