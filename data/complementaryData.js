@@ -44,7 +44,7 @@ export const complementaryMaterials = [
     ],
     materials: [
       "Playlist completa: (link: https://www.youtube.com/playlist?list=PLTzvJzAFb2UzLfI71n9ebaV1AHqpwIOYH)",
-      "Exercícios: Atividades baseadas nos vídeos",
+      // "Exercícios: Atividades baseadas nos vídeos",
     ],
   },
   // {

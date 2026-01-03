@@ -76,56 +76,56 @@ export const resourcesDatabase = {
       },
     ],
     materials: [
-      "Site: Saudações comuns em inglês com aúdio (link: ../links/pages/greetings.html)",
-      "Flashcards: Saudações Formais e Informais",
-      "Exercício: Role-play de Apresentações",
+      "Saudações comuns em inglês com aúdio (link: ../links/pages/greetings.html)",
+      "Exercício: Pratique cumprimentar em diferentes situações do dia a dia. Repita em voz alta.",
     ],
   },
-  // "Apresentações pessoais": {
-  //   videos: [
-  //     {
-  //       id: "F5tF5QwQj5M",
-  //       title: "Introducing Yourself in English",
-  //       duration: "6:15",
-  //       channel: "mmmEnglish",
-  //     },
-  //   ],
-  //   materials: [
-  //     "Template: Frases para Autointrodução",
-  //     "Exercício: Criar seu Perfil em Inglês",
-  //     "Quiz: Perguntas Pessoais",
-  //   ],
-  // },
-  // "Pronomes pessoais": {
-  //   videos: [
-  //     {
-  //       id: "Z7zqR00gHnw",
-  //       title: "Subject Pronouns | English Grammar",
-  //       duration: "4:55",
-  //       channel: "English Lessons with Adam",
-  //     },
-  //   ],
-  //   materials: [
-  //     "Tabela: Pronomes Pessoais",
-  //     "Exercício: Substituição de Pronomes",
-  //     "Jogo: Memory dos Pronomes",
-  //   ],
-  // },
-  // "Verbo 'to be' (presente)": {
-  //   videos: [
-  //     {
-  //       id: "5wvzgid7oeU",
-  //       title: "The verb 'TO BE' - Present Simple",
-  //       duration: "7:20",
-  //       channel: "Easy English",
-  //     },
-  //   ],
-  //   materials: [
-  //     "PDF: Conjugação do Verbo To Be",
-  //     "Exercício: Frases Afirmativas, Negativas e Interrogativas",
-  //     "Quiz: Uso Correto do To Be",
-  //   ],
-  // },
+  "Apresentações pessoais": {
+    videos: [
+      {
+        id: "UnEmEbWytI8",
+        title:
+          "Introductions | Beginner English | Introducing Yourself in English",
+        duration: "1:15",
+        channel: "mmmEnglish",
+      },
+    ],
+    materials: [
+      "Frases para Autointrodução (link: ../links/pages/introductions.html)",
+      "Exercício: Criar seu Perfil em Inglês",
+      "Quiz: Perguntas Pessoais",
+    ],
+  },
+  "Pronomes pessoais": {
+    videos: [
+      {
+        id: "Z7zqR00gHnw",
+        title: "Subject Pronouns | English Grammar",
+        duration: "4:55",
+        channel: "English Lessons with Adam",
+      },
+    ],
+    materials: [
+      "Tabela: Pronomes Pessoais",
+      "Exercício: Substituição de Pronomes",
+      "Jogo: Memory dos Pronomes",
+    ],
+  },
+  "Verbo 'to be' (presente)": {
+    videos: [
+      {
+        id: "5wvzgid7oeU",
+        title: "The verb 'TO BE' - Present Simple",
+        duration: "7:20",
+        channel: "Easy English",
+      },
+    ],
+    materials: [
+      "PDF: Conjugação do Verbo To Be",
+      "Exercício: Frases Afirmativas, Negativas e Interrogativas",
+      "Quiz: Uso Correto do To Be",
+    ],
+  },
   // Adicione todos os outros 137 conteúdos aqui...
   // Para não sobrecarregar, vou mostrar como adicionar mais:
   "Artigos (a, an, the)": {
