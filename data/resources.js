@@ -54,6 +54,13 @@ export const resourcesDatabase = {
   "Saudações básicas": {
     videos: [
       {
+        id: "tf3X7ujNKpI",
+        title:
+          "Saudações Básicas em Inglês: Como Iniciar uma Conversa (Passo a Passo)",
+        duration: "2:34",
+        channel: "Kaique's Growth Journal",
+      },
+      {
         id: "amxeGGNwwzE",
         title:
           "Learn English Greetings - English Greetings Explained in Detail",
