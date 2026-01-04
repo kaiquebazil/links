@@ -12,107 +12,19 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../css/geral.css" />
     <style>
-      /* Estilos do geral.css integrados */
-      * {
-        scrollbar-color: var(--accent-color) var(--primary-bg);
-        scrollbar-width: thin;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-      }
-
-      :root {
-        --primary-bg: #0d1117;
-        --card-bg: #161b22;
-        --accent-color: #58a6ff;
-        --accent-green: #3fb950;
-        --accent-purple: #bc8cff;
-        --accent-orange: #f78166;
-        --accent-yellow: #ffcb6b;
-        --accent-pink: #ff7b72;
-        --text-primary: #f0f6fc;
-        --text-secondary: #8b949e;
-        --border-color: #30223d;
-        --button-bg: #21262d;
-        --button-hover: #30223d;
-        --progress-bg: #30223d;
-        --divider-color: #30223d;
-      }
-
-      body {
-        background-color: var(--primary-bg);
-        color: var(--text-primary);
-        min-height: 100vh;
-        font-weight: 400;
-        padding: 20px;
-        line-height: 1.6;
-      }
-
+      /* ===== CONTAINER PRINCIPAL ===== */
       .container {
         width: 100%;
-        max-width: 900px;
+        max-width: 650px;
         margin: 0 auto;
         opacity: 0;
         transform: translateY(20px);
         animation: containerEntrance 0.8s ease-out forwards;
       }
 
-      /* Animações principais */
-      @keyframes containerEntrance {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-5px);
-        }
-      }
-
-      @keyframes slideInRight {
-        from {
-          opacity: 0;
-          transform: translateX(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes slideInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      /* Header */
+      /* ===== HEADER ===== */
       .header {
         text-align: center;
         margin-bottom: 40px;
@@ -132,7 +44,85 @@
         font-size: 1.1rem;
       }
 
-      /* Categorias */
+      /* ===== BOTÕES DO HEADER ===== */
+      .header-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+
+      .personalize-btn,
+      .download-btn {
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 24px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .personalize-btn {
+        background: linear-gradient(
+          135deg,
+          var(--accent-color),
+          var(--accent-purple)
+        );
+        box-shadow: 0 4px 12px rgba(88, 166, 255, 0.3);
+      }
+
+      .download-btn {
+        background: linear-gradient(
+          135deg,
+          var(--accent-green),
+          var(--accent-color)
+        );
+        box-shadow: 0 4px 12px rgba(63, 185, 80, 0.3);
+      }
+
+      .personalize-btn:hover,
+      .download-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 18px rgba(88, 166, 255, 0.4);
+      }
+
+      .download-btn:hover {
+        box-shadow: 0 6px 18px rgba(63, 185, 80, 0.4);
+      }
+
+      /* ===== ÍNDICE DE NAVEGAÇÃO ===== */
+      .category-index {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin: 20px 0;
+      }
+
+      .index-item {
+        background-color: var(--button-bg);
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+
+      .index-item:hover {
+        background-color: var(--accent-color);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* ===== CATEGORIAS ===== */
       .category {
         background-color: var(--card-bg);
         border-radius: 12px;
@@ -141,6 +131,7 @@
         border: 1px solid var(--border-color);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         transition: transform 0.3s ease;
+        scroll-margin-top: 20px;
       }
 
       .category:hover {
@@ -160,7 +151,52 @@
         font-size: 1.5rem;
       }
 
-      /* Frases */
+      /* ===== CONTAINER DE PERGUNTAS ===== */
+      .questions-container {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-left: 4px solid var(--accent-yellow);
+      }
+
+      .questions-container h3 {
+        color: var(--accent-yellow);
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .questions-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .question-item {
+        background-color: var(--button-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .question-item:hover {
+        background-color: var(--button-hover);
+        transform: translateY(-2px);
+      }
+
+      .question-item.active {
+        background-color: var(--accent-color);
+        color: white;
+      }
+
+      /* ===== CARTÕES DE FRASES ===== */
       .phrase-card {
         background-color: rgba(255, 255, 255, 0.05);
         border-radius: 8px;
@@ -215,7 +251,7 @@
         display: inline-block;
       }
 
-      /* Controles de áudio */
+      /* ===== CONTROLES DE ÁUDIO ===== */
       .audio-controls {
         display: flex;
         flex-direction: column;
@@ -249,18 +285,6 @@
         animation: pulse 1.5s infinite;
       }
 
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-          opacity: 1;
-        }
-        50% {
-          transform: scale(1.05);
-          opacity: 0.8;
-        }
-      }
-
       .audio-speed {
         display: flex;
         align-items: center;
@@ -288,7 +312,7 @@
         background-color: var(--button-hover);
       }
 
-      /* Exemplos finais */
+      /* ===== SEÇÃO DE EXEMPLOS ===== */
       .examples {
         background: linear-gradient(
           135deg,
@@ -305,6 +329,7 @@
         color: white;
         margin-bottom: 20px;
         text-align: center;
+        font-size: 1.8rem;
       }
 
       .example-text {
@@ -320,7 +345,7 @@
         margin-bottom: 0;
       }
 
-      /* Footer */
+      /* ===== FOOTER ===== */
       .footer {
         text-align: center;
         font-size: 12px;
@@ -343,7 +368,7 @@
         color: var(--accent-pink);
       }
 
-      /* Botão de voltar */
+      /* ===== BOTÃO VOLTAR ===== */
       .back-button {
         position: fixed;
         bottom: 30px;
@@ -367,7 +392,243 @@
         box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
       }
 
-      /* Responsividade */
+      /* ===== MODAL DE PERSONALIZAÇÃO ===== */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        padding: 30px;
+        width: 90%;
+        max-width: 700px;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        transform: translateY(-20px);
+        transition: transform 0.3s ease;
+      }
+
+      .modal-overlay.active .modal {
+        transform: translateY(0);
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 15px;
+      }
+
+      .modal-header h2 {
+        color: var(--accent-color);
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .close-modal {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: color 0.2s ease;
+      }
+
+      .close-modal:hover {
+        color: var(--accent-pink);
+      }
+
+      /* ===== FORMULÁRIO ===== */
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--text-primary);
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        background-color: var(--button-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        color: var(--text-primary);
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accent-color);
+      }
+
+      .form-row {
+        display: flex;
+        gap: 15px;
+      }
+
+      .form-row .form-group {
+        flex: 1;
+      }
+
+      .modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 15px;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border-radius: 8px;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary {
+        background-color: var(--accent-color);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--accent-purple);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background-color: var(--button-bg);
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+      }
+
+      .btn-secondary:hover {
+        background-color: var(--button-hover);
+      }
+
+      /* ===== PERFIS PRÉ-DEFINIDOS ===== */
+      .profiles-section {
+        margin-bottom: 25px;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        border-left: 4px solid var(--accent-green);
+      }
+
+      .profiles-section h3 {
+        color: var(--accent-green);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .profiles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .profile-btn {
+        background-color: var(--button-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        padding: 12px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-align: left;
+      }
+
+      .profile-btn:hover {
+        background-color: var(--button-hover);
+        transform: translateY(-2px);
+      }
+
+      .profile-btn.active {
+        background-color: var(--accent-color);
+        color: white;
+        border-color: var(--accent-color);
+      }
+
+      .profile-name {
+        color: var(--text-primary);
+        font-weight: 600;
+        margin-bottom: 5px;
+        font-size: 1rem;
+      }
+
+      .profile-desc {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+
+      /* ===== INFORMAÇÕES ADICIONAIS ===== */
+      .additional-info {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .additional-info h3 {
+        color: var(--accent-yellow);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .checkbox-group input[type="checkbox"] {
+        width: auto;
+      }
+
+      .checkbox-group label {
+        margin-bottom: 0;
+        cursor: pointer;
+      }
+
+      /* ===== RESPONSIVIDADE ===== */
       @media (max-width: 768px) {
         .container {
           padding: 0 10px;
@@ -397,6 +658,32 @@
         .header h1 {
           font-size: 2rem;
         }
+
+        .modal {
+          padding: 20px;
+          width: 95%;
+        }
+
+        .form-row {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .header-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .personalize-btn,
+        .download-btn {
+          width: 100%;
+          max-width: 300px;
+          justify-content: center;
+        }
+
+        .profiles-grid {
+          grid-template-columns: 1fr;
+        }
       }
 
       @media (max-width: 480px) {
@@ -423,6 +710,389 @@
     </style>
   </head>
   <body>
+    <!-- Modal de personalização -->
+    <div class="modal-overlay" id="personalizationModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h2><i class="fas fa-user-edit"></i> Personalize suas informações</h2>
+          <button class="close-modal" id="closeModal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <!-- Seção de perfis pré-definidos -->
+        <div class="profiles-section">
+          <h3>
+            <i class="fas fa-user-friends"></i> Escolha um perfil pré-definido:
+          </h3>
+          <div class="profiles-grid" id="profilesGrid"></div>
+        </div>
+
+        <form id="personalizationForm">
+          <!-- Seção Nome -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName"
+                ><i class="fas fa-user"></i> Primeiro Nome</label
+              >
+              <input
+                type="text"
+                id="firstName"
+                placeholder="Ex: Kaique"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="middleName"
+                ><i class="fas fa-user"></i> Nome do Meio</label
+              >
+              <input type="text" id="middleName" placeholder="Ex: Gabriel" />
+            </div>
+            <div class="form-group">
+              <label for="lastName"
+                ><i class="fas fa-user"></i> Sobrenome</label
+              >
+              <input type="text" id="lastName" placeholder="Ex: Bazil" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="familyName"
+                ><i class="fas fa-users"></i> Nome de Família</label
+              >
+              <input type="text" id="familyName" placeholder="Ex: Bazil" />
+            </div>
+            <div class="form-group">
+              <label for="flatmates"
+                ><i class="fas fa-house-user"></i> Colegas de Apartamento</label
+              >
+              <input
+                type="text"
+                id="flatmates"
+                placeholder="Ex: two roommates"
+              />
+            </div>
+          </div>
+
+          <!-- Seção Informações Pessoais -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="age"
+                ><i class="fas fa-birthday-cake"></i> Idade</label
+              >
+              <input
+                type="number"
+                id="age"
+                placeholder="Ex: 22"
+                min="1"
+                max="120"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="nickname"
+                ><i class="fas fa-signature"></i> Apelido (opcional)</label
+              >
+              <input type="text" id="nickname" placeholder="Ex: Feijão" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="birthDate"
+              ><i class="fas fa-calendar"></i> Data de Nascimento</label
+            >
+            <input
+              type="text"
+              id="birthDate"
+              placeholder="Ex: November 14th, 2003"
+              required
+            />
+          </div>
+
+          <!-- Seção Localização -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="country"><i class="fas fa-globe"></i> País</label>
+              <input
+                type="text"
+                id="country"
+                placeholder="Ex: Brazil"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="nationality"
+                ><i class="fas fa-passport"></i> Nacionalidade</label
+              >
+              <input
+                type="text"
+                id="nationality"
+                placeholder="Ex: Brazilian"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city"
+                ><i class="fas fa-city"></i> Cidade onde vive</label
+              >
+              <input
+                type="text"
+                id="city"
+                placeholder="Ex: Rio de Janeiro"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="hometown"
+                ><i class="fas fa-home"></i> Cidade natal</label
+              >
+              <input type="text" id="hometown" placeholder="Ex: São Gonçalo" />
+            </div>
+          </div>
+
+          <!-- Seção Estado Civil e Trabalho -->
+          <div class="form-group">
+            <label for="maritalStatus"
+              ><i class="fas fa-ring"></i> Estado Civil</label
+            >
+            <select id="maritalStatus">
+              <option value="single">Solteiro/a</option>
+              <option value="married">Casado/a</option>
+              <option value="relationship">Em um relacionamento</option>
+              <option value="divorced">Divorciado/a</option>
+              <option value="widowed">Viúvo/a</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="occupation"
+                ><i class="fas fa-briefcase"></i> Profissão</label
+              >
+              <input
+                type="text"
+                id="occupation"
+                placeholder="Ex: Delivery person"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="workplace"
+                ><i class="fas fa-building"></i> Local de Trabalho</label
+              >
+              <input type="text" id="workplace" placeholder="Ex: Lukgas" />
+            </div>
+          </div>
+
+          <!-- Seção Educação e Hobbies -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="hobby"
+                ><i class="fas fa-heart"></i> Hobby Principal</label
+              >
+              <input type="text" id="hobby" placeholder="Ex: Soccer" required />
+            </div>
+            <div class="form-group">
+              <label for="education"
+                ><i class="fas fa-graduation-cap"></i> Formação/Curso</label
+              >
+              <input type="text" id="education" placeholder="Ex: TI course" />
+            </div>
+          </div>
+
+          <!-- Seção Família -->
+          <div class="form-group">
+            <label for="familyMembers"
+              ><i class="fas fa-users"></i> Com quem você mora?</label
+            >
+            <input
+              type="text"
+              id="familyMembers"
+              placeholder="Ex: My mom and two brothers"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="siblingsInfo"
+              ><i class="fas fa-user-friends"></i> Informações sobre
+              irmãos</label
+            >
+            <textarea
+              id="siblingsInfo"
+              placeholder="Ex: I have five siblings: Gabriel, Ezequiel, Samuel, Miguel, and Emanuele. But only Ezequiel and Gabriel live with me."
+              rows="2"
+            ></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="motherName"
+                ><i class="fas fa-female"></i> Nome da mãe</label
+              >
+              <input type="text" id="motherName" placeholder="Ex: Cristina" />
+            </div>
+            <div class="form-group">
+              <label for="motherAge"
+                ><i class="fas fa-birthday-cake"></i> Idade da mãe</label
+              >
+              <input
+                type="number"
+                id="motherAge"
+                placeholder="Ex: 37"
+                min="1"
+                max="120"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="birthOrder"
+              ><i class="fas fa-sort-numeric-up"></i> Posição entre
+              irmãos</label
+            >
+            <select id="birthOrder">
+              <option value="">Selecione</option>
+              <option value="oldest">Filho(a) mais velho(a)</option>
+              <option value="youngest">Filho(a) mais novo(a)</option>
+              <option value="middle">Filho(a) do meio</option>
+              <option value="only">Filho(a) único(a)</option>
+            </select>
+          </div>
+
+          <!-- Seção Preferências -->
+          <div class="form-group">
+            <label for="favoriteFood"
+              ><i class="fas fa-utensils"></i> Comida favorita</label
+            >
+            <input type="text" id="favoriteFood" placeholder="Ex: Pizza" />
+          </div>
+
+          <div class="form-group">
+            <label for="favoriteMovie"
+              ><i class="fas fa-film"></i> Filme/série favorito(a)</label
+            >
+            <input
+              type="text"
+              id="favoriteMovie"
+              placeholder="Ex: Stranger Things"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="favoriteSport"
+              ><i class="fas fa-futbol"></i> Esporte favorito</label
+            >
+            <input type="text" id="favoriteSport" placeholder="Ex: Soccer" />
+          </div>
+
+          <div class="form-group">
+            <label for="travelDestinations"
+              ><i class="fas fa-plane"></i> Lugares que gostaria de
+              visitar</label
+            >
+            <textarea
+              id="travelDestinations"
+              placeholder="Ex: Japan, Italy, United States"
+              rows="2"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="additionalHobbies"
+              ><i class="fas fa-gamepad"></i> Outros hobbies</label
+            >
+            <textarea
+              id="additionalHobbies"
+              placeholder="Ex: Playing video games, reading books, cooking"
+              rows="2"
+            ></textarea>
+          </div>
+
+          <!-- Informações adicionais -->
+          <div class="additional-info">
+            <h3><i class="fas fa-plus-circle"></i> Informações adicionais</h3>
+
+            <div class="checkbox-group">
+              <input type="checkbox" id="hasPets" name="hasPets" />
+              <label for="hasPets">Eu tenho animais de estimação</label>
+            </div>
+
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="playsInstrument"
+                name="playsInstrument"
+              />
+              <label for="playsInstrument"
+                >Eu toco algum instrumento musical</label
+              >
+            </div>
+
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="speaksOtherLanguages"
+                name="speaksOtherLanguages"
+              />
+              <label for="speaksOtherLanguages">Eu falo outras línguas</label>
+            </div>
+
+            <div class="checkbox-group">
+              <input type="checkbox" id="likesToCook" name="likesToCook" />
+              <label for="likesToCook">Eu gosto de cozinhar</label>
+            </div>
+
+            <!-- Campos condicionais -->
+            <div class="form-group" style="margin-top: 15px">
+              <label for="petsInfo"
+                ><i class="fas fa-paw"></i> Se tem pets, quais?</label
+              >
+              <input
+                type="text"
+                id="petsInfo"
+                placeholder="Ex: One dog named Max"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="instrumentInfo"
+                ><i class="fas fa-guitar"></i> Se toca instrumento, qual?</label
+              >
+              <input type="text" id="instrumentInfo" placeholder="Ex: Guitar" />
+            </div>
+
+            <div class="form-group">
+              <label for="languagesInfo"
+                ><i class="fas fa-language"></i> Se fala outras línguas,
+                quais?</label
+              >
+              <input
+                type="text"
+                id="languagesInfo"
+                placeholder="Ex: Spanish, French"
+              />
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" id="cancelBtn">
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-secondary" id="resetBtn">
+              Limpar
+            </button>
+            <button type="submit" class="btn btn-primary">
+              Salvar Informações
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <div class="container">
       <header class="header">
         <h1><i class="fas fa-language"></i> Como se Apresentar em Inglês</h1>
@@ -430,16 +1100,84 @@
           Aprenda as principais frases para se apresentar em inglês com
           pronúncia correta
         </p>
+
+        <div class="header-buttons">
+          <button class="personalize-btn" id="openPersonalization">
+            <i class="fas fa-user-edit"></i> Personalizar Informações
+          </button>
+          <button class="download-btn" id="downloadPDF">
+            <i class="fas fa-file-pdf"></i> Baixar em PDF
+          </button>
+        </div>
+
+        <!-- Índice de navegação -->
+        <div class="category-index">
+          <a href="#nameSection" class="index-item">Nome</a>
+          <a href="#ageSection" class="index-item">Idade</a>
+          <a href="#birthSection" class="index-item">Nascimento</a>
+          <a href="#livingWithSection" class="index-item">Com quem mora</a>
+          <a href="#locationSection" class="index-item">Localização</a>
+          <a href="#maritalSection" class="index-item">Estado Civil</a>
+          <a href="#educationSection" class="index-item">Educação</a>
+          <a href="#workSection" class="index-item">Trabalho</a>
+          <a href="#hobbiesSection" class="index-item">Hobbies</a>
+        </div>
       </header>
 
+      <!-- Conteúdo das seções -->
       <!-- Seção: Seu Nome -->
-      <section class="category">
+      <section class="category" id="nameSection">
         <h2><i class="fas fa-user"></i> SEU NOME</h2>
+        <!-- Perguntas relacionadas à categoria -->
+        <div class="questions-container">
+          <h3>
+            <i class="fas fa-question-circle"></i> Perguntas sobre seu nome:
+          </h3>
+          <div class="questions-list">
+            <div
+              class="question-item"
+              data-category="name"
+              data-question="What's your name?"
+            >
+              What's your name?
+            </div>
+            <div
+              class="question-item"
+              data-category="name"
+              data-question="Could you tell me your name?"
+            >
+              Could you tell me your name?
+            </div>
+            <div
+              class="question-item"
+              data-category="name"
+              data-question="May I have your name?"
+            >
+              May I have your name?
+            </div>
+            <div
+              class="question-item"
+              data-category="name"
+              data-question="What should I call you?"
+            >
+              What should I call you?
+            </div>
+            <div
+              class="question-item"
+              data-category="name"
+              data-question="How do you spell your name?"
+            >
+              How do you spell your name?
+            </div>
+          </div>
+        </div>
 
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">My name is Kaique.</div>
+              <div class="phrase-en" data-template="My name is {firstName}.">
+                My name is Kaique.
+              </div>
               <div class="phrase-pt">Meu nome é Kaique.</div>
             </div>
             <div class="audio-controls">
@@ -454,11 +1192,133 @@
             </div>
           </div>
         </div>
+        <div class="phrase-card">
+          <div class="phrase-content">
+            <div class="phrase-text">
+              <div
+                class="phrase-en"
+                data-template="My first name is {firstName}."
+              >
+                My first name is Kaique.
+              </div>
+              <div class="phrase-pt">Meu primeiro nome é Kaique.</div>
+            </div>
+            <div class="audio-controls">
+              <button class="play-button" data-text="My first name is Kaique.">
+                <i class="fas fa-play"></i>
+              </button>
+              <div class="audio-speed">
+                <span class="speed-control" data-speed="0.5">0.5x</span>
+                <span class="speed-control active" data-speed="1">1x</span>
+                <span class="speed-control" data-speed="1.5">1.5x</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">My full name is Kaique Bazil.</div>
+              <div
+                class="phrase-en"
+                data-template="My middle name is {middleName}."
+              >
+                My middle name is John.
+              </div>
+              <div class="phrase-pt">Meu nome do meio é John.</div>
+              <div class="phrase-note">I don't have a middle name.</div>
+            </div>
+            <div class="audio-controls">
+              <button class="play-button" data-text="My middle name is John.">
+                <i class="fas fa-play"></i>
+              </button>
+              <div class="audio-speed">
+                <span class="speed-control" data-speed="0.5">0.5x</span>
+                <span class="speed-control active" data-speed="1">1x</span>
+                <span class="speed-control" data-speed="1.5">1.5x</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div class="phrase-content">
+            <div class="phrase-text">
+              <div class="phrase-en" data-template="My surname is {surname}.">
+                My surname is Bazil.
+              </div>
+              <div class="phrase-pt">Meu sobrenome é Bazil.</div>
+            </div>
+            <div class="audio-controls">
+              <button class="play-button" data-text="My surname is Bazil.">
+                <i class="fas fa-play"></i>
+              </button>
+              <div class="audio-speed">
+                <span class="speed-control" data-speed="0.5">0.5x</span>
+                <span class="speed-control active" data-speed="1">1x</span>
+                <span class="speed-control" data-speed="1.5">1.5x</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div class="phrase-content">
+            <div class="phrase-text">
+              <div
+                class="phrase-en"
+                data-template="My family name is {familyName}."
+              >
+                My family name is Bazil.
+              </div>
+              <div class="phrase-pt">Meu nome de família é Bazil.</div>
+            </div>
+            <div class="audio-controls">
+              <button class="play-button" data-text="My family name is Bazil.">
+                <i class="fas fa-play"></i>
+              </button>
+              <div class="audio-speed">
+                <span class="speed-control" data-speed="0.5">0.5x</span>
+                <span class="speed-control active" data-speed="1">1x</span>
+                <span class="speed-control" data-speed="1.5">1.5x</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div class="phrase-content">
+            <div class="phrase-text">
+              <div
+                class="phrase-en"
+                data-template="My last name is {lastName}."
+              >
+                My last name is Bazil.
+              </div>
+              <div class="phrase-pt">Meu último nome é Bazil.</div>
+            </div>
+            <div class="audio-controls">
+              <button class="play-button" data-text="My last name is Bazil.">
+                <i class="fas fa-play"></i>
+              </button>
+              <div class="audio-speed">
+                <span class="speed-control" data-speed="0.5">0.5x</span>
+                <span class="speed-control active" data-speed="1">1x</span>
+                <span class="speed-control" data-speed="1.5">1.5x</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div class="phrase-content">
+            <div class="phrase-text">
+              <div
+                class="phrase-en"
+                data-template="My full name is {firstName} {lastName}."
+              >
+                My full name is Kaique Bazil.
+              </div>
               <div class="phrase-pt">Meu nome completo é Kaique Bazil.</div>
             </div>
             <div class="audio-controls">
@@ -480,7 +1340,12 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">K-A-I-Q-U-E B-A-Z-I-L.</div>
+              <div
+                class="phrase-en"
+                data-template="{firstNameSpelled} {surnameSpelled}."
+              >
+                K-A-I-Q-U-E B-A-Z-I-L.
+              </div>
               <div class="phrase-pt">K-A-I-Q-U-E B-A-Z-I-L.</div>
             </div>
             <div class="audio-controls">
@@ -499,7 +1364,12 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">You can call me Feijão.</div>
+              <div
+                class="phrase-en"
+                data-template="You can call me {nickname}."
+              >
+                You can call me Feijão.
+              </div>
               <div class="phrase-pt">Você pode me chamar de Feijão.</div>
             </div>
             <div class="audio-controls">
@@ -518,7 +1388,9 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I'm Kaique.</div>
+              <div class="phrase-en" data-template="I'm {firstName}.">
+                I'm Kaique.
+              </div>
               <div class="phrase-pt">Eu sou a Kaique.</div>
             </div>
             <div class="audio-controls">
@@ -533,41 +1405,59 @@
             </div>
           </div>
         </div>
-
-        <!-- <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">Hi, this is Kaique speaking.</div>
-              <div class="phrase-pt">Oi, é a Kaique quem está falando.</div>
-              <div class="phrase-note">
-                Utilizado quando falamos ao telefone
-              </div>
-            </div>
-            <div class="audio-controls">
-              <button
-                class="play-button"
-                data-text="Hi, this is Kaique speaking."
-              >
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </section>
 
       <!-- Seção: Idade -->
-      <section class="category">
+      <section class="category" id="ageSection">
         <h2><i class="fas fa-birthday-cake"></i> IDADE</h2>
+        <!-- Perguntas relacionadas à categoria -->
+        <div class="questions-container">
+          <h3><i class="fas fa-question-circle"></i> Perguntas sobre idade:</h3>
+          <div class="questions-list">
+            <div
+              class="question-item"
+              data-category="age"
+              data-question="How old are you?"
+            >
+              How old are you?
+            </div>
+            <div
+              class="question-item"
+              data-category="age"
+              data-question="What's your age?"
+            >
+              What's your age?
+            </div>
+            <div
+              class="question-item"
+              data-category="age"
+              data-question="Could you tell me your age?"
+            >
+              Could you tell me your age?
+            </div>
+            <div
+              class="question-item"
+              data-category="age"
+              data-question="When were you born?"
+            >
+              When were you born?
+            </div>
+            <div
+              class="question-item"
+              data-category="age"
+              data-question="What year were you born?"
+            >
+              What year were you born?
+            </div>
+          </div>
+        </div>
 
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I'm 22 years old.</div>
+              <div class="phrase-en" data-template="I'm {age} years old.">
+                I'm 22 years old.
+              </div>
               <div class="phrase-pt">Eu estou com 22 anos de idade.</div>
               <div class="phrase-note">NOT I have 22 / I am 22 years</div>
             </div>
@@ -586,7 +1476,7 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I'm 22</div>
+              <div class="phrase-en" data-template="I'm {age}.">I'm 22</div>
               <div class="phrase-pt">Eu estou com 22</div>
             </div>
             <div class="audio-controls">
@@ -627,7 +1517,12 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I'm in my early 20s.</div>
+              <div
+                class="phrase-en"
+                data-template="I'm in my early {ageRange}s."
+              >
+                I'm in my early 20s.
+              </div>
               <div class="phrase-pt">
                 Estou no início dos meus 20. | Estou na faixa dos 20 anos.
               </div>
@@ -647,13 +1542,51 @@
       </section>
 
       <!-- Seção: Data de Nascimento -->
-      <section class="category">
+      <section class="category" id="birthSection">
         <h2><i class="fas fa-calendar"></i> DATA DE NASCIMENTO</h2>
+        <div class="questions-container">
+          <h3>
+            <i class="fas fa-question-circle"></i> Perguntas sobre data de
+            nascimento:
+          </h3>
+          <div class="questions-list">
+            <div
+              class="question-item"
+              data-category="birth"
+              data-question="When is your birthday?"
+            >
+              When is your birthday?
+            </div>
+            <div
+              class="question-item"
+              data-category="birth"
+              data-question="What's your date of birth?"
+            >
+              What's your date of birth?
+            </div>
+            <div
+              class="question-item"
+              data-category="birth"
+              data-question="When were you born?"
+            >
+              When were you born?
+            </div>
+            <div
+              class="question-item"
+              data-category="birth"
+              data-question="What's your birth date?"
+            >
+              What's your birth date?
+            </div>
+          </div>
+        </div>
 
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I was born on November 15th, 2003.</div>
+              <div class="phrase-en" data-template="I was born on {birthDate}.">
+                I was born on November 14th, 2003.
+              </div>
               <div class="phrase-pt">Eu nasci em 14 de novembro de 2003.</div>
             </div>
             <div class="audio-controls">
@@ -675,7 +1608,12 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">My birthday is November 14th.</div>
+              <div
+                class="phrase-en"
+                data-template="My birthday is {birthMonthDay}."
+              >
+                My birthday is November 14th.
+              </div>
               <div class="phrase-pt">Meu aniversário é em 14 de novembro.</div>
             </div>
             <div class="audio-controls">
@@ -697,11 +1635,16 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I turn 23 this January.</div>
-              <div class="phrase-pt">Eu faço 23 anos este janeiro.</div>
+              <div
+                class="phrase-en"
+                data-template="I turn {nextAge} this {birthMonth}."
+              >
+                I turn 23 this November.
+              </div>
+              <div class="phrase-pt">Eu faço 23 anos este Novembro.</div>
             </div>
             <div class="audio-controls">
-              <button class="play-button" data-text="I turn 23 this January.">
+              <button class="play-button" data-text="I turn 23 this November.">
                 <i class="fas fa-play"></i>
               </button>
               <div class="audio-speed">
@@ -716,7 +1659,9 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I was born in 2004.</div>
+              <div class="phrase-en" data-template="I was born in {birthYear}.">
+                I was born in 2004.
+              </div>
               <div class="phrase-pt">Eu nasci em 2004.</div>
             </div>
             <div class="audio-controls">
@@ -733,14 +1678,197 @@
         </div>
       </section>
 
-      <!-- Seção: Localização -->
-      <section class="category">
-        <h2><i class="fas fa-map-marker-alt"></i> LOCALIZAÇÃO</h2>
+      <!-- Seção: Com quem você mora -->
+      <section class="category" id="livingWithSection">
+        <h2><i class="fas fa-home"></i> COM QUEM VOCÊ MORA</h2>
+        <!-- Perguntas relacionadas -->
+        <div class="questions-container">
+          <h3>
+            <i class="fas fa-question-circle"></i> Perguntas sobre com quem você
+            mora:
+          </h3>
+          <div class="questions-list">
+            <div
+              class="question-item"
+              data-category="livingWith"
+              data-question="Who do you live with?"
+            >
+              Who do you live with?
+            </div>
+            <div
+              class="question-item"
+              data-category="livingWith"
+              data-question="Do you live with your family?"
+            >
+              Do you live with your family?
+            </div>
+            <div
+              class="question-item"
+              data-category="livingWith"
+              data-question="Do you live alone?"
+            >
+              Do you live alone?
+            </div>
+            <div
+              class="question-item"
+              data-category="livingWith"
+              data-question="Who do you share your home with?"
+            >
+              Who do you share your home with?
+            </div>
+          </div>
+        </div>
 
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I'm from Brazil.</div>
+              <div class="phrase-en" data-template="I live with my family.">
+                I live with my family.
+              </div>
+              <div class="phrase-pt">Eu moro com minha família.</div>
+            </div>
+            <div class="audio-controls">
+              <button class="play-button" data-text="I live with my family.">
+                <i class="fas fa-play"></i>
+              </button>
+              <div class="audio-speed">
+                <span class="speed-control" data-speed="0.5">0.5x</span>
+                <span class="speed-control active" data-speed="1">1x</span>
+                <span class="speed-control" data-speed="1.5">1.5x</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div class="phrase-content">
+            <div class="phrase-text">
+              <div
+                class="phrase-en"
+                data-template="I live with {familyMembers}."
+              >
+                I live with my mom and two brothers.
+              </div>
+              <div class="phrase-pt">Eu moro com minha mãe e dois irmãos.</div>
+            </div>
+            <div class="audio-controls">
+              <button
+                class="play-button"
+                data-text="I live with my mom and two brothers."
+              >
+                <i class="fas fa-play"></i>
+              </button>
+              <div class="audio-speed">
+                <span class="speed-control" data-speed="0.5">0.5x</span>
+                <span class="speed-control active" data-speed="1">1x</span>
+                <span class="speed-control" data-speed="1.5">1.5x</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div class="phrase-content">
+            <div class="phrase-text">
+              <div class="phrase-en">I live alone.</div>
+              <div class="phrase-pt">Eu moro sozinho(a).</div>
+            </div>
+            <div class="audio-controls">
+              <button class="play-button" data-text="I live alone.">
+                <i class="fas fa-play"></i>
+              </button>
+              <div class="audio-speed">
+                <span class="speed-control" data-speed="0.5">0.5x</span>
+                <span class="speed-control active" data-speed="1">1x</span>
+                <span class="speed-control" data-speed="1.5">1.5x</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div class="phrase-content">
+            <div class="phrase-text">
+              <div
+                class="phrase-en"
+                data-template="I share a flat with {flatmates}."
+              >
+                I share a flat with two roommates.
+              </div>
+              <div class="phrase-pt">
+                Eu divido um apartamento com dois colegas.
+              </div>
+            </div>
+            <div class="audio-controls">
+              <button
+                class="play-button"
+                data-text="I share a flat with two roommates."
+              >
+                <i class="fas fa-play"></i>
+              </button>
+              <div class="audio-speed">
+                <span class="speed-control" data-speed="0.5">0.5x</span>
+                <span class="speed-control active" data-speed="1">1x</span>
+                <span class="speed-control" data-speed="1.5">1.5x</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção: Localização -->
+      <section class="category" id="locationSection">
+        <h2><i class="fas fa-map-marker-alt"></i> LOCALIZAÇÃO</h2>
+        <!-- Perguntas relacionadas à categoria -->
+        <div class="questions-container">
+          <h3>
+            <i class="fas fa-question-circle"></i> Perguntas sobre localização:
+          </h3>
+          <div class="questions-list">
+            <div
+              class="question-item"
+              data-category="location"
+              data-question="Where are you from?"
+            >
+              Where are you from?
+            </div>
+            <div
+              class="question-item"
+              data-category="location"
+              data-question="Where do you live?"
+            >
+              Where do you live?
+            </div>
+            <div
+              class="question-item"
+              data-category="location"
+              data-question="What's your hometown?"
+            >
+              What's your hometown?
+            </div>
+            <div
+              class="question-item"
+              data-category="location"
+              data-question="Where were you born?"
+            >
+              Where were you born?
+            </div>
+            <div
+              class="question-item"
+              data-category="location"
+              data-question="Where do you come from?"
+            >
+              Where do you come from?
+            </div>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div class="phrase-content">
+            <div class="phrase-text">
+              <div class="phrase-en" data-template="I'm from {country}.">
+                I'm from Brazil.
+              </div>
               <div class="phrase-pt">Eu sou do Brasil.</div>
             </div>
             <div class="audio-controls">
@@ -759,7 +1887,9 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I'm Brazilian.</div>
+              <div class="phrase-en" data-template="I'm {nationality}.">
+                I'm Brazilian.
+              </div>
               <div class="phrase-pt">Eu sou brasileiro/a.</div>
             </div>
             <div class="audio-controls">
@@ -778,7 +1908,9 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I live in Rio de Janeiro.</div>
+              <div class="phrase-en" data-template="I live in {city}.">
+                I live in Rio de Janeiro.
+              </div>
               <div class="phrase-pt">Eu moro no Rio de Janeiro.</div>
             </div>
             <div class="audio-controls">
@@ -797,7 +1929,7 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">
+              <div class="phrase-en" data-template="I was born in {hometown}.">
                 I was born in São Gonçalo and raised in Petrópolis.
               </div>
               <div class="phrase-pt">
@@ -826,7 +1958,12 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I currently live in São Paulo.</div>
+              <div
+                class="phrase-en"
+                data-template="I currently live in {city}."
+              >
+                I currently live in São Paulo.
+              </div>
               <div class="phrase-pt">Eu atualmente moro em São Paulo.</div>
             </div>
             <div class="audio-controls">
@@ -874,7 +2011,12 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I'm originally from Rio de Janeiro.</div>
+              <div
+                class="phrase-en"
+                data-template="I'm originally from {hometown}."
+              >
+                I'm originally from Rio de Janeiro.
+              </div>
               <div class="phrase-pt">
                 Eu sou originalmente do Rio de Janeiro.
               </div>
@@ -896,15 +2038,52 @@
         </div>
       </section>
 
-      <!-- Seção: Família -->
       <!-- Seção: Estado Civil -->
-      <section class="category">
+      <section class="category" id="maritalSection">
         <h2><i class="fas fa-ring"></i> ESTADO CIVIL</h2>
+        <!-- Perguntas relacionadas à categoria -->
+        <div class="questions-container">
+          <h3>
+            <i class="fas fa-question-circle"></i> Perguntas sobre estado civil:
+          </h3>
+          <div class="questions-list">
+            <div
+              class="question-item"
+              data-category="marital"
+              data-question="What's your marital status?"
+            >
+              What's your marital status?
+            </div>
+            <div
+              class="question-item"
+              data-category="marital"
+              data-question="Are you married?"
+            >
+              Are you married?
+            </div>
+            <div
+              class="question-item"
+              data-category="marital"
+              data-question="Are you single?"
+            >
+              Are you single?
+            </div>
+            <div
+              class="question-item"
+              data-category="marital"
+              data-question="Are you in a relationship?"
+            >
+              Are you in a relationship?
+            </div>
+          </div>
+        </div>
 
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I'm single.</div>
+              <div class="phrase-en" data-template="I'm {maritalStatus}.">
+                I'm single.
+              </div>
               <div class="phrase-pt">Eu sou solteiro/a.</div>
             </div>
             <div class="audio-controls">
@@ -923,7 +2102,9 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I'm married.</div>
+              <div class="phrase-en" data-template="I'm {maritalStatus}.">
+                I'm married.
+              </div>
               <div class="phrase-pt">Eu sou casado/a.</div>
             </div>
             <div class="audio-controls">
@@ -942,7 +2123,9 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I'm in a relationship.</div>
+              <div class="phrase-en" data-template="I'm {maritalStatus}.">
+                I'm in a relationship.
+              </div>
               <div class="phrase-pt">Eu estou em um relacionamento.</div>
             </div>
             <div class="audio-controls">
@@ -961,7 +2144,9 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I'm divorced.</div>
+              <div class="phrase-en" data-template="I'm {maritalStatus}.">
+                I'm divorced.
+              </div>
               <div class="phrase-pt">Eu sou divorciado/a.</div>
             </div>
             <div class="audio-controls">
@@ -980,7 +2165,9 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I'm widowed.</div>
+              <div class="phrase-en" data-template="I'm {maritalStatus}.">
+                I'm widowed.
+              </div>
               <div class="phrase-pt">Eu sou viúvo/a.</div>
             </div>
             <div class="audio-controls">
@@ -996,20 +2183,55 @@
           </div>
         </div>
       </section>
-      <!-- <section class="category">
-        <h2><i class="fas fa-users"></i> FAMÍLIA</h2>
+
+      <!-- Seção: Escola e Faculdade -->
+      <section class="category" id="educationSection">
+        <h2><i class="fas fa-school"></i> ESCOLA E FACULDADE</h2>
+        <!-- Perguntas relacionadas à categoria -->
+        <div class="questions-container">
+          <h3>
+            <i class="fas fa-question-circle"></i> Perguntas sobre educação:
+          </h3>
+          <div class="questions-list">
+            <div
+              class="question-item"
+              data-category="education"
+              data-question="Where did you go to school?"
+            >
+              Where did you go to school?
+            </div>
+            <div
+              class="question-item"
+              data-category="education"
+              data-question="Are you in college?"
+            >
+              Are you in college?
+            </div>
+            <div
+              class="question-item"
+              data-category="education"
+              data-question="What do you study?"
+            >
+              What do you study?
+            </div>
+            <div
+              class="question-item"
+              data-category="education"
+              data-question="Which university do you attend?"
+            >
+              Which university do you attend?
+            </div>
+          </div>
+        </div>
 
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I have three brothers.</div>
-              <div class="phrase-pt">Eu tenho três irmãos.</div>
-              <div class="phrase-note">
-                Brother é pronunciado de maneiras diferentes em UK e US.
-              </div>
+              <div class="phrase-en">I went to public school.</div>
+              <div class="phrase-pt">Eu fui para uma escola pública.</div>
             </div>
             <div class="audio-controls">
-              <button class="play-button" data-text="I have three brothers.">
+              <button class="play-button" data-text="I went to public school.">
                 <i class="fas fa-play"></i>
               </button>
               <div class="audio-speed">
@@ -1024,14 +2246,11 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I have two siblings.</div>
-              <div class="phrase-pt">Eu tenho dois irmãos.</div>
-              <div class="phrase-note">
-                Siblings: brothers + sisters, sem especificar quantos de cada.
-              </div>
+              <div class="phrase-en">I'm currently in college.</div>
+              <div class="phrase-pt">Atualmente estou na faculdade.</div>
             </div>
             <div class="audio-controls">
-              <button class="play-button" data-text="I have two siblings.">
+              <button class="play-button" data-text="I'm currently in college.">
                 <i class="fas fa-play"></i>
               </button>
               <div class="audio-speed">
@@ -1042,39 +2261,169 @@
             </div>
           </div>
         </div>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">I'm an only child.</div>
-              <div class="phrase-pt">Eu sou filho/a único/a.</div>
-              <div class="phrase-note">
-                Você também pode utilizar "kid" no lugar de "child", em uma
-                conversa mais informal.
-              </div>
-            </div>
-            <div class="audio-controls">
-              <button class="play-button" data-text="I'm an only child.">
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> -->
-
-      <!-- Seção: Trabalho -->
-      <section class="category">
-        <h2><i class="fas fa-briefcase"></i> TRABALHO</h2>
 
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
               <div class="phrase-en">
+                I study at the University of São Paulo.
+              </div>
+              <div class="phrase-pt">
+                Eu estudo na Universidade de São Paulo.
+              </div>
+            </div>
+            <div class="audio-controls">
+              <button
+                class="play-button"
+                data-text="I study at the University of São Paulo."
+              >
+                <i class="fas fa-play"></i>
+              </button>
+              <div class="audio-speed">
+                <span class="speed-control" data-speed="0.5">0.5x</span>
+                <span class="speed-control active" data-speed="1">1x</span>
+                <span class="speed-control" data-speed="1.5">1.5x</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div class="phrase-content">
+            <div class="phrase-text">
+              <div class="phrase-en">I'm majoring in Engineering.</div>
+              <div class="phrase-pt">Minha especialização é Engenharia.</div>
+            </div>
+            <div class="audio-controls">
+              <button
+                class="play-button"
+                data-text="I'm majoring in Engineering."
+              >
+                <i class="fas fa-play"></i>
+              </button>
+              <div class="audio-speed">
+                <span class="speed-control" data-speed="0.5">0.5x</span>
+                <span class="speed-control active" data-speed="1">1x</span>
+                <span class="speed-control" data-speed="1.5">1.5x</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div class="phrase-content">
+            <div class="phrase-text">
+              <div class="phrase-en">I'm in my first year of college.</div>
+              <div class="phrase-pt">Estou no primeiro ano da faculdade.</div>
+            </div>
+            <div class="audio-controls">
+              <button
+                class="play-button"
+                data-text="I'm in my first year of college."
+              >
+                <i class="fas fa-play"></i>
+              </button>
+              <div class="audio-speed">
+                <span class="speed-control" data-speed="0.5">0.5x</span>
+                <span class="speed-control active" data-speed="1">1x</span>
+                <span class="speed-control" data-speed="1.5">1.5x</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div class="phrase-content">
+            <div class="phrase-text">
+              <div class="phrase-en">What did you study in school?</div>
+              <div class="phrase-pt">O que você estudou na escola?</div>
+            </div>
+            <div class="audio-controls">
+              <button
+                class="play-button"
+                data-text="What did you study in school?"
+              >
+                <i class="fas fa-play"></i>
+              </button>
+              <div class="audio-speed">
+                <span class="speed-control" data-speed="0.5">0.5x</span>
+                <span class="speed-control active" data-speed="1">1x</span>
+                <span class="speed-control" data-speed="1.5">1.5x</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div class="phrase-content">
+            <div class="phrase-text">
+              <div class="phrase-en">Which university do you attend?</div>
+              <div class="phrase-pt">Qual universidade você frequenta?</div>
+            </div>
+            <div class="audio-controls">
+              <button
+                class="play-button"
+                data-text="Which university do you attend?"
+              >
+                <i class="fas fa-play"></i>
+              </button>
+              <div class="audio-speed">
+                <span class="speed-control" data-speed="0.5">0.5x</span>
+                <span class="speed-control active" data-speed="1">1x</span>
+                <span class="speed-control" data-speed="1.5">1.5x</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção: Trabalho -->
+      <section class="category" id="workSection">
+        <h2><i class="fas fa-briefcase"></i> TRABALHO</h2>
+        <!-- Perguntas relacionadas à categoria -->
+        <div class="questions-container">
+          <h3>
+            <i class="fas fa-question-circle"></i> Perguntas sobre trabalho:
+          </h3>
+          <div class="questions-list">
+            <div
+              class="question-item"
+              data-category="work"
+              data-question="What do you do for work?"
+            >
+              What do you do for work?
+            </div>
+            <div
+              class="question-item"
+              data-category="work"
+              data-question="Where do you work?"
+            >
+              Where do you work?
+            </div>
+            <div
+              class="question-item"
+              data-category="work"
+              data-question="What's your job?"
+            >
+              What's your job?
+            </div>
+            <div
+              class="question-item"
+              data-category="work"
+              data-question="What's your occupation?"
+            >
+              What's your occupation?
+            </div>
+          </div>
+        </div>
+
+        <div class="phrase-card">
+          <div class="phrase-content">
+            <div class="phrase-text">
+              <div
+                class="phrase-en"
+                data-template="I work at {workplace}, in the delivery department."
+              >
                 I work at Lukgas, in the delivery department.
               </div>
               <div class="phrase-pt">
@@ -1137,7 +2486,9 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I'm a delivery person..</div>
+              <div class="phrase-en" data-template="I'm a {occupation}.">
+                I'm a delivery person.
+              </div>
               <div class="phrase-pt">Eu sou um/a entregador/a.</div>
               <div class="phrase-note">
                 Em alguns lugares, podemos ver escrito "Imma". "Imma" delivery
@@ -1158,147 +2509,52 @@
         </div>
       </section>
 
-      <!-- Seção: Qualificações -->
-      <section class="category">
-        <h2><i class="fas fa-graduation-cap"></i> QUALIFICAÇÕES</h2>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">
-                I have a Bachelor of Arts degree in Business Administration.
-              </div>
-              <div class="phrase-pt">
-                Eu tenho bacharelado em administração de empresas.
-              </div>
-            </div>
-            <div class="audio-controls">
-              <button
-                class="play-button"
-                data-text="I have a BA in Business Administration."
-              >
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">I'm about to graduate.</div>
-              <div class="phrase-pt">
-                Estou prestes a me formar. / Falta pouco para me formar.
-              </div>
-            </div>
-            <div class="audio-controls">
-              <button class="play-button" data-text="I'm about to graduate.">
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">I'm currently taking a course in TI.</div>
-              <div class="phrase-pt">
-                Atualmente eu estou fazendo um curso de TI.
-              </div>
-            </div>
-            <div class="audio-controls">
-              <button
-                class="play-button"
-                data-text="I'm currently taking a course in TI."
-              >
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Seção: Experiência Profissional -->
-      <section class="category">
-        <h2><i class="fas fa-chart-line"></i> EXPERIÊNCIA PROFISSIONAL</h2>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">
-                I have five years of experience in the accounting field.
-              </div>
-              <div class="phrase-pt">
-                Eu tenho cinco anos de experiência na área de contabilidade.
-              </div>
-            </div>
-            <div class="audio-controls">
-              <button
-                class="play-button"
-                data-text="I have five years of experience in the accounting field."
-              >
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">
-                I have seven years of chemical engineering experience.
-              </div>
-              <div class="phrase-pt">
-                Eu tenho sete anos de experiência em engenharia química.
-              </div>
-            </div>
-            <div class="audio-controls">
-              <button
-                class="play-button"
-                data-text="I have seven years of chemical engineering experience."
-              >
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- Seção: Hobbies -->
-      <section class="category">
+      <section class="category" id="hobbiesSection">
         <h2><i class="fas fa-heart"></i> HOBBIES</h2>
+        <!-- Perguntas relacionadas à categoria -->
+        <div class="questions-container">
+          <h3>
+            <i class="fas fa-question-circle"></i> Perguntas sobre hobbies:
+          </h3>
+          <div class="questions-list">
+            <div
+              class="question-item"
+              data-category="hobbies"
+              data-question="What are your hobbies?"
+            >
+              What are your hobbies?
+            </div>
+            <div
+              class="question-item"
+              data-category="hobbies"
+              data-question="What do you like to do in your free time?"
+            >
+              What do you like to do in your free time?
+            </div>
+            <div
+              class="question-item"
+              data-category="hobbies"
+              data-question="What do you do for fun?"
+            >
+              What do you do for fun?
+            </div>
+            <div
+              class="question-item"
+              data-category="hobbies"
+              data-question="What are your interests?"
+            >
+              What are your interests?
+            </div>
+          </div>
+        </div>
 
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en">I really like soccer.</div>
+              <div class="phrase-en" data-template="I really like {hobby}.">
+                I really like soccer.
+              </div>
               <div class="phrase-pt">Eu gosto muito de futebol.</div>
             </div>
             <div class="audio-controls">
@@ -1337,292 +2593,22 @@
         </div>
       </section>
 
-      <!-- Seção: Perguntas por Categoria -->
-
-      <section class="category">
-        <h2><i class="fas fa-question-circle"></i> PERGUNTAS COMUNS</h2>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">What's your name?</div>
-              <div class="phrase-pt">Qual é o seu nome?</div>
-            </div>
-            <div class="audio-controls">
-              <button class="play-button" data-text="What's your name?">
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">How do you spell your name?</div>
-              <div class="phrase-pt">Como você soletra seu nome?</div>
-            </div>
-            <div class="audio-controls">
-              <button
-                class="play-button"
-                data-text="How do you spell your name?"
-              >
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">How old are you?</div>
-              <div class="phrase-pt">Quantos anos você tem?</div>
-            </div>
-            <div class="audio-controls">
-              <button class="play-button" data-text="How old are you?">
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">Where are you from?</div>
-              <div class="phrase-pt">De onde você é?</div>
-            </div>
-            <div class="audio-controls">
-              <button class="play-button" data-text="Where are you from?">
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">Where do you live?</div>
-              <div class="phrase-pt">Onde você mora?</div>
-            </div>
-            <div class="audio-controls">
-              <button class="play-button" data-text="Where do you live?">
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">What's your marital status?</div>
-              <div class="phrase-pt">Qual é o seu estado civil?</div>
-            </div>
-            <div class="audio-controls">
-              <button
-                class="play-button"
-                data-text="What's your marital status?"
-              >
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">What do you do for work?</div>
-              <div class="phrase-pt">O que você faz para trabalhar?</div>
-            </div>
-            <div class="audio-controls">
-              <button class="play-button" data-text="What do you do for work?">
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">Where do you work?</div>
-              <div class="phrase-pt">Onde você trabalha?</div>
-            </div>
-            <div class="audio-controls">
-              <button class="play-button" data-text="Where do you work?">
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">What are your qualifications?</div>
-              <div class="phrase-pt">Quais são suas qualificações?</div>
-            </div>
-            <div class="audio-controls">
-              <button
-                class="play-button"
-                data-text="What are your qualifications?"
-              >
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">How much experience do you have?</div>
-              <div class="phrase-pt">Quanto tempo de experiência você tem?</div>
-            </div>
-            <div class="audio-controls">
-              <button
-                class="play-button"
-                data-text="How much experience do you have?"
-              >
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">What are your hobbies?</div>
-              <div class="phrase-pt">Quais são seus hobbies?</div>
-            </div>
-            <div class="audio-controls">
-              <button class="play-button" data-text="What are your hobbies?">
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en">
-                What do you like to do in your free time?
-              </div>
-              <div class="phrase-pt">
-                O que você gosta de fazer no seu tempo livre?
-              </div>
-            </div>
-            <div class="audio-controls">
-              <button
-                class="play-button"
-                data-text="What do you like to do in your free time?"
-              >
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Exemplos de apresentação -->
+      <!-- Apresentação -->
       <section class="examples">
-        <h2><i class="fas fa-star"></i> EXEMPLOS DE APRESENTAÇÃO</h2>
-
+        <h2><i class="fas fa-star"></i> APRESENTAÇÃO</h2>
         <div class="example-text">
           <p>
-            <strong>Exemplo 1:</strong> Good evening everyone. My name is
-            Kaique. I'm 22 years old. I'm from Brazil and I've worked as an
-            English teacher for 18 years. I really enjoy watching movies. And I
-            have 2 kids, a boy and a girl.
+            Hi! My name is Kaique. I'm from Petrópolis, Brazil. I was born in
+            Nova Iguaçu and I grew up in Petrópolis. I'm 21 years old, single,
+            and I study Software Engineering in college. I have five siblings:
+            Gabriel, Ezequiel, Samuel, Miguel, and Emanuele. But only Ezequiel
+            and Gabriel live with me, along with my mom. I live with my family.
+            My mother's name is Cristina, and my mom is 37 years old. I'm the
+            oldest child.
           </p>
           <button
             class="play-button"
-            data-text="Good evening everyone. My name is Kaique. I'm 22 years old. I'm from Brazil and I've worked as an English teacher for 18 years. I really enjoy watching movies. And I have 2 kids, a boy and a girl."
-            style="
-              margin-top: 15px;
-              background-color: white;
-              color: var(--accent-color);
-            "
-          >
-            <i class="fas fa-play"></i>
-          </button>
-        </div>
-
-        <div class="example-text">
-          <p>
-            <strong>Exemplo 2:</strong> Good evening everyone. I'm Kaique. I'm a
-            22-year-old English teacher from Brazil. I'm a big fan of movies,
-            and I have 2 kids.
-          </p>
-          <button
-            class="play-button"
-            data-text="Good evening everyone. I'm Kaique. I'm a 22-year-old English teacher from Brazil. I'm a big fan of movies, and I have 2 kids."
+            data-text="Hi! My name is Kaique. I'm from Petrópolis, Brazil. I was born in Nova Iguaçu and I grew up in Petrópolis. I'm 21 years old, single, and I study Software Engineering in college. I have five siblings: Gabriel, Ezequiel, Samuel, Miguel, and Emanuele. But only Ezequiel and Gabriel live with me, along with my mom. I live with my family. My mother's name is Cristina, and my mom is 37 years old. I'm the oldest child."
             style="
               margin-top: 15px;
               background-color: white;
@@ -1636,9 +2622,15 @@
 
       <footer class="footer">
         <p>Aula: Como se Apresentar em Inglês | Teacher: Kaique</p>
-        <p>Inglês em 6 Meses &copy; 2025</p>
+        <p>Inglês em 6 Meses &copy; 2026</p>
         <p>
           Use os botões de áudio para ouvir a pronúncia correta de cada frase.
+        </p>
+        <p>
+          <small
+            >Clique no botão "Personalizar" para inserir suas
+            informações.</small
+          >
         </p>
       </footer>
     </div>
@@ -1649,142 +2641,1021 @@
     </a>
 
     <script>
-      // Sistema de áudio usando Web Speech API
-      document.addEventListener("DOMContentLoaded", function () {
-        // Verificar suporte para Web Speech API
-        if (!("speechSynthesis" in window)) {
-          alert(
-            "Seu navegador não suporta a funcionalidade de áudio. Tente usar Chrome, Edge ou Safari."
-          );
-          return;
+      // ===== CONFIGURAÇÕES GLOBAIS =====
+      const APP_CONFIG = {
+        DEFAULT_SPEECH_RATE: 1,
+        SUPPORTED_SPEECH_RATES: [0.5, 1, 1.5],
+        DEFAULT_LANGUAGE: "en-US",
+      };
+
+      // ===== DADOS DO USUÁRIO =====
+      let userData = {
+        firstName: "Kaique",
+        lastName: "Bazil",
+        middleName: "John",
+        surname: "Bazil",
+        familyName: "Bazil",
+        flatmates: "two roommates",
+        firstNameSpelled: "K-A-I-Q-U-E",
+        surnameSpelled: "B-A-Z-I-L",
+        age: "22",
+        nickname: "Feijão",
+        birthDate: "November 14th, 2003",
+        birthMonthDay: "November 14th",
+        birthMonth: "November",
+        birthYear: "2003",
+        nextAge: "23",
+        country: "Brazil",
+        nationality: "Brazilian",
+        city: "Rio de Janeiro",
+        hometown: "São Gonçalo",
+        maritalStatus: "single",
+        occupation: "delivery person",
+        workplace: "Lukgas",
+        hobby: "soccer",
+        education: "TI",
+        ageRange: "20",
+        familyMembers: "my mom and two brothers",
+        favoriteFood: "pizza",
+        favoriteMovie: "Stranger Things",
+        favoriteSport: "soccer",
+        travelDestinations: "Japan, Italy, United States",
+        additionalHobbies: "playing video games, reading books, cooking",
+        hasPets: false,
+        petsInfo: "",
+        playsInstrument: false,
+        instrumentInfo: "",
+        speaksOtherLanguages: false,
+        languagesInfo: "",
+        likesToCook: true,
+      };
+
+      // ===== PERFIS PRÉ-DEFINIDOS =====
+      const PREDEFINED_PROFILES = [
+        {
+          id: "student",
+          name: "Estudante Universitário",
+          description: "Perfil típico de estudante brasileiro",
+          data: {
+            firstName: "Lucas",
+            lastName: "Silva",
+            surname: "Silva",
+            middleName: "",
+            familyName: "Silva",
+            flatmates: "three roommates",
+            age: "21",
+            nickname: "",
+            birthDate: "May 5th, 2003",
+            country: "Brazil",
+            nationality: "Brazilian",
+            city: "São Paulo",
+            hometown: "São Paulo",
+            maritalStatus: "single",
+            occupation: "student",
+            workplace: "University of São Paulo",
+            hobby: "playing guitar",
+            education: "Computer Science",
+            familyMembers: "my parents and one sister",
+            favoriteFood: "pasta",
+            favoriteMovie: "The Avengers",
+            favoriteSport: "basketball",
+            travelDestinations: "United States, Japan, Europe",
+            additionalHobbies: "reading, watching movies, hiking",
+            hasPets: true,
+            petsInfo: "a cat named Luna",
+            playsInstrument: true,
+            instrumentInfo: "guitar",
+            speaksOtherLanguages: true,
+            languagesInfo: "Spanish, basic French",
+            likesToCook: false,
+          },
+        },
+        {
+          id: "professional",
+          name: "Profissional de TI",
+          description: "Trabalha com tecnologia e programação",
+          data: {
+            firstName: "Ana",
+            lastName: "Costa",
+            surname: "Costa",
+            middleName: "",
+            familyName: "Costa",
+            flatmates: "",
+            age: "28",
+            nickname: "",
+            birthDate: "August 15th, 1996",
+            country: "Brazil",
+            nationality: "Brazilian",
+            city: "Curitiba",
+            hometown: "Porto Alegre",
+            maritalStatus: "relationship",
+            occupation: "software developer",
+            workplace: "Tech Solutions Inc.",
+            hobby: "yoga",
+            education: "Information Systems",
+            familyMembers: "I live alone",
+            favoriteFood: "sushi",
+            favoriteMovie: "Inception",
+            favoriteSport: "yoga",
+            travelDestinations: "Thailand, Australia, Canada",
+            additionalHobbies: "photography, blogging, meditation",
+            hasPets: false,
+            petsInfo: "",
+            playsInstrument: false,
+            instrumentInfo: "",
+            speaksOtherLanguages: true,
+            languagesInfo: "English, Spanish",
+            likesToCook: true,
+          },
+        },
+        {
+          id: "teacher",
+          name: "Professor de Inglês",
+          description: "Ensinando inglês para brasileiros",
+          data: {
+            firstName: "Carlos",
+            lastName: "Santos",
+            surname: "Santos",
+            middleName: "",
+            familyName: "Santos",
+            flatmates: "",
+            age: "35",
+            nickname: "Charlie",
+            birthDate: "March 22nd, 1989",
+            country: "Brazil",
+            nationality: "Brazilian",
+            city: "Belo Horizonte",
+            hometown: "Salvador",
+            maritalStatus: "married",
+            occupation: "English teacher",
+            workplace: "Language School International",
+            hobby: "reading",
+            education: "Languages and Literature",
+            familyMembers: "my wife and two children",
+            favoriteFood: "feijoada",
+            favoriteMovie: "The Lord of the Rings",
+            favoriteSport: "swimming",
+            travelDestinations: "England, Ireland, Scotland",
+            additionalHobbies: "writing, traveling, learning languages",
+            hasPets: true,
+            petsInfo: "two dogs, Max and Bella",
+            playsInstrument: true,
+            instrumentInfo: "piano",
+            speaksOtherLanguages: true,
+            languagesInfo: "English, Spanish, Italian",
+            likesToCook: true,
+          },
+        },
+        {
+          id: "athlete",
+          name: "Atleta/Esportista",
+          description: "Vida ativa e saudável",
+          data: {
+            firstName: "Mariana",
+            lastName: "Oliveira",
+            surname: "Oliveira",
+            middleName: "",
+            familyName: "Oliveira",
+            flatmates: "",
+            age: "25",
+            nickname: "Mari",
+            birthDate: "December 10th, 1998",
+            country: "Brazil",
+            nationality: "Brazilian",
+            city: "Florianópolis",
+            hometown: "Rio de Janeiro",
+            maritalStatus: "single",
+            occupation: "personal trainer",
+            workplace: "Fitness Center Plus",
+            hobby: "running",
+            education: "Physical Education",
+            familyMembers: "my parents",
+            favoriteFood: "salads and grilled chicken",
+            favoriteMovie: "Rocky",
+            favoriteSport: "running and weightlifting",
+            travelDestinations: "New Zealand, Switzerland, Costa Rica",
+            additionalHobbies: "cycling, hiking, nutrition",
+            hasPets: true,
+            petsInfo: "a dog named Thor",
+            playsInstrument: false,
+            instrumentInfo: "",
+            speaksOtherLanguages: false,
+            languagesInfo: "",
+            likesToCook: true,
+          },
+        },
+      ];
+
+      // ===== SISTEMA DE ÁUDIO =====
+      class AudioSystem {
+        constructor() {
+          this.speechRate = APP_CONFIG.DEFAULT_SPEECH_RATE;
+          this.currentUtterance = null;
+          this.isSupported = "speechSynthesis" in window;
         }
 
-        // Variável para controlar a velocidade de fala
-        let speechRate = 1;
-        let currentUtterance = null;
+        speak(text) {
+          if (!this.isSupported) {
+            this.showUnsupportedError();
+            return;
+          }
 
-        // Configurar todos os botões de play
-        const playButtons = document.querySelectorAll(".play-button");
-        const speedControls = document.querySelectorAll(".speed-control");
+          if (this.currentUtterance) {
+            this.stop();
+          }
 
-        // Configurar controle de velocidade
-        speedControls.forEach((control) => {
-          control.addEventListener("click", function () {
-            // Remover classe active de todos
-            speedControls.forEach((c) => c.classList.remove("active"));
+          this.currentUtterance = new SpeechSynthesisUtterance(text);
+          this.currentUtterance.lang = APP_CONFIG.DEFAULT_LANGUAGE;
+          this.currentUtterance.rate = this.speechRate;
+          this.currentUtterance.pitch = 1;
+          this.currentUtterance.volume = 1;
 
-            // Adicionar classe active ao clicado
-            this.classList.add("active");
+          this.currentUtterance.onend = () => this.onSpeechEnd();
+          this.currentUtterance.onerror = () => this.onSpeechError();
 
-            // Atualizar velocidade
-            speechRate = parseFloat(this.getAttribute("data-speed"));
-          });
-        });
+          window.speechSynthesis.speak(this.currentUtterance);
+        }
 
-        // Configurar botões de play
-        playButtons.forEach((button) => {
-          button.addEventListener("click", function () {
-            const text = this.getAttribute("data-text");
-
-            // Parar fala atual se estiver falando
-            if (currentUtterance) {
-              window.speechSynthesis.cancel();
-
-              // Remover classe playing de todos os botões
-              playButtons.forEach((btn) => {
-                btn.classList.remove("playing");
-                btn.innerHTML = '<i class="fas fa-play"></i>';
-              });
-            }
-
-            // Se clicou no mesmo botão que estava falando, apenas para
-            if (this.classList.contains("playing")) {
-              this.classList.remove("playing");
-              this.innerHTML = '<i class="fas fa-play"></i>';
-              return;
-            }
-
-            // Remover classe playing de todos os botões
-            playButtons.forEach((btn) => {
-              btn.classList.remove("playing");
-              btn.innerHTML = '<i class="fas fa-play"></i>';
-            });
-
-            // Adicionar classe playing ao botão atual
-            this.classList.add("playing");
-            this.innerHTML = '<i class="fas fa-stop"></i>';
-
-            // Criar e configurar utterance
-            currentUtterance = new SpeechSynthesisUtterance(text);
-            currentUtterance.lang = "en-US";
-            currentUtterance.rate = speechRate;
-            currentUtterance.pitch = 1;
-            currentUtterance.volume = 1;
-
-            // Evento quando a fala terminar
-            currentUtterance.onend = function () {
-              playButtons.forEach((btn) => {
-                btn.classList.remove("playing");
-                btn.innerHTML = '<i class="fas fa-play"></i>';
-              });
-              currentUtterance = null;
-            };
-
-            // Evento em caso de erro
-            currentUtterance.onerror = function () {
-              playButtons.forEach((btn) => {
-                btn.classList.remove("playing");
-                btn.innerHTML = '<i class="fas fa-play"></i>';
-              });
-              currentUtterance = null;
-              alert(
-                "Erro ao reproduzir áudio. Verifique se há algum bloqueio no seu navegador."
-              );
-            };
-
-            // Iniciar fala
-            window.speechSynthesis.speak(currentUtterance);
-          });
-        });
-
-        // Parar toda a fala quando a página for fechada ou atualizada
-        window.addEventListener("beforeunload", function () {
+        stop() {
           if (window.speechSynthesis.speaking) {
             window.speechSynthesis.cancel();
           }
-        });
+          this.currentUtterance = null;
+        }
 
-        // Parar fala ao rolar a página (opcional)
-        window.addEventListener("scroll", function () {
-          // Se quiser parar a fala ao rolar, descomente as linhas abaixo:
-          // if (window.speechSynthesis.speaking) {
-          //     window.speechSynthesis.cancel();
-          //     playButtons.forEach(btn => {
-          //         btn.classList.remove('playing');
-          //         btn.innerHTML = '<i class="fas fa-play"></i>';
-          //     });
-          // }
-        });
+        setRate(rate) {
+          this.speechRate = rate;
+        }
 
-        // Botão de voltar (funcionalidade básica)
-        document
-          .querySelector(".back-button")
-          .addEventListener("click", function (e) {
-            e.preventDefault();
-            if (window.speechSynthesis.speaking) {
-              window.speechSynthesis.cancel();
-            }
-            window.history.back();
+        onSpeechEnd() {
+          this.currentUtterance = null;
+        }
+
+        onSpeechError() {
+          this.currentUtterance = null;
+          alert(
+            "Erro ao reproduzir áudio. Verifique se há algum bloqueio no seu navegador."
+          );
+        }
+
+        showUnsupportedError() {
+          alert(
+            "Seu navegador não suporta a funcionalidade de áudio. Tente usar Chrome, Edge ou Safari."
+          );
+        }
+      }
+
+      // ===== SISTEMA DE INTERFACE =====
+      class UIManager {
+        constructor() {
+          this.audioSystem = new AudioSystem();
+          this.currentProfile = null;
+          this.initElements();
+          this.bindEvents();
+        }
+
+        initElements() {
+          // Elementos do modal
+          this.modal = document.getElementById("personalizationModal");
+          this.openModalBtn = document.getElementById("openPersonalization");
+          this.closeModalBtn = document.getElementById("closeModal");
+          this.cancelBtn = document.getElementById("cancelBtn");
+          this.resetBtn = document.getElementById("resetBtn");
+          this.personalizationForm = document.getElementById(
+            "personalizationForm"
+          );
+          this.profilesGrid = document.getElementById("profilesGrid");
+
+          // Botões de ação
+          this.downloadPDFBtn = document.getElementById("downloadPDF");
+          this.backButton = document.querySelector(".back-button");
+
+          // Elementos de áudio
+          this.playButtons = document.querySelectorAll(".play-button");
+          this.speedControls = document.querySelectorAll(".speed-control");
+          this.questionItems = document.querySelectorAll(".question-item");
+
+          // Elementos de navegação
+          this.indexItems = document.querySelectorAll(".index-item");
+        }
+
+        bindEvents() {
+          // Modal
+          this.openModalBtn.addEventListener("click", () => this.openModal());
+          this.closeModalBtn.addEventListener("click", () => this.closeModal());
+          this.cancelBtn.addEventListener("click", () => this.closeModal());
+          this.resetBtn.addEventListener("click", () => this.resetForm());
+          this.modal.addEventListener("click", (e) => {
+            if (e.target === this.modal) this.closeModal();
+          });
+          this.personalizationForm.addEventListener("submit", (e) =>
+            this.handleFormSubmit(e)
+          );
+
+          // Áudio
+          this.playButtons.forEach((button) => {
+            button.addEventListener("click", () =>
+              this.handlePlayButton(button)
+            );
           });
 
-        // Inicializar com uma mensagem de boas-vindas
-        setTimeout(() => {
-          // Esta parte é opcional - pode ser removida se não quiser a mensagem automática
-          // const welcomeMsg = new SpeechSynthesisUtterance("Welcome to the English presentation lesson. Click on any play button to hear the pronunciation.");
-          // welcomeMsg.lang = 'en-US';
-          // welcomeMsg.rate = 1;
-          // window.speechSynthesis.speak(welcomeMsg);
-        }, 1000);
+          this.speedControls.forEach((control) => {
+            control.addEventListener("click", () =>
+              this.handleSpeedControl(control)
+            );
+          });
+
+          this.questionItems.forEach((item) => {
+            item.addEventListener("click", () =>
+              this.handleQuestionClick(item)
+            );
+          });
+
+          // Checkboxes condicionais
+          ["hasPets", "playsInstrument", "speaksOtherLanguages"].forEach(
+            (id) => {
+              document
+                .getElementById(id)
+                .addEventListener("change", () =>
+                  this.updateConditionalFields()
+                );
+            }
+          );
+
+          // Ações gerais
+          this.downloadPDFBtn.addEventListener("click", () =>
+            this.generatePDF()
+          );
+          this.backButton.addEventListener("click", (e) =>
+            this.handleBackButton(e)
+          );
+
+          // Navegação
+          this.indexItems.forEach((item) => {
+            item.addEventListener("click", (e) =>
+              this.handleIndexNavigation(e, item)
+            );
+          });
+
+          // Limpar áudio ao sair da página
+          window.addEventListener("beforeunload", () =>
+            this.audioSystem.stop()
+          );
+        }
+
+        // ===== MÉTODOS DO MODAL =====
+        openModal() {
+          this.modal.classList.add("active");
+          this.loadPredefinedProfiles();
+          this.populateFormWithUserData();
+          this.updateConditionalFields();
+          this.currentProfile = null;
+        }
+
+        closeModal() {
+          this.modal.classList.remove("active");
+        }
+
+        loadPredefinedProfiles() {
+          this.profilesGrid.innerHTML = "";
+          PREDEFINED_PROFILES.forEach((profile) => {
+            const profileBtn = document.createElement("button");
+            profileBtn.className = "profile-btn";
+            profileBtn.dataset.profileId = profile.id;
+
+            profileBtn.innerHTML = `
+                        <div class="profile-name">${profile.name}</div>
+                        <div class="profile-desc">${profile.description}</div>
+                    `;
+
+            profileBtn.addEventListener("click", () => {
+              this.selectProfile(profileBtn, profile.id);
+            });
+
+            this.profilesGrid.appendChild(profileBtn);
+          });
+        }
+
+        selectProfile(button, profileId) {
+          document
+            .querySelectorAll(".profile-btn")
+            .forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+          this.loadProfileData(profileId);
+          this.currentProfile = profileId;
+        }
+
+        loadProfileData(profileId) {
+          const profile = PREDEFINED_PROFILES.find((p) => p.id === profileId);
+          if (!profile) return;
+
+          const fields = Object.keys(profile.data);
+          fields.forEach((field) => {
+            const element = document.getElementById(field);
+            if (element) {
+              element.value = profile.data[field] || "";
+            }
+          });
+
+          // Checkboxes
+          [
+            "hasPets",
+            "playsInstrument",
+            "speaksOtherLanguages",
+            "likesToCook",
+          ].forEach((id) => {
+            const checkbox = document.getElementById(id);
+            if (checkbox) {
+              checkbox.checked = profile.data[id] || false;
+            }
+          });
+
+          this.updateConditionalFields();
+        }
+
+        updateConditionalFields() {
+          const hasPets = document.getElementById("hasPets").checked;
+          const playsInstrument =
+            document.getElementById("playsInstrument").checked;
+          const speaksOtherLanguages = document.getElementById(
+            "speaksOtherLanguages"
+          ).checked;
+
+          document.getElementById("petsInfo").parentElement.style.display =
+            hasPets ? "block" : "none";
+          document.getElementById(
+            "instrumentInfo"
+          ).parentElement.style.display = playsInstrument ? "block" : "none";
+          document.getElementById("languagesInfo").parentElement.style.display =
+            speaksOtherLanguages ? "block" : "none";
+        }
+
+        populateFormWithUserData() {
+          const fields = Object.keys(userData);
+          fields.forEach((field) => {
+            const element = document.getElementById(field);
+            if (element) {
+              element.value = userData[field] || "";
+            }
+          });
+
+          // Checkboxes
+          [
+            "hasPets",
+            "playsInstrument",
+            "speaksOtherLanguages",
+            "likesToCook",
+          ].forEach((id) => {
+            const checkbox = document.getElementById(id);
+            if (checkbox) {
+              checkbox.checked = userData[id] || false;
+            }
+          });
+        }
+
+        resetForm() {
+          if (confirm("Tem certeza que deseja limpar todos os campos?")) {
+            this.personalizationForm.reset();
+            document
+              .querySelectorAll(".profile-btn")
+              .forEach((btn) => btn.classList.remove("active"));
+            this.currentProfile = null;
+            this.updateConditionalFields();
+          }
+        }
+
+        handleFormSubmit(e) {
+          e.preventDefault();
+
+          // Coletar dados do formulário
+          const formData = this.collectFormData();
+
+          // Atualizar userData
+          Object.assign(userData, formData);
+
+          // Calcular dados derivados
+          this.calculateDerivedData();
+
+          // Atualizar interface
+          this.updatePhrasesWithUserData();
+          this.updatePresentationExamples();
+
+          // Fechar modal e mostrar mensagem
+          this.closeModal();
+          this.showSuccessMessage();
+        }
+
+        collectFormData() {
+          const formData = {};
+
+          // Campos de texto
+          const textFields = [
+            "firstName",
+            "lastName",
+            "middleName",
+            "surname",
+            "familyName",
+            "flatmates",
+            "age",
+            "nickname",
+            "birthDate",
+            "country",
+            "nationality",
+            "city",
+            "hometown",
+            "occupation",
+            "workplace",
+            "hobby",
+            "education",
+            "familyMembers",
+            "favoriteFood",
+            "favoriteMovie",
+            "favoriteSport",
+            "travelDestinations",
+            "additionalHobbies",
+            "petsInfo",
+            "instrumentInfo",
+            "languagesInfo",
+          ];
+
+          textFields.forEach((field) => {
+            const element = document.getElementById(field);
+            if (element) {
+              formData[field] = element.value.trim();
+            }
+          });
+
+          // Selects
+          formData.maritalStatus =
+            document.getElementById("maritalStatus").value;
+          formData.birthOrder = document.getElementById("birthOrder").value;
+
+          // Checkboxes
+          formData.hasPets = document.getElementById("hasPets").checked;
+          formData.playsInstrument =
+            document.getElementById("playsInstrument").checked;
+          formData.speaksOtherLanguages = document.getElementById(
+            "speaksOtherLanguages"
+          ).checked;
+          formData.likesToCook = document.getElementById("likesToCook").checked;
+
+          return formData;
+        }
+
+        calculateDerivedData() {
+          const ageNum = parseInt(userData.age) || 22;
+          userData.nextAge = (ageNum + 1).toString();
+          userData.ageRange = Math.floor(ageNum / 10) * 10;
+
+          // Extrair informações da data de nascimento
+          const birthDateParts = userData.birthDate.split(" ");
+          if (birthDateParts.length >= 2) {
+            userData.birthMonthDay =
+              birthDateParts[0] + " " + birthDateParts[1];
+            userData.birthMonth = birthDateParts[0];
+          }
+
+          const yearMatch = userData.birthDate.match(/\d{4}/);
+          userData.birthYear = yearMatch ? yearMatch[0] : "2003";
+
+          // Converter nomes para soletração
+          userData.firstNameSpelled = userData.firstName
+            .toUpperCase()
+            .split("")
+            .join("-");
+          userData.lastNameSpelled = userData.lastName
+            .toUpperCase()
+            .split("")
+            .join("-");
+        }
+
+        showSuccessMessage() {
+          const profileName = this.currentProfile
+            ? PREDEFINED_PROFILES.find((p) => p.id === this.currentProfile).name
+            : "personalizadas";
+
+          alert(
+            `Informações ${profileName} salvas com sucesso! Agora todas as frases usarão seus dados.`
+          );
+        }
+
+        // ===== MÉTODOS DE ÁUDIO =====
+        handlePlayButton(button) {
+          const text = button.getAttribute("data-text");
+          const isPlaying = button.classList.contains("playing");
+
+          if (isPlaying) {
+            this.audioSystem.stop();
+            button.classList.remove("playing");
+            button.innerHTML = '<i class="fas fa-play"></i>';
+            return;
+          }
+
+          // Parar todos os botões
+          this.playButtons.forEach((btn) => {
+            btn.classList.remove("playing");
+            btn.innerHTML = '<i class="fas fa-play"></i>';
+          });
+
+          // Iniciar novo áudio
+          button.classList.add("playing");
+          button.innerHTML = '<i class="fas fa-stop"></i>';
+          this.audioSystem.speak(text);
+        }
+
+        handleSpeedControl(control) {
+          this.speedControls.forEach((c) => c.classList.remove("active"));
+          control.classList.add("active");
+          const speed = parseFloat(control.getAttribute("data-speed"));
+          this.audioSystem.setRate(speed);
+        }
+
+        handleQuestionClick(item) {
+          const question = item.getAttribute("data-question");
+          const category = item.getAttribute("data-category");
+
+          // Atualizar estado visual
+          document
+            .querySelectorAll(`.question-item[data-category="${category}"]`)
+            .forEach((q) => {
+              q.classList.remove("active");
+            });
+          item.classList.add("active");
+
+          // Falar a pergunta
+          this.audioSystem.stop();
+          this.audioSystem.speak(question);
+        }
+
+        // ===== MÉTODOS DE ATUALIZAÇÃO DA INTERFACE =====
+        updatePhrasesWithUserData() {
+          const phraseElements = document.querySelectorAll(
+            ".phrase-en[data-template]"
+          );
+
+          phraseElements.forEach((element) => {
+            const template = element.getAttribute("data-template");
+            let updatedText = template;
+
+            // Substituir placeholders
+            Object.keys(userData).forEach((key) => {
+              const placeholder = `{${key}}`;
+              if (updatedText.includes(placeholder)) {
+                updatedText = updatedText.replace(
+                  new RegExp(placeholder, "g"),
+                  userData[key]
+                );
+              }
+            });
+
+            element.textContent = updatedText;
+
+            // Atualizar botão de áudio associado
+            const playButton = element
+              .closest(".phrase-content")
+              .querySelector(".play-button");
+            if (playButton) {
+              playButton.setAttribute("data-text", updatedText);
+            }
+
+            // Atualizar a tradução em português correspondente
+            const phrasePtElement = element
+              .closest(".phrase-content")
+              .querySelector(".phrase-pt");
+
+            if (phrasePtElement) {
+              this.updatePortugueseTranslation(phrasePtElement, updatedText);
+            }
+          });
+        }
+
+        updatePortugueseTranslation(ptElement, englishText) {
+          // Obter a tradução atual
+          let currentTranslation = ptElement.textContent;
+
+          // Mapeamento básico de traduções dinâmicas
+          // Esta é uma solução simplificada - em uma aplicação real,
+          // você teria um mapeamento mais completo
+
+          // Substituir nomes próprios
+          if (
+            englishText.includes(userData.firstName) &&
+            currentTranslation.includes("Kaique")
+          ) {
+            currentTranslation = currentTranslation.replace(
+              /Kaique/g,
+              userData.firstName
+            );
+          }
+
+          if (
+            englishText.includes(userData.lastName) &&
+            currentTranslation.includes("Bazil")
+          ) {
+            currentTranslation = currentTranslation.replace(
+              /Bazil/g,
+              userData.lastName
+            );
+          }
+
+          if (
+            englishText.includes(userData.nickname) &&
+            currentTranslation.includes("Feijão") &&
+            userData.nickname
+          ) {
+            currentTranslation = currentTranslation.replace(
+              /Feijão/g,
+              userData.nickname
+            );
+          }
+
+          // Substituir idades
+          if (
+            englishText.includes(`${userData.age} years old`) &&
+            currentTranslation.includes("22")
+          ) {
+            currentTranslation = currentTranslation.replace(
+              /22/g,
+              userData.age
+            );
+          }
+
+          // Substituir países/cidades
+          if (
+            englishText.includes(userData.country) &&
+            currentTranslation.includes("Brazil")
+          ) {
+            currentTranslation = currentTranslation.replace(
+              /Brazil/g,
+              userData.country
+            );
+            currentTranslation = currentTranslation.replace(
+              /Brasil/g,
+              userData.country === "Brazil" ? "Brasil" : userData.country
+            );
+          }
+
+          if (
+            englishText.includes(userData.city) &&
+            currentTranslation.includes("Rio de Janeiro")
+          ) {
+            currentTranslation = currentTranslation.replace(
+              /Rio de Janeiro/g,
+              userData.city
+            );
+          }
+
+          // Substituir profissões
+          if (
+            englishText.includes(userData.occupation) &&
+            currentTranslation.includes("delivery person")
+          ) {
+            currentTranslation = currentTranslation.replace(
+              /delivery person/g,
+              userData.occupation
+            );
+            currentTranslation = currentTranslation.replace(
+              /entregador/g,
+              userData.occupation === "delivery person"
+                ? "entregador"
+                : userData.occupation
+            );
+          }
+
+          // Atualizar o texto da tradução
+          ptElement.textContent = currentTranslation;
+        }
+
+        updatePresentationExamples() {
+          let exampleText = `Hi! My name is ${userData.firstName} ${userData.lastName}. `;
+
+          // Localização
+          exampleText += `I'm from ${userData.city}, ${userData.country}. `;
+
+          if (userData.hometown && userData.hometown !== userData.city) {
+            exampleText += `I was born in ${userData.hometown} and I grew up in ${userData.city}. `;
+          } else {
+            exampleText += `I was born and raised in ${userData.city}. `;
+          }
+
+          // Idade e estado civil
+          exampleText += `I'm ${userData.age} years old, ${userData.maritalStatus}, `;
+
+          // Trabalho/Educação
+          if (userData.occupation !== "student" && userData.occupation) {
+            exampleText += `and I work as a ${userData.occupation} at ${
+              userData.workplace || "a local company"
+            }. `;
+          } else if (userData.education) {
+            exampleText += `and I study ${userData.education} in college. `;
+          } else {
+            exampleText += `and I work as a ${userData.occupation}. `;
+          }
+
+          // Família
+          if (userData.familyMembers) {
+            exampleText += `I live with ${userData.familyMembers}. `;
+          } else if (userData.flatmates) {
+            exampleText += `I share a flat with ${userData.flatmates}. `;
+          }
+
+          // Hobbies
+          exampleText += `I really like ${userData.hobby}. `;
+
+          // Outras informações
+          if (userData.additionalHobbies) {
+            exampleText += `I also enjoy ${userData.additionalHobbies}. `;
+          }
+
+          if (userData.favoriteFood) {
+            exampleText += `My favorite food is ${userData.favoriteFood}. `;
+          }
+
+          if (userData.favoriteMovie) {
+            exampleText += `My favorite movie/series is ${userData.favoriteMovie}. `;
+          }
+
+          if (
+            userData.favoriteSport &&
+            userData.favoriteSport !== userData.hobby
+          ) {
+            exampleText += `My favorite sport is ${userData.favoriteSport}. `;
+          }
+
+          // Atualizar elemento na página
+          const exampleElement = document.querySelector(".example-text p");
+          if (exampleElement) {
+            exampleElement.textContent = exampleText;
+          }
+
+          // Atualizar botão de áudio
+          const exampleButton = document.querySelector(
+            ".examples .play-button"
+          );
+          if (exampleButton) {
+            exampleButton.setAttribute("data-text", exampleText);
+          }
+        }
+
+        // ===== MÉTODOS DE NAVEGAÇÃO =====
+        handleBackButton(e) {
+          e.preventDefault();
+          this.audioSystem.stop();
+          window.history.back();
+        }
+
+        handleIndexNavigation(e, item) {
+          e.preventDefault();
+          const targetId = item.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 20,
+              behavior: "smooth",
+            });
+          }
+        }
+
+        // ===== MÉTODO PARA GERAR PDF =====
+        async generatePDF() {
+          try {
+            // Mostrar estado de carregamento
+            this.downloadPDFBtn.innerHTML =
+              '<i class="fas fa-spinner fa-spin"></i> Gerando PDF...';
+            this.downloadPDFBtn.disabled = true;
+
+            // Carregar jsPDF dinamicamente
+            await this.loadScript(
+              "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+            );
+
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF();
+
+            // Configurações
+            const pageWidth = pdf.internal.pageSize.getWidth();
+            const margin = 15;
+            const lineHeight = 7;
+            let yPos = margin;
+
+            // Função auxiliar para adicionar texto
+            const addText = (text, fontSize = 12, isBold = false) => {
+              pdf.setFontSize(fontSize);
+              pdf.setFont("helvetica", isBold ? "bold" : "normal");
+
+              const lines = pdf.splitTextToSize(text, pageWidth - 2 * margin);
+              lines.forEach((line) => {
+                if (yPos > pdf.internal.pageSize.getHeight() - margin) {
+                  pdf.addPage();
+                  yPos = margin;
+                }
+                pdf.text(line, margin, yPos);
+                yPos += lineHeight;
+              });
+              yPos += 2;
+            };
+
+            // Cabeçalho
+            addText("Aula: Como se Apresentar em Inglês", 18, true);
+            addText("Teacher: Kaique", 14);
+            addText(`Gerado em: ${new Date().toLocaleDateString("pt-BR")}`, 10);
+            yPos += 10;
+
+            // Informações do usuário
+            addText("Informações Personalizadas:", 14, true);
+            addText(`Nome: ${userData.firstName} ${userData.lastName}`);
+            if (userData.nickname) addText(`Apelido: ${userData.nickname}`);
+            addText(`Idade: ${userData.age} anos`);
+            addText(`Data de Nascimento: ${userData.birthDate}`);
+            addText(`País: ${userData.country}`);
+            addText(`Nacionalidade: ${userData.nationality}`);
+            addText(`Cidade: ${userData.city}`);
+            if (userData.hometown)
+              addText(`Cidade natal: ${userData.hometown}`);
+            addText(`Estado Civil: ${userData.maritalStatus}`);
+            addText(`Profissão: ${userData.occupation}`);
+            if (userData.workplace)
+              addText(`Local de Trabalho: ${userData.workplace}`);
+            if (userData.education) addText(`Formação: ${userData.education}`);
+            addText(`Hobby Principal: ${userData.hobby}`);
+
+            yPos += 10;
+
+            // Coletar todas as categorias
+            const categories = document.querySelectorAll(".category");
+
+            categories.forEach((category) => {
+              const categoryTitle = category.querySelector("h2").textContent;
+
+              // Adicionar título da categoria
+              addText(categoryTitle, 16, true);
+
+              // Coletar frases da categoria
+              const phraseCards = category.querySelectorAll(".phrase-card");
+              phraseCards.forEach((phraseCard) => {
+                const phraseEn =
+                  phraseCard.querySelector(".phrase-en").textContent;
+                const phrasePt =
+                  phraseCard.querySelector(".phrase-pt").textContent;
+
+                addText(phraseEn, 12);
+                addText(`Tradução: ${phrasePt}`, 10);
+
+                const note = phraseCard.querySelector(".phrase-note");
+                if (note) {
+                  addText(`Nota: ${note.textContent}`, 9);
+                }
+
+                yPos += 3;
+              });
+
+              yPos += 10;
+            });
+
+            // Rodapé
+            yPos = pdf.internal.pageSize.getHeight() - margin;
+            pdf.setFontSize(10);
+            pdf.text(
+              `Inglês em 6 Meses © 2026 - Página ${pdf.internal.getNumberOfPages()}`,
+              pageWidth / 2,
+              yPos,
+              { align: "center" }
+            );
+
+            // Salvar PDF
+            pdf.save(`Aula-Apresentacao-Ingles-${userData.firstName}.pdf`);
+          } catch (error) {
+            console.error("Erro ao gerar PDF:", error);
+            alert("Ocorreu um erro ao gerar o PDF. Tente novamente.");
+          } finally {
+            // Restaurar botão
+            this.downloadPDFBtn.innerHTML =
+              '<i class="fas fa-file-pdf"></i> Baixar em PDF';
+            this.downloadPDFBtn.disabled = false;
+          }
+        }
+
+        loadScript(src) {
+          return new Promise((resolve, reject) => {
+            const script = document.createElement("script");
+            script.src = src;
+            script.onload = resolve;
+            script.onerror = reject;
+            document.head.appendChild(script);
+          });
+        }
+      }
+
+      // ===== INICIALIZAÇÃO DA APLICAÇÃO =====
+      document.addEventListener("DOMContentLoaded", function () {
+        const uiManager = new UIManager();
+
+        // Inicializar frases com dados do usuário
+        uiManager.updatePhrasesWithUserData();
+        uiManager.updatePresentationExamples();
+
+        console.log("Aplicação carregada com sucesso!");
       });
     </script>
   </body>
