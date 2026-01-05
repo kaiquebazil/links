@@ -87,13 +87,19 @@ export const resourcesDatabase = {
         title:
           "Introductions | Beginner English | Introducing Yourself in English",
         duration: "1:15",
-        channel: "mmmEnglish",
+        channel: "Learn English by Pocket Passport",
+      },
+      {
+        id: "UnEmEbWytI8",
+        title:
+          "Introductions | Beginner English | Introducing Yourself in English",
+        duration: "1:15",
+        channel: "Learn English by Pocket Passport",
       },
     ],
     materials: [
       "Frases para Autointrodução (link: ../links/pages/introductions.html)",
       "Exercício: Criar seu Perfil em Inglês",
-      "Quiz: Perguntas Pessoais",
     ],
   },
   "Pronomes pessoais": {

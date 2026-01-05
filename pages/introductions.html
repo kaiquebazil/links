@@ -17,7 +17,7 @@
       /* ===== CONTAINER PRINCIPAL ===== */
       .container {
         width: 100%;
-        max-width: 650px;
+        max-width: 750px;
         margin: 0 auto;
         opacity: 0;
         transform: translateY(20px);
@@ -1195,6 +1195,26 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
+              <div class="phrase-en" data-template="I'm {firstName}.">
+                I'm Kaique.
+              </div>
+              <div class="phrase-pt">Eu sou a Kaique.</div>
+            </div>
+            <div class="audio-controls">
+              <button class="play-button" data-text="I'm Kaique.">
+                <i class="fas fa-play"></i>
+              </button>
+              <div class="audio-speed">
+                <span class="speed-control" data-speed="0.5">0.5x</span>
+                <span class="speed-control active" data-speed="1">1x</span>
+                <span class="speed-control" data-speed="1.5">1.5x</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="phrase-card">
+          <div class="phrase-content">
+            <div class="phrase-text">
               <div
                 class="phrase-en"
                 data-template="My first name is {firstName}."
@@ -1291,7 +1311,7 @@
             <div class="phrase-text">
               <div
                 class="phrase-en"
-                data-template="My last name is {lastName}."
+                data-template="My last name is {familyName}."
               >
                 My last name is Bazil.
               </div>
@@ -1346,10 +1366,9 @@
               >
                 K-A-I-Q-U-E B-A-Z-I-L.
               </div>
-              <div class="phrase-pt">K-A-I-Q-U-E B-A-Z-I-L.</div>
             </div>
             <div class="audio-controls">
-              <button class="play-button" data-text="K-A-I-Q-U-E B-A-Z-I-L.">
+              <button class="play-button" data-text="K-A-I-Q-U-E">
                 <i class="fas fa-play"></i>
               </button>
               <div class="audio-speed">
@@ -1374,27 +1393,6 @@
             </div>
             <div class="audio-controls">
               <button class="play-button" data-text="You can call me Feijão.">
-                <i class="fas fa-play"></i>
-              </button>
-              <div class="audio-speed">
-                <span class="speed-control" data-speed="0.5">0.5x</span>
-                <span class="speed-control active" data-speed="1">1x</span>
-                <span class="speed-control" data-speed="1.5">1.5x</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="phrase-card">
-          <div class="phrase-content">
-            <div class="phrase-text">
-              <div class="phrase-en" data-template="I'm {firstName}.">
-                I'm Kaique.
-              </div>
-              <div class="phrase-pt">Eu sou a Kaique.</div>
-            </div>
-            <div class="audio-controls">
-              <button class="play-button" data-text="I'm Kaique.">
                 <i class="fas fa-play"></i>
               </button>
               <div class="audio-speed">
@@ -1434,20 +1432,6 @@
               data-question="Could you tell me your age?"
             >
               Could you tell me your age?
-            </div>
-            <div
-              class="question-item"
-              data-category="age"
-              data-question="When were you born?"
-            >
-              When were you born?
-            </div>
-            <div
-              class="question-item"
-              data-category="age"
-              data-question="What year were you born?"
-            >
-              What year were you born?
             </div>
           </div>
         </div>
@@ -2081,7 +2065,7 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en" data-template="I'm {maritalStatus}.">
+              <div class="phrase-en" data-template="I'm single.">
                 I'm single.
               </div>
               <div class="phrase-pt">Eu sou solteiro/a.</div>
@@ -2102,7 +2086,7 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en" data-template="I'm {maritalStatus}.">
+              <div class="phrase-en" data-template="I'm married.">
                 I'm married.
               </div>
               <div class="phrase-pt">Eu sou casado/a.</div>
@@ -2123,7 +2107,7 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en" data-template="I'm {maritalStatus}.">
+              <div class="phrase-en" data-template="I'm in a relationship.">
                 I'm in a relationship.
               </div>
               <div class="phrase-pt">Eu estou em um relacionamento.</div>
@@ -2144,7 +2128,7 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en" data-template="I'm {maritalStatus}.">
+              <div class="phrase-en" data-template="I'm divorced.">
                 I'm divorced.
               </div>
               <div class="phrase-pt">Eu sou divorciado/a.</div>
@@ -2165,7 +2149,7 @@
         <div class="phrase-card">
           <div class="phrase-content">
             <div class="phrase-text">
-              <div class="phrase-en" data-template="I'm {maritalStatus}.">
+              <div class="phrase-en" data-template="I'm widowed.">
                 I'm widowed.
               </div>
               <div class="phrase-pt">Eu sou viúvo/a.</div>
@@ -2635,7 +2619,7 @@
       </footer>
     </div>
 
-    <a href="#" class="back-button">
+    <a href="../links/6meses.html" class="back-button">
       <i class="fas fa-arrow-left"></i>
       <span>Voltar</span>
     </a>
@@ -2653,7 +2637,7 @@
         firstName: "Kaique",
         lastName: "Bazil",
         middleName: "John",
-        surname: "Bazil",
+        surname: "Bazil", // Mantém como Bazil inicialmente
         familyName: "Bazil",
         flatmates: "two roommates",
         firstNameSpelled: "K-A-I-Q-U-E",
@@ -2699,7 +2683,7 @@
           data: {
             firstName: "Lucas",
             lastName: "Silva",
-            surname: "Silva",
+            surname: "Silva", // Adicionado
             middleName: "",
             familyName: "Silva",
             flatmates: "three roommates",
@@ -2737,7 +2721,7 @@
           data: {
             firstName: "Ana",
             lastName: "Costa",
-            surname: "Costa",
+            surname: "Costa", // Adicionado
             middleName: "",
             familyName: "Costa",
             flatmates: "",
@@ -2775,7 +2759,7 @@
           data: {
             firstName: "Carlos",
             lastName: "Santos",
-            surname: "Santos",
+            surname: "Santos", // Adicionado
             middleName: "",
             familyName: "Santos",
             flatmates: "",
@@ -2813,7 +2797,7 @@
           data: {
             firstName: "Mariana",
             lastName: "Oliveira",
-            surname: "Oliveira",
+            surname: "Oliveira", // Adicionado
             middleName: "",
             familyName: "Oliveira",
             flatmates: "",
@@ -3024,9 +3008,9 @@
             profileBtn.dataset.profileId = profile.id;
 
             profileBtn.innerHTML = `
-                        <div class="profile-name">${profile.name}</div>
-                        <div class="profile-desc">${profile.description}</div>
-                    `;
+                            <div class="profile-name">${profile.name}</div>
+                            <div class="profile-desc">${profile.description}</div>
+                        `;
 
             profileBtn.addEventListener("click", () => {
               this.selectProfile(profileBtn, profile.id);
@@ -3094,7 +3078,7 @@
           const fields = Object.keys(userData);
           fields.forEach((field) => {
             const element = document.getElementById(field);
-            if (element) {
+            if (element && element.type !== "checkbox") {
               element.value = userData[field] || "";
             }
           });
@@ -3130,6 +3114,11 @@
           // Coletar dados do formulário
           const formData = this.collectFormData();
 
+          // CORREÇÃO DO BUG: Se surname não foi preenchido, copiar de lastName
+          if (!formData.surname && formData.lastName) {
+            formData.surname = formData.lastName;
+          }
+
           // Atualizar userData
           Object.assign(userData, formData);
 
@@ -3148,12 +3137,12 @@
         collectFormData() {
           const formData = {};
 
-          // Campos de texto
+          // Campos de texto - ATUALIZADO para incluir surname
           const textFields = [
             "firstName",
             "lastName",
             "middleName",
-            "surname",
+            "surname", // ADICIONADO
             "familyName",
             "flatmates",
             "age",
@@ -3224,6 +3213,16 @@
             .split("")
             .join("-");
           userData.lastNameSpelled = userData.lastName
+            .toUpperCase()
+            .split("")
+            .join("-");
+
+          // CORREÇÃO: Adicionar soletração do surname
+          userData.surnameSpelled = (
+            userData.surname ||
+            userData.lastName ||
+            ""
+          )
             .toUpperCase()
             .split("")
             .join("-");
@@ -3334,10 +3333,8 @@
           let currentTranslation = ptElement.textContent;
 
           // Mapeamento básico de traduções dinâmicas
-          // Esta é uma solução simplificada - em uma aplicação real,
-          // você teria um mapeamento mais completo
 
-          // Substituir nomes próprios
+          // Substituir nomes próprios - ATUALIZADO para incluir surname
           if (
             englishText.includes(userData.firstName) &&
             currentTranslation.includes("Kaique")
@@ -3355,6 +3352,17 @@
             currentTranslation = currentTranslation.replace(
               /Bazil/g,
               userData.lastName
+            );
+          }
+
+          // CORREÇÃO DO BUG: Adicionar substituição do surname
+          if (
+            englishText.includes(userData.surname) &&
+            currentTranslation.includes("Bazil")
+          ) {
+            currentTranslation = currentTranslation.replace(
+              /Bazil/g,
+              userData.surname
             );
           }
 
@@ -3565,6 +3573,13 @@
             // Informações do usuário
             addText("Informações Personalizadas:", 14, true);
             addText(`Nome: ${userData.firstName} ${userData.lastName}`);
+            addText(`Nome do Meio: ${userData.middleName}`);
+            addText(`Sobrenome: ${userData.surname}`); // Usando surname
+            addText(
+              `Nome Soletrado: ${userData.firstNameSpelled} ${userData.lastNameSpelled}`
+            );
+            addText(`Nome da Família: ${userData.familyName}`);
+            addText(`Colega(s) de Casa: ${userData.flatmates}`);
             if (userData.nickname) addText(`Apelido: ${userData.nickname}`);
             addText(`Idade: ${userData.age} anos`);
             addText(`Data de Nascimento: ${userData.birthDate}`);
