@@ -6,7 +6,7 @@ export const resourcesDatabase = {
         id: "pGdos0z14aQ",
         title: "ALFABETO EM INGLÊS: Pronúncia completa e dicas | Meu vídeo",
         duration: "8:42",
-        channel: "Kaique's Growth Journal",
+        channel: "Kaique Bazil",
       },
       {
         id: "ChqnN3cKzXQ",
@@ -36,7 +36,7 @@ export const resourcesDatabase = {
         title:
           "Como Aprender os Números em Inglês: O Guia Definitivo ( DO 1 AO 1 TRILÃO)",
         duration: "5:44",
-        channel: "Kaique's Growth Journal",
+        channel: "Kaique Bazil",
       },
       {
         id: "V9QBe0GfyDU",
@@ -58,7 +58,7 @@ export const resourcesDatabase = {
         title:
           "Saudações Básicas em Inglês: Como Iniciar uma Conversa (Passo a Passo)",
         duration: "2:34",
-        channel: "Kaique's Growth Journal",
+        channel: "Kaique Bazil",
       },
       {
         id: "amxeGGNwwzE",
@@ -83,11 +83,10 @@ export const resourcesDatabase = {
   "Apresentações pessoais": {
     videos: [
       {
-        id: "UnEmEbWytI8",
-        title:
-          "Introductions | Beginner English | Introducing Yourself in English",
-        duration: "1:15",
-        channel: "Learn English by Pocket Passport",
+        id: "KXoQBAmFM3U",
+        title: "COMO SE APRESENTAR EM INGLÊS | Guia Completo",
+        duration: "18:45",
+        channel: "Kaique Bazil",
       },
       {
         id: "UnEmEbWytI8",
