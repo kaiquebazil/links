@@ -123,7 +123,7 @@ export const resourcesDatabase = {
       },
     ],
     materials: [
-      "Material: Verbo To Be e Pronomes Pessoais (link: ../links/pages/pronouns_to_be.html)",
+      "Material: Verbo To Be e Pronomes Pessoais (link: ../links/pages/tobe.html)",
       "Exercício: Substituição de Pronomes",
       "Jogo: Memory dos Pronomes (link: https://www.educaplay.com/learning-resources/23388951-personal_pronouns_memory_match.html)",
       "Jogo: Verbo to be (link: http://wordwall.net/pt-br/community/memory-game-to-be)",
