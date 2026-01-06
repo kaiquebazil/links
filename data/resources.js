@@ -101,8 +101,20 @@ export const resourcesDatabase = {
       "Exercício: Criar seu Perfil em Inglês",
     ],
   },
-  "Pronomes pessoais": {
+  "Pronomes pessoais e Verbo To Be": {
     videos: [
+      {
+        id: "RXJXM628Feo",
+        title: "Verbo TO BE e Pronomes Pessoais: Aprenda de uma vez por todas!",
+        duration: "7:35",
+        channel: "Kaique Bazil",
+      },
+      {
+        id: "MWjx_gRRfIE",
+        title: "Personal Pronouns and To Be - Complete English Grammar Lesson",
+        duration: "12:30",
+        channel: "English Addict with Mr. Duncan",
+      },
       {
         id: "Z7zqR00gHnw",
         title: "Subject Pronouns | English Grammar",
@@ -111,9 +123,10 @@ export const resourcesDatabase = {
       },
     ],
     materials: [
-      "Tabela: Pronomes Pessoais",
+      "Material: Verbo To Be e Pronomes Pessoais (link: ../links/pages/pronouns_to_be.html)",
       "Exercício: Substituição de Pronomes",
-      "Jogo: Memory dos Pronomes",
+      "Jogo: Memory dos Pronomes (link: https://www.educaplay.com/learning-resources/23388951-personal_pronouns_memory_match.html)",
+      "Jogo: Verbo to be (link: http://wordwall.net/pt-br/community/memory-game-to-be)",
     ],
   },
   "Verbo 'to be' (presente)": {

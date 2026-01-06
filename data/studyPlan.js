@@ -15,10 +15,10 @@ export const studyPlan = [
       {
         title: "Semana 2",
         contents: [
-          "Pronomes pessoais",
-          "Verbo 'to be' (presente)",
+          "Pronomes pessoais e Verbo To Be",
           "Artigos (a, an, the)",
           "Frases simples com 'to be'",
+          "Familia",
         ],
       },
       {
