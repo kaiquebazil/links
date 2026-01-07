@@ -129,23 +129,6 @@ export const resourcesDatabase = {
       "Jogo: Verbo to be (link: http://wordwall.net/pt-br/community/memory-game-to-be)",
     ],
   },
-  "Verbo 'to be' (presente)": {
-    videos: [
-      {
-        id: "5wvzgid7oeU",
-        title: "The verb 'TO BE' - Present Simple",
-        duration: "7:20",
-        channel: "Easy English",
-      },
-    ],
-    materials: [
-      "PDF: Conjugação do Verbo To Be",
-      "Exercício: Frases Afirmativas, Negativas e Interrogativas",
-      "Quiz: Uso Correto do To Be",
-    ],
-  },
-  // Adicione todos os outros 137 conteúdos aqui...
-  // Para não sobrecarregar, vou mostrar como adicionar mais:
   "Artigos (a, an, the)": {
     videos: [
       {
@@ -156,7 +139,7 @@ export const resourcesDatabase = {
       },
     ],
     materials: [
-      "Guia: Quando Usar A, An ou The",
+      "Guia: Quando Usar A, An ou The (link: ../links/pages/articles.html)",
       "Exercício: Preenchimento com Artigos",
       "Lista: Exceções e Casos Especiais",
     ],
