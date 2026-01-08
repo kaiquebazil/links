@@ -94,25 +94,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // ========== RENDERIZAR MATERIAIS COMPLEMENTARES ==========
+  // js/6meses.js - Função renderComplementaryMaterials COMPLETA
   function renderComplementaryMaterials() {
     // Criar container principal
     const complementaryContainer = document.createElement("div");
     complementaryContainer.className = "complementary-container";
     complementaryContainer.innerHTML = `
-      <div class="complementary-header">
-        <div class="complementary-title">
-          <i class="fas fa-plus-circle"></i>
-          <span>Conteúdos Adicionais</span>
-        </div>
-        <button class="complementary-toggle" id="complementary-toggle">
-          <i class="fas fa-chevron-down"></i>
-        </button>
+    <div class="complementary-header">
+      <div class="complementary-title">
+        <i class="fas fa-plus-circle"></i>
+        <span>📚 Conteúdos Adicionais - Fluência em 6 Meses</span>
       </div>
-      <div class="complementary-content" id="complementary-content">
-        <!-- Conteúdo será inserido aqui -->
-      </div>
-    `;
+      <button class="complementary-toggle" id="complementary-toggle">
+        <i class="fas fa-chevron-down"></i>
+      </button>
+    </div>
+    <div class="complementary-content" id="complementary-content">
+      <!-- Conteúdo será inserido aqui -->
+    </div>
+  `;
 
     // Inserir antes dos meses
     monthsContainer.parentNode.insertBefore(
@@ -146,199 +146,721 @@ document.addEventListener("DOMContentLoaded", function () {
       const cardHeader = document.createElement("div");
       cardHeader.className = "complementary-card-header";
       cardHeader.innerHTML = `
-        <div class="complementary-card-title">
-          <h3>${material.title}</h3>
-          <p class="complementary-card-desc">${material.description}</p>
-        </div>
-        <button class="complementary-card-toggle" data-target="${material.id}">
-          <i class="fas fa-chevron-down"></i>
-        </button>
-      `;
+      <div class="complementary-card-title">
+        <h3>${material.title}</h3>
+        <p class="complementary-card-desc">${material.description}</p>
+      </div>
+      <button class="complementary-card-toggle" data-target="${material.id}">
+        <i class="fas fa-chevron-down"></i>
+      </button>
+    `;
 
       // Conteúdo específico baseado no tipo
       let cardBodyHTML = "";
 
       if (material.type === "videos") {
         // Card de vídeos (com conteúdos adicionais)
-        cardBodyHTML = `
-          <div class="complementary-card-body">
-            <div class="complementary-videos">
-              <div class="complementary-section">
-                <div class="complementary-section-title">
-                  <i class="fas fa-video"></i>
-                  <span>Vídeos Recomendados</span>
+        const videosContent =
+          material.videos && material.videos.length > 0
+            ? material.videos
+                .map((video) => {
+                  let videoHTML = `
+              <div class="complementary-video-item">
+                <a href="https://www.youtube.com/watch?v=${video.id}" target="_blank" class="complementary-video-card">
+                  <div class="complementary-video-icon">
+                    <i class="fas fa-play-circle"></i>
+                  </div>
+                  <div class="complementary-video-info">
+                    <div class="complementary-video-title">${video.title}</div>
+                    <div class="complementary-video-details">
+                      <span><i class="fas fa-clock"></i> ${video.duration}</span>
+                      <span>${video.channel}</span>
+                    </div>
+                    <div class="complementary-video-desc">${video.description}</div>
+                  </div>
+                </a>
+            `;
+
+                  // Conteúdo adicional do vídeo
+                  if (video.additionalContent) {
+                    videoHTML += `
+                <div class="video-additional-toggle">
+                  <button class="video-additional-btn" data-video="${video.id}">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Conteúdo Adicional</span>
+                  </button>
                 </div>
-                <div class="complementary-videos-grid">
-                  ${material.videos
+                
+                <div class="video-additional-content" id="additional-${
+                  video.id
+                }">
+                  <div class="video-additional-section">
+                    <div class="complementary-section-title">
+                      <i class="fas fa-book"></i>
+                      <span>Materiais Complementares</span>
+                    </div>
+                    <ul class="complementary-materials-list">
+                      ${video.additionalContent.materials
+                        .map((item) => {
+                          if (item.includes("(link:")) {
+                            const linkMatch = item.match(/\((link:[^)]+)\)/);
+                            if (linkMatch) {
+                              const linkText = linkMatch[0]
+                                .replace("(link:", "")
+                                .replace(")", "");
+                              const displayText = item
+                                .replace(linkMatch[0], "")
+                                .trim();
+                              return `<li>${displayText} <a href="${linkText}" target="_blank" class="material-link"><i class="fas fa-external-link-alt"></i></a></li>`;
+                            }
+                          }
+                          return `<li>${item}</li>`;
+                        })
+                        .join("")}
+                    </ul>
+                  </div>
+                  
+                  <div class="video-additional-section">
+                    <div class="complementary-section-title">
+                      <i class="fas fa-lightbulb"></i>
+                      <span>Dicas de Estudo</span>
+                    </div>
+                    <ul class="complementary-list">
+                      ${video.additionalContent.tips
+                        .map((tip) => `<li>${tip}</li>`)
+                        .join("")}
+                    </ul>
+                  </div>
+                </div>
+              `;
+                  }
+
+                  videoHTML += `</div>`;
+                  return videoHTML;
+                })
+                .join("")
+            : '<p style="text-align: center; color: var(--text-secondary); padding: 10px;">Sem vídeos disponíveis no momento</p>';
+
+        const materialsContent =
+          material.materials && material.materials.length > 0
+            ? `
+          <div class="complementary-section">
+            <div class="complementary-section-title">
+              <i class="fas fa-book"></i>
+              <span>Materiais Gerais</span>
+            </div>
+            <ul class="complementary-materials-list">
+              ${material.materials
+                .map((item) => {
+                  if (item.includes("(link:")) {
+                    const linkMatch = item.match(/\((link:[^)]+)\)/);
+                    if (linkMatch) {
+                      const linkText = linkMatch[0]
+                        .replace("(link:", "")
+                        .replace(")", "");
+                      const displayText = item.replace(linkMatch[0], "").trim();
+                      return `<li>${displayText} <a href="${linkText}" target="_blank" class="material-link"><i class="fas fa-external-link-alt"></i></a></li>`;
+                    }
+                  }
+                  return `<li>${item}</li>`;
+                })
+                .join("")}
+            </ul>
+          </div>
+        `
+            : "";
+
+        cardBodyHTML = `
+        <div class="complementary-card-body">
+          <div class="complementary-videos">
+            <div class="complementary-section">
+              <div class="complementary-section-title">
+                <i class="fas fa-video"></i>
+                <span>Vídeos Recomendados</span>
+              </div>
+              <div class="complementary-videos-grid">
+                ${videosContent}
+              </div>
+            </div>
+            ${materialsContent}
+          </div>
+        </div>
+      `;
+      } else if (material.type === "rules") {
+        // Card de regras de fluência
+        cardBodyHTML = `
+        <div class="complementary-card-body">
+          <div class="rules-grid">
+            ${material.rules
+              .map(
+                (rule) => `
+              <div class="rule-card-small">
+                <div class="rule-icon-small">
+                  <i class="fas fa-${rule.icon}"></i>
+                </div>
+                <h4>${rule.title}</h4>
+                <p>${rule.description}</p>
+              </div>
+            `
+              )
+              .join("")}
+          </div>
+        </div>
+      `;
+      } else if (material.type === "grammar-videos") {
+        // Card de vídeos de gramática
+        cardBodyHTML = `
+    <div class="complementary-card-body">
+      <div class="grammar-videos-container">
+        
+        <!-- Introdução -->
+        <div class="grammar-intro">
+          <p><strong>Minha filosofia:</strong> Gramática deve ser aprendida em contexto, não em listas de regras. 
+          Estes vídeos focam na <em>aplicação prática</em> para comunicação real.</p>
+        </div>
+        
+        <!-- Playlists organizadas -->
+        <div class="complementary-section">
+          <div class="complementary-section-title">
+            <i class="fas fa-list-ol"></i>
+            <span>Playlists Organizadas</span>
+          </div>
+          
+          <div class="playlists-grid">
+            ${material.playlists
+              .map(
+                (playlist) => `
+              <div class="playlist-card">
+                <div class="playlist-header">
+                  <div class="playlist-icon">
+                    <i class="fas fa-play-circle"></i>
+                  </div>
+                  <div class="playlist-info">
+                    <h4>${playlist.name}</h4>
+                    <p class="playlist-creator">
+                      <i class="fas fa-user"></i> ${playlist.creator}
+                    </p>
+                    <p class="playlist-desc">${playlist.description}</p>
+                  </div>
+                </div>
+                
+                <div class="playlist-videos">
+                  <h5>Vídeos desta playlist:</h5>
+                  ${playlist.videos
                     .map(
                       (video) => `
-                    <div class="complementary-video-item">
+                    <div class="playlist-video-item">
                       <a href="https://www.youtube.com/watch?v=${
                         video.id
-                      }" target="_blank" class="complementary-video-card">
-                        <div class="complementary-video-icon">
-                          <i class="fas fa-play-circle"></i>
-                        </div>
-                        <div class="complementary-video-info">
-                          <div class="complementary-video-title">${
-                            video.title
-                          }</div>
-                          <div class="complementary-video-details">
-                            <span><i class="fas fa-clock"></i> ${
-                              video.duration
-                            }</span>
-                            <span>${video.channel}</span>
+                      }" target="_blank" class="video-link">
+                        <div class="video-thumb">
+                          <img src="https://img.youtube.com/vi/${
+                            video.id
+                          }/hqdefault.jpg" alt="${video.title}">
+                          <div class="video-overlay">
+                            <i class="fas fa-play"></i>
+                            <span class="duration">${video.duration}</span>
                           </div>
-                          <div class="complementary-video-desc">${
-                            video.description
-                          }</div>
+                        </div>
+                        <div class="video-details">
+                          <h6>${video.title}</h6>
+                          <div class="video-meta">
+                            <span class="difficulty difficulty-${video.difficulty.toLowerCase()}">
+                              ${video.difficulty}
+                            </span>
+                            <div class="video-tags">
+                              ${video.tags
+                                .map((tag) => `<span class="tag">${tag}</span>`)
+                                .join("")}
+                            </div>
+                          </div>
+                          <p class="video-description">${video.description}</p>
                         </div>
                       </a>
-                      
-                      ${
-                        video.additionalContent
-                          ? `
-                        <div class="video-additional-toggle">
-                          <button class="video-additional-btn" data-video="${
-                            video.id
-                          }">
-                            <i class="fas fa-plus-circle"></i>
-                            <span>Conteúdo Adicional</span>
-                          </button>
-                        </div>
-                        
-                        <div class="video-additional-content" id="additional-${
-                          video.id
-                        }">
-                          <div class="video-additional-section">
-                            <div class="complementary-section-title">
-                              <i class="fas fa-book"></i>
-                              <span>Materiais Complementares</span>
-                            </div>
-                            <ul class="complementary-materials-list">
-                              ${video.additionalContent.materials
-                                .map((item) => {
-                                  if (item.includes("(link:")) {
-                                    const linkMatch =
-                                      item.match(/\((link:[^)]+)\)/);
-                                    if (linkMatch) {
-                                      const linkText = linkMatch[0]
-                                        .replace("(link:", "")
-                                        .replace(")", "");
-                                      const displayText = item
-                                        .replace(linkMatch[0], "")
-                                        .trim();
-                                      return `<li>${displayText} <a href="${linkText}" target="_blank" class="material-link"><i class="fas fa-external-link-alt"></i></a></li>`;
-                                    }
-                                  }
-                                  return `<li>${item}</li>`;
-                                })
-                                .join("")}
-                            </ul>
-                          </div>
-                          
-                          <div class="video-additional-section">
-                            <div class="complementary-section-title">
-                              <i class="fas fa-lightbulb"></i>
-                              <span>Dicas de Estudo</span>
-                            </div>
-                            <ul class="complementary-list">
-                              ${video.additionalContent.tips
-                                .map((tip) => `<li>${tip}</li>`)
-                                .join("")}
-                            </ul>
-                          </div>
-                        </div>
-                      `
-                          : ""
-                      }
                     </div>
                   `
                     )
                     .join("")}
                 </div>
-              </div>
-              
-              <div class="complementary-section">
-                <div class="complementary-section-title">
-                  <i class="fas fa-book"></i>
-                  <span>Materiais Gerais</span>
+                
+                <div class="playlist-actions">
+                  <a href="${
+                    playlist.link
+                  }" target="_blank" class="playlist-link-btn">
+                    <i class="fab fa-youtube"></i> Ver playlist completa
+                  </a>
                 </div>
-                <ul class="complementary-materials-list">
-                  ${
-                    material.materials
-                      ? material.materials
-                          .map((item) => {
-                            if (item.includes("(link:")) {
-                              const linkMatch = item.match(/\((link:[^)]+)\)/);
-                              if (linkMatch) {
-                                const linkText = linkMatch[0]
-                                  .replace("(link:", "")
-                                  .replace(")", "");
-                                const displayText = item
-                                  .replace(linkMatch[0], "")
-                                  .trim();
-                                return `<li>${displayText} <a href="${linkText}" target="_blank" class="material-link"><i class="fas fa-external-link-alt"></i></a></li>`;
-                              }
-                            }
-                            return `<li>${item}</li>`;
-                          })
-                          .join("")
-                      : ""
+              </div>
+            `
+              )
+              .join("")}
+          </div>
+        </div>
+        
+        <!-- Vídeos individuais recomendados -->
+        <div class="complementary-section">
+          <div class="complementary-section-title">
+            <i class="fas fa-star"></i>
+            <span>Vídeos Específicos que Recomendo</span>
+          </div>
+          
+          <div class="individual-videos-grid">
+            ${material.individualVideos
+              .map(
+                (video) => `
+              <div class="individual-video-card">
+                <div class="video-main">
+                  <div class="video-thumb-large">
+                    <img src="https://img.youtube.com/vi/${
+                      video.id
+                    }/hqdefault.jpg" alt="${video.title}">
+                    <div class="video-overlay-large">
+                      <i class="fas fa-play"></i>
+                    </div>
+                    <div class="video-duration-large">${video.duration}</div>
+                  </div>
+                  
+                  <div class="video-content">
+                    <h4>${video.title}</h4>
+                    <p class="video-creator">
+                      <i class="fas fa-user"></i> ${video.creator}
+                    </p>
+                    <p class="video-description-large">${video.description}</p>
+                    
+                    ${
+                      video.whyRecommend
+                        ? `
+                      <div class="why-recommend">
+                        <strong><i class="fas fa-thumbs-up"></i> Por que recomendo:</strong>
+                        <p>${video.whyRecommend}</p>
+                      </div>
+                    `
+                        : ""
+                    }
+                    
+                    <div class="video-meta-large">
+                      <span class="difficulty difficulty-${
+                        video.difficulty
+                          ? video.difficulty.toLowerCase().split(" ")[0]
+                          : "intermediate"
+                      }">
+                        ${video.difficulty || "Intermediário"}
+                      </span>
+                      <div class="video-tags-large">
+                        ${
+                          video.tags
+                            ? video.tags
+                                .map((tag) => `<span class="tag">${tag}</span>`)
+                                .join("")
+                            : ""
+                        }
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="video-actions">
+                  <a href="https://www.youtube.com/watch?v=${
+                    video.id
+                  }" target="_blank" class="watch-btn">
+                    <i class="fab fa-youtube"></i> Assistir no YouTube
+                  </a>
+                  <button class="save-btn" data-video-id="${video.id}">
+                    <i class="far fa-bookmark"></i> Salvar para depois
+                  </button>
+                </div>
+              </div>
+            `
+              )
+              .join("")}
+          </div>
+        </div>
+        
+        <!-- Níveis de recomendação -->
+        <div class="complementary-section">
+          <div class="complementary-section-title">
+            <i class="fas fa-chart-bar"></i>
+            <span>Recomendação por Nível</span>
+          </div>
+          
+          <div class="recommendation-levels">
+            ${Object.entries(material.recommendationLevels)
+              .map(
+                ([level, items]) => `
+              <div class="level-card level-${level}">
+                <h4>
+                  <i class="fas fa-${
+                    level === "beginner"
+                      ? "seedling"
+                      : level === "intermediate"
+                      ? "leaf"
+                      : "tree"
+                  }"></i>
+                  Para ${
+                    level === "beginner"
+                      ? "Iniciantes"
+                      : level === "intermediate"
+                      ? "Intermediários"
+                      : "Avançados"
                   }
+                </h4>
+                <ul>
+                  ${items.map((item) => `<li>${item}</li>`).join("")}
                 </ul>
               </div>
+            `
+              )
+              .join("")}
+          </div>
+        </div>
+        
+        <!-- Dicas de estudo -->
+        <div class="complementary-section">
+          <div class="complementary-section-title">
+            <i class="fas fa-lightbulb"></i>
+            <span>Como Estudar com Estes Vídeos</span>
+          </div>
+          
+          <div class="study-tips">
+            <div class="tips-steps">
+              ${material.studyTips
+                .map(
+                  (tip, index) => `
+                <div class="tip-step">
+                  <div class="step-number">${index + 1}</div>
+                  <div class="step-content">${tip}</div>
+                </div>
+              `
+                )
+                .join("")}
+            </div>
+            
+            <div class="pro-tip">
+              <strong><i class="fas fa-gem"></i> Dica Pro:</strong>
+              Grave você mesmo explicando o conceito após assistir. Ensine para consolidar!
             </div>
           </div>
-        `;
-      } else if (material.type === "rules") {
-        // Card de regras de fluência
+        </div>
+        
+      </div>
+    </div>
+  `;
+      } else if (material.type === "timeline") {
+        // Card de timeline/roadmap
         cardBodyHTML = `
-          <div class="complementary-card-body">
-            <div class="rules-grid">
-              ${material.rules
+        <div class="complementary-card-body">
+          <div class="complementary-section">
+            <div class="complementary-section-title">
+              <i class="fas fa-road"></i>
+              <span>Roadmap de 6 Meses</span>
+            </div>
+            <div class="timeline-container">
+              ${material.months
                 .map(
-                  (rule) => `
-                <div class="rule-card-small">
-                  <div class="rule-icon-small">
-                    <i class="fas fa-${rule.icon}"></i>
+                  (month) => `
+                <div class="timeline-month">
+                  <div class="timeline-month-header">
+                    <h4>${month.month}</h4>
+                    <span class="timeline-theme">${month.theme}</span>
                   </div>
-                  <h4>${rule.title}</h4>
-                  <p>${rule.description}</p>
+                  <div class="timeline-month-content">
+                    <p><strong>Meta:</strong> ${month.goal}</p>
+                    <p><strong>Foco:</strong> ${month.focus}</p>
+                    <p><strong>Marcador:</strong> ${month.marker}</p>
+                  </div>
                 </div>
               `
                 )
                 .join("")}
             </div>
           </div>
-        `;
-      } else {
-        // Card padrão (exemplos e dicas)
+        </div>
+      `;
+      } else if (material.type === "schedule") {
+        // Card de cronograma
         cardBodyHTML = `
-          <div class="complementary-card-body">
-            <div class="complementary-section">
-              <div class="complementary-section-title">
-                <i class="fas fa-star"></i>
-                <span>Exemplos Recomendados</span>
-              </div>
-              <ul class="complementary-list">
-                ${material.examples
-                  .map((example) => `<li>${example}</li>`)
-                  .join("")}
-              </ul>
+        <div class="complementary-card-body">
+          <div class="complementary-section">
+            <div class="complementary-section-title">
+              <i class="fas fa-calendar-day"></i>
+              <span>Fórmula Diária</span>
             </div>
-            
-            <div class="complementary-section">
-              <div class="complementary-section-title">
-                <i class="fas fa-lightbulb"></i>
-                <span>Dicas Práticas</span>
-              </div>
-              <ul class="complementary-list">
-                ${material.tips.map((tip) => `<li>${tip}</li>`).join("")}
+            <div class="schedule-grid">
+              ${material.schedule
+                .map(
+                  (item) => `
+                <div class="schedule-item">
+                  <div class="schedule-time">${item.time}</div>
+                  <div class="schedule-activity">
+                    <h5>${item.activity}</h5>
+                    <ul>
+                      ${item.examples
+                        .map((example) => `<li>${example}</li>`)
+                        .join("")}
+                    </ul>
+                  </div>
+                </div>
+              `
+                )
+                .join("")}
+            </div>
+          </div>
+        </div>
+      `;
+      } else if (material.type === "checkpoints") {
+        // Card de marcadores de progresso
+        cardBodyHTML = `
+        <div class="complementary-card-body">
+          <div class="complementary-section">
+            <div class="complementary-section-title">
+              <i class="fas fa-chart-line"></i>
+              <span>Marcadores de Progresso</span>
+            </div>
+            <div class="checkpoints-container">
+              ${material.markers
+                .map(
+                  (marker) => `
+                <div class="checkpoint-stage">
+                  <h5>${marker.stage}</h5>
+                  <ul class="checkpoint-signs">
+                    ${marker.signs.map((sign) => `<li>${sign}</li>`).join("")}
+                  </ul>
+                </div>
+              `
+                )
+                .join("")}
+            </div>
+          </div>
+        </div>
+      `;
+      } else if (material.type === "warnings") {
+        // Card de erros a evitar
+        cardBodyHTML = `
+        <div class="complementary-card-body">
+          <div class="complementary-section">
+            <div class="complementary-section-title">
+              <i class="fas fa-exclamation-triangle"></i>
+              <span>Erros a Evitar</span>
+            </div>
+            <div class="warnings-container">
+              ${material.warnings
+                .map(
+                  (warning) => `
+                <div class="warning-item">
+                  <h5>${warning.mistake}</h5>
+                  <p><strong>Por que evitar:</strong> ${warning.why}</p>
+                  <p><strong>Solução:</strong> ${warning.solution}</p>
+                </div>
+              `
+                )
+                .join("")}
+            </div>
+          </div>
+        </div>
+      `;
+      } else if (material.type === "challenge") {
+        // Card de desafio
+        cardBodyHTML = `
+        <div class="complementary-card-body">
+          <div class="complementary-section">
+            <div class="complementary-section-title">
+              <i class="fas fa-trophy"></i>
+              <span>Desafio dos 180 Dias</span>
+            </div>
+            <div class="challenge-container">
+              <p class="challenge-commitment">${material.commitment}</p>
+              <h5>Regras do Desafio:</h5>
+              <ul class="challenge-rules">
+                ${material.rules.map((rule) => `<li>${rule}</li>`).join("")}
               </ul>
             </div>
           </div>
-        `;
+        </div>
+      `;
+      } else if (material.type === "manifesto") {
+        // Card de manifesto
+        cardBodyHTML = `
+        <div class="complementary-card-body">
+          <div class="complementary-section">
+            <div class="complementary-section-title">
+              <i class="fas fa-bullhorn"></i>
+              <span>Manifesto da Fluência Rápida</span>
+            </div>
+            <div class="manifesto-container">
+              <div class="manifesto-section">
+                <h5>PARA QUEM:</h5>
+                <ul>
+                  ${material.forWho.map((item) => `<li>${item}</li>`).join("")}
+                </ul>
+              </div>
+              <div class="manifesto-section">
+                <h5>ESTE MÉTODO NÃO É:</h5>
+                <ul class="manifesto-not">
+                  ${material.thisIsNot
+                    .map((item) => `<li>${item}</li>`)
+                    .join("")}
+                </ul>
+              </div>
+              <div class="manifesto-section">
+                <h5>ESTE MÉTODO É:</h5>
+                <ul class="manifesto-is">
+                  ${material.thisIs.map((item) => `<li>${item}</li>`).join("")}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      } else if (material.type === "outcomes") {
+        // Card de resultados
+        cardBodyHTML = `
+        <div class="complementary-card-body">
+          <div class="complementary-section">
+            <div class="complementary-section-title">
+              <i class="fas fa-flag-checkered"></i>
+              <span>Dia 180: Linha de Chegada</span>
+            </div>
+            <div class="outcomes-container">
+              <h5>Você será capaz de:</h5>
+              <ul class="outcomes-list">
+                ${material.willBeAbleTo
+                  .map((item) => `<li>✓ ${item}</li>`)
+                  .join("")}
+              </ul>
+            </div>
+          </div>
+        </div>
+      `;
+      } else if (material.type === "actionable") {
+        // Card de ações práticas
+        cardBodyHTML = `
+        <div class="complementary-card-body">
+          <div class="complementary-section">
+            <div class="complementary-section-title">
+              <i class="fas fa-play-circle"></i>
+              <span>Primeiro Passo (Hoje Mesmo)</span>
+            </div>
+            <div class="actions-container">
+              ${material.actions
+                .map(
+                  (action) => `
+                <div class="action-item">
+                  <div class="action-header">
+                    <h5>${action.action}</h5>
+                  </div>
+                  <p><strong>Como fazer:</strong> ${action.instructions}</p>
+                  <p><strong>Propósito:</strong> ${action.purpose}</p>
+                </div>
+              `
+                )
+                .join("")}
+            </div>
+          </div>
+        </div>
+      `;
+      } else if (material.type === "tools") {
+        // Card de ferramentas e recursos
+        cardBodyHTML = `
+    <div class="complementary-card-body">
+      <div class="complementary-section">
+        <div class="complementary-section-title">
+          <i class="fas fa-tools"></i>
+          <span>Recursos & Ferramentas</span>
+        </div>
+        
+        <div class="tools-intro">
+          <p>Aqui estão os recursos que uso pessoalmente e recomendo para acelerar seu aprendizado. 
+          Todos foram testados e aprovados!</p>
+        </div>
+        
+        ${material.categories
+          .map(
+            (category) => `
+          <div class="tools-category">
+            <h4 class="tools-category-title">
+              <i class="fas fa-${category.icon || "folder"}"></i>
+              ${category.name}
+            </h4>
+            <div class="tools-items-grid">
+              ${category.items
+                .map(
+                  (item) => `
+                <div class="tool-item">
+                  <div class="tool-header">
+                    <div class="tool-icon">
+                      <i class="fas fa-${item.icon || "link"}"></i>
+                    </div>
+                    <div class="tool-info">
+                      <h5>${item.name}</h5>
+                      <p class="tool-desc">${item.description}</p>
+                    </div>
+                  </div>
+                  
+                  <div class="tool-content">
+                    ${
+                      item.myReview
+                        ? `
+                      <div class="tool-review">
+                        <strong><i class="fas fa-star"></i> Minha avaliação:</strong>
+                        <p>${item.myReview}</p>
+                      </div>
+                    `
+                        : ""
+                    }
+                    
+                    <div class="tool-actions">
+                      <a href="${item.link}" target="_blank" class="tool-link">
+                        <i class="fas fa-external-link-alt"></i> Acessar
+                      </a>
+                      ${
+                        item.isFree
+                          ? '<span class="tool-badge free">Gratuito</span>'
+                          : ""
+                      }
+                      ${
+                        item.isPaid
+                          ? '<span class="tool-badge paid">Premium</span>'
+                          : ""
+                      }
+                    </div>
+                  </div>
+                </div>
+              `
+                )
+                .join("")}
+            </div>
+          </div>
+        `
+          )
+          .join("")}
+        
+        ${
+          material.tips && material.tips.length > 0
+            ? `
+          <div class="tools-tips">
+            <h4 class="tools-tips-title">
+              <i class="fas fa-lightbulb"></i>
+              Dicas de Uso
+            </h4>
+            <ul class="tools-tips-list">
+              ${material.tips.map((tip) => `<li>${tip}</li>`).join("")}
+            </ul>
+          </div>
+        `
+            : ""
+        }
+      </div>
+    </div>
+  `;
+      } else {
+        // Card padrão (fallback)
+        cardBodyHTML = `
+        <div class="complementary-card-body">
+          <p style="text-align: center; color: var(--text-secondary); padding: 20px;">
+            Conteúdo em desenvolvimento
+          </p>
+        </div>
+      `;
       }
 
       cardContent.innerHTML = cardBodyHTML;
@@ -358,11 +880,20 @@ document.addEventListener("DOMContentLoaded", function () {
         );
         toggleCard(targetId, targetContent, this);
       });
+
+      // Configurar toggles de conteúdo adicional dos vídeos (se houver)
+      if (
+        material.type === "videos" &&
+        material.videos &&
+        material.videos.some((v) => v.additionalContent)
+      ) {
+        // Configuração será feita após o timeout abaixo
+      }
     });
 
     complementaryContent.appendChild(materialsGrid);
 
-    // Configurar toggles de conteúdo adicional dos vídeos
+    // Configurar toggles de conteúdo adicional dos vídeos (após renderização)
     setTimeout(() => {
       const videoAdditionalButtons = document.querySelectorAll(
         ".video-additional-btn"
@@ -423,6 +954,95 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleCard("my-videos", firstCardContent, firstCardToggle);
       }
     }, 200);
+
+    // Adicionar funcionalidade ao botão "Salvar para depois"
+    setTimeout(() => {
+      const saveButtons = document.querySelectorAll(".save-btn");
+      saveButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          const videoId = this.dataset.videoId;
+          const videoTitle = this.closest(
+            ".individual-video-card"
+          ).querySelector("h4").textContent;
+
+          // Salvar no localStorage
+          let savedVideos =
+            JSON.parse(localStorage.getItem("savedGrammarVideos")) || [];
+
+          if (!savedVideos.find((v) => v.id === videoId)) {
+            savedVideos.push({
+              id: videoId,
+              title: videoTitle,
+              savedAt: new Date().toISOString(),
+            });
+            localStorage.setItem(
+              "savedGrammarVideos",
+              JSON.stringify(savedVideos)
+            );
+
+            // Feedback visual
+            const icon = this.querySelector("i");
+            icon.classList.remove("fa-bookmark", "far");
+            icon.classList.add("fa-check", "fas");
+            this.textContent = " Salvo!";
+            this.style.backgroundColor = "rgba(63, 185, 80, 0.2)";
+            this.style.borderColor = "var(--accent-green)";
+
+            setTimeout(() => {
+              icon.classList.remove("fa-check", "fas");
+              icon.classList.add("fa-bookmark", "far");
+              this.innerHTML =
+                '<i class="far fa-bookmark"></i> Salvar para depois';
+              this.style.backgroundColor = "";
+              this.style.borderColor = "";
+            }, 2000);
+          } else {
+            // Já está salvo
+            const icon = this.querySelector("i");
+            icon.classList.remove("fa-bookmark", "far");
+            icon.classList.add("fa-check", "fas");
+            this.textContent = " Já salvo";
+
+            setTimeout(() => {
+              icon.classList.remove("fa-check", "fas");
+              icon.classList.add("fa-bookmark", "far");
+              this.innerHTML =
+                '<i class="far fa-bookmark"></i> Salvar para depois';
+            }, 1500);
+          }
+        });
+      });
+    }, 300);
+  }
+
+  // Adicione esta função em algum lugar do seu código
+  function showSavedVideos() {
+    const savedVideos =
+      JSON.parse(localStorage.getItem("savedGrammarVideos")) || [];
+
+    if (savedVideos.length === 0) {
+      return '<p style="text-align: center; color: var(--text-secondary); padding: 20px;">Nenhum vídeo salvo ainda.</p>';
+    }
+
+    return `
+    <div class="saved-videos-list">
+      <h4>📌 Seus vídeos salvos:</h4>
+      ${savedVideos
+        .map(
+          (video) => `
+        <div class="saved-video-item">
+          <a href="https://www.youtube.com/watch?v=${video.id}" target="_blank">
+            <i class="fab fa-youtube"></i> ${video.title}
+          </a>
+          <span class="saved-date">Salvo em ${new Date(
+            video.savedAt
+          ).toLocaleDateString("pt-BR")}</span>
+        </div>
+      `
+        )
+        .join("")}
+    </div>
+  `;
   }
 
   // Renderizar o plano de estudos

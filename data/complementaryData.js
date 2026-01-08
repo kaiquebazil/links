@@ -21,190 +21,599 @@ export const complementaryMaterials = [
         channel: "Kaique's Growth Journal",
         description: "Regras essenciais para acelerar seu aprendizado",
       },
-      // {
-      //   id: "F5tF5QwQj5M",
-      //   title: "Listening Practice - Entenda Nativos",
-      //   duration: "30:20",
-      //   channel: "Ouvir e Aprender",
-      //   description: "Exercícios de compreensão auditiva",
-      //   additionalContent: {
-      //     materials: [
-      //       "PDF: Transcrição Completa (link: https://example.com/transcricao.pdf)",
-      //       "Áudio: Versão Lenta e Rápida",
-      //       "Exercícios: Compreensão Oral",
-      //       "Quiz: Teste seu Entendimento",
-      //     ],
-      //     tips: [
-      //       "Comece com legendas em português",
-      //       "Depois mude para legendas em inglês",
-      //       "Finalmente assista sem legendas",
-      //     ],
-      //   },
-      // },
     ],
     materials: [
       "Playlist completa: (link: https://www.youtube.com/playlist?list=PLTzvJzAFb2UzLfI71n9ebaV1AHqpwIOYH)",
-      // "Exercícios: Atividades baseadas nos vídeos",
+    ],
+  },
+  // Adicione este objeto ao final do array complementaryMaterials em complementaryData.js
+  {
+    id: "resources-tools",
+    title: "📱 Recursos & Aplicativos que Uso",
+    description:
+      "Ferramentas, aplicativos e recursos que uso/recomendo para acelerar o aprendizado",
+    type: "tools",
+    categories: [
+      {
+        name: "🎧 Aplicativos de Pronúncia",
+        items: [
+          {
+            name: "Elsa Speak",
+            description: "Correção de pronúncia com IA",
+            link: "https://elsaspeak.com",
+            icon: "microphone-alt",
+            myReview:
+              "Ótimo para identificar e corrigir erros específicos de pronúncia",
+          },
+          {
+            name: "Sounds: The Pronunciation App",
+            description: "Foco nos sons do inglês",
+            link: "https://apps.apple.com/us/app/sounds-the-pronunciation-app/id493324438",
+            icon: "volume-up",
+          },
+        ],
+      },
+      {
+        name: "📚 Aulas de Gramática",
+        items: [
+          {
+            name: "English Grammar in Use (App)",
+            description: "Exercícios interativos do livro clássico",
+            link: "https://www.cambridge.org/grammarinuse",
+            icon: "book",
+            myReview: "O melhor para prática de gramática contextualizada",
+          },
+          {
+            name: "Grammarly",
+            description: "Corretor gramatical avançado",
+            link: "https://www.grammarly.com",
+            icon: "spell-check",
+            myReview: "Uso diariamente para escrever emails e textos",
+          },
+          {
+            name: "Canal: English with Lucy",
+            description: "Gramática com explicações claras",
+            link: "https://www.youtube.com/c/EnglishwithLucy",
+            icon: "chalkboard-teacher",
+            myReview: "Explicações visuais excelentes para regras complexas",
+          },
+        ],
+      },
+      {
+        name: "🗣️ Prática de Conversação",
+        items: [
+          {
+            name: "HelloTalk",
+            description: "Troca de idiomas com nativos",
+            link: "https://www.hellotalk.com",
+            icon: "comments",
+            myReview: "Uso 2x por semana para conversas reais",
+          },
+          {
+            name: "Tandem",
+            description: "Comunidade de intercâmbio linguístico",
+            link: "https://www.tandem.net",
+            icon: "user-friends",
+          },
+          {
+            name: "Preply/iTalki",
+            description: "Aulas particulares com professores",
+            link: "https://preply.com",
+            icon: "graduation-cap",
+            myReview: "Recomendo 1 aula por semana para correção direta",
+          },
+        ],
+      },
+      {
+        name: "🧠 Memória & Vocabulário",
+        items: [
+          {
+            name: "Anki",
+            description: "Flashcards espaçados (gratuito)",
+            link: "https://apps.ankiweb.net",
+            icon: "layer-group",
+            myReview: "Essencial para memorizar vocabulário novo",
+          },
+          {
+            name: "Quizlet",
+            description: "Flashcards com jogos",
+            link: "https://quizlet.com",
+            icon: "gamepad",
+          },
+          {
+            name: "Memrise",
+            description: "Aprendizado com vídeos de nativos",
+            link: "https://www.memrise.com",
+            icon: "video",
+          },
+        ],
+      },
+      {
+        name: "🎬 Entretenimento & Imersão",
+        items: [
+          {
+            name: "Language Reactor (extensão Chrome)",
+            description: "Legendagem dupla para Netflix/YouTube",
+            link: "https://www.languagereactor.com",
+            icon: "chrome",
+            myReview: "Revolucionou como assisto séries em inglês",
+          },
+          {
+            name: "Spotify (minhas playlists)",
+            description: "Música em inglês com letras",
+            link: "https://open.spotify.com/playlist/...",
+            icon: "spotify",
+            myReview: "Escuto diariamente no caminho/trabalho",
+          },
+          {
+            name: "Audible",
+            description: "Audiobooks em inglês",
+            link: "https://www.audible.com",
+            icon: "headphones",
+          },
+        ],
+      },
+      // {
+      //   name: "📝 Ferramentas de Escrita",
+      //   items: [
+      //     {
+      //       name: "DeepL Write",
+      //       description: "Reescreve textos de forma natural",
+      //       link: "https://www.deepl.com/write",
+      //       icon: "pen-fancy",
+      //       myReview: "Melhor que o tradutor comum para frases complexas",
+      //     },
+      //     {
+      //       name: "Hemingway Editor",
+      //       description: "Simplifica escrita para clareza",
+      //       link: "https://hemingwayapp.com",
+      //       icon: "edit",
+      //     },
+      //     {
+      //       name: "Notion",
+      //       description: "Organização de estudos",
+      //       link: "https://www.notion.so",
+      //       icon: "sticky-note",
+      //       myReview: "Uso para planejar semana de estudos",
+      //     },
+      //   ],
+      // },
+    ],
+    tips: [
+      "Combine 2-3 apps diferentes para cobrir todas as habilidades",
+      "Use a função 'Lembretes Diários' dos apps",
+      "Foque em QUALIDADE de uso, não quantidade de apps",
+      "Desative notificações desnecessárias para evitar distrações",
+    ],
+  },
+  // Adicione este objeto ao final do array complementaryMaterials em complementaryData.js
+  // {
+  //   id: "grammar-videos",
+  //   title: "🎬 Vídeos de Gramática que Recomendo",
+  //   description:
+  //     "Playlists e vídeos específicos que uso para ensinar/aprender gramática de forma prática",
+  //   type: "grammar-videos",
+  //   playlists: [
+  //     {
+  //       name: "📚 Gramática Essencial para Iniciantes",
+  //       creator: "Kaique Bazil (Meu canal)",
+  //       description:
+  //         "Série focada nas estruturas gramaticais mais importantes para começar",
+  //       link: "https://www.youtube.com/playlist?list=...",
+  //       videos: [
+  //         {
+  //           id: "abc123", // ID do YouTube
+  //           title: "Verbo TO BE: Aprenda de uma vez por todas!",
+  //           duration: "8:15",
+  //           description:
+  //             "Explicação prática do verbo mais importante do inglês",
+  //           difficulty: "Iniciante",
+  //           tags: ["verb-to-be", "básico", "essencial"],
+  //         },
+  //         {
+  //           id: "def456",
+  //           title: "Presente Simples: Como falar sobre rotina",
+  //           duration: "10:30",
+  //           description: "Domine o tempo verbal mais usado no dia a dia",
+  //           difficulty: "Iniciante",
+  //           tags: ["present-simple", "rotina", "habitos"],
+  //         },
+  //         {
+  //           id: "ghi789",
+  //           title: "Passado Simples: Conte histórias em inglês",
+  //           duration: "12:45",
+  //           description: "Aprenda a falar sobre experiências passadas",
+  //           difficulty: "Intermediário",
+  //           tags: ["past-simple", "histórias", "experiências"],
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       name: "🔍 Gramática Avançada e Nuances",
+  //       creator: "English with Lucy",
+  //       description: "Detalhes e exceções para quem quer dominar a gramática",
+  //       link: "https://www.youtube.com/playlist?list=...",
+  //       videos: [
+  //         {
+  //           id: "jkl012",
+  //           title: "Conditionals: Todos os tipos explicados",
+  //           duration: "15:20",
+  //           description: "If clauses do zero ao terceiro condicional",
+  //           difficulty: "Avançado",
+  //           tags: ["conditionals", "if-clauses", "hipotéticos"],
+  //         },
+  //         {
+  //           id: "mno345",
+  //           title: "Phrasal Verbs: Os 50 mais usados",
+  //           duration: "18:30",
+  //           description: "Verbos frasais essenciais para fluência",
+  //           difficulty: "Intermediário-Avançado",
+  //           tags: ["phrasal-verbs", "expressões", "informal"],
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       name: "🎯 Gramática para Conversação",
+  //       creator: "mmmEnglish",
+  //       description: "Foque na gramática que realmente importa para falar",
+  //       link: "https://www.youtube.com/playlist?list=...",
+  //       videos: [
+  //         {
+  //           id: "pqr678",
+  //           title: "Como fazer perguntas naturalmente",
+  //           duration: "11:15",
+  //           description: "Estruturas de pergunta para conversas reais",
+  //           difficulty: "Intermediário",
+  //           tags: ["perguntas", "conversação", "diálogo"],
+  //         },
+  //         {
+  //           id: "stu901",
+  //           title: "Contrações: Fale como um nativo",
+  //           duration: "9:40",
+  //           description: "I'm, don't, won't, etc. - use como nativos",
+  //           difficulty: "Todos os níveis",
+  //           tags: ["contractions", "pronúncia", "naturalidade"],
+  //         },
+  //       ],
+  //     },
+  //   ],
+
+  //   // individualVideos: [
+  //   //   {
+  //   //     id: "vwx234",
+  //   //     title: "🚀 Meu Método para Estudar Gramática",
+  //   //     creator: "Kaique Bazil",
+  //   //     duration: "14:25",
+  //   //     description:
+  //   //       "Como estudo gramática de forma eficiente (sem decorar regras)",
+  //   //     whyRecommend: "Mostro minha abordagem prática em vez de teórica",
+  //   //     difficulty: "Todos os níveis",
+  //   //     tags: ["método", "estratégia", "eficiencia"],
+  //   //   },
+  //   //   {
+  //   //     id: "yzab567",
+  //   //     title: "Os 3 Erros de Gramática que Todo Brasileiro Comete",
+  //   //     creator: "Small Advantage",
+  //   //     duration: "13:10",
+  //   //     description: "Erros comuns e como corrigi-los",
+  //   //     whyRecommend: "Foco específico em problemas de falantes de português",
+  //   //     difficulty: "Intermediário",
+  //   //     tags: ["erros-comuns", "português-inglês", "correção"],
+  //   //   },
+  //   //   {
+  //   //     id: "cdef890",
+  //   //     title: "Gramática Visual: Aprenda com Diagramas",
+  //   //     creator: "English Lessons with Adam",
+  //   //     duration: "16:45",
+  //   //     description: "Explicações visuais de estruturas complexas",
+  //   //     whyRecommend: "Abordagem visual que facilita compreensão",
+  //   //     difficulty: "Intermediário-Avançado",
+  //   //     tags: ["visual", "diagramas", "estruturas-complexas"],
+  //   //   },
+  //   // ],
+  //   studyTips: [
+  //     "Assista o vídeo uma vez sem pausar para entender o contexto",
+  //     "Assista novamente pausando para fazer anotações",
+  //     "Pratique imediatamente criando suas próprias frases",
+  //     "Reveja após 24h e 7 dias para consolidação",
+  //   ],
+  //   recommendationLevels: {
+  //     beginner: ["📚 Gramática Essencial para Iniciantes"],
+  //     intermediate: [
+  //       "🎯 Gramática para Conversação",
+  //       "individualVideos[0]",
+  //       "individualVideos[1]",
+  //     ],
+  //     advanced: ["🔍 Gramática Avançada e Nuances", "individualVideos[2]"],
+  //   },
+  // },
+  {
+    id: "fluency-pillars",
+    title: "🔥 OS 7 PILARES PARA FLUÊNCIA EM 6 MESES",
+    description: "Princípios fundamentais baseados em evidências científicas",
+    type: "rules",
+    rules: [
+      {
+        icon: "water", // Imersão -> água
+        title: "Imersão Inteligente (70/30)",
+        description:
+          "70% conteúdo compreensível + 30% desafio. Contexto > Tradução",
+      },
+      {
+        icon: "microphone-alt", // Fala -> microfone
+        title: "Fala Desde o Dia 1",
+        description:
+          "5 minutos falando > 1 hora estudando. Errar é obrigatório",
+      },
+      {
+        icon: "book", // Vocabulário -> livro
+        title: "Vocabulário Estratégico (2.000 palavras)",
+        description:
+          "Foco nas palavras que cobrem 90% das conversas cotidianas",
+      },
+      {
+        icon: "cogs", // Gramática -> engrenagens
+        title: "Gramática Funcional",
+        description:
+          "Aprender o que PRECISA para se expressar, não tudo que existe",
+      },
+      {
+        icon: "volume-up", // Pronúncia -> volume
+        title: "Pronúncia Compreensível",
+        description:
+          "Ser entendido, não ter sotaque perfeito. Foco em sons problemáticos",
+      },
+      {
+        icon: "brain", // Mindset -> cérebro
+        title: "Mindset de Fluência",
+        description:
+          "'Eu já consigo me comunicar com o que sei'. Progresso em comunicação, não perfeição",
+      },
+      {
+        icon: "calendar-check", // Consistência -> calendário com check
+        title: "Consistência > Intensidade",
+        description:
+          "30 minutos todos os dias é melhor que 5 horas só no sábado. Sistema > Meta",
+      },
+    ],
+  },
+  {
+    id: "6month-roadmap",
+    title: "🗓️ ROADMAP DE 180 DIAS PARA FLUÊNCIA",
+    description: "Metas mensuráveis mês a mês",
+    type: "timeline",
+    months: [
+      {
+        month: "Mês 1",
+        theme: "Sobrevivência Conversacional",
+        goal: "Cumprimentar, pedir coisas, informações básicas",
+        focus: "Frases prontas, pronúncia clara, 300 palavras",
+        marker: "Consegue pedir um café sem hesitar",
+      },
+      {
+        month: "Mês 2",
+        theme: "Vida Cotidiana",
+        goal: "Falar sobre rotina, família, trabalho, hobbies",
+        focus: "Presente simples, vocabulário concreto, 700 palavras",
+        marker: "Consegue contar como foi seu dia",
+      },
+      {
+        month: "Mês 3",
+        theme: "Passado e Experiências",
+        goal: "Contar histórias, falar sobre viagens, infância",
+        focus: "Passado simples, conectores de tempo, 1.200 palavras",
+        marker: "Consegue dar sua opinião sobre um filme",
+      },
+      {
+        month: "Mês 4",
+        theme: "Opiniões e Sentimentos",
+        goal: "Expressar o que pensa e sente",
+        focus: "Adjetivos, estruturas de opinião, modal verbs, 1.600 palavras",
+        marker: "Consegue contar uma história interessante",
+      },
+      {
+        month: "Mês 5",
+        theme: "Tópicos Complexos",
+        goal: "Debater, argumentar, explicar conceitos",
+        focus: "Vocabulário abstrato, estruturas complexas, 2.000 palavras",
+        marker: "Consegue explicar seu trabalho/hobby em detalhes",
+      },
+      {
+        month: "Mês 6",
+        theme: "Fluência Natural",
+        goal: "Pensar em inglês, improvisar, adaptar-se",
+        focus: "Velocidade, naturalidade, filler words, 2.500+ palavras",
+        marker: "Consegue falar 5 minutos sobre qualquer tema que domina",
+      },
+    ],
+  },
+
+  // {
+  //   id: "daily-formula",
+  //   title: "⚡ FÓRMULA DO SUCESSO DIÁRIO",
+  //   description: "Estrutura otimizada para máximo resultado em mínimo tempo",
+  //   type: "schedule",
+  //   schedule: [
+  //     {
+  //       time: "30 minutos",
+  //       activity: "Input Compreensível",
+  //       examples: [
+  //         "Vídeos com legenda EM INGLÊS",
+  //         "Podcasts para aprendizes",
+  //         "Séries que você já conhece",
+  //       ],
+  //     },
+  //     {
+  //       time: "30 minutos",
+  //       activity: "Prática Ativa",
+  //       examples: [
+  //         "Falar sozinho sobre seu dia",
+  //         "Gravações próprias",
+  //         "Shadowing (repetir após nativos)",
+  //       ],
+  //     },
+  //     {
+  //       time: "30 minutos",
+  //       activity: "Vocabulário + Gramática Funcional",
+  //       examples: [
+  //         "10 palavras novas no contexto",
+  //         "1 estrutura gramatical aplicada",
+  //         "Flashcards com frases",
+  //       ],
+  //     },
+  //     {
+  //       time: "30 minutos",
+  //       activity: "Revisão + Aplicação",
+  //       examples: [
+  //         "Revisar erros da semana",
+  //         "Usar o que aprendeu em conversa real",
+  //         "Planejar aprendizado",
+  //       ],
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: "progress-markers",
+  //   title: "✅ COMO MEDIR SEU PROGRESSO",
+  //   description: "Sinais concretos de que está ficando fluente",
+  //   type: "checkpoints",
+  //   markers: [
+  //     {
+  //       stage: "Início (Dia 1-30)",
+  //       signs: [
+  //         "Consegue cumprimentar",
+  //         "Entende instruções básicas",
+  //         "Pede informações simples",
+  //       ],
+  //     },
+  //     {
+  //       stage: "Intermediário (Dia 31-90)",
+  //       signs: [
+  //         "Para de traduzir mentalmente frases simples",
+  //         "Consegue contar uma história curta",
+  //         "Entende piadas básicas",
+  //       ],
+  //     },
+  //     {
+  //       stage: "Avançando (Dia 91-150)",
+  //       signs: [
+  //         "Sonha em inglês ocasionalmente",
+  //         "'Sente' quando uma frase soa errada",
+  //         "Consegue explicar algo de outra forma",
+  //       ],
+  //     },
+  //     {
+  //       stage: "Fluência Emergente (Dia 151-180)",
+  //       signs: [
+  //         "Pensa diretamente em inglês para temas familiares",
+  //         "Não tem medo de cometer erros",
+  //         "Consegue acompanhar conversas entre nativos",
+  //       ],
+  //     },
+  //   ],
+  // },
+  {
+    id: "common-mistakes",
+    title: "🚫 ERROS A EVITAR",
+    description: "Armadilhas comuns que atrasam a fluência",
+    type: "warnings",
+    warnings: [
+      {
+        mistake: "Estudar gramática isoladamente",
+        why: "O cérebro aprende linguagem em contexto, não regras",
+        solution: "Aprender gramática através de frases e situações reais",
+      },
+      {
+        mistake: "Tentar aprender todas as palavras",
+        why: "2.000 palavras cobrem 90% das conversas. Foco no essencial",
+        solution: "Vocabulário estratégico por prioridade",
+      },
+      {
+        mistake: "Esperar estar 'pronto' para falar",
+        why: "A fala desenvolve a fala. Não há preparação suficiente",
+        solution: "Falar desde o primeiro dia, mesmo com erro",
+      },
+    ],
+  },
+  {
+    id: "180day-challenge",
+    title: "🎮 DESAFIO: FLUÊNCIA EM 180 DIAS",
+    description: "Compromisso público com metas claras",
+    type: "challenge",
+    commitment:
+      "Nos próximos 180 dias, dedicarei pelo menos 90 minutos diários para me tornar fluente em inglês. Aceito que vou cometer erros, que alguns dias serão difíceis, mas que no final conseguirei expressar qualquer ideia que tenha na minha cabeça.",
+    rules: [
+      "Falar em inglês todo dia, mesmo que sozinho (mínimo 5 minutos)",
+      "Consumir conteúdo em inglês diariamente (mínimo 30 minutos)",
+      "Aplicar o que aprendi imediatamente em contexto real",
+      "Medir progresso por comunicação eficaz, não por perfeição gramatical",
+      "Celebrar pequenas vitórias (cada conversa bem-sucedida conta)",
     ],
   },
   // {
-  //   id: "fluency-rules",
-  //   title: "💡 Regras de Fluência",
-  //   description:
-  //     "Princípios essenciais para alcançar fluência em inglês de forma eficiente.",
-  //   type: "rules",
-  //   rules: [
-  //     {
-  //       icon: "calendar-check",
-  //       title: "Consistência Diária",
-  //       description:
-  //         "Estude pelo menos 30 minutos por dia para manter o progresso constante.",
-  //     },
-  //     {
-  //       icon: "headphones",
-  //       title: "Ouça Ativamente",
-  //       description:
-  //         "Pratique listening com séries, podcasts e conversas nativas diariamente.",
-  //     },
-  //     {
-  //       icon: "comments",
-  //       title: "Fale em Voz Alta",
-  //       description:
-  //         "Pratique speaking mesmo sozinho. Leia em voz alta e converse com você mesmo.",
-  //     },
-  //     {
-  //       icon: "eye",
-  //       title: "Imersão",
-  //       description:
-  //         "Mude seu celular, séries e músicas para inglês. Crie um ambiente de imersão constante.",
-  //     },
-  //     {
-  //       icon: "redo",
-  //       title: "Repetição Espaçada",
-  //       description:
-  //         "Revise o conteúdo em intervalos crescentes para melhor memorização.",
-  //     },
-  //     {
-  //       icon: "smile",
-  //       title: "Divirta-se",
-  //       description:
-  //         "Aprenda através de temas que você gosta. O prazer acelera o aprendizado.",
-  //     },
+  //   id: "fluency-manifesto",
+  //   title: "📢 MANIFESTO: FLUÊNCIA EM 6 MESES É POSSÍVEL",
+  //   description: "Princípios filosóficos do método",
+  //   type: "manifesto",
+  //   forWho: [
+  //     "Quem entende que COMUNICAÇÃO > PERFEIÇÃO",
+  //     "Quem está disposto a FALAR MESMO COM ERRO",
+  //     "Quem aceita que ALGUNS DIAS SERÃO DIFÍCEIS",
+  //     "Quem confia no PROCESSO mais que no TALENTO",
+  //     "Quem quer RESULTADOS, não apenas conhecimento",
+  //   ],
+  //   thisIsNot: [
+  //     "Um curso tradicional de inglês",
+  //     "Focado em passar em provas",
+  //     "Sobre memorizar regras gramaticais",
+  //     "Para quem quer perfeição antes de praticar",
+  //   ],
+  //   thisIs: [
+  //     "Um TREINAMENTO DE COMUNICAÇÃO",
+  //     "Focado em USAR inglês na vida real",
+  //     "Sobre desenvolver CONFIANÇA para se expressar",
+  //     "Para quem quer RESULTADOS em tempo recorde",
   //   ],
   // },
   // {
-  //   id: "movies-series",
-  //   title: "🎬 Filmes e Séries",
-  //   description:
-  //     "Assista a filmes e séries em inglês com legendas para melhorar sua compreensão auditiva e vocabulário.",
-  //   type: "examples",
-  //   examples: [
-  //     "Friends (sitcom leve com diálogos do dia a dia)",
-  //     "The Office (inglês americano casual)",
-  //     "Stranger Things (inglês atual e coloquial)",
-  //     "Harry Potter (inglês britânico claro)",
-  //     "Black Mirror (inglês contemporâneo)",
-  //     "The Crown (inglês britânico formal)",
-  //   ],
-  //   tips: [
-  //     "Comece com legendas em português, depois mude para inglês",
-  //     "Assista a mesma cena várias vezes sem legendas",
-  //     "Anote expressões novas que ouvir",
+  //   id: "finish-line",
+  //   title: "🏁 DIA 180: O QUE VOCÊ CONSEGUIRÁ",
+  //   description: "Habilidades concretas após 6 meses de método",
+  //   type: "outcomes",
+  //   willBeAbleTo: [
+  //     "Iniciar e manter conversas sobre diversos temas",
+  //     "Expressar opiniões, sentimentos e desejos claramente",
+  //     "Contar histórias com começo, meio e fim",
+  //     "Entender filmes/séries sem legendas (em grande parte)",
+  //     "Pensar em inglês sem esforço consciente para temas familiares",
+  //     "Adaptar sua linguagem para diferentes situações (formal/informal)",
+  //     "Aprender novas palavras no contexto, sem tradução",
+  //     "Recuperar-se quando cometer um erro (reformular, explicar de outra forma)",
   //   ],
   // },
   // {
-  //   id: "music",
-  //   title: "🎵 Músicas",
-  //   description:
-  //     "Ouça músicas em inglês e acompanhe as letras para praticar a pronúncia e aprender novas expressões.",
-  //   type: "examples",
-  //   examples: [
-  //     "Yesterday - The Beatles (inglês simples e claro)",
-  //     "Imagine - John Lennon (letras profundas e vocabulário rico)",
-  //     "Shape of You - Ed Sheeran (inglês moderno)",
-  //     "Someone Like You - Adele (inglês emocional)",
-  //     "Counting Stars - OneRepublic (inglês atual)",
-  //   ],
-  //   tips: [
-  //     "Use o Genius.com para entender as letras e referências",
-  //     "Crie uma playlist com músicas lentas para entender melhor",
-  //     "Cante junto para praticar pronúncia",
-  //   ],
-  // },
-  // {
-  //   id: "podcasts",
-  //   title: "🎧 Podcasts",
-  //   description:
-  //     "Ouça podcasts em inglês sobre temas de seu interesse para melhorar sua compreensão auditiva.",
-  //   type: "examples",
-  //   examples: [
-  //     "The English We Speak (BBC - 3 minutos por episódio)",
-  //     "6 Minute English (BBC - vocabulário e discussões)",
-  //     "TED Talks Daily (tópicos variados com transcrição)",
-  //     "Luke's English Podcast (para aprendizes de inglês)",
-  //     "Stuff You Should Know (inglês americano casual)",
-  //   ],
-  //   tips: [
-  //     "Comece com podcasts feitos para aprendizes de inglês",
-  //     "Use a velocidade reduzida se necessário",
-  //     "Ouça enquanto faz outras atividades (exercício, limpeza)",
-  //   ],
-  // },
-  // {
-  //   id: "apps",
-  //   title: "📱 Aplicativos",
-  //   description:
-  //     "Use aplicativos para praticar vocabulário, gramática e conversação diariamente.",
-  //   type: "examples",
-  //   examples: [
-  //     "Duolingo (exercícios curtos e gamificados)",
-  //     "Memrise (aprendizado com memes e vídeos nativos)",
-  //     "Anki (flashcards espaçados para memorização)",
-  //     "HelloTalk (prática com falantes nativos)",
-  //     "BBC Learning English (conteúdo gratuito de qualidade)",
-  //   ],
-  //   tips: [
-  //     "Estabeleça uma meta diária realista (ex: 10 minutos)",
-  //     "Use diferentes apps para áreas diferentes (vocabulário, audição, fala)",
-  //     "Ative notificações para lembrete diário",
-  //   ],
-  // },
-  // {
-  //   id: "youtube-channels",
-  //   title: "📺 Canais do YouTube",
-  //   description:
-  //     "Canais especializados em ensino de inglês com conteúdo gratuito de alta qualidade.",
-  //   type: "examples",
-  //   examples: [
-  //     "English with Lucy (inglês britânico e pronúncia)",
-  //     "mmmEnglish (gramática e expressões do dia a dia)",
-  //     "BBC Learning English (conteúdo oficial da BBC)",
-  //     "EnglishClass101 (lições estruturadas)",
-  //     "Learn English with TV Series (aprendizado com cenas)",
-  //   ],
-  //   tips: [
-  //     "Se inscreva nos canais e ative as notificações",
-  //     "Assista os vídeos com anotações",
-  //     "Repita frases depois do professor",
-  //   ],
-  // },
-  // {
-  //   id: "reading",
-  //   title: "📚 Leitura",
-  //   description:
-  //     "Leia materiais em inglês adequados ao seu nível para expandir vocabulário.",
-  //   type: "examples",
-  //   examples: [
-  //     "Graded Readers (livros adaptados por nível)",
-  //     "News in Levels (notícias simplificadas)",
-  //     "Children's Books (livros infantis com linguagem simples)",
-  //     "Blogs sobre seus hobbies",
-  //     "Artigos da Wikipédia sobre temas conhecidos",
-  //   ],
-  //   tips: [
-  //     "Não pare para cada palavra desconhecida",
-  //     "Use o contexto para entender o significado",
-  //     "Leia sobre assuntos que você já conhece",
+  //   id: "first-step",
+  //   title: "🎬 SEU PRIMEIRO PASSO (HOJE MESMO)",
+  //   description: "Ações concretas para começar AGORA",
+  //   type: "actionable",
+  //   actions: [
+  //     {
+  //       action: "Grave um áudio de 30 segundos",
+  //       instructions:
+  //         "Pode ser lendo um texto simples ou falando sobre seu dia",
+  //       purpose: "Marcador inicial - em 180 dias você comparará",
+  //     },
+  //     {
+  //       action: "Assista um vídeo de 5 minutos",
+  //       instructions: "Com legenda EM INGLÊS (não português)",
+  //       purpose: "Exposição inicial a input compreensível",
+  //     },
+  //     {
+  //       action: "Pratique 3 frases em voz alta",
+  //       instructions:
+  //         "Frases que você usaria hoje (ex: 'I'm learning English', 'Today is [day]', 'I like [something]')",
+  //       purpose: "Fala desde o dia 1",
+  //     },
   //   ],
   // },
 ];
