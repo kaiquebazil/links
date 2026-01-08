@@ -513,11 +513,12 @@ body {
   align-items: center;
 }
 
-.project-title i {
+.project-title i, .project-title img {
   margin-right: 8px;
   color: var(--accent-color);
   transition: transform 0.3s ease;
 }
+
 
 .project-item:hover .project-title i {
   transform: rotate(15deg);

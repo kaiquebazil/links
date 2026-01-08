@@ -10,31 +10,6 @@
   flex-wrap: wrap;
 }
 
-.app-info {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.app-icon {
-  background: linear-gradient(
-    135deg,
-    var(--accent-color),
-    var(--accent-purple)
-  );
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.app-icon i {
-  font-size: 20px;
-  color: white;
-}
-
 .app-title {
   font-size: 24px;
   font-weight: 800;
