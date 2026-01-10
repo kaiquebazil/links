@@ -11,14 +11,22 @@ export const complementaryMaterials = [
         id: "5BBnXnwUiXQ",
         title: "Fluente em Inglês em 6 Meses | Meu Projeto Real",
         duration: "1:10",
-        channel: "Kaique's Growth Journal",
+        channel: "Kaique Bazil",
         description: "Vídeo introdutório do meu desafio",
       },
       {
         id: "DR-yMtXpzWjAlI",
         title: "AS 4 REGRAS DA FLUÊNCIA EM INGLÊS | Para Aprender Rápido",
         duration: "6:53",
-        channel: "Kaique's Growth Journal",
+        channel: "Kaique Bazil",
+        description: "Regras essenciais para acelerar seu aprendizado",
+      },
+      {
+        id: "NkRbxN5v0VQ",
+        title:
+          'Destrave sua FALA no INGLÊS: O guia prático para parar de "congelar"',
+        duration: "7:30",
+        channel: "Kaique Bazil",
         description: "Regras essenciais para acelerar seu aprendizado",
       },
     ],
@@ -26,7 +34,6 @@ export const complementaryMaterials = [
       "Playlist completa: (link: https://www.youtube.com/playlist?list=PLTzvJzAFb2UzLfI71n9ebaV1AHqpwIOYH)",
     ],
   },
-  // Adicione este objeto ao final do array complementaryMaterials em complementaryData.js
   {
     id: "resources-tools",
     title: "📱 Recursos & Aplicativos que Uso",
@@ -34,51 +41,6 @@ export const complementaryMaterials = [
       "Ferramentas, aplicativos e recursos que uso/recomendo para acelerar o aprendizado",
     type: "tools",
     categories: [
-      {
-        name: "🎧 Aplicativos de Pronúncia",
-        items: [
-          {
-            name: "Elsa Speak",
-            description: "Correção de pronúncia com IA",
-            link: "https://elsaspeak.com",
-            icon: "microphone-alt",
-            myReview:
-              "Ótimo para identificar e corrigir erros específicos de pronúncia",
-          },
-          {
-            name: "Sounds: The Pronunciation App",
-            description: "Foco nos sons do inglês",
-            link: "https://apps.apple.com/us/app/sounds-the-pronunciation-app/id493324438",
-            icon: "volume-up",
-          },
-        ],
-      },
-      {
-        name: "📚 Aulas de Gramática",
-        items: [
-          {
-            name: "English Grammar in Use (App)",
-            description: "Exercícios interativos do livro clássico",
-            link: "https://www.cambridge.org/grammarinuse",
-            icon: "book",
-            myReview: "O melhor para prática de gramática contextualizada",
-          },
-          {
-            name: "Grammarly",
-            description: "Corretor gramatical avançado",
-            link: "https://www.grammarly.com",
-            icon: "spell-check",
-            myReview: "Uso diariamente para escrever emails e textos",
-          },
-          {
-            name: "Canal: English with Lucy",
-            description: "Gramática com explicações claras",
-            link: "https://www.youtube.com/c/EnglishwithLucy",
-            icon: "chalkboard-teacher",
-            myReview: "Explicações visuais excelentes para regras complexas",
-          },
-        ],
-      },
       {
         name: "🗣️ Prática de Conversação",
         items: [
@@ -105,6 +67,58 @@ export const complementaryMaterials = [
         ],
       },
       {
+        name: "🎧 Aplicativos de Pronúncia",
+        items: [
+          {
+            name: "Elsa Speak",
+            description: "Correção de pronúncia com IA",
+            link: "https://elsaspeak.com",
+            icon: "microphone-alt",
+            myReview:
+              "Ótimo para identificar e corrigir erros específicos de pronúncia",
+          },
+          {
+            name: "youglish",
+            description: "Vídeos com legendas em inglês",
+            link: "https://youglish.com",
+            icon: "play-circle",
+          },
+          {
+            name: "Sounds: The Pronunciation App",
+            description: "Foco nos sons do inglês",
+            link: "https://apps.apple.com/us/app/sounds-the-pronunciation-app/id493324438",
+            icon: "volume-up",
+          },
+        ],
+      },
+      // {
+      //   name: "📚 Aulas de Gramática",
+      //   items: [
+      //     {
+      //       name: "English Grammar in Use (App)",
+      //       description: "Exercícios interativos do livro clássico",
+      //       link: "https://www.cambridge.org/grammarinuse",
+      //       icon: "book",
+      //       myReview: "O melhor para prática de gramática contextualizada",
+      //     },
+      //     {
+      //       name: "Grammarly",
+      //       description: "Corretor gramatical avançado",
+      //       link: "https://www.grammarly.com",
+      //       icon: "spell-check",
+      //       myReview: "Uso diariamente para escrever emails e textos",
+      //     },
+      //     {
+      //       name: "Canal: English with Lucy",
+      //       description: "Gramática com explicações claras",
+      //       link: "https://www.youtube.com/c/EnglishwithLucy",
+      //       icon: "chalkboard-teacher",
+      //       myReview: "Explicações visuais excelentes para regras complexas",
+      //     },
+      //   ],
+      // },
+
+      {
         name: "🧠 Memória & Vocabulário",
         items: [
           {
@@ -120,36 +134,83 @@ export const complementaryMaterials = [
             link: "https://quizlet.com",
             icon: "gamepad",
           },
-          {
-            name: "Memrise",
-            description: "Aprendizado com vídeos de nativos",
-            link: "https://www.memrise.com",
-            icon: "video",
-          },
         ],
       },
       {
-        name: "🎬 Entretenimento & Imersão",
+        name: "🎬 Imersão",
         items: [
           {
             name: "Language Reactor (extensão Chrome)",
             description: "Legendagem dupla para Netflix/YouTube",
             link: "https://www.languagereactor.com",
-            icon: "chrome",
+            icon: "browser",
             myReview: "Revolucionou como assisto séries em inglês",
           },
           {
-            name: "Spotify (minhas playlists)",
-            description: "Música em inglês com letras",
-            link: "https://open.spotify.com/playlist/...",
-            icon: "spotify",
-            myReview: "Escuto diariamente no caminho/trabalho",
+            name: "Video Speed Controller (extensão Chrome)",
+            description: "Controle de velocidade de vídeos",
+            link: "https://chromewebstore.google.com/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk?hl=en",
+            icon: "browser",
+            myReview: "Diminuir a velocidade. Ajuda na compreensão auditiva",
           },
           {
-            name: "Audible",
-            description: "Audiobooks em inglês",
-            link: "https://www.audible.com",
+            name: "YouTube Focus Mode (extensão Chrome)",
+            description: "Remover distrações do YouTube",
+            link: "https://chromewebstore.google.com/detail/youtube-focus-mode/jedeklblgiihonnldgldeagmbkhlblek?hl=pt-br",
+            icon: "browser",
+            myReview: "Diminuir a velocidade. Ajuda na compreensão auditiva",
+          },
+          {
+            name: "Radio Garden",
+            description: "Rádios em inglês (WBEZ, KQED, WNYC, WÇSD)",
+            link: "https://radio.garden",
             icon: "headphones",
+          },
+          {
+            name: "Tv Garden",
+            description: "Tv em inglês",
+            link: "https://tv.garden",
+            icon: "tv",
+          },
+        ],
+      },
+      {
+        name: "🎬 Canais Comprehensible input",
+        items: [
+          {
+            name: "Comprehensible English",
+            description:
+              "Aulas focadas 100% em input compreensível divididas por níveis.",
+            link: "https://www.youtube.com/@ComprehensibleEnglish",
+            icon: "layers",
+          },
+          {
+            name: "Learn English with TV Series",
+            description:
+              "Aprendizado de inglês através de clipes de filmes, séries e músicas.",
+            link: "https://www.youtube.com/@LearnEnglishWithTVSeries",
+            icon: "monitor",
+          },
+          {
+            name: "TED-Ed",
+            description:
+              "Lições animadas sobre diversos temas com narração clara e profissional.",
+            link: "https://www.youtube.com/@TEDEd",
+            icon: "lightbulb",
+          },
+          {
+            name: "English with Lucy",
+            description:
+              "Inglês britânico focado em pronúncia, vocabulário e cultura.",
+            link: "https://www.youtube.com/@englishwithlucy",
+            icon: "mic",
+          },
+          {
+            name: "The School of Life",
+            description:
+              "Vídeos sobre psicologia e filosofia com dicção pausada e clara.",
+            icon: "book",
+            link: "https://www.youtube.com/@theschooloflifetv",
           },
         ],
       },
