@@ -162,7 +162,7 @@ export const complementaryMaterials = [
           },
           {
             name: "Radio Garden",
-            description: "Rádios em inglês (WBEZ, KQED, WNYC, WÇSD)",
+            description: "Rádios em inglês (WBEZ, KQED, WNYC, WCSD)",
             link: "https://radio.garden",
             icon: "headphones",
           },
