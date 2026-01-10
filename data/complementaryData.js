@@ -174,6 +174,245 @@ export const complementaryMaterials = [
           },
         ],
       },
+
+      {
+        name: "🎬 Canais e Podcasts - Absolute Beginner",
+        items: [
+          {
+            name: "Inglês do Zero",
+            description:
+              "Conteúdo focado em quem está dando os primeiros passos no idioma.",
+            icon: "star",
+          },
+          {
+            name: "Curso Inglês Rapidão",
+            description:
+              "Focar nos episódios 1, 2, 4 e 5 (velocidade 0.6x/0.7x). Ideal para habituar o ouvido à pronúncia americana nativa.",
+            icon: "zap",
+          },
+          {
+            name: "Inglês Básico Todos os Dias",
+            description: "Prática diária de fundamentos para iniciantes.",
+            icon: "calendar",
+          },
+          {
+            name: "Fale Inglês Naturalmente",
+            description:
+              "Dicas iniciais para desenvolver uma fala fluida desde o começo.",
+            icon: "message-circle",
+          },
+          {
+            name: "Learn English Vocabulary",
+            description:
+              "Foque nos episódios com 'A1' ou 'A2' no título para um vocabulário compatível com o nível iniciante.",
+            icon: "book-open",
+          },
+        ],
+      },
+      {
+        name: "🎬 Podcasts - Basic",
+        items: [
+          {
+            name: "Basic English",
+            description: "Estruturas fundamentais do idioma.",
+            icon: "headphones",
+          },
+          {
+            name: "Listening Time: English Practice",
+            description: "Treino de escuta com fala clara e pausada.",
+            icon: "ear",
+          },
+          {
+            name: "Simple English News Daily",
+            description: "Notícias do mundo explicadas em inglês simplificado.",
+            icon: "globe",
+          },
+          {
+            name: "Easy Stories in English",
+            description: "Contos e histórias adaptadas para estudantes.",
+            icon: "smile",
+          },
+          {
+            name: "Speak English with Tiffani Podcast",
+            description:
+              "Dicas práticas e motivacionais para estudantes básicos.",
+            icon: "video",
+          },
+          {
+            name: "Happy English Podcast",
+            description: "Explicações rápidas de gramática e expressões.",
+            icon: "sun",
+          },
+          {
+            name: "American English Podcast",
+            description: "Cultura e pronúncia dos Estados Unidos.",
+            icon: "flag",
+          },
+          {
+            name: "Culips Everyday English Podcast",
+            description: "Inglês usado em situações reais do dia a dia.",
+            icon: "coffee",
+          },
+          {
+            name: "Learn English with the British Council and Premier League",
+            description: "Inglês britânico com temática de futebol e cultura.",
+            icon: "target",
+          },
+          {
+            name: "English Vocabulary Help",
+            description: "Focado em expandir o repertório de palavras.",
+            icon: "plus-circle",
+          },
+          {
+            name: "Into the Story: Learn English with True Stories",
+            description: "Aprendizado através de narrativas reais.",
+            icon: "book",
+          },
+        ],
+      },
+      {
+        name: "🎬 Podcasts - Intermediate",
+        items: [
+          {
+            name: "RealLife English",
+            description: "Inglês natural e confidente para o mundo real.",
+            icon: "users",
+          },
+          {
+            name: "All Ears English Podcast",
+            description:
+              "Focado em 'Connection NOT Perfection' e expressões idiomáticas.",
+            icon: "mic",
+          },
+          {
+            name: "This American Life",
+            description: "Narrativas jornalísticas profundas e envolventes.",
+            icon: "map",
+          },
+          {
+            name: "Crime Junkie",
+            description: "Histórias de True Crime com vocabulário descritivo.",
+            icon: "search",
+          },
+          {
+            name: "The Moth",
+            description: "Storytelling artístico e pessoal.",
+            icon: "feather",
+          },
+          {
+            name: "Hidden Brain",
+            description: "Ciência e psicologia do comportamento humano.",
+            icon: "activity",
+          },
+          {
+            name: "Learn English | EnglishClass101.com",
+            description:
+              "Lições estruturadas para diversos tópicos intermediários.",
+            icon: "layers",
+          },
+          {
+            name: "Luke's ENGLISH Podcast",
+            description: "Inglês britânico autêntico com humor e insights.",
+            icon: "award",
+          },
+          {
+            name: "Speak Better English with Harry",
+            description:
+              "Foco em gramática avançada e vocabulário de negócios.",
+            icon: "trending-up",
+          },
+          {
+            name: "6 Minute English",
+            description: "Pílulas de conhecimento da BBC Learning English.",
+            icon: "clock",
+          },
+          {
+            name: "Global News Podcast",
+            description: "Notícias globais da BBC.",
+            icon: "rss",
+          },
+          {
+            name: "Business English Pod",
+            description: "Focado exclusivamente no ambiente corporativo.",
+            icon: "briefcase",
+          },
+        ],
+      },
+      {
+        name: "🎬 Podcasts - Advanced (Native Content)",
+        items: [
+          {
+            name: "The Koe Cast",
+            description: "Desenvolvimento pessoal e filosofia moderna.",
+            icon: "cpu",
+          },
+          {
+            name: "Modern Wisdom",
+            description: "Entrevistas sobre produtividade e biologia.",
+            icon: "brain",
+          },
+          {
+            name: "Huberman Lab",
+            description: "Neurociência e protocolos de saúde.",
+            icon: "microscope",
+          },
+          {
+            name: "The Diary Of A CEO",
+            description: "Histórias de sucesso e vulnerabilidade de líderes.",
+            icon: "unlock",
+          },
+          {
+            name: "The Joe Rogan Experience",
+            description: "Conversas longas sobre temas variados.",
+            icon: "hash",
+          },
+          {
+            name: "Lex Fridman Podcast",
+            description: "Ciência, tecnologia e a natureza da inteligência.",
+            icon: "terminal",
+          },
+          {
+            name: "The Game w/ Alex Hormozi",
+            description: "Estratégias de negócios e empreendedorismo.",
+            icon: "bar-chart",
+          },
+          {
+            name: "The Rich Roll Podcast",
+            description: "Saúde, espiritualidade e ultra-performance.",
+            icon: "heart",
+          },
+          {
+            name: "Bedros Keuilian Podcast Show",
+            description: "Liderança e mindset de negócios.",
+            icon: "shield",
+          },
+          {
+            name: "Freakonomics Radio",
+            description: "O lado oculto de tudo sob a ótica da economia.",
+            icon: "pie-chart",
+          },
+          {
+            name: "Planet Money",
+            description: "Economia explicada de forma narrativa.",
+            icon: "dollar-sign",
+          },
+          {
+            name: "WSJ Tech News Briefing",
+            description: "Atualizações rápidas sobre o mundo da tecnologia.",
+            icon: "smartphone",
+          },
+          {
+            name: "Modern Love",
+            description: "Histórias reais sobre relacionamentos e sentimentos.",
+            icon: "heart",
+          },
+          {
+            name: "First Things THRST",
+            description: "Podcast focado em fitness e lifestyle.",
+            icon: "anchor",
+          },
+        ],
+      },
       {
         name: "🎬 Canais Comprehensible input",
         items: [
