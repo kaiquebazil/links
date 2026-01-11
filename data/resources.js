@@ -129,19 +129,19 @@ export const resourcesDatabase = {
       "Jogo: Verbo to be (link: http://wordwall.net/pt-br/community/memory-game-to-be)",
     ],
   },
-  "Artigos (a, an, the)": {
+  "Expressar prezer em conhecer alguém": {
     videos: [
       {
         id: "dG8aVpGUDdA",
-        title: "A, AN, THE - Articles in English",
+        title: "Expressing Pleasure in Meeting Someone | English Phrases",
         duration: "6:30",
         channel: "English with Emma",
       },
     ],
     materials: [
-      "Guia: Quando Usar A, An ou The (link: ../links/pages/articles.html)",
-      "Exercício: Preenchimento com Artigos",
-      "Lista: Exceções e Casos Especiais",
+      "Guia: Quando Usar A, An ou The (link: ../links/pages/meetyou.html)",
+      // "Exercício: Preenchimento com Artigos",
+      // "Lista: Exceções e Casos Especiais",
     ],
   },
 };
