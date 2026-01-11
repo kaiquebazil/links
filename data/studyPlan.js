@@ -12,11 +12,47 @@ export const studyPlan = [
           "Números",
           "Saudações básicas",
           "Apresentações pessoais",
-          "Expressar prezer em conhecer alguém",
+          "Expressar prazer em conhecer alguém",
         ],
       },
       {
-        title: "Semana 2: Pedidos e Necessidades Básicas",
+        title: "Semana 2: Família e Relacionamentos",
+        contents: [
+          "Descrever membros da família (geral)",
+          "Falar sobre sua familia (casado, solteiro, filhos)",
+          "Descrever amigos e suas qualidades",
+          "Falar sobre animais de estimação",
+          "Compartilhar histórias familiares simples",
+        ],
+      },
+      {
+        title: "Semana 3: Descrever sua Rotina",
+        contents: [
+          "Falar sobre seu dia-a-dia em detalhes",
+          "Descrever atividades matinais e noturnas",
+          "Falar sobre horários e compromissos",
+          "Descrever seu local de trabalho/estudo",
+          "Falar sobre meios de transporte que usa",
+        ],
+      },
+
+      {
+        title: "Semana 4: Hobbies e Tempo Livre",
+        contents: [
+          "Descrever hobbies e atividades de lazer",
+          "Falar sobre esportes que pratica/assiste",
+          "Descrever filmes, séries e música preferidos",
+          "Falar sobre livros e leitura",
+          "Discutir passatempos criativos (cozinhar, pintar)",
+        ],
+      },
+    ],
+  },
+  {
+    month: "Mês 2: Vida Cotidiana e Rotina",
+    weeks: [
+      {
+        title: "Semana 5: Pedidos e Necessidades Básicas",
         contents: [
           "Pedir comida e bebida em restaurantes/cafés",
           "Perguntar preços e fazer pagamentos",
@@ -26,7 +62,7 @@ export const studyPlan = [
         ],
       },
       {
-        title: "Semana 3: Informações Pessoais e Rotina",
+        title: "Semana 6: Informações Pessoais e Rotina",
         contents: [
           "Falar sobre idade, aniversário e família",
           "Descrever sua rotina diária básica",
@@ -36,48 +72,13 @@ export const studyPlan = [
         ],
       },
       {
-        title: "Semana 4: Socialização Inicial",
+        title: "Semana 7: Socialização Inicial",
         contents: [
           "Iniciar e manter conversas casuais",
           "Perguntar sobre hobbies e interesses básicos",
           "Falar sobre tempo e clima",
           "Convidar para atividades simples",
           "Aceitar/recusar convites educadamente",
-        ],
-      },
-    ],
-  },
-  {
-    month: "Mês 2: Vida Cotidiana e Rotina",
-    weeks: [
-      {
-        title: "Semana 5: Descrever sua Rotina",
-        contents: [
-          "Falar sobre seu dia-a-dia em detalhes",
-          "Descrever atividades matinais e noturnas",
-          "Falar sobre horários e compromissos",
-          "Descrever seu local de trabalho/estudo",
-          "Falar sobre meios de transporte que usa",
-        ],
-      },
-      {
-        title: "Semana 6: Família e Relacionamentos",
-        contents: [
-          "Descrever membros da família (aparência, personalidade)",
-          "Falar sobre relacionamentos (casado, solteiro, filhos)",
-          "Descrever amigos e suas qualidades",
-          "Falar sobre animais de estimação",
-          "Compartilhar histórias familiares simples",
-        ],
-      },
-      {
-        title: "Semana 7: Hobbies e Tempo Livre",
-        contents: [
-          "Descrever hobbies e atividades de lazer",
-          "Falar sobre esportes que pratica/assiste",
-          "Descrever filmes, séries e música preferidos",
-          "Falar sobre livros e leitura",
-          "Discutir passatempos criativos (cozinhar, pintar)",
         ],
       },
       {

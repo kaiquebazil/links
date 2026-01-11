@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Family Tree - English Lesson</title>
+    <link rel="shortcut icon" href="../../icons/icon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../css/geral.css" />
+    <style>
+      /* ===== VARIÁVEIS DE CORES ===== */
+      :root {
+        --accent-color: #4a90e2;
+        --accent-green: #2ecc71;
+        --accent-purple: #9b59b6;
+        --accent-yellow: #f1c40f;
+        --accent-orange: #e67e22;
+        --accent-pink: #e84393;
+        --text-primary: #333333;
+        --text-secondary: #666666;
+        --border-color: #e0e0e0;
+        --card-bg: #ffffff;
+      }
+
+      /* ===== ESTILOS GERAIS ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", "Inter", sans-serif;
+        padding: 20px;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-x: auto;
+      }
+
+      /* ===== CONTAINER DA ÁRVORE ===== */
+      .tree-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* ===== ÁRVORE GENEALÓGICA ===== */
+      .tree {
+        transform: scale(0.85);
+        transform-origin: top center;
+      }
+
+      .tree ul {
+        padding-top: 15px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+
+      .tree li {
+        text-align: center;
+        list-style-type: none;
+        position: relative;
+        padding: 15px 3px 0 3px;
+      }
+
+      /* ===== CONEXÕES ===== */
+      .tree li::before,
+      .tree li::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 50%;
+        border-top: 2px solid var(--accent-color);
+        width: 50%;
+        height: 15px;
+      }
+
+      .tree li::after {
+        right: auto;
+        left: 50%;
+        border-left: 2px solid var(--accent-color);
+      }
+
+      .tree li:only-child::after,
+      .tree li:only-child::before {
+        display: none;
+      }
+
+      .tree li:only-child {
+        padding-top: 0;
+      }
+
+      .tree li:first-child::before,
+      .tree li:last-child::after {
+        border: 0 none;
+      }
+
+      .tree li:last-child::before {
+        border-right: 2px solid var(--accent-color);
+        border-radius: 0 5px 0 0;
+      }
+
+      .tree li:first-child::after {
+        border-radius: 5px 0 0 0;
+      }
+
+      .tree ul ul::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        border-left: 2px solid var(--accent-color);
+        width: 0;
+        height: 15px;
+      }
+
+      /* ===== CARDS DE PESSOAS (MENORES) ===== */
+      .person {
+        background: var(--card-bg);
+        border: 2px solid var(--border-color);
+        padding: 10px;
+        border-radius: 10px;
+        display: inline-block;
+        min-width: 130px;
+        max-width: 130px;
+        box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        margin: 2px;
+      }
+
+      .person:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        border-color: var(--accent-color);
+      }
+
+      .person::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        background: var(--accent-color);
+      }
+
+      .photo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+        margin: 0 auto 8px;
+        border: 2px solid white;
+        box-shadow: 0 0 0 2px var(--border-color);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .name {
+        display: block;
+        font-weight: 600;
+        font-size: 13px;
+        color: var(--text-primary);
+        margin-bottom: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .label {
+        display: block;
+        font-size: 9px;
+        color: var(--accent-color);
+        text-transform: uppercase;
+        margin-bottom: 1px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .parent-side {
+        display: block;
+        font-size: 8px;
+        color: var(--text-secondary);
+        font-style: italic;
+        margin-top: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .relationship {
+        display: none;
+      }
+
+      /* ===== DESTAQUES ===== */
+      .me {
+        background: linear-gradient(
+          135deg,
+          var(--accent-color),
+          var(--accent-purple)
+        ) !important;
+        border-color: var(--accent-purple);
+        color: white;
+        transform: scale(1.05);
+      }
+
+      .me .label,
+      .me .name,
+      .me .parent-side {
+        color: white;
+      }
+
+      .me::before {
+        background: white;
+      }
+
+      .me:hover {
+        transform: scale(1.05) translateY(-3px);
+      }
+
+      .couple {
+        display: flex;
+        gap: 5px;
+        padding: 10px;
+        border-radius: 12px;
+        border: 2px solid var(--border-color);
+        background: rgba(255, 255, 255, 0.5);
+        position: relative;
+      }
+
+      .couple::before {
+        content: "💑";
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        padding: 1px 6px;
+        border-radius: 8px;
+        font-size: 10px;
+        border: 1px solid var(--border-color);
+      }
+
+      .step {
+        background: #f8f9fa;
+        border: 2px dashed #adb5bd;
+        opacity: 0.9;
+      }
+
+      .step::before {
+        background: #adb5bd;
+      }
+
+      /* ===== CORES POR LADO DA FAMÍLIA ===== */
+      .paternal {
+        border-left: 3px solid var(--accent-color);
+      }
+
+      .maternal {
+        border-left: 3px solid var(--accent-pink);
+      }
+
+      /* ===== INDICAÇÃO DE PARENTESCO ===== */
+      .father-side {
+        border-top: 2px solid var(--accent-color);
+      }
+
+      .mother-side {
+        border-top: 2px solid var(--accent-pink);
+      }
+
+      /* ===== LAYOUT RESPONSIVO ===== */
+      @media (max-width: 1200px) {
+        .tree {
+          transform: scale(0.75);
+        }
+
+        .person {
+          min-width: 120px;
+          max-width: 120px;
+          padding: 8px;
+        }
+
+        .photo {
+          width: 45px;
+          height: 45px;
+        }
+
+        .name {
+          font-size: 12px;
+        }
+
+        .label {
+          font-size: 8px;
+        }
+
+        .parent-side {
+          font-size: 7px;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .tree {
+          transform: scale(0.65);
+        }
+
+        body {
+          padding: 10px;
+        }
+
+        .tree-container {
+          padding: 10px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .tree {
+          transform: scale(0.55);
+        }
+
+        .couple {
+          flex-direction: column;
+          gap: 8px;
+          padding: 8px;
+        }
+
+        .couple::before {
+          display: none;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .tree {
+          transform: scale(0.45);
+        }
+
+        .person {
+          min-width: 110px;
+          max-width: 110px;
+          padding: 6px;
+        }
+
+        .photo {
+          width: 40px;
+          height: 40px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .tree {
+          transform: scale(0.4);
+        }
+
+        body {
+          padding: 5px;
+        }
+      }
+
+      /* ===== CONTROLE DE SCROLL ===== */
+      .scroll-hint {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: var(--accent-color);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        opacity: 0.8;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.8;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tree-container">
+      <div class="tree">
+        <ul>
+          <li>
+            <!-- Avós -->
+            <div
+              style="
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                margin-bottom: 20px;
+                flex-wrap: wrap;
+              "
+            >
+              <div class="couple">
+                <div class="person paternal">
+                  <div class="photo">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" />
+                  </div>
+                  <span class="label">Grandfather</span>
+                  <span class="name">Carlos</span>
+                </div>
+                <div class="person paternal">
+                  <div class="photo">
+                    <img
+                      src="https://randomuser.me/api/portraits/women/75.jpg"
+                    />
+                  </div>
+                  <span class="label">Grandmother</span>
+                  <span class="name">Marilene</span>
+                </div>
+              </div>
+              <div class="couple">
+                <div class="person maternal">
+                  <div class="photo">
+                    <img src="https://randomuser.me/api/portraits/men/76.jpg" />
+                  </div>
+                  <span class="label">Grandfather</span>
+                  <span class="name">Perciliano</span>
+                </div>
+                <div class="person maternal">
+                  <div class="photo">
+                    <img
+                      src="https://randomuser.me/api/portraits/women/76.jpg"
+                    />
+                  </div>
+                  <span class="label">Grandmother</span>
+                  <span class="name">Márcia</span>
+                </div>
+              </div>
+            </div>
+
+            <ul>
+              <!-- Tio Marcelino -->
+              <li>
+                <div class="couple">
+                  <div class="person">
+                    <div class="photo">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/77.jpg"
+                      />
+                    </div>
+                    <span class="label">Uncle</span>
+                    <span class="name">Marcelino</span>
+                  </div>
+                  <div class="person">
+                    <div class="photo">
+                      <img
+                        src="https://randomuser.me/api/portraits/women/77.jpg"
+                      />
+                    </div>
+                    <span class="label">Aunt</span>
+                    <span class="name">Michele</span>
+                  </div>
+                </div>
+                <ul>
+                  <li>
+                    <div class="person">
+                      <div class="photo">
+                        <img
+                          src="https://randomuser.me/api/portraits/women/78.jpg"
+                        />
+                      </div>
+                      <span class="label">Cousin</span>
+                      <span class="name">Mariana</span>
+                    </div>
+                    <ul>
+                      <li>
+                        <div class="person">
+                          <div class="photo">
+                            <img
+                              src="https://randomuser.me/api/portraits/women/79.jpg"
+                            />
+                          </div>
+                          <span class="label">Niece</span>
+                          <span class="name">Ana Lívia</span>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="person">
+                          <div class="photo">
+                            <img
+                              src="https://randomuser.me/api/portraits/women/5.jpg"
+                            />
+                          </div>
+                          <span class="label">Nephew</span>
+                          <span class="name">Paulo</span>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- Pais e Eu -->
+              <li>
+                <div
+                  style="
+                    display: flex;
+                    gap: 15px;
+                    margin: 15px 0;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                  "
+                >
+                  <div class="couple">
+                    <div class="person father-side">
+                      <div class="photo">
+                        <img
+                          src="https://randomuser.me/api/portraits/men/80.jpg"
+                        />
+                      </div>
+                      <span class="label">Father</span>
+                      <span class="name">Alex</span>
+                    </div>
+                    <div class="person step">
+                      <div class="photo">
+                        <img
+                          src="https://randomuser.me/api/portraits/women/81.jpg"
+                        />
+                      </div>
+                      <span class="label">Stepmother</span>
+                      <span class="name">Ana</span>
+                    </div>
+                  </div>
+                  <div class="couple">
+                    <div class="person mother-side">
+                      <div class="photo">
+                        <img
+                          src="https://randomuser.me/api/portraits/women/82.jpg"
+                        />
+                      </div>
+                      <span class="label">Mother</span>
+                      <span class="name">Cristina</span>
+                    </div>
+                    <div class="person step">
+                      <div class="photo">
+                        <img
+                          src="https://randomuser.me/api/portraits/men/83.jpg"
+                        />
+                      </div>
+                      <span class="label">Stepfather</span>
+                      <span class="name">Samuel</span>
+                    </div>
+                  </div>
+                </div>
+                <ul>
+                  <li>
+                    <div class="person me">
+                      <div class="photo">
+                        <img src="../../icon.jpg" />
+                      </div>
+                      <span class="label">ME</span>
+                      <span class="name">Kaique</span>
+                      <span class="parent-side"></span>
+                    </div>
+                  </li>
+                  <!-- Irmãos por parte de pai -->
+                  <li>
+                    <div class="person father-side">
+                      <div class="photo">
+                        <img
+                          src="https://randomuser.me/api/portraits/men/85.jpg"
+                        />
+                      </div>
+                      <span class="label">Brother</span>
+                      <span class="name">Gabriel</span>
+                      <span class="parent-side">Father's side</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="person father-side">
+                      <div class="photo">
+                        <img
+                          src="https://randomuser.me/api/portraits/men/86.jpg"
+                        />
+                      </div>
+                      <span class="label">Brother</span>
+                      <span class="name">Ezequiel</span>
+                      <span class="parent-side">Father's side</span>
+                    </div>
+                  </li>
+                  <!-- Irmãos por parte de mãe -->
+                  <li>
+                    <div class="person mother-side">
+                      <div class="photo">
+                        <img
+                          src="https://randomuser.me/api/portraits/men/87.jpg"
+                        />
+                      </div>
+                      <span class="label">Brother</span>
+                      <span class="name">Gabriel</span>
+                      <span class="parent-side">Mother's side</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="person mother-side">
+                      <div class="photo">
+                        <img
+                          src="https://randomuser.me/api/portraits/men/88.jpg"
+                        />
+                      </div>
+                      <span class="label">Brother</span>
+                      <span class="name">Miguel</span>
+                      <span class="parent-side">Mother's side</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="person mother-side">
+                      <div class="photo">
+                        <img
+                          src="https://randomuser.me/api/portraits/women/89.jpg"
+                        />
+                      </div>
+                      <span class="label">Sister</span>
+                      <span class="name">Emanuele</span>
+                      <span class="parent-side">Mother's side</span>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- Tio Rodrigo -->
+              <li>
+                <div class="couple">
+                  <div class="person">
+                    <div class="photo">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/90.jpg"
+                      />
+                    </div>
+                    <span class="label">Uncle</span>
+                    <span class="name">Rodrigo</span>
+                  </div>
+                  <div class="person">
+                    <div class="photo">
+                      <img
+                        src="https://randomuser.me/api/portraits/women/91.jpg"
+                      />
+                    </div>
+                    <span class="label">Aunt</span>
+                    <span class="name">Bruna</span>
+                  </div>
+                </div>
+                <ul>
+                  <li>
+                    <div class="person">
+                      <div class="photo">
+                        <img
+                          src="https://randomuser.me/api/portraits/men/92.jpg"
+                        />
+                      </div>
+                      <span class="label">Cousin</span>
+                      <span class="name">Vitor</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="person">
+                      <div class="photo">
+                        <img
+                          src="https://randomuser.me/api/portraits/men/93.jpg"
+                        />
+                      </div>
+                      <span class="label">Cousin</span>
+                      <span class="name">Hugo</span>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      // Adicionar Font Awesome para o ícone
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href =
+        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css";
+      document.head.appendChild(link);
+
+      // Remover dica de scroll após alguns segundos
+      setTimeout(() => {
+        const hint = document.querySelector(".scroll-hint");
+        if (hint) {
+          hint.style.opacity = "0";
+          setTimeout(() => hint.remove(), 500);
+        }
+      }, 5000);
+    </script>
+  </body>
+</html>
