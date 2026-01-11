@@ -12,7 +12,6 @@ export const studyPlan = [
           "Números",
           "Saudações básicas",
           "Apresentações pessoais",
-          "Como se despedir",
           "Expressar prezer em conhecer alguém",
         ],
       },

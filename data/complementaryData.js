@@ -174,245 +174,6 @@ export const complementaryMaterials = [
           },
         ],
       },
-
-      {
-        name: "🎬 Canais e Podcasts - Absolute Beginner",
-        items: [
-          {
-            name: "Inglês do Zero",
-            description:
-              "Conteúdo focado em quem está dando os primeiros passos no idioma.",
-            icon: "star",
-          },
-          {
-            name: "Curso Inglês Rapidão",
-            description:
-              "Focar nos episódios 1, 2, 4 e 5 (velocidade 0.6x/0.7x). Ideal para habituar o ouvido à pronúncia americana nativa.",
-            icon: "zap",
-          },
-          {
-            name: "Inglês Básico Todos os Dias",
-            description: "Prática diária de fundamentos para iniciantes.",
-            icon: "calendar",
-          },
-          {
-            name: "Fale Inglês Naturalmente",
-            description:
-              "Dicas iniciais para desenvolver uma fala fluida desde o começo.",
-            icon: "message-circle",
-          },
-          {
-            name: "Learn English Vocabulary",
-            description:
-              "Foque nos episódios com 'A1' ou 'A2' no título para um vocabulário compatível com o nível iniciante.",
-            icon: "book-open",
-          },
-        ],
-      },
-      {
-        name: "🎬 Podcasts - Basic",
-        items: [
-          {
-            name: "Basic English",
-            description: "Estruturas fundamentais do idioma.",
-            icon: "headphones",
-          },
-          {
-            name: "Listening Time: English Practice",
-            description: "Treino de escuta com fala clara e pausada.",
-            icon: "ear",
-          },
-          {
-            name: "Simple English News Daily",
-            description: "Notícias do mundo explicadas em inglês simplificado.",
-            icon: "globe",
-          },
-          {
-            name: "Easy Stories in English",
-            description: "Contos e histórias adaptadas para estudantes.",
-            icon: "smile",
-          },
-          {
-            name: "Speak English with Tiffani Podcast",
-            description:
-              "Dicas práticas e motivacionais para estudantes básicos.",
-            icon: "video",
-          },
-          {
-            name: "Happy English Podcast",
-            description: "Explicações rápidas de gramática e expressões.",
-            icon: "sun",
-          },
-          {
-            name: "American English Podcast",
-            description: "Cultura e pronúncia dos Estados Unidos.",
-            icon: "flag",
-          },
-          {
-            name: "Culips Everyday English Podcast",
-            description: "Inglês usado em situações reais do dia a dia.",
-            icon: "coffee",
-          },
-          {
-            name: "Learn English with the British Council and Premier League",
-            description: "Inglês britânico com temática de futebol e cultura.",
-            icon: "target",
-          },
-          {
-            name: "English Vocabulary Help",
-            description: "Focado em expandir o repertório de palavras.",
-            icon: "plus-circle",
-          },
-          {
-            name: "Into the Story: Learn English with True Stories",
-            description: "Aprendizado através de narrativas reais.",
-            icon: "book",
-          },
-        ],
-      },
-      {
-        name: "🎬 Podcasts - Intermediate",
-        items: [
-          {
-            name: "RealLife English",
-            description: "Inglês natural e confidente para o mundo real.",
-            icon: "users",
-          },
-          {
-            name: "All Ears English Podcast",
-            description:
-              "Focado em 'Connection NOT Perfection' e expressões idiomáticas.",
-            icon: "mic",
-          },
-          {
-            name: "This American Life",
-            description: "Narrativas jornalísticas profundas e envolventes.",
-            icon: "map",
-          },
-          {
-            name: "Crime Junkie",
-            description: "Histórias de True Crime com vocabulário descritivo.",
-            icon: "search",
-          },
-          {
-            name: "The Moth",
-            description: "Storytelling artístico e pessoal.",
-            icon: "feather",
-          },
-          {
-            name: "Hidden Brain",
-            description: "Ciência e psicologia do comportamento humano.",
-            icon: "activity",
-          },
-          {
-            name: "Learn English | EnglishClass101.com",
-            description:
-              "Lições estruturadas para diversos tópicos intermediários.",
-            icon: "layers",
-          },
-          {
-            name: "Luke's ENGLISH Podcast",
-            description: "Inglês britânico autêntico com humor e insights.",
-            icon: "award",
-          },
-          {
-            name: "Speak Better English with Harry",
-            description:
-              "Foco em gramática avançada e vocabulário de negócios.",
-            icon: "trending-up",
-          },
-          {
-            name: "6 Minute English",
-            description: "Pílulas de conhecimento da BBC Learning English.",
-            icon: "clock",
-          },
-          {
-            name: "Global News Podcast",
-            description: "Notícias globais da BBC.",
-            icon: "rss",
-          },
-          {
-            name: "Business English Pod",
-            description: "Focado exclusivamente no ambiente corporativo.",
-            icon: "briefcase",
-          },
-        ],
-      },
-      {
-        name: "🎬 Podcasts - Advanced (Native Content)",
-        items: [
-          {
-            name: "The Koe Cast",
-            description: "Desenvolvimento pessoal e filosofia moderna.",
-            icon: "cpu",
-          },
-          {
-            name: "Modern Wisdom",
-            description: "Entrevistas sobre produtividade e biologia.",
-            icon: "brain",
-          },
-          {
-            name: "Huberman Lab",
-            description: "Neurociência e protocolos de saúde.",
-            icon: "microscope",
-          },
-          {
-            name: "The Diary Of A CEO",
-            description: "Histórias de sucesso e vulnerabilidade de líderes.",
-            icon: "unlock",
-          },
-          {
-            name: "The Joe Rogan Experience",
-            description: "Conversas longas sobre temas variados.",
-            icon: "hash",
-          },
-          {
-            name: "Lex Fridman Podcast",
-            description: "Ciência, tecnologia e a natureza da inteligência.",
-            icon: "terminal",
-          },
-          {
-            name: "The Game w/ Alex Hormozi",
-            description: "Estratégias de negócios e empreendedorismo.",
-            icon: "bar-chart",
-          },
-          {
-            name: "The Rich Roll Podcast",
-            description: "Saúde, espiritualidade e ultra-performance.",
-            icon: "heart",
-          },
-          {
-            name: "Bedros Keuilian Podcast Show",
-            description: "Liderança e mindset de negócios.",
-            icon: "shield",
-          },
-          {
-            name: "Freakonomics Radio",
-            description: "O lado oculto de tudo sob a ótica da economia.",
-            icon: "pie-chart",
-          },
-          {
-            name: "Planet Money",
-            description: "Economia explicada de forma narrativa.",
-            icon: "dollar-sign",
-          },
-          {
-            name: "WSJ Tech News Briefing",
-            description: "Atualizações rápidas sobre o mundo da tecnologia.",
-            icon: "smartphone",
-          },
-          {
-            name: "Modern Love",
-            description: "Histórias reais sobre relacionamentos e sentimentos.",
-            icon: "heart",
-          },
-          {
-            name: "First Things THRST",
-            description: "Podcast focado em fitness e lifestyle.",
-            icon: "anchor",
-          },
-        ],
-      },
       {
         name: "🎬 Canais Comprehensible input",
         items: [
@@ -484,6 +245,364 @@ export const complementaryMaterials = [
       "Use a função 'Lembretes Diários' dos apps",
       "Foque em QUALIDADE de uso, não quantidade de apps",
       "Desative notificações desnecessárias para evitar distrações",
+    ],
+  },
+  {
+    id: "podcasts-recommended",
+    title: "🎧 Podcasts Recomendados por Nível",
+    description:
+      "Playlists curatas de podcasts organizadas por nível (Beginner → Advanced) para imersão auditiva",
+    type: "podcasts",
+    levels: [
+      {
+        name: "🎬 Canais e Podcasts - Iniciante Absoluto",
+        description:
+          "Conteúdo focado em quem está dando os primeiros passos no idioma",
+        color: "green",
+        items: [
+          {
+            name: "Inglês do Zero",
+            description:
+              "Conteúdo focado em quem está dando os primeiros passos no idioma.",
+            icon: "star",
+            platform: "YouTube",
+            frequency: "2x por semana",
+            bestFor: "Primeiros 30 dias",
+          },
+          {
+            name: "Curso Inglês Rapidão",
+            description:
+              "Focar nos episódios 1, 2, 4 e 5 (velocidade 0.6x/0.7x). Ideal para habituar o ouvido à pronúncia americana nativa.",
+            icon: "zap",
+            platform: "Spotify/Apple",
+            frequency: "Diário",
+            bestFor: "Treino auditivo inicial",
+          },
+          {
+            name: "Inglês Básico Todos os Dias",
+            description: "Prática diária de fundamentos para iniciantes.",
+            icon: "calendar",
+            platform: "YouTube",
+            frequency: "Diário",
+            bestFor: "Rotina consistente",
+          },
+          {
+            name: "Fale Inglês Naturalmente",
+            description:
+              "Dicas iniciais para desenvolver uma fala fluida desde o começo.",
+            icon: "message-circle",
+            platform: "Spotify",
+            frequency: "3x por semana",
+            bestFor: "Confiança inicial",
+          },
+          {
+            name: "Learn English Vocabulary",
+            description:
+              "Foque nos episódios com 'A1' ou 'A2' no título para um vocabulário compatível com o nível iniciante.",
+            icon: "book-open",
+            platform: "Apple Podcasts",
+            frequency: "2x por semana",
+            bestFor: "Expansão de vocabulário",
+          },
+        ],
+      },
+      {
+        name: "🎧 Podcasts - Básico",
+        description: "Para quem já entende o básico e quer expandir",
+        color: "blue",
+        items: [
+          {
+            name: "Basic English",
+            description: "Estruturas fundamentais do idioma.",
+            icon: "headphones",
+            platform: "Spotify",
+            frequency: "Diário",
+          },
+          {
+            name: "Listening Time: English Practice",
+            description: "Treino de escuta com fala clara e pausada.",
+            icon: "ear",
+            platform: "Apple Podcasts",
+            frequency: "3x por semana",
+          },
+          {
+            name: "Simple English News Daily",
+            description: "Notícias do mundo explicadas em inglês simplificado.",
+            icon: "globe",
+            platform: "Spotify/Apple",
+            frequency: "Diário",
+          },
+          {
+            name: "Easy Stories in English",
+            description: "Contos e histórias adaptadas para estudantes.",
+            icon: "smile",
+            platform: "Spotify",
+            frequency: "1x por semana",
+          },
+          {
+            name: "Speak English with Tiffani Podcast",
+            description:
+              "Dicas práticas e motivacionais para estudantes básicos.",
+            icon: "video",
+            platform: "YouTube",
+            frequency: "2x por semana",
+          },
+          {
+            name: "Happy English Podcast",
+            description: "Explicações rápidas de gramática e expressões.",
+            icon: "sun",
+            platform: "Apple Podcasts",
+            frequency: "2x por semana",
+          },
+          {
+            name: "American English Podcast",
+            description: "Cultura e pronúncia dos Estados Unidos.",
+            icon: "flag",
+            platform: "Spotify",
+            frequency: "1x por semana",
+          },
+          {
+            name: "Culips Everyday English Podcast",
+            description: "Inglês usado em situações reais do dia a dia.",
+            icon: "coffee",
+            platform: "Spotify/Apple",
+            frequency: "2x por semana",
+          },
+          {
+            name: "Learn English with the British Council and Premier League",
+            description: "Inglês britânico com temática de futebol e cultura.",
+            icon: "target",
+            platform: "Spotify",
+            frequency: "1x por semana",
+          },
+          {
+            name: "English Vocabulary Help",
+            description: "Focado em expandir o repertório de palavras.",
+            icon: "plus-circle",
+            platform: "Apple Podcasts",
+            frequency: "Diário",
+          },
+          {
+            name: "Into the Story: Learn English with True Stories",
+            description: "Aprendizado através de narrativas reais.",
+            icon: "book",
+            platform: "Spotify",
+            frequency: "1x por semana",
+          },
+        ],
+      },
+      {
+        name: "🎙️ Podcasts - Intermediário",
+        description: "Para quem já consegue entender conversas básicas",
+        color: "yellow",
+        items: [
+          {
+            name: "RealLife English",
+            description: "Inglês natural e confidente para o mundo real.",
+            icon: "users",
+            platform: "Spotify/YouTube",
+            frequency: "2x por semana",
+          },
+          {
+            name: "All Ears English Podcast",
+            description:
+              "Focado em 'Connection NOT Perfection' e expressões idiomáticas.",
+            icon: "mic",
+            platform: "Apple Podcasts",
+            frequency: "Diário",
+          },
+          {
+            name: "This American Life",
+            description: "Narrativas jornalísticas profundas e envolventes.",
+            icon: "map",
+            platform: "Spotify/Apple",
+            frequency: "1x por semana",
+          },
+          {
+            name: "Crime Junkie",
+            description: "Histórias de True Crime com vocabulário descritivo.",
+            icon: "search",
+            platform: "Spotify",
+            frequency: "1x por semana",
+          },
+          {
+            name: "The Moth",
+            description: "Storytelling artístico e pessoal.",
+            icon: "feather",
+            platform: "Apple Podcasts",
+            frequency: "1x por semana",
+          },
+          {
+            name: "Hidden Brain",
+            description: "Ciência e psicologia do comportamento humano.",
+            icon: "activity",
+            platform: "Spotify/Apple",
+            frequency: "1x por semana",
+          },
+          {
+            name: "Learn English | EnglishClass101.com",
+            description:
+              "Lições estruturadas para diversos tópicos intermediários.",
+            icon: "layers",
+            platform: "Site próprio",
+            frequency: "Diário",
+          },
+          {
+            name: "Luke's ENGLISH Podcast",
+            description: "Inglês britânico autêntico com humor e insights.",
+            icon: "award",
+            platform: "Spotify/Apple",
+            frequency: "1x por semana",
+          },
+          {
+            name: "Speak Better English with Harry",
+            description:
+              "Foco em gramática avançada e vocabulário de negócios.",
+            icon: "trending-up",
+            platform: "YouTube",
+            frequency: "2x por semana",
+          },
+          {
+            name: "6 Minute English",
+            description: "Pílulas de conhecimento da BBC Learning English.",
+            icon: "clock",
+            platform: "Spotify/Apple",
+            frequency: "Diário",
+          },
+          {
+            name: "Global News Podcast",
+            description: "Notícias globais da BBC.",
+            icon: "rss",
+            platform: "Spotify/Apple",
+            frequency: "Diário",
+          },
+          {
+            name: "Business English Pod",
+            description: "Focado exclusivamente no ambiente corporativo.",
+            icon: "briefcase",
+            platform: "Site próprio",
+            frequency: "2x por semana",
+          },
+        ],
+      },
+      {
+        name: "🔥 Podcasts - Avançado (Native Content)",
+        description: "Conteúdo feito para nativos - imersão total",
+        color: "red",
+        items: [
+          {
+            name: "The Koe Cast",
+            description: "Desenvolvimento pessoal e filosofia moderna.",
+            icon: "cpu",
+            platform: "Spotify/YouTube",
+            frequency: "1x por semana",
+          },
+          {
+            name: "Modern Wisdom",
+            description: "Entrevistas sobre produtividade e biologia.",
+            icon: "brain",
+            platform: "Spotify/Apple",
+            frequency: "3x por semana",
+          },
+          {
+            name: "Huberman Lab",
+            description: "Neurociência e protocolos de saúde.",
+            icon: "microscope",
+            platform: "Spotify/Apple",
+            frequency: "1x por semana",
+          },
+          {
+            name: "The Diary Of A CEO",
+            description: "Histórias de sucesso e vulnerabilidade de líderes.",
+            icon: "unlock",
+            platform: "YouTube/Spotify",
+            frequency: "2x por semana",
+          },
+          {
+            name: "The Joe Rogan Experience",
+            description: "Conversas longas sobre temas variados.",
+            icon: "hash",
+            platform: "Spotify",
+            frequency: "3x por semana",
+          },
+          {
+            name: "Lex Fridman Podcast",
+            description: "Ciência, tecnologia e a natureza da inteligência.",
+            icon: "terminal",
+            platform: "Spotify/YouTube",
+            frequency: "1x por semana",
+          },
+          {
+            name: "The Game w/ Alex Hormozi",
+            description: "Estratégias de negócios e empreendedorismo.",
+            icon: "bar-chart",
+            platform: "YouTube/Spotify",
+            frequency: "2x por semana",
+          },
+          {
+            name: "The Rich Roll Podcast",
+            description: "Saúde, espiritualidade e ultra-performance.",
+            icon: "heart",
+            platform: "Apple/Spotify",
+            frequency: "2x por semana",
+          },
+          {
+            name: "Bedros Keuilian Podcast Show",
+            description: "Liderança e mindset de negócios.",
+            icon: "shield",
+            platform: "YouTube/Spotify",
+            frequency: "2x por semana",
+          },
+          {
+            name: "Freakonomics Radio",
+            description: "O lado oculto de tudo sob a ótica da economia.",
+            icon: "pie-chart",
+            platform: "Spotify/Apple",
+            frequency: "1x por semana",
+          },
+          {
+            name: "Planet Money",
+            description: "Economia explicada de forma narrativa.",
+            icon: "dollar-sign",
+            platform: "Spotify/Apple",
+            frequency: "3x por semana",
+          },
+          {
+            name: "WSJ Tech News Briefing",
+            description: "Atualizações rápidas sobre o mundo da tecnologia.",
+            icon: "smartphone",
+            platform: "Spotify/Apple",
+            frequency: "Diário",
+          },
+          {
+            name: "Modern Love",
+            description: "Histórias reais sobre relacionamentos e sentimentos.",
+            icon: "heart",
+            platform: "Spotify/Apple",
+            frequency: "1x por semana",
+          },
+          {
+            name: "First Things THRST",
+            description: "Podcast focado em fitness e lifestyle.",
+            icon: "anchor",
+            platform: "Apple Podcasts",
+            frequency: "2x por semana",
+          },
+        ],
+      },
+    ],
+    filters: [{ id: "all", name: "Todos", icon: "grid" }],
+    platforms: {
+      Spotify: "https://open.spotify.com",
+      YouTube: "https://youtube.com",
+      "Apple Podcasts": "https://podcasts.apple.com",
+    },
+    tips: [
+      "Comece com 15 minutos diários e aumente gradualmente",
+      "Use a função de velocidade reduzida (0.75x) se necessário",
+      "Ouça ativamente - pause e repita frases que não entendeu",
+      "Combine com a leitura das transcrições (quando disponíveis)",
+      "Escute enquanto faz outras atividades (exercício, limpeza, transporte)",
     ],
   },
   // Adicione este objeto ao final do array complementaryMaterials em complementaryData.js
@@ -685,17 +804,17 @@ export const complementaryMaterials = [
     months: [
       {
         month: "Mês 1",
-        theme: "Sobrevivência Conversacional",
-        goal: "Cumprimentar, pedir coisas, informações básicas",
-        focus: "Frases prontas, pronúncia clara, 300 palavras",
-        marker: "Consegue pedir um café sem hesitar",
-      },
-      {
-        month: "Mês 2",
         theme: "Vida Cotidiana",
         goal: "Falar sobre rotina, família, trabalho, hobbies",
         focus: "Presente simples, vocabulário concreto, 700 palavras",
         marker: "Consegue contar como foi seu dia",
+      },
+      {
+        month: "Mês 2",
+        theme: "Sobrevivência Conversacional",
+        goal: "Cumprimentar, pedir coisas, informações básicas",
+        focus: "Frases prontas, pronúncia clara, 300 palavras",
+        marker: "Consegue pedir um café sem hesitar",
       },
       {
         month: "Mês 3",
@@ -727,154 +846,6 @@ export const complementaryMaterials = [
       },
     ],
   },
-
-  // {
-  //   id: "daily-formula",
-  //   title: "⚡ FÓRMULA DO SUCESSO DIÁRIO",
-  //   description: "Estrutura otimizada para máximo resultado em mínimo tempo",
-  //   type: "schedule",
-  //   schedule: [
-  //     {
-  //       time: "30 minutos",
-  //       activity: "Input Compreensível",
-  //       examples: [
-  //         "Vídeos com legenda EM INGLÊS",
-  //         "Podcasts para aprendizes",
-  //         "Séries que você já conhece",
-  //       ],
-  //     },
-  //     {
-  //       time: "30 minutos",
-  //       activity: "Prática Ativa",
-  //       examples: [
-  //         "Falar sozinho sobre seu dia",
-  //         "Gravações próprias",
-  //         "Shadowing (repetir após nativos)",
-  //       ],
-  //     },
-  //     {
-  //       time: "30 minutos",
-  //       activity: "Vocabulário + Gramática Funcional",
-  //       examples: [
-  //         "10 palavras novas no contexto",
-  //         "1 estrutura gramatical aplicada",
-  //         "Flashcards com frases",
-  //       ],
-  //     },
-  //     {
-  //       time: "30 minutos",
-  //       activity: "Revisão + Aplicação",
-  //       examples: [
-  //         "Revisar erros da semana",
-  //         "Usar o que aprendeu em conversa real",
-  //         "Planejar aprendizado",
-  //       ],
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: "progress-markers",
-  //   title: "✅ COMO MEDIR SEU PROGRESSO",
-  //   description: "Sinais concretos de que está ficando fluente",
-  //   type: "checkpoints",
-  //   markers: [
-  //     {
-  //       stage: "Início (Dia 1-30)",
-  //       signs: [
-  //         "Consegue cumprimentar",
-  //         "Entende instruções básicas",
-  //         "Pede informações simples",
-  //       ],
-  //     },
-  //     {
-  //       stage: "Intermediário (Dia 31-90)",
-  //       signs: [
-  //         "Para de traduzir mentalmente frases simples",
-  //         "Consegue contar uma história curta",
-  //         "Entende piadas básicas",
-  //       ],
-  //     },
-  //     {
-  //       stage: "Avançando (Dia 91-150)",
-  //       signs: [
-  //         "Sonha em inglês ocasionalmente",
-  //         "'Sente' quando uma frase soa errada",
-  //         "Consegue explicar algo de outra forma",
-  //       ],
-  //     },
-  //     {
-  //       stage: "Fluência Emergente (Dia 151-180)",
-  //       signs: [
-  //         "Pensa diretamente em inglês para temas familiares",
-  //         "Não tem medo de cometer erros",
-  //         "Consegue acompanhar conversas entre nativos",
-  //       ],
-  //     },
-  //   ],
-  // },
-  {
-    id: "common-mistakes",
-    title: "🚫 ERROS A EVITAR",
-    description: "Armadilhas comuns que atrasam a fluência",
-    type: "warnings",
-    warnings: [
-      {
-        mistake: "Estudar gramática isoladamente",
-        why: "O cérebro aprende linguagem em contexto, não regras",
-        solution: "Aprender gramática através de frases e situações reais",
-      },
-      {
-        mistake: "Tentar aprender todas as palavras",
-        why: "2.000 palavras cobrem 90% das conversas. Foco no essencial",
-        solution: "Vocabulário estratégico por prioridade",
-      },
-      {
-        mistake: "Esperar estar 'pronto' para falar",
-        why: "A fala desenvolve a fala. Não há preparação suficiente",
-        solution: "Falar desde o primeiro dia, mesmo com erro",
-      },
-    ],
-  },
-  {
-    id: "180day-challenge",
-    title: "🎮 DESAFIO: FLUÊNCIA EM 180 DIAS",
-    description: "Compromisso público com metas claras",
-    type: "challenge",
-    commitment:
-      "Nos próximos 180 dias, dedicarei pelo menos 90 minutos diários para me tornar fluente em inglês. Aceito que vou cometer erros, que alguns dias serão difíceis, mas que no final conseguirei expressar qualquer ideia que tenha na minha cabeça.",
-    rules: [
-      "Falar em inglês todo dia, mesmo que sozinho (mínimo 5 minutos)",
-      "Consumir conteúdo em inglês diariamente (mínimo 30 minutos)",
-      "Aplicar o que aprendi imediatamente em contexto real",
-      "Medir progresso por comunicação eficaz, não por perfeição gramatical",
-      "Celebrar pequenas vitórias (cada conversa bem-sucedida conta)",
-    ],
-  },
-  // {
-  //   id: "fluency-manifesto",
-  //   title: "📢 MANIFESTO: FLUÊNCIA EM 6 MESES É POSSÍVEL",
-  //   description: "Princípios filosóficos do método",
-  //   type: "manifesto",
-  //   forWho: [
-  //     "Quem entende que COMUNICAÇÃO > PERFEIÇÃO",
-  //     "Quem está disposto a FALAR MESMO COM ERRO",
-  //     "Quem aceita que ALGUNS DIAS SERÃO DIFÍCEIS",
-  //     "Quem confia no PROCESSO mais que no TALENTO",
-  //     "Quem quer RESULTADOS, não apenas conhecimento",
-  //   ],
-  //   thisIsNot: [
-  //     "Um curso tradicional de inglês",
-  //     "Focado em passar em provas",
-  //     "Sobre memorizar regras gramaticais",
-  //     "Para quem quer perfeição antes de praticar",
-  //   ],
-  //   thisIs: [
-  //     "Um TREINAMENTO DE COMUNICAÇÃO",
-  //     "Focado em USAR inglês na vida real",
-  //     "Sobre desenvolver CONFIANÇA para se expressar",
-  //     "Para quem quer RESULTADOS em tempo recorde",
-  //   ],
-  // },
   // {
   //   id: "finish-line",
   //   title: "🏁 DIA 180: O QUE VOCÊ CONSEGUIRÁ",
@@ -889,31 +860,6 @@ export const complementaryMaterials = [
   //     "Adaptar sua linguagem para diferentes situações (formal/informal)",
   //     "Aprender novas palavras no contexto, sem tradução",
   //     "Recuperar-se quando cometer um erro (reformular, explicar de outra forma)",
-  //   ],
-  // },
-  // {
-  //   id: "first-step",
-  //   title: "🎬 SEU PRIMEIRO PASSO (HOJE MESMO)",
-  //   description: "Ações concretas para começar AGORA",
-  //   type: "actionable",
-  //   actions: [
-  //     {
-  //       action: "Grave um áudio de 30 segundos",
-  //       instructions:
-  //         "Pode ser lendo um texto simples ou falando sobre seu dia",
-  //       purpose: "Marcador inicial - em 180 dias você comparará",
-  //     },
-  //     {
-  //       action: "Assista um vídeo de 5 minutos",
-  //       instructions: "Com legenda EM INGLÊS (não português)",
-  //       purpose: "Exposição inicial a input compreensível",
-  //     },
-  //     {
-  //       action: "Pratique 3 frases em voz alta",
-  //       instructions:
-  //         "Frases que você usaria hoje (ex: 'I'm learning English', 'Today is [day]', 'I like [something]')",
-  //       purpose: "Fala desde o dia 1",
-  //     },
   //   ],
   // },
 ];

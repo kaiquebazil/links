@@ -852,6 +852,272 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     </div>
   `;
+      } else if (material.type === "podcasts") {
+        // Card de podcasts
+        cardBodyHTML = `
+    <div class="complementary-card-body">
+      <div class="podcasts-container">
+        
+        <!-- Header com filtros -->
+        <div class="podcasts-header">
+          <div class="podcasts-intro">
+            <h4><i class="fas fa-podcast"></i> Guia de Podcasts por Nível</h4>
+            <p>Selecione podcasts baseado no seu nível atual. A recomendação é ouvir <strong>30-60 minutos por dia</strong> para imersão auditiva eficiente.</p>
+          </div>
+          
+          <div class="podcasts-filters">
+            <div class="filter-buttons">
+              ${material.filters
+                .map(
+                  (filter) => `
+                <button class="podcast-filter-btn ${
+                  filter.id === "all" ? "active" : ""
+                }" 
+                        data-filter="${filter.id}">
+                  <i class="fas fa-${filter.icon}"></i>
+                  ${filter.name}
+                </button>
+              `
+                )
+                .join("")}
+            </div>
+            
+            <div class="stats-info">
+              <span class="stat">
+                <i class="fas fa-headphones"></i>
+                <strong>${material.levels.reduce(
+                  (total, level) => total + level.items.length,
+                  0
+                )}</strong> podcasts
+              </span>
+              <span class="stat">
+                <i class="fas fa-layer-group"></i>
+                <strong>${material.levels.length}</strong> níveis
+              </span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Níveis de podcasts -->
+        <div class="podcasts-levels">
+          ${material.levels
+            .map(
+              (level, levelIndex) => `
+            <div class="podcast-level-card level-${level.color} ${
+                levelIndex === 0 ? "active" : ""
+              }" 
+                 data-level="${
+                   level.name.toLowerCase().includes("beginner")
+                     ? "beginner"
+                     : level.name.toLowerCase().includes("basic")
+                     ? "basic"
+                     : level.name.toLowerCase().includes("intermediate")
+                     ? "intermediate"
+                     : "advanced"
+                 }">
+              
+              <div class="level-header">
+                <div class="level-title">
+                  <h4>${level.name}</h4>
+                  <p class="level-desc">${level.description}</p>
+                </div>
+                <div class="level-badge">
+                  <span class="badge-count">${
+                    level.items.length
+                  } podcasts</span>
+                  <i class="fas fa-chevron-down"></i>
+                </div>
+              </div>
+              
+              <div class="level-content" style="max-height: ${
+                levelIndex === 0 ? "1000px" : "0px"
+              };">
+                <div class="podcast-grid">
+                  ${level.items
+                    .map(
+                      (podcast, podcastIndex) => `
+                    <div class="podcast-item" data-index="${podcastIndex}">
+                      <div class="podcast-card">
+                        <div class="podcast-icon">
+                          <i class="fas fa-${podcast.icon}"></i>
+                        </div>
+                        
+                        <div class="podcast-info">
+                          <h5>${podcast.name}</h5>
+                          <p class="podcast-desc">${podcast.description}</p>
+                          
+                          <div class="podcast-meta">
+                            <span class="platform-badge">
+                              <i class="fas fa-${
+                                podcast.platform === "YouTube"
+                                  ? "youtube"
+                                  : podcast.platform === "Spotify"
+                                  ? "spotify"
+                                  : podcast.platform === "Apple Podcasts"
+                                  ? "podcast"
+                                  : "globe"
+                              }"></i>
+                              ${podcast.platform}
+                            </span>
+                            <span class="frequency-badge">
+                              <i class="fas fa-calendar-alt"></i>
+                              ${podcast.frequency}
+                            </span>
+                            ${
+                              podcast.bestFor
+                                ? `
+                              <span class="bestfor-badge">
+                                <i class="fas fa-bullseye"></i>
+                                ${podcast.bestFor}
+                              </span>
+                            `
+                                : ""
+                            }
+                          </div>
+                        </div>
+                        
+                        <div class="podcast-actions">
+                          <button class="save-podcast-btn" data-podcast="${podcast.name
+                            .replace(/\s+/g, "-")
+                            .toLowerCase()}">
+                            <i class="far fa-bookmark"></i>
+                          </button>
+                          <button class="play-podcast-btn" data-platform="${
+                            podcast.platform
+                          }" 
+                                  data-search="${encodeURIComponent(
+                                    podcast.name
+                                  )}">
+                            <i class="fas fa-play"></i> Ouvir
+                          </button>
+                        </div>
+                      </div>
+                      
+                      <!-- Detalhes expandidos -->
+                      <div class="podcast-details">
+                        <div class="details-content">
+                          <div class="study-plan">
+                            <h6><i class="fas fa-graduation-cap"></i> Plano de Estudo Sugerido</h6>
+                            <ul>
+                              <li><strong>Frequência:</strong> ${
+                                podcast.frequency
+                              }</li>
+                              <li><strong>Duração por sessão:</strong> ${
+                                level.color === "green"
+                                  ? "15-20 minutos"
+                                  : level.color === "blue"
+                                  ? "20-30 minutos"
+                                  : level.color === "yellow"
+                                  ? "30-45 minutos"
+                                  : "45-60 minutos"
+                              }</li>
+                              <li><strong>Foco principal:</strong> ${
+                                podcast.description.split(".")[0]
+                              }</li>
+                              ${
+                                podcast.bestFor
+                                  ? `<li><strong>Melhor para:</strong> ${podcast.bestFor}</li>`
+                                  : ""
+                              }
+                            </ul>
+                          </div>
+                          
+                          <div class="tips-section">
+                            <h6><i class="fas fa-lightbulb"></i> Dicas para este podcast</h6>
+                            <ul>
+                              ${
+                                level.color === "green"
+                                  ? `<li>Ouça em velocidade reduzida (0.75x) nas primeiras semanas</li>
+                                 <li>Repita as frases em voz alta após o apresentador</li>
+                                 <li>Foque em entender o contexto geral, não cada palavra</li>`
+                                  : level.color === "blue"
+                                  ? `<li>Ouça uma vez sem pausar, depois ouça novamente com pausas</li>
+                                 <li>Anote 3-5 palavras novas por episódio</li>
+                                 <li>Tente resumir o episódio em 2-3 frases</li>`
+                                  : level.color === "yellow"
+                                  ? `<li>Ouça sem legendas/transcrições primeiro</li>
+                                 <li>Foque na entonação e expressões idiomáticas</li>
+                                 <li>Discuta o conteúdo com um parceiro de estudo</li>`
+                                  : `<li>Ouça como entretenimento, não como "estudo"</li>
+                                 <li>Pesquise contextos culturais que não entender</li>
+                                 <li>Experimente fazer outras atividades enquanto ouve</li>`
+                              }
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  `
+                    )
+                    .join("")}
+                </div>
+              </div>
+            </div>
+          `
+            )
+            .join("")}
+        </div>
+        
+        <!-- Dicas gerais -->
+        <div class="podcasts-tips-section">
+          <div class="tips-header">
+            <h4><i class="fas fa-gem"></i> Estratégias de Escuta Eficiente</h4>
+          </div>
+          
+          <div class="tips-grid">
+            ${material.tips
+              .map(
+                (tip, index) => `
+              <div class="tip-card">
+                <div class="tip-number">${index + 1}</div>
+                <div class="tip-content">
+                  <p>${tip}</p>
+                </div>
+              </div>
+            `
+              )
+              .join("")}
+          </div>
+          
+          <div class="pro-tip-podcast">
+            <i class="fas fa-rocket"></i>
+            <strong>Dica Pro:</strong> Crie uma playlist semanal com podcasts de diferentes níveis para exposição variada.
+          </div>
+        </div>
+        
+        <!-- Plataformas -->
+        <div class="platforms-section">
+          <h4><i class="fas fa-mobile-alt"></i> Plataformas Recomendadas</h4>
+          <div class="platforms-grid">
+            ${Object.entries(material.platforms)
+              .map(
+                ([name, url]) => `
+              <a href="${url}" target="_blank" class="platform-card">
+                <div class="platform-icon">
+                  <i class="fab fa-${
+                    name === "Spotify"
+                      ? "spotify"
+                      : name === "YouTube"
+                      ? "youtube"
+                      : name === "Apple Podcasts"
+                      ? "apple"
+                      : "chrome"
+                  }"></i>
+                </div>
+                <div class="platform-info">
+                  <h5>${name}</h5>
+                  <p>Clique para acessar</p>
+                </div>
+              </a>
+            `
+              )
+              .join("")}
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  `;
       } else {
         // Card padrão (fallback)
         cardBodyHTML = `
@@ -888,6 +1154,183 @@ document.addEventListener("DOMContentLoaded", function () {
         material.videos.some((v) => v.additionalContent)
       ) {
         // Configuração será feita após o timeout abaixo
+      }
+
+      // Adicionar funcionalidades específicas para podcasts
+      if (material.type === "podcasts") {
+        setTimeout(() => {
+          // 1. Filtros por nível
+          const filterButtons = document.querySelectorAll(
+            ".podcast-filter-btn"
+          );
+          const levelCards = document.querySelectorAll(".podcast-level-card");
+
+          filterButtons.forEach((button) => {
+            button.addEventListener("click", function () {
+              const filter = this.dataset.filter;
+
+              // Atualizar botão ativo
+              filterButtons.forEach((btn) => btn.classList.remove("active"));
+              this.classList.add("active");
+
+              // Mostrar/ocultar níveis baseado no filtro
+              levelCards.forEach((card) => {
+                const levelType = card.dataset.level;
+
+                if (filter === "all" || levelType === filter) {
+                  card.style.display = "block";
+                  // Se for o primeiro, garantir que está expandido
+                  if (filter !== "all" && !card.classList.contains("active")) {
+                    const content = card.querySelector(".level-content");
+                    const header = card.querySelector(".level-header");
+                    header.click();
+                  }
+                } else {
+                  card.style.display = "none";
+                }
+              });
+            });
+          });
+
+          // 2. Expandir/colapsar níveis
+          document.querySelectorAll(".level-header").forEach((header) => {
+            header.addEventListener("click", function () {
+              const levelCard = this.closest(".podcast-level-card");
+              const content = levelCard.querySelector(".level-content");
+              const icon = this.querySelector(".fa-chevron-down");
+
+              levelCard.classList.toggle("active");
+
+              if (levelCard.classList.contains("active")) {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = "rotate(180deg)";
+              } else {
+                content.style.maxHeight = "0px";
+                icon.style.transform = "rotate(0deg)";
+              }
+            });
+          });
+
+          // 3. Expandir detalhes do podcast
+          document.querySelectorAll(".podcast-card").forEach((card) => {
+            card.addEventListener("click", function (e) {
+              // Não disparar se clicar nos botões de ação
+              if (e.target.closest(".podcast-actions")) return;
+
+              const podcastItem = this.closest(".podcast-item");
+              const details = podcastItem.querySelector(".podcast-details");
+
+              // Fechar outros abertos
+              document
+                .querySelectorAll(".podcast-item.active")
+                .forEach((item) => {
+                  if (item !== podcastItem) {
+                    item.classList.remove("active");
+                    item.querySelector(".podcast-details").style.maxHeight =
+                      "0px";
+                  }
+                });
+
+              podcastItem.classList.toggle("active");
+
+              if (podcastItem.classList.contains("active")) {
+                details.style.maxHeight = details.scrollHeight + "px";
+              } else {
+                details.style.maxHeight = "0px";
+              }
+            });
+          });
+
+          // 4. Botão de salvar podcast
+          document.querySelectorAll(".save-podcast-btn").forEach((button) => {
+            button.addEventListener("click", function (e) {
+              e.stopPropagation();
+              const podcastName = this.dataset.podcast;
+
+              // Salvar no localStorage
+              let savedPodcasts =
+                JSON.parse(localStorage.getItem("savedPodcasts")) || [];
+
+              if (!savedPodcasts.includes(podcastName)) {
+                savedPodcasts.push(podcastName);
+                localStorage.setItem(
+                  "savedPodcasts",
+                  JSON.stringify(savedPodcasts)
+                );
+
+                // Feedback visual
+                const icon = this.querySelector("i");
+                icon.classList.remove("far", "fa-bookmark");
+                icon.classList.add("fas", "fa-check");
+                this.style.color = "var(--accent-green)";
+                this.style.borderColor = "var(--accent-green)";
+
+                setTimeout(() => {
+                  icon.classList.remove("fas", "fa-check");
+                  icon.classList.add("far", "fa-bookmark");
+                  this.style.color = "";
+                  this.style.borderColor = "";
+                }, 1500);
+              } else {
+                // Remover se já estiver salvo
+                savedPodcasts = savedPodcasts.filter(
+                  (name) => name !== podcastName
+                );
+                localStorage.setItem(
+                  "savedPodcasts",
+                  JSON.stringify(savedPodcasts)
+                );
+
+                const icon = this.querySelector("i");
+                icon.classList.remove("far", "fa-bookmark");
+                icon.classList.add("fas", "fa-times");
+                this.style.color = "var(--accent-pink)";
+                this.style.borderColor = "var(--accent-pink)";
+
+                setTimeout(() => {
+                  icon.classList.remove("fas", "fa-times");
+                  icon.classList.add("far", "fa-bookmark");
+                  this.style.color = "";
+                  this.style.borderColor = "";
+                }, 1500);
+              }
+            });
+          });
+
+          // 5. Botão de ouvir (redirecionar para plataforma)
+          document.querySelectorAll(".play-podcast-btn").forEach((button) => {
+            button.addEventListener("click", function (e) {
+              e.stopPropagation();
+              const platform = this.dataset.platform;
+              const searchQuery = this.dataset.search;
+
+              let url = "";
+              switch (platform) {
+                case "YouTube":
+                  url = `https://www.youtube.com/results?search_query=${searchQuery}`;
+                  break;
+                case "Spotify":
+                  url = `https://open.spotify.com/search/${searchQuery}`;
+                  break;
+                case "Apple Podcasts":
+                  url = `https://podcasts.apple.com/us/search?term=${searchQuery}`;
+                  break;
+                default:
+                  // Para sites próprios, tenta buscar no Google
+                  url = `https://www.google.com/search?q=${searchQuery}+podcast`;
+              }
+
+              window.open(url, "_blank");
+            });
+          });
+
+          // 6. Inicializar com o primeiro nível expandido
+          const firstLevel = document.querySelector(".podcast-level-card");
+          if (firstLevel && !firstLevel.classList.contains("active")) {
+            const firstHeader = firstLevel.querySelector(".level-header");
+            firstHeader.click();
+          }
+        }, 300);
       }
     });
 
@@ -1013,6 +1456,37 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       });
     }, 300);
+
+    // Função para mostrar podcasts salvos (opcional)
+    function showSavedPodcasts() {
+      const savedPodcasts =
+        JSON.parse(localStorage.getItem("savedPodcasts")) || [];
+
+      if (savedPodcasts.length === 0) {
+        return '<p class="no-saved">Você ainda não salvou nenhum podcast.</p>';
+      }
+
+      return `
+    <div class="saved-podcasts">
+      <h4><i class="fas fa-bookmark"></i> Seus Podcasts Salvos</h4>
+      <div class="saved-list">
+        ${savedPodcasts
+          .map(
+            (podcast) => `
+          <div class="saved-podcast-item">
+            <i class="fas fa-headphones"></i>
+            <span>${podcast.replace(/-/g, " ")}</span>
+            <button class="remove-saved" data-podcast="${podcast}">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        `
+          )
+          .join("")}
+      </div>
+    </div>
+  `;
+    }
   }
 
   // Adicione esta função em algum lugar do seu código
