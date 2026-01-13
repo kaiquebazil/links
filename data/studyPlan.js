@@ -18,7 +18,7 @@ export const studyPlan = [
       {
         title: "Semana 2: Família e Relacionamentos",
         contents: [
-          "Descrever membros da família (geral)",
+          "Membros da família (geral)",
           "Falar sobre sua familia (casado, solteiro, filhos)",
           "Descrever amigos e suas qualidades",
           "Falar sobre animais de estimação",

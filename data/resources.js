@@ -150,19 +150,19 @@ export const resourcesDatabase = {
   },
 
   // --- SEMANA 2: FAMÍLIA E RELACIONAMENTOS ---
-  "Descrever membros da família (geral)": {
+  "Membros da família (geral)": {
     videos: [
       {
-        id: "d1DpN6GzUwU",
-        title: "Family Members Song for Kids! - ESL English Learning Song",
-        duration: "1:57",
-        channel: "Super English Kid",
+        id: "JsCHHLPNAec",
+        title: "Talking About Your Family in English | Comprehensible Input 🗣️",
+        duration: "12:07",
+        channel: "Kaique Bazil",
       },
       {
-        id: "G_r4BFoxlC8",
+        id: "24GWC1dDyUM",
         title: "Learn Family Members in English | Family Vocabulary",
-        duration: "4:25",
-        channel: "Woodward English",
+        duration: "3:20",
+        channel: "Fun Kids English",
       },
     ],
     materials: [
