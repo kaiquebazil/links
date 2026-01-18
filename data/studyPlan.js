@@ -1,326 +1,372 @@
 // js/data/studyPlan.js
-// Estrutura completa para fluência conversacional em 6 meses
+// Plano de Fluência Conversacional em 6 meses - Versão Otimizada
 
 export const studyPlan = [
   {
-    month: "Mês 1: Sobrevivência Conversacional",
+    month: "Mês 1: Fundamentos e Sobrevivência",
+    focus: "Vocabulário essencial e frases de sobrevivência",
     weeks: [
       {
-        title: "Semana 1: Cumprimentos e Apresentações",
+        title: "Semana 1: Conexões Humanas Básicas",
         contents: [
-          "Alfabeto",
-          "Números",
-          "Saudações básicas",
-          "Apresentações pessoais",
-          "Expressar prazer em conhecer alguém",
+          "Saudações formais e informais (bom dia, oi, e aí?)",
+          "Apresentações: nome, nacionalidade, ocupação",
+          "Expressões de cortesia (por favor, obrigado, desculpe)",
+          "Perguntas básicas: 'Como você está?', 'De onde você é?'",
+          "Despedidas naturais (tchau, até logo, falou)",
+          "PRÁTICA: Diálogo de 2 minutos de apresentação"
         ],
       },
       {
-        title: "Semana 2: Família e Relacionamentos",
+        title: "Semana 2: Vida Pessoal e Relações",
         contents: [
-          "Membros da família (geral)",
-          "Falar sobre sua familia (casado, solteiro, filhos)",
-          "Descrever amigos e suas qualidades",
-          "Falar sobre animais de estimação",
-          "Compartilhar histórias familiares simples",
+          "Família: membros imediatos e termos básicos",
+          "Estado civil e relacionamentos",
+          "Profissões mais comuns (médico, professor, estudante)",
+          "Animais de estimação e preferências",
+          "PRÁTICA: 'Conte sobre sua família em 1 minuto'"
         ],
       },
       {
-        title: "Semana 3: Descrever sua Rotina",
+        title: "Semana 3: Rotina Diária",
         contents: [
-          "Falar sobre seu dia-a-dia em detalhes",
-          "Descrever atividades matinais e noturnas",
-          "Falar sobre horários e compromissos",
-          "Descrever seu local de trabalho/estudo",
-          "Falar sobre meios de transporte que usa",
+          "Horários e atividades diárias (presente simples)",
+          "Dias da semana e frequência",
+          "Refeições e hábitos alimentares básicos",
+          "Transporte: como chega ao trabalho/escola",
+          "PRÁTICA: Descreva seu dia perfeito"
         ],
       },
-
       {
-        title: "Semana 4: Hobbies e Tempo Livre",
+        title: "Semana 4: Interesses e Lazer",
         contents: [
-          "Descrever hobbies e atividades de lazer",
-          "Falar sobre esportes que pratica/assiste",
-          "Descrever filmes, séries e música preferidos",
-          "Falar sobre livros e leitura",
-          "Discutir passatempos criativos (cozinhar, pintar)",
+          "Hobbies: 'Eu gosto de...', 'Meu passatempo é...'",
+          "Esportes e atividades físicas",
+          "Entretenimento: filmes, música, séries",
+          "PRÁTICA: Recomende um filme/série para um amigo",
+          "REVISÃO: Simulação de encontro casual (roleplay)"
         ],
       },
     ],
   },
   {
-    month: "Mês 2: Vida Cotidiana e Rotina",
+    month: "Mês 2: Interações Práticas",
+    focus: "Situações do cotidiano e comunicação funcional",
     weeks: [
       {
-        title: "Semana 5: Pedidos e Necessidades Básicas",
+        title: "Semana 5: Alimentação e Restaurantes",
         contents: [
-          "Pedir comida e bebida em restaurantes/cafés",
-          "Perguntar preços e fazer pagamentos",
-          "Pedir direções e entender indicações",
-          "Expressar necessidades básicas (banheiro, ajuda)",
-          "Lidar com problemas simples (erro no pedido, troco)",
+          "Cardápio: ler e fazer pedidos",
+          "Tipos de comida e preferências",
+          "Reclamações e problemas no restaurante",
+          "PRÁTICA: Pedir comida por telefone/app"
         ],
       },
       {
-        title: "Semana 6: Informações Pessoais e Rotina",
+        title: "Semana 6: Compras e Transações",
         contents: [
-          "Falar sobre idade, aniversário e família",
-          "Descrever sua rotina diária básica",
-          "Falar sobre trabalho/estudos (o que faz, onde)",
-          "Compartilhar números de telefone e email",
-          "Descrever sua cidade/país de origem",
+          "Loja de roupas: tamanhos, cores, materiais",
+          "Supermercado: alimentos, quantidades, preços",
+          "Negociação e pedido de desconto",
+          "Trocas e devoluções",
+          "PRÁTICA: Negociar preço em uma feira"
         ],
       },
       {
-        title: "Semana 7: Socialização Inicial",
+        title: "Semana 7: Direções e Locomoção",
         contents: [
-          "Iniciar e manter conversas casuais",
-          "Perguntar sobre hobbies e interesses básicos",
-          "Falar sobre tempo e clima",
-          "Convidar para atividades simples",
-          "Aceitar/recusar convites educadamente",
+          "Perguntar e dar direções",
+          "Transporte público: ônibus, metrô, táxi",
+          "Localização: 'onde fica...', 'como chego...'",
+          "PRÁTICA: Explicar como chegar ao seu trabalho"
         ],
       },
       {
-        title: "Semana 8: Compras e Transações",
+        title: "Semana 8: Emergências e Saúde",
         contents: [
-          "Fazer compras em diferentes tipos de lojas",
-          "Negociar preços e pedir descontos",
-          "Devolver produtos e reclamar",
-          "Comparar produtos e preços",
-          "Falar sobre preferências de marcas e produtos",
+          "Problemas de saúde básicos",
+          "Farmácia: sintomas e medicamentos",
+          "Emergências: 'Preciso de ajuda', 'Chame uma ambulância'",
+          "PRÁTICA: Descrever sintomas ao médico"
         ],
       },
     ],
   },
   {
-    month: "Mês 3: Experiências Passadas",
+    month: "Mês 3: Histórias e Experiências",
+    focus: "Passado simples e narrativa básica",
     weeks: [
       {
-        title: "Semana 9: Histórias Pessoais",
+        title: "Semana 9: Memórias Pessoais",
         contents: [
-          "Contar sobre sua infância e educação",
-          "Falar sobre experiências escolares/universitárias",
-          "Descrever seu primeiro emprego",
-          "Compartilhar memórias importantes",
-          "Falar sobre momentos que mudaram sua vida",
+          "Infância: 'Quando eu era criança...'",
+          "Experiências escolares/universitárias",
+          "Primeiro emprego/experiência profissional",
+          "PRÁTICA: 'A lição mais importante que aprendi'"
         ],
       },
       {
         title: "Semana 10: Viagens e Aventuras",
         contents: [
-          "Descrever viagens que fez (passado)",
-          "Falar sobre países e culturas que conheceu",
-          "Contar histórias de aventuras/desventuras",
-          "Descrever comidas diferentes que experimentou",
-          "Falar sobre pessoas interessantes que conheceu",
+          "Descrever viagens passadas",
+          "Países visitados e culturas conhecidas",
+          "Histórias engraçadas/inesperadas em viagens",
+          "PRÁTICA: Recomendar um destino turístico"
         ],
       },
       {
-        title: "Semana 11: Conquistas e Aprendizados",
+        title: "Semana 11: Conquistas e Superações",
         contents: [
-          "Falar sobre conquistas profissionais/pessoais",
-          "Descrever desafios que superou",
-          "Compartilhar lições aprendidas com erros",
-          "Falar sobre metas alcançadas",
-          "Descrever momentos de orgulho",
+          "Metas alcançadas",
+          "Desafios superados",
+          "Lições aprendidas com erros",
+          "PRÁTICA: Compartilhar uma conquista pessoal"
         ],
       },
       {
-        title: "Semana 12: Tradições e Cultura",
+        title: "Semana 12: Cultura e Tradições",
         contents: [
-          "Descrever tradições familiares",
-          "Falar sobre festas e celebrações importantes",
-          "Explicar costumes do seu país/cultura",
-          "Comparar culturas diferentes",
-          "Falar sobre superstições e crenças",
+          "Festas e celebrações do seu país",
+          "Comidas típicas e tradições familiares",
+          "Comparar culturas",
+          "PRÁTICA: Explicar uma tradição para um estrangeiro"
         ],
       },
     ],
   },
   {
-    month: "Mês 4: Opiniões e Sentimentos",
+    month: "Mês 4: Opiniões e Emoções",
+    focus: "Expressão de sentimentos e pontos de vista",
     weeks: [
       {
-        title: "Semana 13: Expressar Opiniões",
+        title: "Semana 13: Preferências e Opiniões",
         contents: [
-          "Dar opiniões sobre filmes, séries e livros",
-          "Expressar preferências (comida, música, arte)",
-          "Comparar e contrastar diferentes opções",
-          "Dar recomendações e conselhos",
-          "Expressar concordância e discordância",
+          "Dar opiniões sobre filmes, música, arte",
+          "Comparar opções ('Prefiro... porque...')",
+          "Concordar e discordar educadamente",
+          "PRÁTICA: Debater qual é o melhor filme/série"
         ],
       },
       {
-        title: "Semana 14: Emoções e Sentimentos",
+        title: "Semana 14: Sentimentos e Estados Emocionais",
         contents: [
-          "Descrever como se sente em diferentes situações",
+          "Emoções básicas e complexas",
           "Expressar felicidade, tristeza, raiva, medo",
-          "Falar sobre esperanças e sonhos",
-          "Descrever momentos de estresse e relaxamento",
-          "Expressar gratidão e apreciação",
+          "Dar apoio emocional ('Sinto muito', 'Fico feliz por você')",
+          "PRÁTICA: Descrever como se sente hoje e por quê"
         ],
       },
       {
-        title: "Semana 15: Desejos e Aspirações",
+        title: "Semana 15: Sonhos e Metas Futuras",
         contents: [
-          "Falar sobre seus sonhos para o futuro",
-          "Descrever metas profissionais e pessoais",
-          "Falar sobre lugares que quer visitar",
-          "Expressar desejos de aprendizado/crescimento",
-          "Compartilhar visões para o futuro",
+          "Planos para o futuro próximo",
+          "Sonhos e aspirações de longo prazo",
+          "Metas profissionais e pessoais",
+          "PRÁTICA: 'Onde você se vê em 5 anos?'"
         ],
       },
       {
-        title: "Semana 16: Problemas e Soluções",
+        title: "Semana 16: Conselhos e Soluções",
         contents: [
-          "Descrever problemas do dia-a-dia",
-          "Pedir ajuda e oferecer assistência",
-          "Dar conselhos práticos",
-          "Falar sobre conflitos e resoluções",
-          "Expressar preocupações e alívios",
+          "Pedir e dar conselhos",
+          "Resolver problemas práticos",
+          "Mediar conflitos simples",
+          "PRÁTICA: Dar conselhos sobre um problema comum"
         ],
       },
     ],
   },
   {
-    month: "Mês 5: Tópicos Complexos e Abstratos",
+    month: "Mês 5: Tópicos Complexos",
+    focus: "Discussões abstratas e argumentação",
     weeks: [
       {
-        title: "Semana 17: Debate e Argumentação",
+        title: "Semana 17: Tecnologia e Sociedade",
         contents: [
-          "Argumentar sobre temas polêmicos",
-          "Apresentar pontos de vista diferentes",
-          "Defender suas opiniões com exemplos",
-          "Rebater argumentos contra",
-          "Encontrar pontos em comum",
+          "Redes sociais: vantagens e desvantagens",
+          "Trabalho remoto e transformação digital",
+          "Privacidade online",
+          "PRÁTICA: 'Como a tecnologia mudou sua vida?'"
         ],
       },
       {
-        title: "Semana 18: Tecnologia e Inovação",
+        title: "Semana 18: Saúde e Bem-estar",
         contents: [
-          "Falar sobre avanços tecnológicos",
-          "Discutir redes sociais e impacto",
-          "Expressar opiniões sobre IA e automação",
-          "Falar sobre privacidade digital",
-          "Debater futuro da tecnologia",
+          "Hábitos saudáveis vs. não saudáveis",
+          "Exercício físico e alimentação balanceada",
+          "Saúde mental e equilíbrio emocional",
+          "PRÁTICA: Criar um plano de bem-estar semanal"
         ],
       },
       {
-        title: "Semana 19: Saúde e Bem-estar",
+        title: "Semana 19: Meio Ambiente e Sustentabilidade",
         contents: [
-          "Descrever hábitos saudáveis",
-          "Falar sobre exercícios e dieta",
-          "Discutir saúde mental e equilíbrio",
-          "Dar conselhos sobre bem-estar",
-          "Falar sobre medicina tradicional vs moderna",
+          "Problemas ambientais locais e globais",
+          "Ações individuais para ajudar o planeta",
+          "Consumo consciente",
+          "PRÁTICA: Propor soluções para um problema ambiental"
         ],
       },
       {
-        title: "Semana 20: Sociedade e Política",
+        title: "Semana 20: Educação e Futuro",
         contents: [
-          "Discutir questões sociais importantes",
-          "Expressar opiniões políticas",
-          "Falar sobre igualdade e justiça",
-          "Debater educação e futuro",
-          "Discutir meio ambiente e sustentabilidade",
+          "Sistema educacional ideal",
+          "Habilidades para o futuro",
+          "Aprendizado ao longo da vida",
+          "PRÁTICA: 'O que as escolas deveriam ensinar?'"
         ],
       },
     ],
   },
   {
-    month: "Mês 6: Fluência Natural e Domínio",
+    month: "Mês 6: Fluência Natural",
+    focus: "Conversação espontânea e refinamento",
     weeks: [
       {
         title: "Semana 21: Storytelling Avançado",
         contents: [
-          "Contar histórias com suspense e emoção",
-          "Usar linguagem figurativa e metáforas",
-          "Criar personagens e cenários vívidos",
-          "Mantendo atenção do ouvinte",
-          "Adaptar histórias para diferentes públicos",
+          "Contar histórias com suspense e clímax",
+          "Usar linguagem figurativa (metáforas, comparações)",
+          "Variação de ritmo e entonação",
+          "PRÁTICA: Contar uma história pessoal em 3 minutos"
         ],
       },
       {
-        title: "Semana 22: Humor e Ironia",
+        title: "Semana 22: Humor e Cultura",
         contents: [
-          "Contar piadas e anedotas",
-          "Usar sarcasmo e ironia apropriadamente",
-          "Entender e usar humor cultural",
-          "Brincar com palavras (puns)",
-          "Lidar com mal-entendidos humorísticos",
+          "Tipos de humor em diferentes culturas",
+          "Piadas e anedotas internacionais",
+          "Ironia e sarcasmo (uso apropriado)",
+          "PRÁTICA: Contar uma piada em inglês"
         ],
       },
       {
-        title: "Semana 23: Negociação e Persuasão",
+        title: "Semana 23: Persuasão e Influência",
         contents: [
-          "Negociar em contextos profissionais",
-          "Persuadir pessoas para sua visão",
-          "Fazer apresentações convincentes",
-          "Vender ideias e produtos",
-          "Lidar com objeções e críticas",
+          "Estruturar um argumento persuasivo",
+          "Técnicas de negociação não-confrontacionais",
+          "Apresentar ideias de forma convincente",
+          "PRÁTICA: 'Venda' uma ideia em 2 minutos"
         ],
       },
       {
-        title: "Semana 24: Domínio e Naturalidade",
+        title: "Semana 24: Domínio Conversacional",
         contents: [
-          "Pensar diretamente em inglês",
-          "Usar filler words naturalmente",
-          "Adaptar linguagem para diferentes contextos",
-          "Manter conversas longas e complexas",
-          "Corrigir-se naturalmente durante a fala",
+          "Pensar diretamente em inglês (sem traduzir)",
+          "Preencher pausas naturalmente",
+          "Auto-correção fluida durante a fala",
+          "Adaptar linguagem para diferentes públicos",
+          "PRÁTICA FINAL: Conversa de 15 minutos sobre tópico surpresa"
         ],
       },
     ],
   },
 ];
 
-// Função auxiliar para obter progresso
+// Sistema de Progresso Aprimorado
 export const getStudyPlanStats = () => {
   let totalWeeks = 0;
   let totalContents = 0;
+  let totalPracticeActivities = 0;
 
   studyPlan.forEach((month) => {
     totalWeeks += month.weeks.length;
     month.weeks.forEach((week) => {
-      totalContents += week.contents.length;
+      week.contents.forEach((content) => {
+        totalContents++;
+        if (content.includes("PRÁTICA:") || content.includes("REVISÃO:")) {
+          totalPracticeActivities++;
+        }
+      });
     });
   });
 
   return {
     totalMonths: studyPlan.length,
     totalWeeks,
-    totalContents,
-    estimatedHours: totalContents * 1.5, // 1.5 horas por tópico
+    totalTopics: totalContents,
+    totalPracticeActivities,
+    estimatedHours: {
+      theory: Math.round(totalContents * 1.2), // 1.2h por tópico
+      practice: totalPracticeActivities * 0.5, // 0.5h por atividade prática
+      total: Math.round(totalContents * 1.2 + totalPracticeActivities * 0.5)
+    }
   };
 };
 
-// Obter tópicos por mês
-export const getMonthlyTopics = (monthIndex) => {
-  if (monthIndex < 0 || monthIndex >= studyPlan.length) return [];
-
-  const month = studyPlan[monthIndex];
-  const topics = [];
-
-  month.weeks.forEach((week) => {
-    week.contents.forEach((content) => {
-      topics.push(content);
-    });
-  });
-
-  return topics;
-};
-
-// Verificar progresso do usuário
-export const getUserProgress = (completedContents) => {
-  const stats = getStudyPlanStats();
-  const completedCount = completedContents.length;
-
+// Obter plano por semana (mais útil para visualização)
+export const getWeeklyPlan = (monthIndex, weekIndex) => {
+  if (monthIndex < 0 || monthIndex >= studyPlan.length) return null;
+  if (weekIndex < 0 || weekIndex >= studyPlan[monthIndex].weeks.length) return null;
+  
   return {
-    completed: completedCount,
-    total: stats.totalContents,
-    percentage: Math.round((completedCount / stats.totalContents) * 100),
-    weeksCompleted: Math.floor(completedCount / 5), // ~5 tópicos por semana
-    estimatedHoursCompleted: completedCount * 1.5,
+    ...studyPlan[monthIndex].weeks[weekIndex],
+    month: studyPlan[monthIndex].month,
+    focus: studyPlan[monthIndex].focus
   };
+};
+
+// Progresso do usuário com métricas detalhadas
+export const getUserProgress = (completedTopics, completedPracticeActivities = []) => {
+  const stats = getStudyPlanStats();
+  
+  return {
+    basics: {
+      topicsCompleted: completedTopics.length,
+      totalTopics: stats.totalTopics,
+      percentage: Math.round((completedTopics.length / stats.totalTopics) * 100)
+    },
+    practice: {
+      activitiesCompleted: completedPracticeActivities.length,
+      totalActivities: stats.totalPracticeActivities,
+      percentage: completedPracticeActivities.length > 0 
+        ? Math.round((completedPracticeActivities.length / stats.totalPracticeActivities) * 100)
+        : 0
+    },
+    time: {
+      hoursCompleted: Math.round(completedTopics.length * 1.2 + completedPracticeActivities.length * 0.5),
+      totalHours: stats.estimatedHours.total
+    },
+    level: getFluencyLevel(completedTopics.length, completedPracticeActivities.length)
+  };
+};
+
+// Determinar nível de fluência baseado no progresso
+const getFluencyLevel = (topicsCompleted, practiceCompleted) => {
+  const totalPossible = 120; // tópicos aproximados
+  const progress = (topicsCompleted / totalPossible) * 100;
+  
+  if (progress < 25) return "Iniciante";
+  if (progress < 50) return "Básico";
+  if (progress < 75) return "Intermediário";
+  if (progress < 90) return "Avançado";
+  return "Fluente";
+};
+
+// Gerar plano de revisão baseado em tópicos concluídos
+export const generateReviewPlan = (completedTopics, weaknessAreas = []) => {
+  const reviewWeeks = [];
+  
+  // Revisão mensal dos tópicos mais importantes
+  studyPlan.forEach((month, monthIndex) => {
+    const monthTopics = [];
+    
+    month.weeks.forEach(week => {
+      week.contents.forEach(topic => {
+        if (completedTopics.includes(topic)) {
+          monthTopics.push(topic);
+        }
+      });
+    });
+    
+    if (monthTopics.length > 0) {
+      reviewWeeks.push({
+        title: `Revisão ${month.month}`,
+        topics: monthTopics.slice(0, 5), // Revisar 5 tópicos principais
+        practice: `Simulação: Conversa aplicando 3 tópicos desta revisão`
+      });
+    }
+  });
+  
+  return reviewWeeks;
 };

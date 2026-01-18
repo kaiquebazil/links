@@ -1,4 +1,3 @@
-// js/data/resources.js
 export const resourcesDatabase = {
   Alfabeto: {
     videos: [
