@@ -12,7 +12,7 @@ export const studyPlan = [
           "Saudações formais e informais (bom dia, oi, e aí?)",
           "Apresentações: nome, nacionalidade, ocupação",
           "Expressões de cortesia (por favor, obrigado, desculpe)",
-          "Perguntas básicas: 'Como você está?', 'De onde você é?'",
+          // "Perguntas básicas: 'Como você está?', 'De onde você é?'",
           "Despedidas naturais (tchau, até logo, falou)",
           "PRÁTICA: Diálogo de 2 minutos de apresentação"
         ],
@@ -20,7 +20,7 @@ export const studyPlan = [
       {
         title: "Semana 2: Vida Pessoal e Relações",
         contents: [
-          "Família: membros imediatos e termos básicos",
+          "Família: membros(Geral) | Comprehensible Input",
           "Estado civil e relacionamentos",
           "Profissões mais comuns (médico, professor, estudante)",
           "Animais de estimação e preferências",

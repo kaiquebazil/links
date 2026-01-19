@@ -52,7 +52,7 @@ export const resourcesDatabase = {
     ],
   },
 
-  "Saudações básicas": {
+  "Saudações formais e informais (bom dia, oi, e aí?)": {
     videos: [
       {
         id: "tf3X7ujNKpI",
@@ -82,7 +82,7 @@ export const resourcesDatabase = {
     ],
   },
 
-  "Apresentações pessoais": {
+  "Apresentações: nome, nacionalidade, ocupação": {
     videos: [
       {
         id: "KXoQBAmFM3U",
@@ -149,7 +149,7 @@ export const resourcesDatabase = {
   },
 
   // --- SEMANA 2: FAMÍLIA E RELACIONAMENTOS ---
-  "Membros da família (geral)": {
+  "Família: membros(Geral) | Comprehensible Input": {
     videos: [
       {
         id: "JsCHHLPNAec",
