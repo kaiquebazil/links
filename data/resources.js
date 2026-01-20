@@ -1,5 +1,5 @@
 export const resourcesDatabase = {
-  Alfabeto: {
+  "Alfabeto inglês: letras, pronúncia e soletração": {
     videos: [
       {
         id: "pGdos0z14aQ",
@@ -29,7 +29,7 @@ export const resourcesDatabase = {
     ],
   },
 
-  Números: {
+  "Números: 1 a 1 Trilhão": {
     videos: [
       {
         id: "XD6n4vqVGFo",
@@ -51,6 +51,11 @@ export const resourcesDatabase = {
       "Exercícios: Escreva frases com a idade de seus familiares (dominar de 1 a 100), frases de contas de casa e preços de produtos.",
     ],
   },
+
+
+  
+
+  /* SEMANA 1 */
 
    "Saudações formais e informais (bom dia, oi, e aí?)": {
     videos: [
@@ -386,11 +391,11 @@ export const resourcesDatabase = {
     ]
   },
 
-  // "PRÁTICA: Diálogo de apresentação": {
+  // "TESTE: Diálogo de apresentação": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -400,11 +405,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: Conte sobre sua família": {
+  // "TESTE: Conte sobre sua família": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -414,11 +419,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: Descreva seu dia perfeito": {
+  // "TESTE: Descreva seu dia perfeito": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -428,11 +433,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: Recomende um filme/série para um amigo": {
+  // "TESTE: Recomende um filme/série para um amigo": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -446,7 +451,7 @@ export const resourcesDatabase = {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -456,11 +461,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: Pedir comida por telefone/app": {
+  // "TESTE: Pedir comida por telefone/app": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -470,11 +475,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: Negociar preço em uma feira": {
+  // "TESTE: Negociar preço em uma feira": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -484,11 +489,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: Explicar como chegar ao seu trabalho": {
+  // "TESTE: Explicar como chegar ao seu trabalho": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -498,11 +503,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: Descrever sintomas ao médico": {
+  // "TESTE: Descrever sintomas ao médico": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -512,11 +517,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: 'A lição mais importante que aprendi'": {
+  // "TESTE: 'A lição mais importante que aprendi'": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -526,11 +531,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: Recomendar um destino turístico": {
+  // "TESTE: Recomendar um destino turístico": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -540,11 +545,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: Compartilhar uma conquista pessoal": {
+  // "TESTE: Compartilhar uma conquista pessoal": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -554,11 +559,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: Explicar uma tradição para um estrangeiro": {
+  // "TESTE: Explicar uma tradição para um estrangeiro": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -568,11 +573,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: Debater qual é o melhor filme/série": {
+  // "TESTE: Debater qual é o melhor filme/série": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -582,11 +587,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: Descrever como se sente hoje e por quê": {
+  // "TESTE: Descrever como se sente hoje e por quê": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -596,11 +601,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: 'Onde você se vê em 5 anos?'": {
+  // "TESTE: 'Onde você se vê em 5 anos?'": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -610,11 +615,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: Dar conselhos sobre um problema comum": {
+  // "TESTE: Dar conselhos sobre um problema comum": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -624,11 +629,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: 'Como a tecnologia mudou sua vida?'": {
+  // "TESTE: 'Como a tecnologia mudou sua vida?'": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -638,11 +643,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: Criar um plano de bem-estar semanal": {
+  // "TESTE: Criar um plano de bem-estar semanal": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -652,11 +657,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: Propor soluções para um problema ambiental": {
+  // "TESTE: Propor soluções para um problema ambiental": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -666,11 +671,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: 'O que as escolas deveriam ensinar?'": {
+  // "TESTE: 'O que as escolas deveriam ensinar?'": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -680,11 +685,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: Contar uma história pessoal": {
+  // "TESTE: Contar uma história pessoal": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -694,11 +699,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: Contar uma piada em inglês": {
+  // "TESTE: Contar uma piada em inglês": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -708,11 +713,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA: 'Venda' uma ideia": {
+  // "TESTE: 'Venda' uma ideia": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -722,11 +727,11 @@ export const resourcesDatabase = {
   //   ],
   // },
 
-  // "PRÁTICA FINAL: Conversa de 15 minutos sobre tópico surpresa": {
+  // "TESTE FINAL: Conversa de 15 minutos sobre tópico surpresa": {
   //   videos: [
   //     {
   //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
   //     },
@@ -736,6 +741,8 @@ export const resourcesDatabase = {
   //   ],
   // },
 };
+
+
 
 // Exportar recursos padrão para conteúdos não listados
 export const defaultResources = {

@@ -47,6 +47,293 @@ document.addEventListener("DOMContentLoaded", function () {
   let completedContents =
     JSON.parse(localStorage.getItem("completedContents")) || [];
 
+  // ========== FUNÇÕES DA SEMANA 0 ==========
+  
+  // Inicializar progresso da Semana 0
+  function initializeWeekZeroProgress() {
+    if (!localStorage.getItem('week0Progress')) {
+      const initialProgress = {
+        completedSections: [],
+        startDate: new Date().toISOString(),
+        lastAccessed: new Date().toISOString()
+      };
+      localStorage.setItem('week0Progress', JSON.stringify(initialProgress));
+    }
+  }
+
+  // Renderizar a Semana 0 no estilo timeline
+  function renderWeekZeroTimeline(data) {
+    // Calcular progresso
+    const progress = JSON.parse(localStorage.getItem('week0Progress')) || { 
+      completedSections: [] 
+    };
+    const completedCount = progress.completedSections.length;
+    const totalSections = data.sections?.length || 0;
+    const progressPercent = totalSections > 0 ? (completedCount / totalSections) * 100 : 0;
+    
+    return `
+      <div class="timeline-item week-zero-item" id="week-zero-timeline">
+        <div class="week-zero-header">
+          <div style="flex: 1;">
+            <h3 class="week-zero-title">${data.title}</h3>
+
+          </div>
+          <button class="toggle-week-btn" id="toggle-week-zero-btn">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+        
+        
+        <div class="week-zero-content" id="week-zero-content">
+          ${data.sections ? data.sections.map((section, sectionIndex) => {
+            const isCompleted = progress.completedSections.includes(section.id);
+            
+            return `
+              <div class="week-zero-section ${isCompleted ? 'completed' : ''}" 
+                   style="border-left-color: ${isCompleted ? 'var(--accent-green)' : '#667eea'};">
+                <div class="section-header-mini" onclick="toggleWeekZeroSection('${section.id}')">
+                  <div class="section-icon-mini" style="color: ${isCompleted ? 'var(--accent-green)' : '#667eea'};">
+                    <i class="fas fa-${section.icon}"></i>
+                  </div>
+                  <div style="flex: 1;">
+                    <h4 class="section-title-mini">${section.title}</h4>
+                    ${isCompleted ? `
+                      
+                    ` : ''}
+                  </div>
+                  <span class="section-toggle">
+                    <i class="fas fa-chevron-down"></i>
+                  </span>
+                </div>
+                
+                <div class="section-content" id="section-${section.id}">
+                  ${section.content?.videos && section.content.videos.length > 0 ? `
+                    <div style="margin-bottom: 15px;">
+                      <h5 style="font-size: 14px; color: var(--accent-color); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-video"></i>
+                        <span>Vídeos</span>
+                      </h5>
+                      <div>
+                        ${section.content.videos.map(video => `
+                          <div class="video-card-timeline" onclick="openVideo('${video.id}')">
+                            <div class="video-thumb-timeline">
+                              <img src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" alt="${video.title}" loading="lazy">
+                              <span class="video-duration-timeline">${video.duration}</span>
+                            </div>
+                            <div class="video-info-timeline">
+                              <h6 class="video-title-timeline">${video.title}</h6>
+                              <div class="video-meta-timeline">
+                                <span style="color: #667eea; font-weight: 500;">${video.channel}</span>
+                                <span>• ${video.duration}</span>
+                              </div>
+                              ${video.description ? `<p class="video-description-timeline">${video.description}</p>` : ''}
+                            </div>
+                          </div>
+                        `).join('')}
+                      </div>
+                    </div>
+                  ` : ''}
+                  
+                  ${section.content?.materials && section.content.materials.length > 0 ? `
+                    <div style="margin-bottom: 15px;">
+                      <h5 style="font-size: 14px; color: var(--accent-color); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Recomendações</span>
+                      </h5>
+                      <div class="materials-list-timeline">
+                        ${section.content.materials.map(material => `
+                          <div class="material-item-timeline">
+                            <span>${material}</span>
+                          </div>
+                        `).join('')}
+                      </div>
+                    </div>
+                  ` : ''}
+                  
+                  ${section.content?.learning && section.content.learning.length > 0 ? `
+                    <div>
+                      <h5 style="font-size: 14px; color: var(--accent-color); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>O que você vai aprender</span>
+                      </h5>
+                      <div class="learning-list-timeline">
+                        ${section.content.learning.map(item => `
+                          <div class="learning-item-timeline">
+                            <i class="fas fa-check"></i>
+                            <span>${item}</span>
+                          </div>
+                        `).join('')}
+                      </div>
+                    </div>
+                  ` : ''}
+                  
+                 
+                </div>
+              </div>
+            `;
+          }).join('') : '<p style="text-align: center; color: var(--text-secondary); padding: 20px;">Nenhuma seção disponível</p>'}
+        
+        </div>
+      </div>
+    `;
+  }
+
+  // Funções auxiliares da Semana 0 (adicionadas ao window para acesso global)
+  window.toggleWeekZeroContent = function() {
+    const content = document.getElementById('week-zero-content');
+    const button = document.getElementById('toggle-week-zero-btn');
+    
+    if (content && button) {
+      content.classList.toggle('active');
+      button.classList.toggle('active');
+    }
+  };
+
+  window.toggleWeekZeroSection = function(sectionId) {
+    const section = document.getElementById(`section-${sectionId}`);
+    if (section) {
+      section.classList.toggle('active');
+      
+      // Atualizar ícone da seta
+      const toggleIcon = section.parentElement.querySelector('.section-header-mini .section-toggle i');
+      if (toggleIcon) {
+        toggleIcon.className = section.classList.contains('active')
+          ? 'fas fa-chevron-down'
+          : 'fas fa-chevron-up';
+      }
+    }
+  };
+
+  window.markWeekZeroSection = function(sectionId, sectionIndex) {
+    const progress = JSON.parse(localStorage.getItem('week0Progress')) || {
+      completedSections: [],
+      startDate: new Date().toISOString()
+    };
+    
+    if (!progress.completedSections.includes(sectionId)) {
+      progress.completedSections.push(sectionId);
+      progress.lastAccessed = new Date().toISOString();
+      localStorage.setItem('week0Progress', JSON.stringify(progress));
+      
+      // Atualizar interface
+      const sectionElement = document.querySelector(`#section-${sectionId}`)?.parentElement;
+      if (sectionElement) {
+        sectionElement.style.borderLeftColor = 'var(--accent-green)';
+        
+        const icon = sectionElement.querySelector('.section-icon-mini');
+        if (icon) icon.style.color = 'var(--accent-green)';
+        
+        const button = sectionElement.querySelector('.mark-section-btn');
+        if (button) {
+          button.innerHTML = '<i class="fas fa-check-double"></i><span>Seção Concluída</span>';
+          button.style.background = 'var(--accent-green)';
+        }
+        
+        // Adicionar badge de concluído
+        const headerContent = sectionElement.querySelector('.section-header-mini > div:nth-child(2)');
+        if (headerContent && !headerContent.querySelector('.completed-badge')) {
+          const completedBadge = document.createElement('div');
+          completedBadge.className = 'completed-badge';
+          completedBadge.style.cssText = 'display: inline-flex; align-items: center; gap: 5px; background: rgba(59, 185, 80, 0.1); color: var(--accent-green); padding: 3px 8px; border-radius: 12px; font-size: 11px; font-weight: 500; margin-top: 5px;';
+          completedBadge.innerHTML = '<i class="fas fa-check-circle"></i><span>Concluído</span>';
+          headerContent.appendChild(completedBadge);
+        }
+      }
+      
+      // Atualizar progresso
+      updateWeekZeroProgress();
+      
+      // Feedback visual
+      showCompletionToast(`Seção ${sectionIndex + 1} concluída!`);
+    }
+  };
+
+  function updateWeekZeroProgress() {
+    const progress = JSON.parse(localStorage.getItem('week0Progress')) || { completedSections: [] };
+    const weekZeroData = complementaryMaterials.find(item => item.id === 'week-0');
+    const completedCount = progress.completedSections.length;
+    const totalSections = weekZeroData?.sections?.length || 0;
+    const progressPercent = totalSections > 0 ? (completedCount / totalSections) * 100 : 0;
+    
+    // Atualizar barra de progresso
+    const progressFill = document.querySelector('.progress-fill-week');
+    const progressLabel = document.querySelector('.progress-label span:last-child');
+    const progressStats = document.querySelector('.progress-stats span:last-child');
+    
+    if (progressFill) progressFill.style.width = `${progressPercent}%`;
+    if (progressLabel) progressLabel.textContent = `${completedCount}/${totalSections}`;
+    if (progressStats) progressStats.textContent = `${progressPercent.toFixed(0)}% concluído`;
+  }
+
+  window.openVideo = function(videoId) {
+    window.open(`https://youtube.com/watch?v=${videoId}`, '_blank');
+  };
+
+  function showCompletionToast(message) {
+    // Criar toast
+    const toast = document.createElement('div');
+    toast.style.cssText = `
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, var(--accent-green), #2ecc71);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(59, 185, 80, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+      animation: slideInUp 0.3s ease;
+      max-width: 300px;
+    `;
+    
+    toast.innerHTML = `
+      <i class="fas fa-check-circle" style="font-size: 20px;"></i>
+      <div>
+        <strong style="display: block; font-size: 14px;">Ótimo!</strong>
+        <span style="font-size: 13px;">${message}</span>
+      </div>
+    `;
+    
+    document.body.appendChild(toast);
+    
+    // Remover após 3 segundos
+    setTimeout(() => {
+      toast.style.animation = 'slideInUp 0.3s ease reverse';
+      setTimeout(() => toast.remove(), 300);
+    }, 3000);
+  }
+
+  // ========== FUNÇÃO PARA RENDERIZAR A SEMANA 0 COMO PRIMEIRO ITEM ==========
+  function renderWeekZeroFirst() {
+    const weekZeroData = complementaryMaterials.find(item => item.id === 'week-0');
+    
+    if (!weekZeroData) return;
+    
+    // Criar container para a Semana 0
+    const weekZeroSection = document.createElement('div');
+    weekZeroSection.className = 'week-zero-first-section';
+    weekZeroSection.innerHTML = `
+      <div>
+        
+        ${renderWeekZeroTimeline(weekZeroData)}
+      </div>
+    `;
+    
+    // Inserir antes dos meses
+    monthsContainer.parentNode.insertBefore(weekZeroSection, monthsContainer);
+    
+    // Adicionar event listeners após o elemento ser inserido no DOM
+    setTimeout(() => {
+      const toggleBtn = document.getElementById('toggle-week-zero-btn');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', window.toggleWeekZeroContent);
+      }
+    }, 100);
+  }
+
   // Atualizar data e dia
   function updateDateTime() {
     const { dayName, day, month, year } = getFormattedDate();
@@ -96,6 +383,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // js/6meses.js - Função renderComplementaryMaterials COMPLETA
   function renderComplementaryMaterials() {
+    // Filtrar para não incluir a Semana 0 nos conteúdos adicionais
+    const otherMaterials = complementaryMaterials.filter(item => item.id !== 'week-0');
+    
+    if (otherMaterials.length === 0) return;
+
     // Criar container principal
     const complementaryContainer = document.createElement("div");
     complementaryContainer.className = "complementary-container";
@@ -114,11 +406,13 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
   `;
 
-    // Inserir antes dos meses
-    monthsContainer.parentNode.insertBefore(
-      complementaryContainer,
-      monthsContainer
-    );
+    // Inserir depois da Semana 0 e antes dos meses
+    const weekZeroElement = document.querySelector('.week-zero-first-section');
+    if (weekZeroElement) {
+      weekZeroElement.parentNode.insertBefore(complementaryContainer, weekZeroElement.nextSibling);
+    } else {
+      monthsContainer.parentNode.insertBefore(complementaryContainer, monthsContainer);
+    }
 
     // Referências aos elementos
     const complementaryContent = document.getElementById(
@@ -130,7 +424,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const materialsGrid = document.createElement("div");
     materialsGrid.className = "complementary-grid";
 
-    complementaryMaterials.forEach((material) => {
+    otherMaterials.forEach((material) => {
       const materialCard = document.createElement("div");
       materialCard.className = "complementary-card";
 
@@ -576,188 +870,6 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
         </div>
       `;
-      } else if (material.type === "schedule") {
-        // Card de cronograma
-        cardBodyHTML = `
-        <div class="complementary-card-body">
-          <div class="complementary-section">
-            <div class="complementary-section-title">
-              <i class="fas fa-calendar-day"></i>
-              <span>Fórmula Diária</span>
-            </div>
-            <div class="schedule-grid">
-              ${material.schedule
-                .map(
-                  (item) => `
-                <div class="schedule-item">
-                  <div class="schedule-time">${item.time}</div>
-                  <div class="schedule-activity">
-                    <h5>${item.activity}</h5>
-                    <ul>
-                      ${item.examples
-                        .map((example) => `<li>${example}</li>`)
-                        .join("")}
-                    </ul>
-                  </div>
-                </div>
-              `
-                )
-                .join("")}
-            </div>
-          </div>
-        </div>
-      `;
-      } else if (material.type === "checkpoints") {
-        // Card de marcadores de progresso
-        cardBodyHTML = `
-        <div class="complementary-card-body">
-          <div class="complementary-section">
-            <div class="complementary-section-title">
-              <i class="fas fa-chart-line"></i>
-              <span>Marcadores de Progresso</span>
-            </div>
-            <div class="checkpoints-container">
-              ${material.markers
-                .map(
-                  (marker) => `
-                <div class="checkpoint-stage">
-                  <h5>${marker.stage}</h5>
-                  <ul class="checkpoint-signs">
-                    ${marker.signs.map((sign) => `<li>${sign}</li>`).join("")}
-                  </ul>
-                </div>
-              `
-                )
-                .join("")}
-            </div>
-          </div>
-        </div>
-      `;
-      } else if (material.type === "warnings") {
-        // Card de erros a evitar
-        cardBodyHTML = `
-        <div class="complementary-card-body">
-          <div class="complementary-section">
-            <div class="complementary-section-title">
-              <i class="fas fa-exclamation-triangle"></i>
-              <span>Erros a Evitar</span>
-            </div>
-            <div class="warnings-container">
-              ${material.warnings
-                .map(
-                  (warning) => `
-                <div class="warning-item">
-                  <h5>${warning.mistake}</h5>
-                  <p><strong>Por que evitar:</strong> ${warning.why}</p>
-                  <p><strong>Solução:</strong> ${warning.solution}</p>
-                </div>
-              `
-                )
-                .join("")}
-            </div>
-          </div>
-        </div>
-      `;
-      } else if (material.type === "challenge") {
-        // Card de desafio
-        cardBodyHTML = `
-        <div class="complementary-card-body">
-          <div class="complementary-section">
-            <div class="complementary-section-title">
-              <i class="fas fa-trophy"></i>
-              <span>Desafio dos 180 Dias</span>
-            </div>
-            <div class="challenge-container">
-              <p class="challenge-commitment">${material.commitment}</p>
-              <h5>Regras do Desafio:</h5>
-              <ul class="challenge-rules">
-                ${material.rules.map((rule) => `<li>${rule}</li>`).join("")}
-              </ul>
-            </div>
-          </div>
-        </div>
-      `;
-      } else if (material.type === "manifesto") {
-        // Card de manifesto
-        cardBodyHTML = `
-        <div class="complementary-card-body">
-          <div class="complementary-section">
-            <div class="complementary-section-title">
-              <i class="fas fa-bullhorn"></i>
-              <span>Manifesto da Fluência Rápida</span>
-            </div>
-            <div class="manifesto-container">
-              <div class="manifesto-section">
-                <h5>PARA QUEM:</h5>
-                <ul>
-                  ${material.forWho.map((item) => `<li>${item}</li>`).join("")}
-                </ul>
-              </div>
-              <div class="manifesto-section">
-                <h5>ESTE MÉTODO NÃO É:</h5>
-                <ul class="manifesto-not">
-                  ${material.thisIsNot
-                    .map((item) => `<li>${item}</li>`)
-                    .join("")}
-                </ul>
-              </div>
-              <div class="manifesto-section">
-                <h5>ESTE MÉTODO É:</h5>
-                <ul class="manifesto-is">
-                  ${material.thisIs.map((item) => `<li>${item}</li>`).join("")}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
-      } else if (material.type === "outcomes") {
-        // Card de resultados
-        cardBodyHTML = `
-        <div class="complementary-card-body">
-          <div class="complementary-section">
-            <div class="complementary-section-title">
-              <i class="fas fa-flag-checkered"></i>
-              <span>Dia 180: Linha de Chegada</span>
-            </div>
-            <div class="outcomes-container">
-              <h5>Você será capaz de:</h5>
-              <ul class="outcomes-list">
-                ${material.willBeAbleTo
-                  .map((item) => `<li>✓ ${item}</li>`)
-                  .join("")}
-              </ul>
-            </div>
-          </div>
-        </div>
-      `;
-      } else if (material.type === "actionable") {
-        // Card de ações práticas
-        cardBodyHTML = `
-        <div class="complementary-card-body">
-          <div class="complementary-section">
-            <div class="complementary-section-title">
-              <i class="fas fa-play-circle"></i>
-              <span>Primeiro Passo (Hoje Mesmo)</span>
-            </div>
-            <div class="actions-container">
-              ${material.actions
-                .map(
-                  (action) => `
-                <div class="action-item">
-                  <div class="action-header">
-                    <h5>${action.action}</h5>
-                  </div>
-                  <p><strong>Como fazer:</strong> ${action.instructions}</p>
-                  <p><strong>Propósito:</strong> ${action.purpose}</p>
-                </div>
-              `
-                )
-                .join("")}
-            </div>
-          </div>
-        </div>
-      `;
       } else if (material.type === "tools") {
         // Card de ferramentas e recursos
         cardBodyHTML = `
@@ -1181,9 +1293,8 @@ document.addEventListener("DOMContentLoaded", function () {
                   card.style.display = "block";
                   // Se for o primeiro, garantir que está expandido
                   if (filter !== "all" && !card.classList.contains("active")) {
-                    const content = card.querySelector(".level-content");
                     const header = card.querySelector(".level-header");
-                    header.click();
+                    if (header) header.click();
                   }
                 } else {
                   card.style.display = "none";
@@ -1226,8 +1337,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 .forEach((item) => {
                   if (item !== podcastItem) {
                     item.classList.remove("active");
-                    item.querySelector(".podcast-details").style.maxHeight =
-                      "0px";
+                    const detailsEl = item.querySelector(".podcast-details");
+                    if (detailsEl) detailsEl.style.maxHeight = "0px";
                   }
                 });
 
@@ -1328,7 +1439,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const firstLevel = document.querySelector(".podcast-level-card");
           if (firstLevel && !firstLevel.classList.contains("active")) {
             const firstHeader = firstLevel.querySelector(".level-header");
-            firstHeader.click();
+            if (firstHeader) firstHeader.click();
           }
         }, 300);
       }
@@ -1456,321 +1567,258 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       });
     }, 300);
-
-    // Função para mostrar podcasts salvos (opcional)
-    function showSavedPodcasts() {
-      const savedPodcasts =
-        JSON.parse(localStorage.getItem("savedPodcasts")) || [];
-
-      if (savedPodcasts.length === 0) {
-        return '<p class="no-saved">Você ainda não salvou nenhum podcast.</p>';
-      }
-
-      return `
-    <div class="saved-podcasts">
-      <h4><i class="fas fa-bookmark"></i> Seus Podcasts Salvos</h4>
-      <div class="saved-list">
-        ${savedPodcasts
-          .map(
-            (podcast) => `
-          <div class="saved-podcast-item">
-            <i class="fas fa-headphones"></i>
-            <span>${podcast.replace(/-/g, " ")}</span>
-            <button class="remove-saved" data-podcast="${podcast}">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-        `
-          )
-          .join("")}
-      </div>
-    </div>
-  `;
-    }
-  }
-
-  // Adicione esta função em algum lugar do seu código
-  function showSavedVideos() {
-    const savedVideos =
-      JSON.parse(localStorage.getItem("savedGrammarVideos")) || [];
-
-    if (savedVideos.length === 0) {
-      return '<p style="text-align: center; color: var(--text-secondary); padding: 20px;">Nenhum vídeo salvo ainda.</p>';
-    }
-
-    return `
-    <div class="saved-videos-list">
-      <h4>📌 Seus vídeos salvos:</h4>
-      ${savedVideos
-        .map(
-          (video) => `
-        <div class="saved-video-item">
-          <a href="https://www.youtube.com/watch?v=${video.id}" target="_blank">
-            <i class="fab fa-youtube"></i> ${video.title}
-          </a>
-          <span class="saved-date">Salvo em ${new Date(
-            video.savedAt
-          ).toLocaleDateString("pt-BR")}</span>
-        </div>
-      `
-        )
-        .join("")}
-    </div>
-  `;
   }
 
   // Renderizar o plano de estudos
-  // No arquivo 6meses.js, atualize a função renderStudyPlan:
+  function renderStudyPlan(filter = "all") {
+    monthsContainer.innerHTML = "";
 
-function renderStudyPlan(filter = "all") {
-  monthsContainer.innerHTML = "";
+    studyPlan.forEach((monthData, monthIndex) => {
+      const monthCard = document.createElement("div");
+      monthCard.className = "month-card";
 
-  studyPlan.forEach((monthData, monthIndex) => {
-    const monthCard = document.createElement("div");
-    monthCard.className = "month-card";
+      // Calcular progresso do mês usando função auxiliar
+      const { monthCompleted, monthTotal, percentage } = calculateMonthProgress(
+        monthData,
+        completedContents,
+        monthIndex
+      );
 
-    // Calcular progresso do mês usando função auxiliar
-    const { monthCompleted, monthTotal, percentage } = calculateMonthProgress(
-      monthData,
-      completedContents,
-      monthIndex
-    );
+      const monthHeader = document.createElement("div");
+      monthHeader.className = "month-header";
 
-    const monthHeader = document.createElement("div");
-    monthHeader.className = "month-header";
+      const monthTitle = document.createElement("div");
+      monthTitle.className = "month-title";
+      monthTitle.textContent = monthData.month;
 
-    const monthTitle = document.createElement("div");
-    monthTitle.className = "month-title";
-    monthTitle.textContent = monthData.month;
+      const monthProgress = document.createElement("div");
+      monthProgress.className = "month-progress";
+      monthProgress.textContent = `${monthCompleted}/${monthTotal} (${percentage}%)`;
 
-    const monthProgress = document.createElement("div");
-    monthProgress.className = "month-progress";
-    monthProgress.textContent = `${monthCompleted}/${monthTotal} (${percentage}%)`;
+      monthHeader.appendChild(monthTitle);
+      monthHeader.appendChild(monthProgress);
+      monthCard.appendChild(monthHeader);
 
-    monthHeader.appendChild(monthTitle);
-    monthHeader.appendChild(monthProgress);
-    monthCard.appendChild(monthHeader);
+      const weeksContainer = document.createElement("div");
+      weeksContainer.className = "weeks-container";
 
-    const weeksContainer = document.createElement("div");
-    weeksContainer.className = "weeks-container";
+      monthData.weeks.forEach((week) => {
+        const weekCard = document.createElement("div");
+        weekCard.className = "week-card";
 
-    monthData.weeks.forEach((week) => {
-      const weekCard = document.createElement("div");
-      weekCard.className = "week-card";
+        const weekTitle = document.createElement("div");
+        weekTitle.className = "week-title";
+        weekTitle.innerHTML = `<span>${week.title}</span> <i class="fas fa-book-open"></i>`;
+        weekCard.appendChild(weekTitle);
 
-      const weekTitle = document.createElement("div");
-      weekTitle.className = "week-title";
-      weekTitle.innerHTML = `<span>${week.title}</span> <i class="fas fa-book-open"></i>`;
-      weekCard.appendChild(weekTitle);
+        const contentList = document.createElement("ul");
+        contentList.className = "content-list";
 
-      const contentList = document.createElement("ul");
-      contentList.className = "content-list";
-
-      week.contents.forEach((content, contentIndex) => {
-        const contentId = `${monthIndex}-${week.title}-${contentIndex}`;
-        const isCompleted = completedContents.includes(contentId);
-        
-        // Aplicar filtro
-        if (filter === "completed" && !isCompleted) return;
-        if (filter === "pending" && isCompleted) return;
-
-        const contentItem = document.createElement("li");
-        contentItem.className = "content-item";
-
-        // Header do conteúdo
-        const contentHeader = document.createElement("div");
-        contentHeader.className = "content-header";
-
-        // Checkbox
-        const checkboxContainer = document.createElement("div");
-        checkboxContainer.className = "content-checkbox";
-        if (isCompleted) checkboxContainer.classList.add("checked");
-
-        if (isCompleted) {
-          const checkIcon = document.createElement("i");
-          checkIcon.className = "fas fa-check";
-          checkboxContainer.appendChild(checkIcon);
-        }
-
-        // Label - agora usando content.title se for objeto
-        const label = document.createElement("span");
-        label.className = `content-label ${isCompleted ? "completed" : ""}`;
-        label.textContent = typeof content === 'object' ? content.title : content;
-
-        // Botão toggle
-        const toggleBtn = document.createElement("button");
-        toggleBtn.className = "toggle-btn";
-        toggleBtn.innerHTML = '<i class="fas fa-chevron-down"></i>';
-
-        // Conteúdo expandido
-        const expandedContent = document.createElement("div");
-        expandedContent.className = "expanded-content";
-
-        // Obter recursos
-        const topicTitle = typeof content === 'object' ? content.title : content;
-        const resources = getResources(topicTitle);
-
-        // Seção de vídeos
-        const videosSection = document.createElement("div");
-        videosSection.className = "resources-section";
-        
-        const videosHeader = document.createElement("div");
-        videosHeader.className = "section-header";
-        videosHeader.innerHTML = '<i class="fas fa-video"></i> Vídeos Recomendados';
-        
-        const videosGrid = document.createElement("div");
-        videosGrid.className = "videos-grid";
-        
-        resources.videos.forEach((video) => {
-          const videoCard = createVideoCard(video);
-          videosGrid.appendChild(videoCard);
-        });
-        
-        videosSection.appendChild(videosHeader);
-        videosSection.appendChild(videosGrid);
-        expandedContent.appendChild(videosSection);
-
-        // Seção de materiais
-        const materialsSection = document.createElement("div");
-        materialsSection.className = "resources-section";
-        
-        const materialsHeader = document.createElement("div");
-        materialsHeader.className = "section-header";
-        materialsHeader.innerHTML = '<i class="fas fa-book"></i> Materiais Complementares';
-        
-        const materialsList = document.createElement("ul");
-        materialsList.className = "materials-list";
-        
-        resources.materials.forEach((material) => {
-          const materialItem = createMaterialItem(material);
-          materialsList.appendChild(materialItem);
-        });
-        
-        materialsSection.appendChild(materialsHeader);
-        materialsSection.appendChild(materialsList);
-        expandedContent.appendChild(materialsSection);
-
-        // SEÇÃO DE APRENDIZAGEM (NO FINAL)
-        if (resources.learning && resources.learning.length > 0) {
-          const learningSection = document.createElement("div");
-          learningSection.className = "learning-section";
+        week.contents.forEach((content, contentIndex) => {
+          const contentId = `${monthIndex}-${week.title}-${contentIndex}`;
+          const isCompleted = completedContents.includes(contentId);
           
-          const learningHeader = document.createElement("div");
-          learningHeader.className = "section-header learning-header";
-          learningHeader.innerHTML = '<i class="fas fa-graduation-cap"></i> O que você vai aprender';
+          // Aplicar filtro
+          if (filter === "completed" && !isCompleted) return;
+          if (filter === "pending" && isCompleted) return;
+
+          const contentItem = document.createElement("li");
+          contentItem.className = "content-item";
+
+          // Header do conteúdo
+          const contentHeader = document.createElement("div");
+          contentHeader.className = "content-header";
+
+          // Checkbox
+          const checkboxContainer = document.createElement("div");
+          checkboxContainer.className = "content-checkbox";
+          if (isCompleted) checkboxContainer.classList.add("checked");
+
+          if (isCompleted) {
+            const checkIcon = document.createElement("i");
+            checkIcon.className = "fas fa-check";
+            checkboxContainer.appendChild(checkIcon);
+          }
+
+          // Label - agora usando content.title se for objeto
+          const label = document.createElement("span");
+          label.className = `content-label ${isCompleted ? "completed" : ""}`;
+          label.textContent = typeof content === 'object' ? content.title : content;
+
+          // Botão toggle
+          const toggleBtn = document.createElement("button");
+          toggleBtn.className = "toggle-btn";
+          toggleBtn.innerHTML = '<i class="fas fa-chevron-down"></i>';
+
+          // Conteúdo expandido
+          const expandedContent = document.createElement("div");
+          expandedContent.className = "expanded-content";
+
+          // Obter recursos
+          const topicTitle = typeof content === 'object' ? content.title : content;
+          const resources = getResources(topicTitle);
+
+          // Seção de vídeos
+          const videosSection = document.createElement("div");
+          videosSection.className = "resources-section";
           
-          const learningList = document.createElement("ul");
-          learningList.className = "learning-list";
+          const videosHeader = document.createElement("div");
+          videosHeader.className = "section-header";
+          videosHeader.innerHTML = '<i class="fas fa-video"></i> Vídeos Recomendados';
           
-          resources.learning.forEach((item) => {
-            const learningItem = document.createElement("li");
-            learningItem.className = "learning-item";
-            learningItem.innerHTML = `<i class="fas fa-check-circle"></i> ${item}`;
-            learningList.appendChild(learningItem);
+          const videosGrid = document.createElement("div");
+          videosGrid.className = "videos-grid";
+          
+          resources.videos.forEach((video) => {
+            const videoCard = createVideoCard(video);
+            videosGrid.appendChild(videoCard);
           });
           
-          learningSection.appendChild(learningHeader);
-          learningSection.appendChild(learningList);
-          expandedContent.appendChild(learningSection);
-        }
+          videosSection.appendChild(videosHeader);
+          videosSection.appendChild(videosGrid);
+          expandedContent.appendChild(videosSection);
 
-        // Evento do toggle
-        toggleBtn.addEventListener("click", function (e) {
-          e.stopPropagation();
-          expandedContent.classList.toggle("active");
-          this.classList.toggle("expanded");
+          // Seção de materiais
+          const materialsSection = document.createElement("div");
+          materialsSection.className = "resources-section";
           
-          // Se estiver abrindo, ajustar altura
-          if (expandedContent.classList.contains("active")) {
-            expandedContent.style.maxHeight = expandedContent.scrollHeight + "px";
-          } else {
-            expandedContent.style.maxHeight = "0px";
+          const materialsHeader = document.createElement("div");
+          materialsHeader.className = "section-header";
+          materialsHeader.innerHTML = '<i class="fas fa-book"></i> Materiais Complementares';
+          
+          const materialsList = document.createElement("ul");
+          materialsList.className = "materials-list";
+          
+          resources.materials.forEach((material) => {
+            const materialItem = createMaterialItem(material);
+            materialsList.appendChild(materialItem);
+          });
+          
+          materialsSection.appendChild(materialsHeader);
+          materialsSection.appendChild(materialsList);
+          expandedContent.appendChild(materialsSection);
+
+          // SEÇÃO DE APRENDIZAGEM (NO FINAL)
+          if (resources.learning && resources.learning.length > 0) {
+            const learningSection = document.createElement("div");
+            learningSection.className = "learning-section";
+            
+            const learningHeader = document.createElement("div");
+            learningHeader.className = "section-header learning-header";
+            learningHeader.innerHTML = '<i class="fas fa-graduation-cap"></i> O que você vai aprender';
+            
+            const learningList = document.createElement("ul");
+            learningList.className = "learning-list";
+            
+            resources.learning.forEach((item) => {
+              const learningItem = document.createElement("li");
+              learningItem.className = "learning-item";
+              learningItem.innerHTML = `<i class="fas fa-check-circle"></i> ${item}`;
+              learningList.appendChild(learningItem);
+            });
+            
+            learningSection.appendChild(learningHeader);
+            learningSection.appendChild(learningList);
+            expandedContent.appendChild(learningSection);
           }
-        });
 
-        // Evento do checkbox
-        checkboxContainer.addEventListener("click", function (e) {
-          e.stopPropagation();
-          const isCurrentlyCompleted = completedContents.includes(contentId);
-
-          if (!isCurrentlyCompleted) {
-            // Marcar como concluído
-            completedContents.push(contentId);
-            this.classList.add("checked");
-
-            if (!this.querySelector("i.fa-check")) {
-              const checkIcon = document.createElement("i");
-              checkIcon.className = "fas fa-check";
-              this.appendChild(checkIcon);
-            }
-
-            label.classList.add("completed");
-
-            // Expandir automaticamente quando marcar como concluído
-            if (!expandedContent.classList.contains("active")) {
-              expandedContent.classList.add("active");
-              toggleBtn.classList.add("expanded");
+          // Evento do toggle
+          toggleBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            expandedContent.classList.toggle("active");
+            this.classList.toggle("expanded");
+            
+            // Se estiver abrindo, ajustar altura
+            if (expandedContent.classList.contains("active")) {
               expandedContent.style.maxHeight = expandedContent.scrollHeight + "px";
+            } else {
+              expandedContent.style.maxHeight = "0px";
             }
-          } else {
-            // Desmarcar
-            completedContents = completedContents.filter(
-              (id) => id !== contentId
+          });
+
+          // Evento do checkbox
+          checkboxContainer.addEventListener("click", function (e) {
+            e.stopPropagation();
+            const isCurrentlyCompleted = completedContents.includes(contentId);
+
+            if (!isCurrentlyCompleted) {
+              // Marcar como concluído
+              completedContents.push(contentId);
+              this.classList.add("checked");
+
+              if (!this.querySelector("i.fa-check")) {
+                const checkIcon = document.createElement("i");
+                checkIcon.className = "fas fa-check";
+                this.appendChild(checkIcon);
+              }
+
+              label.classList.add("completed");
+
+              // Expandir automaticamente quando marcar como concluído
+              if (!expandedContent.classList.contains("active")) {
+                expandedContent.classList.add("active");
+                toggleBtn.classList.add("expanded");
+                expandedContent.style.maxHeight = expandedContent.scrollHeight + "px";
+              }
+            } else {
+              // Desmarcar
+              completedContents = completedContents.filter(
+                (id) => id !== contentId
+              );
+              this.classList.remove("checked");
+
+              const checkIcon = this.querySelector("i.fa-check");
+              if (checkIcon) {
+                this.removeChild(checkIcon);
+              }
+
+              label.classList.remove("completed");
+            }
+
+            localStorage.setItem(
+              "completedContents",
+              JSON.stringify(completedContents)
             );
-            this.classList.remove("checked");
+            updateProgress();
 
-            const checkIcon = this.querySelector("i.fa-check");
-            if (checkIcon) {
-              this.removeChild(checkIcon);
-            }
+            // Atualizar progresso do mês
+            const {
+              monthCompleted: newMonthCompleted,
+              monthTotal: newMonthTotal,
+              percentage: newPercentage,
+            } = calculateMonthProgress(
+              monthData,
+              completedContents,
+              monthIndex
+            );
 
-            label.classList.remove("completed");
-          }
+            monthProgress.textContent = `${newMonthCompleted}/${newMonthTotal} (${newPercentage}%)`;
+          });
 
-          localStorage.setItem(
-            "completedContents",
-            JSON.stringify(completedContents)
-          );
-          updateProgress();
+          // Adicionar elementos ao header
+          contentHeader.appendChild(checkboxContainer);
+          contentHeader.appendChild(label);
+          contentHeader.appendChild(toggleBtn);
 
-          // Atualizar progresso do mês
-          const {
-            monthCompleted: newMonthCompleted,
-            monthTotal: newMonthTotal,
-            percentage: newPercentage,
-          } = calculateMonthProgress(
-            monthData,
-            completedContents,
-            monthIndex
-          );
-
-          monthProgress.textContent = `${newMonthCompleted}/${newMonthTotal} (${newPercentage}%)`;
+          // Adicionar ao item
+          contentItem.appendChild(contentHeader);
+          contentItem.appendChild(expandedContent);
+          contentList.appendChild(contentItem);
         });
 
-        // Adicionar elementos ao header
-        contentHeader.appendChild(checkboxContainer);
-        contentHeader.appendChild(label);
-        contentHeader.appendChild(toggleBtn);
-
-        // Adicionar ao item
-        contentItem.appendChild(contentHeader);
-        contentItem.appendChild(expandedContent);
-        contentList.appendChild(contentItem);
+        weekCard.appendChild(contentList);
+        weeksContainer.appendChild(weekCard);
       });
 
-      weekCard.appendChild(contentList);
-      weeksContainer.appendChild(weekCard);
+      monthCard.appendChild(weeksContainer);
+      monthsContainer.appendChild(monthCard);
     });
+  }
 
-    monthCard.appendChild(weeksContainer);
-    monthsContainer.appendChild(monthCard);
-  });
-}
-
-// Adicione também a função getResources no topo do arquivo
-function getResources(topic) {
-  return resourcesDatabase[topic] || defaultResources;
-}
+  // Adicione também a função getResources no topo do arquivo
+  function getResources(topic) {
+    return resourcesDatabase[topic] || defaultResources;
+  }
 
   // Atualizar progresso
   function updateProgress() {
@@ -1812,10 +1860,22 @@ function getResources(topic) {
     }
   });
 
-  // Inicializar
+  // ========== INICIALIZAÇÃO ==========
+  
   updateDateTime();
   updateProgress();
+  
+  // Inicializar progresso da Semana 0
+  initializeWeekZeroProgress();
+  
+  
+  // 2. Conteúdos adicionais (sem a Semana 0)
   renderComplementaryMaterials();
+  
+  // Renderizar na ordem correta:
+  // 1. Semana 0 (como primeiro item)
+  renderWeekZeroFirst();
+  // 3. Plano de estudos (meses)
   renderStudyPlan();
 
   // Atualizar data a cada minuto

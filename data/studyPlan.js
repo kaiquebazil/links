@@ -2,7 +2,18 @@
 // Plano de Fluência Conversacional em 6 meses - Versão Otimizada
 
 export const studyPlan = [
-  
+  {
+    month: "Mês 0: Alfabetização e Fundamentos",
+    weeks: [
+      {
+        title: "Pré-requisito",
+        contents: [
+          "Alfabeto inglês: letras, pronúncia e soletração",
+          "Números: 1 a 1 Trilhão",
+        ],
+      },
+    ],
+  },
   {
     month: "Mês 1: Fundamentos e Sobrevivência",
     focus: "Vocabulário essencial e frases de sobrevivência",
@@ -14,7 +25,7 @@ export const studyPlan = [
           "Apresentações: nome, nacionalidade, ocupação",
           "Expressar prazer em conhecer alguém",
           "Expressões de cortesia (por favor, obrigado, desculpe)",
-          "PRÁTICA: Diálogo de apresentação"
+          "TESTE: Diálogo de apresentação",
         ],
       },
       {
@@ -24,7 +35,7 @@ export const studyPlan = [
           "Estado civil e relacionamentos",
           "Profissões mais comuns (médico, professor, estudante)",
           "Animais de estimação e preferências",
-          "PRÁTICA: Conte sobre sua família'"
+          "TESTE: Conte sobre sua família'",
         ],
       },
       {
@@ -34,7 +45,7 @@ export const studyPlan = [
           "Dias da semana e frequência",
           "Refeições e hábitos alimentares básicos",
           "Transporte: como chega ao trabalho/escola",
-          "PRÁTICA: Descreva seu dia perfeito"
+          "TESTE: Descreva seu dia perfeito",
         ],
       },
       {
@@ -43,14 +54,14 @@ export const studyPlan = [
           "Hobbies: 'Eu gosto de...', 'Meu passatempo é...'",
           "Esportes e atividades físicas",
           "Entretenimento: filmes, música, séries",
-          "PRÁTICA: Recomende um filme/série para um amigo",
-          "REVISÃO: Simulação de encontro casual (roleplay)"
+          "TESTE: Recomende um filme/série para um amigo",
+          "REVISÃO: Simulação de encontro casual (roleplay)",
         ],
       },
     ],
   },
   {
-    month: "Mês 2: Interações Práticas",
+    month: "Mês 2: Interações Praticas",
     focus: "Situações do cotidiano e comunicação funcional",
     weeks: [
       {
@@ -59,7 +70,7 @@ export const studyPlan = [
           "Cardápio: ler e fazer pedidos",
           "Tipos de comida e preferências",
           "Reclamações e problemas no restaurante",
-          "PRÁTICA: Pedir comida por telefone/app"
+          "TESTE: Pedir comida por telefone/app",
         ],
       },
       {
@@ -69,7 +80,7 @@ export const studyPlan = [
           "Supermercado: alimentos, quantidades, preços",
           "Negociação e pedido de desconto",
           "Trocas e devoluções",
-          "PRÁTICA: Negociar preço em uma feira"
+          "TESTE: Negociar preço em uma feira",
         ],
       },
       {
@@ -78,7 +89,7 @@ export const studyPlan = [
           "Perguntar e dar direções",
           "Transporte público: ônibus, metrô, táxi",
           "Localização: 'onde fica...', 'como chego...'",
-          "PRÁTICA: Explicar como chegar ao seu trabalho"
+          "TESTE: Explicar como chegar ao seu trabalho",
         ],
       },
       {
@@ -87,7 +98,7 @@ export const studyPlan = [
           "Problemas de saúde básicos",
           "Farmácia: sintomas e medicamentos",
           "Emergências: 'Preciso de ajuda', 'Chame uma ambulância'",
-          "PRÁTICA: Descrever sintomas ao médico"
+          "TESTE: Descrever sintomas ao médico",
         ],
       },
     ],
@@ -102,7 +113,7 @@ export const studyPlan = [
           "Infância: 'Quando eu era criança...'",
           "Experiências escolares/universitárias",
           "Primeiro emprego/experiência profissional",
-          "PRÁTICA: 'A lição mais importante que aprendi'"
+          "TESTE: 'A lição mais importante que aprendi'",
         ],
       },
       {
@@ -111,7 +122,7 @@ export const studyPlan = [
           "Descrever viagens passadas",
           "Países visitados e culturas conhecidas",
           "Histórias engraçadas/inesperadas em viagens",
-          "PRÁTICA: Recomendar um destino turístico"
+          "TESTE: Recomendar um destino turístico",
         ],
       },
       {
@@ -120,7 +131,7 @@ export const studyPlan = [
           "Metas alcançadas",
           "Desafios superados",
           "Lições aprendidas com erros",
-          "PRÁTICA: Compartilhar uma conquista pessoal"
+          "TESTE: Compartilhar uma conquista pessoal",
         ],
       },
       {
@@ -129,7 +140,7 @@ export const studyPlan = [
           "Festas e celebrações do seu país",
           "Comidas típicas e tradições familiares",
           "Comparar culturas",
-          "PRÁTICA: Explicar uma tradição para um estrangeiro"
+          "TESTE: Explicar uma tradição para um estrangeiro",
         ],
       },
     ],
@@ -144,7 +155,7 @@ export const studyPlan = [
           "Dar opiniões sobre filmes, música, arte",
           "Comparar opções ('Prefiro... porque...')",
           "Concordar e discordar educadamente",
-          "PRÁTICA: Debater qual é o melhor filme/série"
+          "TESTE: Debater qual é o melhor filme/série",
         ],
       },
       {
@@ -153,7 +164,7 @@ export const studyPlan = [
           "Emoções básicas e complexas",
           "Expressar felicidade, tristeza, raiva, medo",
           "Dar apoio emocional ('Sinto muito', 'Fico feliz por você')",
-          "PRÁTICA: Descrever como se sente hoje e por quê"
+          "TESTE: Descrever como se sente hoje e por quê",
         ],
       },
       {
@@ -162,7 +173,7 @@ export const studyPlan = [
           "Planos para o futuro próximo",
           "Sonhos e aspirações de longo prazo",
           "Metas profissionais e pessoais",
-          "PRÁTICA: 'Onde você se vê em 5 anos?'"
+          "TESTE: 'Onde você se vê em 5 anos?'",
         ],
       },
       {
@@ -171,7 +182,7 @@ export const studyPlan = [
           "Pedir e dar conselhos",
           "Resolver problemas práticos",
           "Mediar conflitos simples",
-          "PRÁTICA: Dar conselhos sobre um problema comum"
+          "TESTE: Dar conselhos sobre um problema comum",
         ],
       },
     ],
@@ -186,7 +197,7 @@ export const studyPlan = [
           "Redes sociais: vantagens e desvantagens",
           "Trabalho remoto e transformação digital",
           "Privacidade online",
-          "PRÁTICA: 'Como a tecnologia mudou sua vida?'"
+          "TESTE: 'Como a tecnologia mudou sua vida?'",
         ],
       },
       {
@@ -195,7 +206,7 @@ export const studyPlan = [
           "Hábitos saudáveis vs. não saudáveis",
           "Exercício físico e alimentação balanceada",
           "Saúde mental e equilíbrio emocional",
-          "PRÁTICA: Criar um plano de bem-estar semanal"
+          "TESTE: Criar um plano de bem-estar semanal",
         ],
       },
       {
@@ -204,7 +215,7 @@ export const studyPlan = [
           "Problemas ambientais locais e globais",
           "Ações individuais para ajudar o planeta",
           "Consumo consciente",
-          "PRÁTICA: Propor soluções para um problema ambiental"
+          "TESTE: Propor soluções para um problema ambiental",
         ],
       },
       {
@@ -213,7 +224,7 @@ export const studyPlan = [
           "Sistema educacional ideal",
           "Habilidades para o futuro",
           "Aprendizado ao longo da vida",
-          "PRÁTICA: 'O que as escolas deveriam ensinar?'"
+          "TESTE: 'O que as escolas deveriam ensinar?'",
         ],
       },
     ],
@@ -228,7 +239,7 @@ export const studyPlan = [
           "Contar histórias com suspense e clímax",
           "Usar linguagem figurativa (metáforas, comparações)",
           "Variação de ritmo e entonação",
-          "PRÁTICA: Contar uma história pessoal"
+          "TESTE: Contar uma história pessoal",
         ],
       },
       {
@@ -237,7 +248,7 @@ export const studyPlan = [
           "Tipos de humor em diferentes culturas",
           "Piadas e anedotas internacionais",
           "Ironia e sarcasmo (uso apropriado)",
-          "PRÁTICA: Contar uma piada em inglês"
+          "TESTE: Contar uma piada em inglês",
         ],
       },
       {
@@ -246,7 +257,7 @@ export const studyPlan = [
           "Estruturar um argumento persuasivo",
           "Técnicas de negociação não-confrontacionais",
           "Apresentar ideias de forma convincente",
-          "PRÁTICA: 'Venda' uma ideia"
+          "TESTE: 'Venda' uma ideia",
         ],
       },
       {
@@ -256,7 +267,7 @@ export const studyPlan = [
           "Preencher pausas naturalmente",
           "Auto-correção fluida durante a fala",
           "Adaptar linguagem para diferentes públicos",
-          "PRÁTICA FINAL: Conversa de 15 minutos sobre tópico surpresa"
+          "TESTE FINAL: Conversa de 15 minutos sobre tópico surpresa",
         ],
       },
     ],
@@ -274,7 +285,7 @@ export const getStudyPlanStats = () => {
     month.weeks.forEach((week) => {
       week.contents.forEach((content) => {
         totalContents++;
-        if (content.includes("PRÁTICA:") || content.includes("REVISÃO:")) {
+        if (content.includes("TESTE:") || content.includes("REVISÃO:")) {
           totalPracticeActivities++;
         }
       });
@@ -288,46 +299,62 @@ export const getStudyPlanStats = () => {
     totalPracticeActivities,
     estimatedHours: {
       theory: Math.round(totalContents * 1.2), // 1.2h por tópico
-      practice: totalPracticeActivities * 0.5, // 0.5h por atividade prática
-      total: Math.round(totalContents * 1.2 + totalPracticeActivities * 0.5)
-    }
+      practice: totalPracticeActivities * 0.5, // 0.5h por atividade TESTE
+      total: Math.round(totalContents * 1.2 + totalPracticeActivities * 0.5),
+    },
   };
 };
 
 // Obter plano por semana (mais útil para visualização)
 export const getWeeklyPlan = (monthIndex, weekIndex) => {
   if (monthIndex < 0 || monthIndex >= studyPlan.length) return null;
-  if (weekIndex < 0 || weekIndex >= studyPlan[monthIndex].weeks.length) return null;
-  
+  if (weekIndex < 0 || weekIndex >= studyPlan[monthIndex].weeks.length)
+    return null;
+
   return {
     ...studyPlan[monthIndex].weeks[weekIndex],
     month: studyPlan[monthIndex].month,
-    focus: studyPlan[monthIndex].focus
+    focus: studyPlan[monthIndex].focus,
   };
 };
 
 // Progresso do usuário com métricas detalhadas
-export const getUserProgress = (completedTopics, completedPracticeActivities = []) => {
+export const getUserProgress = (
+  completedTopics,
+  completedPracticeActivities = [],
+) => {
   const stats = getStudyPlanStats();
-  
+
   return {
     basics: {
       topicsCompleted: completedTopics.length,
       totalTopics: stats.totalTopics,
-      percentage: Math.round((completedTopics.length / stats.totalTopics) * 100)
+      percentage: Math.round(
+        (completedTopics.length / stats.totalTopics) * 100,
+      ),
     },
     practice: {
       activitiesCompleted: completedPracticeActivities.length,
       totalActivities: stats.totalPracticeActivities,
-      percentage: completedPracticeActivities.length > 0 
-        ? Math.round((completedPracticeActivities.length / stats.totalPracticeActivities) * 100)
-        : 0
+      percentage:
+        completedPracticeActivities.length > 0
+          ? Math.round(
+              (completedPracticeActivities.length /
+                stats.totalPracticeActivities) *
+                100,
+            )
+          : 0,
     },
     time: {
-      hoursCompleted: Math.round(completedTopics.length * 1.2 + completedPracticeActivities.length * 0.5),
-      totalHours: stats.estimatedHours.total
+      hoursCompleted: Math.round(
+        completedTopics.length * 1.2 + completedPracticeActivities.length * 0.5,
+      ),
+      totalHours: stats.estimatedHours.total,
     },
-    level: getFluencyLevel(completedTopics.length, completedPracticeActivities.length)
+    level: getFluencyLevel(
+      completedTopics.length,
+      completedPracticeActivities.length,
+    ),
   };
 };
 
@@ -335,7 +362,7 @@ export const getUserProgress = (completedTopics, completedPracticeActivities = [
 const getFluencyLevel = (topicsCompleted, practiceCompleted) => {
   const totalPossible = 120; // tópicos aproximados
   const progress = (topicsCompleted / totalPossible) * 100;
-  
+
   if (progress < 25) return "Iniciante";
   if (progress < 50) return "Básico";
   if (progress < 75) return "Intermediário";
@@ -346,27 +373,27 @@ const getFluencyLevel = (topicsCompleted, practiceCompleted) => {
 // Gerar plano de revisão baseado em tópicos concluídos
 export const generateReviewPlan = (completedTopics, weaknessAreas = []) => {
   const reviewWeeks = [];
-  
+
   // Revisão mensal dos tópicos mais importantes
   studyPlan.forEach((month, monthIndex) => {
     const monthTopics = [];
-    
-    month.weeks.forEach(week => {
-      week.contents.forEach(topic => {
+
+    month.weeks.forEach((week) => {
+      week.contents.forEach((topic) => {
         if (completedTopics.includes(topic)) {
           monthTopics.push(topic);
         }
       });
     });
-    
+
     if (monthTopics.length > 0) {
       reviewWeeks.push({
         title: `Revisão ${month.month}`,
         topics: monthTopics.slice(0, 5), // Revisar 5 tópicos principais
-        practice: `Simulação: Conversa aplicando 3 tópicos desta revisão`
+        practice: `Simulação: Conversa aplicando 3 tópicos desta revisão`,
       });
     }
   });
-  
+
   return reviewWeeks;
 };

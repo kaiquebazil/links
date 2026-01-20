@@ -1,5 +1,127 @@
 // js/data/complementaryData.js
 export const complementaryMaterials = [
+    {
+    id: "week-0",
+    title: "Preparação e Configuração",
+    sections: [
+      {
+        id: "installation",
+        title: "Instalação e configuração do ambiente de estudo",
+        icon: "cogs",
+        content: {
+          videos: [
+            {
+              id: "LLZ3xU6tESo",
+              title: "COMO FAZER IMERSÃO | Técnica de Imersão no Inglês para quem NÃO TEM TEMPO (Modo Difuso)",
+              duration: "3:26",
+              channel: "Kaique Bazil",
+              description: "Como usar o modo difuso para imersão no dia a dia"
+            },
+            {
+              id: "cswbKngQSgU",
+              title: "COMO FAZER IMERSÃO NO INGLÊS do jeito certo (Modo Focado)",
+              duration: "14:23",
+              channel: "Kaique Bazil",
+              description: "Técnicas de imersão ativa e focado"
+            }
+          ],
+          materials: [
+            "1️⃣ Instalação e configuração do ambiente de estudo",
+            "💡 Ideia central: Inglês não é algo que você estuda. É algo que te cerca.",
+            "📱 Celular 100% em inglês: Idioma do sistema, Instagram, TikTok, YouTube, Teclado em inglês",
+            "🎧 Ambiente auditivo: Inglês como som de fundo (podcasts, vídeos) com conteúdo compreensível (CI)",
+            "🏠 Ambiente físico: Post-its em objetos da casa com frases simples visíveis (chunks)",
+            "🧠 Regra de ouro: 'Se dá pra fazer em inglês, faça em inglês'"
+          ]
+        }
+      },
+      {
+        id: "goals",
+        title: "Definição de metas e objetivos pessoais",
+        icon: "bullseye",
+        content: {
+          videos: [
+            // {
+            //   id: "video_id_metas",
+            //   title: "Como Definir Metas REALISTAS para Aprender Inglês em 6 Meses",
+            //   duration: "8:15",
+            //   channel: "Kaique Bazil",
+            //   description: "Framework para metas SMART em aprendizado de idiomas"
+            // }
+          ],
+          materials: [
+            "2️⃣ Definição de metas e objetivos pessoais",
+            "💡 Aqui você se diferencia de 99% dos professores.",
+            "❌ Metas erradas: 'Quero ser fluente', 'Quero aprender inglês'",
+            "✅ Metas corretas (conversacionais): 'Quero pedir informação na rua', 'Quero conversar 10 minutos com um estrangeiro', 'Quero sobreviver em uma viagem'",
+            "Exemplo: 'Em 30 dias, quero pedir comida em inglês sem travar.'"
+          ],
+          
+        }
+      },
+      {
+        id: "plan",
+        title: "Introdução ao plano de estudos",
+        icon: "calendar",
+        content: {
+          videos: [
+            // {
+            //   id: "video_id_plano",
+            //   title: "Plano de 6 Meses: Como Você Vai Alcançar Fluência Conversacional",
+            //   duration: "12:30",
+            //   channel: "Kaique Bazil",
+            //   description: "Visão geral da estrutura de 6 meses"
+            // }
+          ],
+          materials: [
+            "🔹 Mês 1 – Sobrevivência: Pedir informação, Se virar na rua, Frases automáticas",
+            "🔹 Mês 2 – Introdução pessoal: Quem sou, O que faço, De onde venho",
+            "🔹 Mês 3 – Conversas do dia a dia: Small talk, Opiniões simples",
+            "🔹 Mês 4 – Expansão: Contar histórias, Passado e futuro funcional",
+            "🔹 Mês 5 – Fluência real: Pensar em inglês, Responder sem traduzir",
+            "🔹 Mês 6 – Consolidação: Conversas longas, Confiança total",
+            "📌 Importante: O foco é FALA, não regra."
+          ],
+          
+        }
+      },
+      {
+        id: "tools",
+        title: "Configuração de ferramentas e recursos",
+        icon: "tools",
+        content: {
+          videos: [
+            // {
+            //   id: "video_id_ferramentas",
+            //   title: "As 5 Ferramentas Essenciais Para Aprender Inglês Sozinho",
+            //   duration: "10:45",
+            //   channel: "Kaique Bazil",
+            //   description: "Ferramentas para aprendizado autônomo eficiente"
+            // }
+          ],
+          materials: [
+            "Ferramentas essenciais:",
+            "🤖 ChatGPT: Treinar frases, Criar roleplays, Corrigir e variar respostas",
+            "🔄Anki: Memorização espaçada de frases úteis (chunks)",
+            "📺 YouTube e Tiktok: Apenas em inglês, Conteúdo compreensível",
+            "🎧 Podcast: Inglês real, repetitivo, RadioGardem",
+            "📒 Caderno ou Notion: Apenas frases úteis (chunks)",
+            "Regra importante:",
+            "❌ Não anotar palavra solta",
+            "✅ Anotar frases completas"
+          ],
+          
+        }
+      }
+    ],
+    tips: [
+      "Dedique 1-2 horas para configurar tudo corretamente antes de começar",
+      "Faça um print das suas metas e coloque como wallpaper do celular",
+      "Teste todas as ferramentas para garantir que funcionam",
+      "Compartilhe suas metas com alguém para ter accountability",
+      "Configure lembretes diários no seu calendário"
+    ]
+  },
   {
     id: "my-videos",
     title: "🎥 Meus Vídeos Recomendados",
@@ -802,19 +924,20 @@ export const complementaryMaterials = [
     description: "Metas mensuráveis mês a mês",
     type: "timeline",
     months: [
+      
       {
         month: "Mês 1",
-        theme: "Vida Cotidiana",
-        goal: "Falar sobre rotina, família, trabalho, hobbies",
-        focus: "Presente simples, vocabulário concreto, 700 palavras",
-        marker: "Consegue contar como foi seu dia",
-      },
-      {
-        month: "Mês 2",
         theme: "Sobrevivência Conversacional",
         goal: "Cumprimentar, pedir coisas, informações básicas",
         focus: "Frases prontas, pronúncia clara, 300 palavras",
         marker: "Consegue pedir um café sem hesitar",
+      },
+      {
+        month: "Mês 2",
+        theme: "Vida Cotidiana",
+        goal: "Falar sobre rotina, família, trabalho, hobbies",
+        focus: "Presente simples, vocabulário concreto, 700 palavras",
+        marker: "Consegue contar como foi seu dia",
       },
       {
         month: "Mês 3",
