@@ -2,6 +2,7 @@
 // Plano de Fluência Conversacional em 6 meses - Versão Otimizada
 
 export const studyPlan = [
+  
   {
     month: "Mês 1: Fundamentos e Sobrevivência",
     focus: "Vocabulário essencial e frases de sobrevivência",
