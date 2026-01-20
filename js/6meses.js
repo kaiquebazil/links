@@ -1520,219 +1520,257 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Renderizar o plano de estudos
-  function renderStudyPlan(filter = "all") {
-    monthsContainer.innerHTML = "";
+  // No arquivo 6meses.js, atualize a função renderStudyPlan:
 
-    studyPlan.forEach((monthData, monthIndex) => {
-      const monthCard = document.createElement("div");
-      monthCard.className = "month-card";
+function renderStudyPlan(filter = "all") {
+  monthsContainer.innerHTML = "";
 
-      // Calcular progresso do mês usando função auxiliar
-      const { monthCompleted, monthTotal, percentage } = calculateMonthProgress(
-        monthData,
-        completedContents,
-        monthIndex
-      );
+  studyPlan.forEach((monthData, monthIndex) => {
+    const monthCard = document.createElement("div");
+    monthCard.className = "month-card";
 
-      const monthHeader = document.createElement("div");
-      monthHeader.className = "month-header";
+    // Calcular progresso do mês usando função auxiliar
+    const { monthCompleted, monthTotal, percentage } = calculateMonthProgress(
+      monthData,
+      completedContents,
+      monthIndex
+    );
 
-      const monthTitle = document.createElement("div");
-      monthTitle.className = "month-title";
-      monthTitle.textContent = monthData.month;
+    const monthHeader = document.createElement("div");
+    monthHeader.className = "month-header";
 
-      const monthProgress = document.createElement("div");
-      monthProgress.className = "month-progress";
-      monthProgress.textContent = `${monthCompleted}/${monthTotal} (${percentage}%)`;
+    const monthTitle = document.createElement("div");
+    monthTitle.className = "month-title";
+    monthTitle.textContent = monthData.month;
 
-      monthHeader.appendChild(monthTitle);
-      monthHeader.appendChild(monthProgress);
-      monthCard.appendChild(monthHeader);
+    const monthProgress = document.createElement("div");
+    monthProgress.className = "month-progress";
+    monthProgress.textContent = `${monthCompleted}/${monthTotal} (${percentage}%)`;
 
-      const weeksContainer = document.createElement("div");
-      weeksContainer.className = "weeks-container";
+    monthHeader.appendChild(monthTitle);
+    monthHeader.appendChild(monthProgress);
+    monthCard.appendChild(monthHeader);
 
-      monthData.weeks.forEach((week, weekIndex) => {
-        const weekCard = document.createElement("div");
-        weekCard.className = "week-card";
+    const weeksContainer = document.createElement("div");
+    weeksContainer.className = "weeks-container";
 
-        const weekTitle = document.createElement("div");
-        weekTitle.className = "week-title";
-        weekTitle.innerHTML = `<span>${week.title}</span> <i class="fas fa-book-open"></i>`;
-        weekCard.appendChild(weekTitle);
+    monthData.weeks.forEach((week) => {
+      const weekCard = document.createElement("div");
+      weekCard.className = "week-card";
 
-        const contentList = document.createElement("ul");
-        contentList.className = "content-list";
+      const weekTitle = document.createElement("div");
+      weekTitle.className = "week-title";
+      weekTitle.innerHTML = `<span>${week.title}</span> <i class="fas fa-book-open"></i>`;
+      weekCard.appendChild(weekTitle);
 
-        week.contents.forEach((content, contentIndex) => {
-          const contentId = `${monthIndex}-${week.title}-${contentIndex}`;
-          const isCompleted = completedContents.includes(contentId);
+      const contentList = document.createElement("ul");
+      contentList.className = "content-list";
 
-          // Aplicar filtro
-          if (filter === "completed" && !isCompleted) return;
-          if (filter === "pending" && isCompleted) return;
+      week.contents.forEach((content, contentIndex) => {
+        const contentId = `${monthIndex}-${week.title}-${contentIndex}`;
+        const isCompleted = completedContents.includes(contentId);
+        
+        // Aplicar filtro
+        if (filter === "completed" && !isCompleted) return;
+        if (filter === "pending" && isCompleted) return;
 
-          const contentItem = document.createElement("li");
-          contentItem.className = "content-item";
+        const contentItem = document.createElement("li");
+        contentItem.className = "content-item";
 
-          // Header do conteúdo
-          const contentHeader = document.createElement("div");
-          contentHeader.className = "content-header";
+        // Header do conteúdo
+        const contentHeader = document.createElement("div");
+        contentHeader.className = "content-header";
 
-          // Checkbox
-          const checkboxContainer = document.createElement("div");
-          checkboxContainer.className = "content-checkbox";
-          if (isCompleted) checkboxContainer.classList.add("checked");
+        // Checkbox
+        const checkboxContainer = document.createElement("div");
+        checkboxContainer.className = "content-checkbox";
+        if (isCompleted) checkboxContainer.classList.add("checked");
 
-          if (isCompleted) {
-            const checkIcon = document.createElement("i");
-            checkIcon.className = "fas fa-check";
-            checkboxContainer.appendChild(checkIcon);
+        if (isCompleted) {
+          const checkIcon = document.createElement("i");
+          checkIcon.className = "fas fa-check";
+          checkboxContainer.appendChild(checkIcon);
+        }
+
+        // Label - agora usando content.title se for objeto
+        const label = document.createElement("span");
+        label.className = `content-label ${isCompleted ? "completed" : ""}`;
+        label.textContent = typeof content === 'object' ? content.title : content;
+
+        // Botão toggle
+        const toggleBtn = document.createElement("button");
+        toggleBtn.className = "toggle-btn";
+        toggleBtn.innerHTML = '<i class="fas fa-chevron-down"></i>';
+
+        // Conteúdo expandido
+        const expandedContent = document.createElement("div");
+        expandedContent.className = "expanded-content";
+
+        // Obter recursos
+        const topicTitle = typeof content === 'object' ? content.title : content;
+        const resources = getResources(topicTitle);
+
+        // Seção de vídeos
+        const videosSection = document.createElement("div");
+        videosSection.className = "resources-section";
+        
+        const videosHeader = document.createElement("div");
+        videosHeader.className = "section-header";
+        videosHeader.innerHTML = '<i class="fas fa-video"></i> Vídeos Recomendados';
+        
+        const videosGrid = document.createElement("div");
+        videosGrid.className = "videos-grid";
+        
+        resources.videos.forEach((video) => {
+          const videoCard = createVideoCard(video);
+          videosGrid.appendChild(videoCard);
+        });
+        
+        videosSection.appendChild(videosHeader);
+        videosSection.appendChild(videosGrid);
+        expandedContent.appendChild(videosSection);
+
+        // Seção de materiais
+        const materialsSection = document.createElement("div");
+        materialsSection.className = "resources-section";
+        
+        const materialsHeader = document.createElement("div");
+        materialsHeader.className = "section-header";
+        materialsHeader.innerHTML = '<i class="fas fa-book"></i> Materiais Complementares';
+        
+        const materialsList = document.createElement("ul");
+        materialsList.className = "materials-list";
+        
+        resources.materials.forEach((material) => {
+          const materialItem = createMaterialItem(material);
+          materialsList.appendChild(materialItem);
+        });
+        
+        materialsSection.appendChild(materialsHeader);
+        materialsSection.appendChild(materialsList);
+        expandedContent.appendChild(materialsSection);
+
+        // SEÇÃO DE APRENDIZAGEM (NO FINAL)
+        if (resources.learning && resources.learning.length > 0) {
+          const learningSection = document.createElement("div");
+          learningSection.className = "learning-section";
+          
+          const learningHeader = document.createElement("div");
+          learningHeader.className = "section-header learning-header";
+          learningHeader.innerHTML = '<i class="fas fa-graduation-cap"></i> O que você vai aprender';
+          
+          const learningList = document.createElement("ul");
+          learningList.className = "learning-list";
+          
+          resources.learning.forEach((item) => {
+            const learningItem = document.createElement("li");
+            learningItem.className = "learning-item";
+            learningItem.innerHTML = `<i class="fas fa-check-circle"></i> ${item}`;
+            learningList.appendChild(learningItem);
+          });
+          
+          learningSection.appendChild(learningHeader);
+          learningSection.appendChild(learningList);
+          expandedContent.appendChild(learningSection);
+        }
+
+        // Evento do toggle
+        toggleBtn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          expandedContent.classList.toggle("active");
+          this.classList.toggle("expanded");
+          
+          // Se estiver abrindo, ajustar altura
+          if (expandedContent.classList.contains("active")) {
+            expandedContent.style.maxHeight = expandedContent.scrollHeight + "px";
+          } else {
+            expandedContent.style.maxHeight = "0px";
           }
-
-          // Label
-          const label = document.createElement("span");
-          label.className = `content-label ${isCompleted ? "completed" : ""}`;
-          label.textContent = content;
-
-          // Botão toggle
-          const toggleBtn = document.createElement("button");
-          toggleBtn.className = "toggle-btn";
-          toggleBtn.innerHTML = '<i class="fas fa-chevron-down"></i>';
-
-          // Conteúdo expandido
-          const expandedContent = document.createElement("div");
-          expandedContent.className = "expanded-content";
-
-          // Obter recursos (usa padrão se não encontrar)
-          const resources = resourcesDatabase[content] || defaultResources;
-
-          // Seção de vídeos
-          const videosSection = document.createElement("div");
-          videosSection.className = "resources-section";
-
-          const videosHeader = document.createElement("div");
-          videosHeader.className = "section-header";
-          videosHeader.innerHTML =
-            '<i class="fas fa-video"></i> Vídeos Recomendados';
-
-          const videosGrid = document.createElement("div");
-          videosGrid.className = "videos-grid";
-
-          resources.videos.forEach((video) => {
-            const videoCard = createVideoCard(video);
-            videosGrid.appendChild(videoCard);
-          });
-
-          videosSection.appendChild(videosHeader);
-          videosSection.appendChild(videosGrid);
-          expandedContent.appendChild(videosSection);
-
-          // Seção de materiais
-          const materialsSection = document.createElement("div");
-          materialsSection.className = "resources-section";
-
-          const materialsHeader = document.createElement("div");
-          materialsHeader.className = "section-header";
-          materialsHeader.innerHTML =
-            '<i class="fas fa-book"></i> Materiais Complementares';
-
-          const materialsList = document.createElement("ul");
-          materialsList.className = "materials-list";
-
-          resources.materials.forEach((material) => {
-            const materialItem = createMaterialItem(material);
-            materialsList.appendChild(materialItem);
-          });
-
-          materialsSection.appendChild(materialsHeader);
-          materialsSection.appendChild(materialsList);
-          expandedContent.appendChild(materialsSection);
-
-          // Evento do toggle
-          toggleBtn.addEventListener("click", function (e) {
-            e.stopPropagation();
-            expandedContent.classList.toggle("active");
-            this.classList.toggle("expanded");
-          });
-
-          // Evento do checkbox
-          checkboxContainer.addEventListener("click", function (e) {
-            e.stopPropagation();
-            const isCurrentlyCompleted = completedContents.includes(contentId);
-
-            if (!isCurrentlyCompleted) {
-              // Marcar como concluído
-              completedContents.push(contentId);
-              this.classList.add("checked");
-
-              if (!this.querySelector("i.fa-check")) {
-                const checkIcon = document.createElement("i");
-                checkIcon.className = "fas fa-check";
-                this.appendChild(checkIcon);
-              }
-
-              label.classList.add("completed");
-
-              // Expandir automaticamente quando marcar como concluído
-              if (!expandedContent.classList.contains("active")) {
-                expandedContent.classList.add("active");
-                toggleBtn.classList.add("expanded");
-              }
-            } else {
-              // Desmarcar
-              completedContents = completedContents.filter(
-                (id) => id !== contentId
-              );
-              this.classList.remove("checked");
-
-              const checkIcon = this.querySelector("i.fa-check");
-              if (checkIcon) {
-                this.removeChild(checkIcon);
-              }
-
-              label.classList.remove("completed");
-            }
-
-            localStorage.setItem(
-              "completedContents",
-              JSON.stringify(completedContents)
-            );
-            updateProgress();
-
-            // Atualizar progresso do mês
-            const {
-              monthCompleted: newMonthCompleted,
-              monthTotal: newMonthTotal,
-              percentage: newPercentage,
-            } = calculateMonthProgress(
-              monthData,
-              completedContents,
-              monthIndex
-            );
-
-            monthProgress.textContent = `${newMonthCompleted}/${newMonthTotal} (${newPercentage}%)`;
-          });
-
-          // Adicionar elementos ao header
-          contentHeader.appendChild(checkboxContainer);
-          contentHeader.appendChild(label);
-          contentHeader.appendChild(toggleBtn);
-
-          // Adicionar ao item
-          contentItem.appendChild(contentHeader);
-          contentItem.appendChild(expandedContent);
-          contentList.appendChild(contentItem);
         });
 
-        weekCard.appendChild(contentList);
-        weeksContainer.appendChild(weekCard);
+        // Evento do checkbox
+        checkboxContainer.addEventListener("click", function (e) {
+          e.stopPropagation();
+          const isCurrentlyCompleted = completedContents.includes(contentId);
+
+          if (!isCurrentlyCompleted) {
+            // Marcar como concluído
+            completedContents.push(contentId);
+            this.classList.add("checked");
+
+            if (!this.querySelector("i.fa-check")) {
+              const checkIcon = document.createElement("i");
+              checkIcon.className = "fas fa-check";
+              this.appendChild(checkIcon);
+            }
+
+            label.classList.add("completed");
+
+            // Expandir automaticamente quando marcar como concluído
+            if (!expandedContent.classList.contains("active")) {
+              expandedContent.classList.add("active");
+              toggleBtn.classList.add("expanded");
+              expandedContent.style.maxHeight = expandedContent.scrollHeight + "px";
+            }
+          } else {
+            // Desmarcar
+            completedContents = completedContents.filter(
+              (id) => id !== contentId
+            );
+            this.classList.remove("checked");
+
+            const checkIcon = this.querySelector("i.fa-check");
+            if (checkIcon) {
+              this.removeChild(checkIcon);
+            }
+
+            label.classList.remove("completed");
+          }
+
+          localStorage.setItem(
+            "completedContents",
+            JSON.stringify(completedContents)
+          );
+          updateProgress();
+
+          // Atualizar progresso do mês
+          const {
+            monthCompleted: newMonthCompleted,
+            monthTotal: newMonthTotal,
+            percentage: newPercentage,
+          } = calculateMonthProgress(
+            monthData,
+            completedContents,
+            monthIndex
+          );
+
+          monthProgress.textContent = `${newMonthCompleted}/${newMonthTotal} (${newPercentage}%)`;
+        });
+
+        // Adicionar elementos ao header
+        contentHeader.appendChild(checkboxContainer);
+        contentHeader.appendChild(label);
+        contentHeader.appendChild(toggleBtn);
+
+        // Adicionar ao item
+        contentItem.appendChild(contentHeader);
+        contentItem.appendChild(expandedContent);
+        contentList.appendChild(contentItem);
       });
 
-      monthCard.appendChild(weeksContainer);
-      monthsContainer.appendChild(monthCard);
+      weekCard.appendChild(contentList);
+      weeksContainer.appendChild(weekCard);
     });
-  }
+
+    monthCard.appendChild(weeksContainer);
+    monthsContainer.appendChild(monthCard);
+  });
+}
+
+// Adicione também a função getResources no topo do arquivo
+function getResources(topic) {
+  return resourcesDatabase[topic] || defaultResources;
+}
 
   // Atualizar progresso
   function updateProgress() {

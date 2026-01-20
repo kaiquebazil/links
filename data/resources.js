@@ -52,26 +52,23 @@ export const resourcesDatabase = {
     ],
   },
 
-  "Saudações formais e informais (bom dia, oi, e aí?)": {
+   "Saudações formais e informais (bom dia, oi, e aí?)": {
     videos: [
       {
         id: "tf3X7ujNKpI",
-        title:
-          "Saudações Básicas em Inglês: Como Iniciar uma Conversa (Passo a Passo)",
+        title: "Saudações Básicas em Inglês: Como Iniciar uma Conversa (Passo a Passo)",
         duration: "2:34",
         channel: "Kaique Bazil",
       },
       {
         id: "amxeGGNwwzE",
-        title:
-          "Learn English Greetings - English Greetings Explained in Detail",
+        title: "Learn English Greetings - English Greetings Explained in Detail",
         duration: "10:29",
         channel: "Learn English with Bob the Canadian",
       },
       {
         id: "fI8EsEXS59w",
-        title:
-          "Learn Basic English Greetings – How to Greet Someone for the First Time",
+        title: "Learn Basic English Greetings – How to Greet Someone for the First Time",
         duration: "5:57",
         channel: "Professor Korten",
       },
@@ -80,6 +77,14 @@ export const resourcesDatabase = {
       "Saudações comuns em inglês com áudio (link: ../links/pages/greetings.html)",
       "Exercício: Pratique cumprimentar em diferentes situações do dia a dia. Repita em voz alta.",
     ],
+    learning: [
+      "A estrutura básica de uma saudação em inglês: saudações iniciais, perguntas de rotina e respostas naturais",
+  "Saudações formais para situações profissionais ou desconhecidos: 'Hello', 'Good morning/afternoon/evening'",
+  "Saudações informais para amigos e familiares: 'Hi', 'Hey', 'What's up?', 'How's it going?'",
+  "Perguntas comuns após cumprimentar: 'How are you?', 'How have you been?', 'How's your day?'",
+  "Respostas naturais e comuns: 'I'm good, thanks!', 'Not bad, you?', 'Pretty good, how about you?'",
+  "Despedidas rápidas após a saudação: 'See you later', 'Take care', 'Have a good one!'",
+    ]
   },
 
   "Apresentações: nome, nacionalidade, ocupação": {
@@ -92,8 +97,7 @@ export const resourcesDatabase = {
       },
       {
         id: "UnEmEbWytI8",
-        title:
-          "Introductions | Beginner English | Introducing Yourself in English",
+        title: "Introductions | Beginner English | Introducing Yourself in English",
         duration: "1:15",
         channel: "Learn English by Pocket Passport",
       },
@@ -102,35 +106,15 @@ export const resourcesDatabase = {
       "Frases para Autointrodução (link: ../links/pages/introductions.html)",
       "Exercício: Criar seu Perfil em Inglês",
     ],
-  },
-
-  "Pronomes pessoais e Verbo To Be": {
-    videos: [
-      {
-        id: "RXJXM628Feo",
-        title: "Verbo TO BE e Pronomes Pessoais: Aprenda de uma vez por todas!",
-        duration: "7:35",
-        channel: "Kaique Bazil",
-      },
-      {
-        id: "MWjx_gRRfIE",
-        title: "Personal Pronouns and To Be - Complete English Grammar Lesson",
-        duration: "12:30",
-        channel: "English Addict with Mr. Duncan",
-      },
-      {
-        id: "Z7zqR00gHnw",
-        title: "Subject Pronouns | English Grammar",
-        duration: "4:55",
-        channel: "English Lessons with Adam",
-      },
-    ],
-    materials: [
-      "Material: Verbo To Be e Pronomes Pessoais (link: ../links/pages/tobe.html)",
-      "Exercício: Substituição de Pronomes",
-      "Jogo: Memory dos Pronomes (link: https://www.educaplay.com/learning-resources/23388951-personal_pronouns_memory_match.html)",
-      "Jogo: Verbo to be (link: http://wordwall.net/pt-br/community/memory-game-to-be)",
-    ],
+    "learning": [
+    "A estrutura fundamental de uma apresentação: nome, origem e ocupação básica",
+    "Formas diferentes de dizer seu nome: 'My name is...', 'I'm...', 'You can call me...'",
+    "Como falar sobre sua nacionalidade ou cidade natal: 'I'm from Brazil', 'I come from São Paulo'",
+    "Maneiras de compartilhar sua profissão ou ocupação: 'I work as a...', 'I'm a student', 'I'm currently studying...'",
+    "Perguntas-chave que você pode fazer ao outro após se apresentar: 'And you?', 'What about you?', 'Where are you from?'",
+    "Pronúncia clara e confiança: falar devagar e enfatizar as informações importantes",
+    "Como praticar: criar várias versões da sua apresentação para diferentes situações"
+  ]
   },
 
   "Expressar prazer em conhecer alguém": {
@@ -141,14 +125,50 @@ export const resourcesDatabase = {
         duration: "1:10",
         channel: "Kaique Bazil",
       },
+      {
+        id: "5SdX0x_rl2E",
+        title: "Polite Expressions in English",
+        duration: "7:20",
+        channel: "English with Lucy",
+      },
     ],
     materials: [
-      "Guia: Como expressar prazer (link: ../links/pages/meetyou.html)",
-      "Exercício: Pratique diferentes formas de expressar prazer em conhecer alguém. Use variações formais e informais.",
+      "Guia: Expressões de cortesia em diferentes situações",
+      "Exercício: Identificar qual expressão usar em cada contexto",
     ],
+    learning: [
+      "Por que a expressão 'Nice to meet you' é considerada básica e como expandir seu vocabulário",
+    "Alternativas: 'It's a pleasure to meet you', 'Great to meet you!' ,'How wonderful to meet you!' E muito mais",
+    "Contextos apropriados para cada variação: reuniões de negócios, encontros casuais, situações sociais",
+    "Respostas comuns para quando alguém usa essas expressões com você",
+    "Entonação acompanham essas frases para soar natural",
+      
+    ]
   },
 
-  // --- SEMANA 2: FAMÍLIA E RELACIONAMENTOS ---
+  "Despedidas naturais (tchau, até logo, falou)": {
+    videos: [
+      {
+        id: "q1P8kD9m2wU",
+        title: "How to Say Goodbye in English",
+        duration: "5:30",
+        channel: "English with Emma",
+      },
+    ],
+    materials: [
+      "Lista de despedidas por nível de formalidade",
+      "Exercício: Criar diálogos de despedida para diferentes situações",
+    ],
+    learning: [
+      "Formal: 'Goodbye', 'Have a nice day', 'Take care'",
+      "Informal: 'Bye', 'See ya', 'Catch you later', 'Peace out'",
+      "Despedidas por telefone/online: 'Talk to you soon', 'TTYL'",
+      "Despedidas temporárias: 'See you tomorrow', 'Until next time'",
+      "Despedidas com planos futuros: 'Let's catch up soon'"
+    ]
+  },
+
+  // SEMANA 2
   "Família: membros(Geral) | Comprehensible Input": {
     videos: [
       {
@@ -168,8 +188,15 @@ export const resourcesDatabase = {
       "Árvore Genealógica (link: ../links/pages/week2/familyd.html)",
       "Jogo: Memory Game - Family Members (link: https://wordwall.net/pt/resource/18546561/family-members-9-members)",
       "Lista de Vocabulário: Pais, irmãos, avós, tios, primos, sobrinhos",
-      "Exercício: Crie sua própria árvore genealógica em inglês com nomes e relações, salve o contato da sua família em inglês no seu celular (ex: Cristina Mother)",
+      "Exercício: Crie sua própria árvore genealógica em inglês com nomes e relações",
     ],
+    learning: [
+      "Termos básicos: mother, father, brother, sister",
+      "Família estendida: uncle, aunt, cousin, grandparents",
+      "Termos modernos: step-parent, half-brother, in-laws",
+      "Descrever relações: 'He is my older brother', 'She is my maternal grandmother'",
+      "Perguntas sobre família: 'Do you have any siblings?', 'How big is your family?'"
+    ]
   },
 
   "Falar sobre sua familia (casado, solteiro, filhos)": {
@@ -191,82 +218,18 @@ export const resourcesDatabase = {
       "Flashcards: Estados civis (single, married, divorced, widowed, engaged)",
       "Diálogos Modelo: Apresentando sua situação familiar",
       "Template de Conversa: Perguntas e respostas sobre situação familiar",
-      "Exercício: Escreva um parágrafo sobre sua situação familiar atual",
     ],
+    learning: [
+      "Estados civis: single, married, divorced, widowed, separated, engaged",
+      "Descrever situação: 'I'm single', 'I'm married with two kids'",
+      "Termos para filhos: children, kids, son, daughter, toddler, teenager",
+      "Frases úteis: 'I have three children', 'We don't have kids yet'",
+      "Contextos apropriados para discutir vida familiar"
+    ]
   },
 
-  "Descrever amigos e suas qualidades": {
-    videos: [
-      {
-        id: "FHaObkHEkHQ",
-        title: "Describing People (adjectives) | English speaking practice",
-        duration: "7:28",
-        channel: "Mark Kulek",
-      },
-      {
-        id: "gQl7uOBMoRw",
-        title: "How to Describe a Person in English - Spoken English Lesson",
-        duration: "20:15",
-        channel: "Oxford Online English",
-      },
-    ],
-    materials: [
-      "Lista de Adjetivos: Personalidade e aparência física",
-      "Jogo: Qualities Matching Game - Associe adjetivos a definições",
-      "Template: 'My Best Friend' - Formulário para descrever um amigo",
-      "Atividade: Descreva 3 amigos diferentes usando adjetivos específicos",
-    ],
-  },
-
-  "Falar sobre animais de estimação": {
-    videos: [
-      {
-        id: "KZkFpWmHaqQ",
-        title: "Pets Vocabulary Animals at home English ESL Lesson",
-        duration: "5:01",
-        channel: "My English Center Online",
-      },
-      {
-        id: "uCgY8ydLFQg",
-        title: "Talking about Pets | English Conversation",
-        duration: "4:37",
-        channel: "Easy English",
-      },
-    ],
-    materials: [
-      "Quiz: Tipos de animais de estimação comuns e exóticos",
-      "Template: Ficha do Meu Pet (nome, idade, raça, personalidade, rotina)",
-      "Lista de Verbos: Ações com pets (feed, walk, play, groom, train)",
-      "Exercício: Crie um cartão de apresentação para seu pet real ou imaginário",
-    ],
-  },
-
-  "Compartilhar histórias familiares simples": {
-    videos: [
-      {
-        id: "LdFVPeeVYpM",
-        title:
-          "Talking About Your Family Story - English Conversation Practice",
-        duration: "8:42",
-        channel: "English Speaking Course",
-      },
-      {
-        id: "zK6Yd4K1gY8",
-        title: "Simple Past Tense Stories | Learn English Through Stories",
-        duration: "6:15",
-        channel: "English Easy Practice",
-      },
-    ],
-    materials: [
-      "Estrutura Narrativa: Guia para contar histórias simples (beginning, middle, end)",
-      "Vocabulário: Palavras-chave para histórias familiares (wedding, birthday, trip, graduation)",
-      "Prompts de Escrita: 'A funny family memory', 'How my grandparents met', 'Our last family trip'",
-      "Template: Linha do tempo para organizar eventos da história",
-    ],
-  },
-
-  // --- SEMANA 3: DESCREVER SUA ROTINA ---
-  "Falar sobre seu dia-a-dia em detalhes": {
+  // SEMANA 3
+  "Horários e atividades diárias (presente simples)": {
     videos: [
       {
         id: "24cNN7gX-7I",
@@ -282,111 +245,43 @@ export const resourcesDatabase = {
       },
     ],
     materials: [
-      "Template de Linha do Tempo: Diagrama de 24 horas para preencher com atividades",
+      "Template de Linha do Tempo: Diagrama de 24 horas para preencher",
       "Lista Completa: Verbos de rotina (wake up, get dressed, commute, etc.)",
       "Jogo: Sequencing - Ordene as atividades do dia corretamente",
-      "Exercício: Descreva seu dia de ontem em detalhes usando o passado simples",
     ],
+    learning: [
+      "Presente simples para rotinas: I wake up at 7, She goes to work at 9",
+      "Advérbios de frequência: always, usually, often, sometimes, rarely, never",
+      "Sequência temporal: first, then, after that, finally",
+      "Expressões de tempo: in the morning, at night, on weekdays, every day",
+      "Rotinas específicas: work routine, study routine, weekend routine"
+    ]
   },
 
-  "Descrever atividades matinais e noturnas": {
+  "Dias da semana e frequência": {
     videos: [
       {
-        id: "PED5q3y7W8M",
-        title:
-          "Morning Routine | Improve Your English | English Listening Skills",
-        duration: "8:10",
-        channel: "English Skills Mastery",
-      },
-      {
-        id: "z7-rwBpKXMw",
-        title:
-          "Night Routine English Conversation | Daily English Conversation",
-        duration: "5:33",
-        channel: "English Speaking Course",
-      },
-    ],
-    materials: [
-      "Checklist: Morning Routine vs Night Routine - Compare suas atividades",
-      "Vocabulário: Específico para manhã (alarm, breakfast, brush teeth) e noite (dinner, relax, bedtime)",
-      "Diálogo: Conversando sobre rotinas diferentes",
-      "Atividade: Crie uma rotina matinal ideal e uma noturna ideal",
-    ],
-  },
-
-  "Falar sobre horários e compromissos": {
-    videos: [
-      {
-        id: "z7kMKvyC_bk",
-        title: "Telling the Time in English",
-        duration: "4:29",
+        id: "mXMofxtDPUQ",
+        title: "Days of the Week in English",
+        duration: "3:45",
         channel: "Woodward English",
       },
-      {
-        id: "BnVZ0y6yLQc",
-        title: "Making Appointments - English Conversation Lesson",
-        duration: "10:42",
-        channel: "Oxford Online English",
-      },
     ],
     materials: [
-      "Prática de Horários: Relógios interativos para dizer as horas em inglês",
-      "Template de Agenda Semanal: Para marcar compromissos em inglês",
-      "Frases Úteis: Marcar, confirmar e cancelar compromissos",
-      "Jogo: Schedule Maker - Crie uma agenda para uma pessoa famosa",
+      "Calendário semanal interativo",
+      "Exercício: Planejar sua semana em inglês",
     ],
+    learning: [
+      "Dias da semana: Monday to Sunday",
+      "Uso correto das preposições: on Monday, on Fridays",
+      "Partes da semana: weekday vs weekend",
+      "Expressões: 'every Monday', 'on Mondays', 'this Monday', 'next Monday'",
+      "Frequência: daily, weekly, bi-weekly, monthly"
+    ]
   },
 
-  "Descrever seu local de trabalho/estudo": {
-    videos: [
-      {
-        id: "GcLBJPRX2L8",
-        title:
-          "Talking about your workplace and commute - English Conversation",
-        duration: "11:20",
-        channel: "Learn English with Jessica",
-      },
-      {
-        id: "h7mTmbnNlnw",
-        title: "Describe Your Office | Workplace Vocabulary",
-        duration: "5:45",
-        channel: "English with Max",
-      },
-    ],
-    materials: [
-      "Vocabulário: Objetos do escritório/sala de aula e departamentos/áreas",
-      "Template: Descrição do Meu Espaço - Guia para descrever seu ambiente",
-      "Mapa Mental: Crie um mapa do seu local de trabalho/estudo em inglês",
-      "Exercício: Compare seu ambiente atual com um ideal",
-    ],
-  },
-
-  "Falar sobre meios de transporte que usa": {
-    videos: [
-      {
-        id: "9yK5mb4c8DQ",
-        title: "Transportation Vocabulary & Expressions",
-        duration: "6:49",
-        channel: "POC English",
-      },
-      {
-        id: "HZt8-p7nYp8",
-        title:
-          "How do you get to work? | Transportation | English Conversation",
-        duration: "4:10",
-        channel: "Learn English with Jessica",
-      },
-    ],
-    materials: [
-      "Quiz: Tipos de transporte (land, water, air) com imagens",
-      "Template: My Daily Commute - Descreva seu trajeto diário",
-      "Frases Úteis: Perguntar e dar direções, comprar passagens",
-      "Comparativo: Vantagens e desvantagens de diferentes transportes",
-    ],
-  },
-
-  // --- SEMANA 4: HOBBIES E TEMPO LIVRE ---
-  "Descrever hobbies e atividades de lazer": {
+  // SEMANA 4
+  "Hobbies: 'Eu gosto de...', 'Meu passatempo é...'": {
     videos: [
       {
         id: "r7pe-YbD5pM",
@@ -402,14 +297,20 @@ export const resourcesDatabase = {
       },
     ],
     materials: [
-      "Questionário de Hobbies: +50 atividades para classificar (love, like, dislike, hate)",
-      "Vocabulário: Verbos específicos para cada hobby (play, collect, paint, hike, etc.)",
+      "Questionário de Hobbies: +50 atividades para classificar",
+      "Vocabulário: Verbos específicos para cada hobby",
       "Template: My Hobbies Profile - Perfil pessoal de interesses",
-      "Jogo: Guess the Hobby - Charadas em inglês sobre hobbies",
     ],
+    learning: [
+      "Verbos para hobbies: I like reading, I enjoy cooking, I love hiking",
+      "Níveis de gosto: love, enjoy, like, don't mind, dislike, hate",
+      "Perguntar sobre hobbies: 'What do you do in your free time?'",
+      "Descrever hobbies: 'It's relaxing', 'It helps me unwind', 'It keeps me active'",
+      "Falar sobre benefícios dos hobbies"
+    ]
   },
 
-  "Falar sobre esportes que pratica/assiste": {
+  "Esportes e atividades físicas": {
     videos: [
       {
         id: "ul1K5R5wJ_o",
@@ -428,79 +329,412 @@ export const resourcesDatabase = {
       "Flashcards: Esportes individuais, em equipe, indoor/outdoor",
       "Template: My Sports Preferences - O que pratica vs o que assiste",
       "Vocabulário: Equipamentos, locais e ações esportivas",
-      "Exercício: Descreva uma partida ou competição que você assistiu",
     ],
+    learning: [
+      "Categorias de esportes: individual, team, indoor, outdoor, water, winter",
+      "Verbos específicos: play soccer, go swimming, do yoga",
+      "Descrever habilidade: 'I'm good at...', 'I'm not very good at...'",
+      "Frequência: 'I play tennis twice a week', 'I go to the gym every day'",
+      "Esportes como espectador vs participante"
+    ]
   },
 
-  "Descrever filmes, séries e música preferidos": {
+  // SEMANA 5 - ALIMENTAÇÃO
+  "Cardápio: ler e fazer pedidos": {
     videos: [
       {
-        id: "ASk6n8etJAc",
-        title: "How to talk about movies and TV in English",
-        duration: "12:33",
-        channel: "English with Ronnie · EnglishLessons4U",
-      },
-      {
-        id: "uPcLbGgiWX0",
-        title: "Talking about Music in English",
-        duration: "8:20",
-        channel: "English with Max",
-      },
-    ],
-    materials: [
-      "Lista de Gêneros: Cinema, TV e música com exemplos populares",
-      "Template de Review: Para avaliar filmes/séries/músicas (rating, plot, actors)",
-      "Vocabulário: Adjetivos para descrever entretenimento (boring, exciting, romantic)",
-      "Atividade: Crie uma playlist temática com descrições em inglês",
-    ],
-  },
-
-  "Falar sobre livros e leitura": {
-    videos: [
-      {
-        id: "C7eM0GfEBhQ",
-        title: "How to Talk About Books in English",
-        duration: "9:35",
+        id: "dpyKe-2p3NM",
+        title: "How to Order Food at a Restaurant in English",
+        duration: "9:20",
         channel: "English with Lucy",
       },
-      {
-        id: "Z9WbXKJ9n6Y",
-        title:
-          "Talking About Reading in English - English Conversation Practice",
-        duration: "7:42",
-        channel: "English Speaking Course",
-      },
     ],
     materials: [
-      "Lista de Gêneros Literários: Fiction, non-fiction, romance, mystery, etc.",
-      "Template: Book Report Simples (title, author, characters, opinion)",
-      "Vocabulário: Partes do livro e elementos da narrativa",
-      "Exercício: Recomende um livro para um amigo em 5 frases",
+      "Cardápio de restaurante exemplo",
+      "Diálogos para fazer pedidos",
+      "Exercício: Simular pedido completo",
     ],
+    learning: [
+      "Estrutura do cardápio: appetizers, main course, sides, desserts, drinks",
+      "Fazer pedido: 'I'd like...', 'Can I have...', 'I'll take...'",
+      "Modificações: 'without onions', 'extra cheese', 'on the side'",
+      "Perguntas: 'What do you recommend?', 'What's the soup of the day?'",
+      "Interações com garçom/garçonete"
+    ]
   },
 
-  "Discutir passatempos criativos (cozinhar, pintar)": {
+  "Tipos de comida e preferências": {
     videos: [
       {
-        id: "mJZ8Fm5pXh0",
-        title: "Creative Hobbies Vocabulary | English Lesson",
-        duration: "4:55",
-        channel: "English with Max",
-      },
-      {
-        id: "R7q5HqiyQcI",
-        title: "Talking about Cooking in English",
-        duration: "6:30",
+        id: "W1REcJhwy_k",
+        title: "Food Vocabulary | Talking About Food",
+        duration: "7:30",
         channel: "Easy English",
       },
     ],
     materials: [
-      "Vocabulário: Materiais para hobbies criativos (paintbrush, yarn, ingredients, tools)",
-      "Step-by-Step Guides: Instruções simples para projetos criativos em inglês",
-      "Template: My Creative Project - Descreva algo que criou ou quer criar",
-      "Lista: Benefícios dos hobbies criativos com vocabulário relacionado",
+      "Lista de tipos de cozinha internacional",
+      "Vocabulário de alimentos por categoria",
+      "Exercício: Descrever sua comida favorita",
     ],
+    learning: [
+      "Cozinhas internacionais: Italian, Mexican, Chinese, Japanese, Indian",
+      "Preferências: 'I love...', 'I can't stand...', 'I'm not a fan of...'",
+      "Dietas especiais: vegetarian, vegan, gluten-free, dairy-free",
+      "Alergias: 'I'm allergic to...', 'I can't eat...'",
+      "Descrever sabores: sweet, salty, spicy, sour, bitter"
+    ]
   },
+
+  // "PRÁTICA: Diálogo de apresentação": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Diálogo%20de%20Apresentação)",
+  //   ],
+  // },
+
+  // "PRÁTICA: Conte sobre sua família": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Conte%20sobre%20sua%20família)",
+  //   ],
+  // },
+
+  // "PRÁTICA: Descreva seu dia perfeito": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Descreva%20seu%20dia%20perfeito)",
+  //   ],
+  // },
+
+  // "PRÁTICA: Recomende um filme/série para um amigo": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Recomende%20um%20filme/série%20para%20um%20amigo)",
+  //   ],
+  // },
+
+  // "REVISÃO: Simulação de encontro casual (roleplay)": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Simulação%20de%20encontro%20casual%20(roleplay))",
+  //   ],
+  // },
+
+  // "PRÁTICA: Pedir comida por telefone/app": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Pedir%20comida%20por%20telefone/app)",
+  //   ],
+  // },
+
+  // "PRÁTICA: Negociar preço em uma feira": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Negociar%20preço%20em%20uma%20feira)",
+  //   ],
+  // },
+
+  // "PRÁTICA: Explicar como chegar ao seu trabalho": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Explicar%20como%20chegar%20ao%20seu%20trabalho)",
+  //   ],
+  // },
+
+  // "PRÁTICA: Descrever sintomas ao médico": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Descrever%20sintomas%20ao%20médico)",
+  //   ],
+  // },
+
+  // "PRÁTICA: 'A lição mais importante que aprendi'": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20A%20lição%20mais%20importante%20que%20aprendi)",
+  //   ],
+  // },
+
+  // "PRÁTICA: Recomendar um destino turístico": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Recomendar%20um%20destino%20turístico)",
+  //   ],
+  // },
+
+  // "PRÁTICA: Compartilhar uma conquista pessoal": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Compartilhar%20uma%20conquista%20pessoal)",
+  //   ],
+  // },
+
+  // "PRÁTICA: Explicar uma tradição para um estrangeiro": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Explicar%20uma%20tradição%20para%20um%20estrangeiro)",
+  //   ],
+  // },
+
+  // "PRÁTICA: Debater qual é o melhor filme/série": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Debater%20qual%20é%20o%20melhor%20filme/série)",
+  //   ],
+  // },
+
+  // "PRÁTICA: Descrever como se sente hoje e por quê": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Descrever%20como%20se%20sente%20hoje%20e%20por%20quê)",
+  //   ],
+  // },
+
+  // "PRÁTICA: 'Onde você se vê em 5 anos?'": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Onde%20você%20se%20vê%20em%205%20anos)",
+  //   ],
+  // },
+
+  // "PRÁTICA: Dar conselhos sobre um problema comum": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Dar%20conselhos%20sobre%20um%20problema%20comum)",
+  //   ],
+  // },
+
+  // "PRÁTICA: 'Como a tecnologia mudou sua vida?'": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Como%20a%20tecnologia%20mudou%20sua%20vida)",
+  //   ],
+  // },
+
+  // "PRÁTICA: Criar um plano de bem-estar semanal": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Criar%20um%20plano%20de%20bem-estar%20semanal)",
+  //   ],
+  // },
+
+  // "PRÁTICA: Propor soluções para um problema ambiental": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Propor%20soluções%20para%20um%20problema%20ambiental)",
+  //   ],
+  // },
+
+  // "PRÁTICA: 'O que as escolas deveriam ensinar?'": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20O%20que%20as%20escolas%20deveriam%20ensinar)",
+  //   ],
+  // },
+
+  // "PRÁTICA: Contar uma história pessoal": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Contar%20uma%20história%20pessoal)",
+  //   ],
+  // },
+
+  // "PRÁTICA: Contar uma piada em inglês": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Contar%20uma%20piada%20em%20inglês)",
+  //   ],
+  // },
+
+  // "PRÁTICA: 'Venda' uma ideia": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Venda%20uma%20ideia)",
+  //   ],
+  // },
+
+  // "PRÁTICA FINAL: Conversa de 15 minutos sobre tópico surpresa": {
+  //   videos: [
+  //     {
+  //       id: "KXoQBAmFM3U",
+  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES PRÁTICAS",
+  //       duration: "18:45",
+  //       channel: "Kaique Bazil",
+  //     },
+  //   ],
+  //   materials: [
+  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Conversa%20de%2015%20minutos%20sobre%20tópico%20surpresa)",
+  //   ],
+  // },
 };
 
 // Exportar recursos padrão para conteúdos não listados

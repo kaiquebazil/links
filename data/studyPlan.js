@@ -11,10 +11,9 @@ export const studyPlan = [
         contents: [
           "Saudações formais e informais (bom dia, oi, e aí?)",
           "Apresentações: nome, nacionalidade, ocupação",
+          "Expressar prazer em conhecer alguém",
           "Expressões de cortesia (por favor, obrigado, desculpe)",
-          // "Perguntas básicas: 'Como você está?', 'De onde você é?'",
-          "Despedidas naturais (tchau, até logo, falou)",
-          "PRÁTICA: Diálogo de 2 minutos de apresentação"
+          "PRÁTICA: Diálogo de apresentação"
         ],
       },
       {
@@ -24,7 +23,7 @@ export const studyPlan = [
           "Estado civil e relacionamentos",
           "Profissões mais comuns (médico, professor, estudante)",
           "Animais de estimação e preferências",
-          "PRÁTICA: 'Conte sobre sua família em 1 minuto'"
+          "PRÁTICA: Conte sobre sua família'"
         ],
       },
       {
@@ -228,7 +227,7 @@ export const studyPlan = [
           "Contar histórias com suspense e clímax",
           "Usar linguagem figurativa (metáforas, comparações)",
           "Variação de ritmo e entonação",
-          "PRÁTICA: Contar uma história pessoal em 3 minutos"
+          "PRÁTICA: Contar uma história pessoal"
         ],
       },
       {
@@ -246,7 +245,7 @@ export const studyPlan = [
           "Estruturar um argumento persuasivo",
           "Técnicas de negociação não-confrontacionais",
           "Apresentar ideias de forma convincente",
-          "PRÁTICA: 'Venda' uma ideia em 2 minutos"
+          "PRÁTICA: 'Venda' uma ideia"
         ],
       },
       {

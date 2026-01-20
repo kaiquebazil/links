@@ -112,6 +112,94 @@
   font-size: 12px;
   color: var(--text-secondary);
 }
+/* No seu arquivo CSS principal */
+
+.learning-header {
+  color: #2d3748;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.learning-header i {
+  color: #4a6bff;
+  font-size: 1.2rem;
+}
+
+.learning-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.learning-item {
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 12px;
+}
+
+.learning-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.learning-item i {
+  color: #10b981;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.learning-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Estilo para quando o conteúdo está completo */
+.content-item.completed .learning-section {
+  background: linear-gradient(135deg, #f0fff4 0%, #dcfce7 100%);
+  border-left-color: #10b981;
+}
+
+.content-item.completed .learning-header i {
+  color: #10b981;
+}
+
+.content-item.completed .learning-item {
+  border-left-color: #10b981;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+
+  .learning-item {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Animações */
+@keyframes slideInLearning {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.learning-item {
+  animation: slideInLearning 0.3s ease forwards;
+  animation-delay: calc(var(--item-index, 0) * 0.05s);
+}
 
 /* Controles */
 .controls {
