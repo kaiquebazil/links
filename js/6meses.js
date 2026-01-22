@@ -1230,7 +1230,224 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     </div>
   `;
-      } else {
+      }// Adicione este case após os outros tipos (após 'podcasts' case)
+else if (material.type === "assessment") {
+  cardBodyHTML = `
+  <div class="complementary-card-body">
+    <div class="assessment-container">
+      <!-- Introdução -->
+      <div class="assessment-intro">
+        <h4><i class="fas fa-chart-line"></i> Comece pelo Nível Certo</h4>
+        <p>Antes de começar seu estudo, é essencial saber <strong>exatamente onde você está</strong> e <strong>quais palavras priorizar</strong> para ter o máximo de progresso no menor tempo.</p>
+      </div>
+      
+      <!-- Testes de Nivelamento -->
+      <div class="complementary-section">
+        <div class="complementary-section-title">
+          <i class="fas fa-clipboard-check"></i>
+          <span>Testes de Nivelamento</span>
+        </div>
+        
+        <div class="tests-grid">
+          ${material.sections[0].items
+            .map(
+              (test, index) => `
+            <div class="test-card">
+              <div class="test-icon">
+                <i class="fas fa-${test.icon}"></i>
+              </div>
+              <div class="test-content">
+                <h5>${test.name}</h5>
+                <p class="test-desc">${test.description}</p>
+                <div class="test-meta">
+                  <span class="duration-badge">
+                    <i class="fas fa-clock"></i> ${test.duration}
+                  </span>
+                  <span class="bestfor-badge">
+                    <i class="fas fa-bullseye"></i> ${test.bestFor}
+                  </span>
+                </div>
+              </div>
+              <div class="test-action">
+                <a href="${test.link}" target="_blank" class="test-btn">
+                  <i class="fas fa-external-link-alt"></i> Fazer Teste
+                </a>
+              </div>
+            </div>
+          `
+            )
+            .join("")}
+        </div>
+        
+        <div class="test-tips">
+          <p><i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Faça 2 testes diferentes para ter uma média precisa do seu nível.</p>
+        </div>
+      </div>
+      
+      <!-- Níveis de Proficiência -->
+      <div class="complementary-section">
+        <div class="complementary-section-title">
+          <i class="fas fa-layer-group"></i>
+          <span>Entenda Seus Resultados</span>
+        </div>
+        
+        <div class="levels-grid">
+          ${material.sections[1].levels
+            .map(
+              (level) => `
+            <div class="level-card-assessment">
+              <div class="level-header-assessment">
+                <h5>${level.level}</h5>
+                <span class="words-count">${level.words}</span>
+              </div>
+              <div class="level-body-assessment">
+                <p><strong>Consegue:</strong> ${level.description}</p>
+                <p><strong>Ação Recomendada:</strong> ${level.action}</p>
+              </div>
+            </div>
+          `
+            )
+            .join("")}
+        </div>
+      </div>
+      
+      <!-- Vocabulário de Alta Frequência -->
+      <div class="complementary-section">
+        <div class="complementary-section-title">
+          <i class="fas fa-star"></i>
+          <span>Vocabulário de Alta Frequência</span>
+        </div>
+        
+        <div class="vocab-intro">
+          <p>Estas palavras cobrem <strong>80% das conversas diárias</strong>. Aprenda-as primeiro para maior retorno sobre investimento de tempo.</p>
+        </div>
+        
+        <div class="vocab-lists">
+          ${material.sections[2].wordLists
+            .map(
+              (list) => `
+            <div class="vocab-list-card">
+              <div class="vocab-list-header">
+                <h5>${list.name}</h5>
+                <p class="vocab-list-desc">${list.description}</p>
+              </div>
+              <div class="vocab-words">
+                ${list.words
+                  .map(
+                    (word, idx) => `
+                  <span class="vocab-word">${word}</span>
+                `
+                  )
+                  .join("")}
+              </div>
+              <div class="vocab-tip">
+                <i class="fas fa-lightbulb"></i> ${list.tip}
+              </div>
+            </div>
+          `
+            )
+            .join("")}
+        </div>
+        
+        <div class="study-tips-section">
+          <h5><i class="fas fa-graduation-cap"></i> Dicas de Estudo</h5>
+          <ul class="vocab-study-tips">
+            ${material.sections[2].studyTips
+              .map((tip) => `<li>${tip}</li>`)
+              .join("")}
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Métodos de Prática -->
+      <div class="complementary-section">
+        <div class="complementary-section-title">
+          <i class="fas fa-gamepad"></i>
+          <span>Como Praticar Este Vocabulário</span>
+        </div>
+        
+        <div class="methods-grid">
+          ${material.sections[3].methods
+            .map(
+              (method) => `
+            <div class="method-card">
+              <div class="method-header">
+                <h5>${method.name}</h5>
+                <p>${method.description}</p>
+              </div>
+              <div class="method-steps">
+                <h6>Passos:</h6>
+                <ol>
+                  ${method.steps
+                    .map((step) => `<li>${step}</li>`)
+                    .join("")}
+                </ol>
+              </div>
+            </div>
+          `
+            )
+            .join("")}
+        </div>
+      </div>
+      
+      <!-- Dicas Finais -->
+      <div class="assessment-footer">
+        <div class="final-tips">
+          <h5><i class="fas fa-gem"></i> Dicas Importantes</h5>
+          <ul>
+            ${material.tips.map((tip) => `<li>${tip}</li>`).join("")}
+          </ul>
+        </div>
+        
+        <div class="next-steps">
+          <h5><i class="fas fa-arrow-right"></i> Próximos Passos</h5>
+          <p>Após fazer o teste e aprender as palavras básicas:</p>
+          <ol>
+            <li>Volte ao seu nível no plano de estudos</li>
+            <li>Configure seu ambiente de estudo (Semana 0)</li>
+            <li>Comece com 30 minutos diários de prática</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+`;
+}else if (material.type === "simple-links") {
+  cardBodyHTML = `
+  <div class="complementary-card-body">
+    <div class="simple-links-container">
+      ${Object.entries(material.links)
+        .map(
+          ([category, links]) => `
+        <div class="links-category">
+          <h4>${category}</h4>
+          <div class="links-list">
+            ${links
+              .map(
+                (link) => `
+              <a href="${link.url}" target="_blank" class="simple-link">
+                <div class="link-content">
+                  <span class="link-name">${link.name}</span>
+                  <span class="link-desc">${link.description}</span>
+                </div>
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            `
+              )
+              .join("")}
+          </div>
+        </div>
+      `
+        )
+        .join("")}
+      
+      <div class="links-tips">
+        <p><strong>💡 Dica:</strong> Faça um teste para saber seu nível, depois foque no vocabulário correspondente.</p>
+      </div>
+    </div>
+  </div>
+`;
+} else {
         // Card padrão (fallback)
         cardBodyHTML = `
         <div class="complementary-card-body">

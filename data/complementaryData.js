@@ -1,6 +1,7 @@
 // js/data/complementaryData.js
 export const complementaryMaterials = [
-    {
+
+  {
     id: "week-0",
     title: "Preparação e Configuração",
     sections: [
@@ -12,18 +13,18 @@ export const complementaryMaterials = [
           videos: [
             {
               id: "LLZ3xU6tESo",
-              title: "COMO FAZER IMERSÃO | Técnica de Imersão no Inglês para quem NÃO TEM TEMPO (Modo Difuso)",
+              title:
+                "COMO FAZER IMERSÃO | Técnica de Imersão no Inglês para quem NÃO TEM TEMPO (Modo Difuso)",
               duration: "3:26",
               channel: "Kaique Bazil",
-              description: "Como usar o modo difuso para imersão no dia a dia"
             },
             {
               id: "cswbKngQSgU",
-              title: "COMO FAZER IMERSÃO NO INGLÊS do jeito certo (Modo Focado)",
+              title:
+                "COMO FAZER IMERSÃO NO INGLÊS do jeito certo (Modo Focado)",
               duration: "14:23",
               channel: "Kaique Bazil",
-              description: "Técnicas de imersão ativa e focado"
-            }
+            },
           ],
           materials: [
             "1️⃣ Instalação e configuração do ambiente de estudo",
@@ -31,9 +32,9 @@ export const complementaryMaterials = [
             "📱 Celular 100% em inglês: Idioma do sistema, Instagram, TikTok, YouTube, Teclado em inglês",
             "🎧 Ambiente auditivo: Inglês como som de fundo (podcasts, vídeos) com conteúdo compreensível (CI)",
             "🏠 Ambiente físico: Post-its em objetos da casa com frases simples visíveis (chunks)",
-            "🧠 Regra de ouro: 'Se dá pra fazer em inglês, faça em inglês'"
-          ]
-        }
+            "🧠 Regra de ouro: 'Se dá pra fazer em inglês, faça em inglês'",
+          ],
+        },
       },
       {
         id: "goals",
@@ -41,6 +42,14 @@ export const complementaryMaterials = [
         icon: "bullseye",
         content: {
           videos: [
+            {
+              id: "NkRbxN5v0VQ",
+              title:
+                'Destrave sua FALA no INGLÊS: O guia prático para parar de "congelar"',
+              duration: "7:30",
+              channel: "Kaique Bazil",
+              description: "Regras essenciais para acelerar seu aprendizado",
+            },
             // {
             //   id: "video_id_metas",
             //   title: "Como Definir Metas REALISTAS para Aprender Inglês em 6 Meses",
@@ -54,10 +63,9 @@ export const complementaryMaterials = [
             "💡 Aqui você se diferencia de 99% dos professores.",
             "❌ Metas erradas: 'Quero ser fluente', 'Quero aprender inglês'",
             "✅ Metas corretas (conversacionais): 'Quero pedir informação na rua', 'Quero conversar 10 minutos com um estrangeiro', 'Quero sobreviver em uma viagem'",
-            "Exemplo: 'Em 30 dias, quero pedir comida em inglês sem travar.'"
+            "Exemplo: 'Em 30 dias, quero pedir comida em inglês sem travar.'",
           ],
-          
-        }
+        },
       },
       {
         id: "plan",
@@ -80,10 +88,9 @@ export const complementaryMaterials = [
             "🔹 Mês 4 – Expansão: Contar histórias, Passado e futuro funcional",
             "🔹 Mês 5 – Fluência real: Pensar em inglês, Responder sem traduzir",
             "🔹 Mês 6 – Consolidação: Conversas longas, Confiança total",
-            "📌 Importante: O foco é FALA, não regra."
+            "📌 Importante: O foco é FALA, não regra.",
           ],
-          
-        }
+        },
       },
       {
         id: "tools",
@@ -108,20 +115,90 @@ export const complementaryMaterials = [
             "📒 Caderno ou Notion: Apenas frases úteis (chunks)",
             "Regra importante:",
             "❌ Não anotar palavra solta",
-            "✅ Anotar frases completas"
+            "✅ Anotar frases completas",
           ],
-          
-        }
-      }
+        },
+      },
     ],
     tips: [
       "Dedique 1-2 horas para configurar tudo corretamente antes de começar",
       "Faça um print das suas metas e coloque como wallpaper do celular",
       "Teste todas as ferramentas para garantir que funcionam",
       "Compartilhe suas metas com alguém para ter accountability",
-      "Configure lembretes diários no seu calendário"
-    ]
+      "Configure lembretes diários no seu calendário",
+    ],
   },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Adicione este objeto após a "week-0" no arquivo complementaryData.js
+{
+  id: "level-links",
+  title: "🔗 Links Rápidos - Testes & Vocabulário",
+  description: "Teste seu nível e aprenda o vocabulário essencial",
+  type: "simple-links",
+  links: {
+    "🧪 Teste de Nivelamento": [
+      {
+        name: "Teste de Nivelamento - Projeto Fluente em 6 Meses",
+        url: "../pages/test.html",
+        description: "25 questões - Rápido e preciso"
+      },
+    ],
+    "📚 Vocabulário Essencial": [
+      {
+        name: "Frases de Alta Frequência",
+        url: "../pages/frequentes/frasesfrequentes.html",
+        description: "Mais de 80 frases essenciais para comunicação diária"
+      },
+      {
+        name: "100 Verbos Mais Frequentes",
+        url: "../pages/frequentes/verbosfrequentes.html",
+        description: "Be, have, do, say, get, make, go, know..."
+      },
+      {
+        name: "100 Palavras Mais Frequentes",
+        url: "../pages/frequentes/palavras.html",
+        description: "Cobre 90% das conversas diárias"
+      }
+    ],
+    "⚡ Ferramentas Rápidas": [
+      {
+        name: "AnkiWeb",
+        url: "https://ankiweb.net",
+        description: "Flashcards grátis"
+      },
+    ]
+  }
+},
+
+
+
   {
     id: "my-videos",
     title: "🎥 Meus Vídeos Recomendados",
@@ -213,33 +290,6 @@ export const complementaryMaterials = [
           },
         ],
       },
-      // {
-      //   name: "📚 Aulas de Gramática",
-      //   items: [
-      //     {
-      //       name: "English Grammar in Use (App)",
-      //       description: "Exercícios interativos do livro clássico",
-      //       link: "https://www.cambridge.org/grammarinuse",
-      //       icon: "book",
-      //       myReview: "O melhor para prática de gramática contextualizada",
-      //     },
-      //     {
-      //       name: "Grammarly",
-      //       description: "Corretor gramatical avançado",
-      //       link: "https://www.grammarly.com",
-      //       icon: "spell-check",
-      //       myReview: "Uso diariamente para escrever emails e textos",
-      //     },
-      //     {
-      //       name: "Canal: English with Lucy",
-      //       description: "Gramática com explicações claras",
-      //       link: "https://www.youtube.com/c/EnglishwithLucy",
-      //       icon: "chalkboard-teacher",
-      //       myReview: "Explicações visuais excelentes para regras complexas",
-      //     },
-      //   ],
-      // },
-
       {
         name: "🧠 Memória & Vocabulário",
         items: [
@@ -924,7 +974,6 @@ export const complementaryMaterials = [
     description: "Metas mensuráveis mês a mês",
     type: "timeline",
     months: [
-      
       {
         month: "Mês 1",
         theme: "Sobrevivência Conversacional",
@@ -969,20 +1018,4 @@ export const complementaryMaterials = [
       },
     ],
   },
-  // {
-  //   id: "finish-line",
-  //   title: "🏁 DIA 180: O QUE VOCÊ CONSEGUIRÁ",
-  //   description: "Habilidades concretas após 6 meses de método",
-  //   type: "outcomes",
-  //   willBeAbleTo: [
-  //     "Iniciar e manter conversas sobre diversos temas",
-  //     "Expressar opiniões, sentimentos e desejos claramente",
-  //     "Contar histórias com começo, meio e fim",
-  //     "Entender filmes/séries sem legendas (em grande parte)",
-  //     "Pensar em inglês sem esforço consciente para temas familiares",
-  //     "Adaptar sua linguagem para diferentes situações (formal/informal)",
-  //     "Aprender novas palavras no contexto, sem tradução",
-  //     "Recuperar-se quando cometer um erro (reformular, explicar de outra forma)",
-  //   ],
-  // },
 ];
