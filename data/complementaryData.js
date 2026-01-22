@@ -131,26 +131,40 @@ export const complementaryMaterials = [
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  {
+    id: "my-videos",
+    title: "🎥 Meus Vídeos Recomendados",
+    description:
+      "Vídeos selecionados pessoalmente para complementar seu aprendizado.",
+    type: "videos",
+    videos: [
+      {
+        id: "5BBnXnwUiXQ",
+        title: "Fluente em Inglês em 6 Meses | Meu Projeto Real",
+        duration: "1:10",
+        channel: "Kaique Bazil",
+        description: "Vídeo introdutório do meu desafio",
+      },
+      {
+        id: "DR-yMtXpzWjAlI",
+        title: "AS 4 REGRAS DA FLUÊNCIA EM INGLÊS | Para Aprender Rápido",
+        duration: "6:53",
+        channel: "Kaique Bazil",
+        description: "Regras essenciais para acelerar seu aprendizado",
+      },
+      {
+        id: "NkRbxN5v0VQ",
+        title:
+          'Destrave sua FALA no INGLÊS: O guia prático para parar de "congelar"',
+        duration: "7:30",
+        channel: "Kaique Bazil",
+        description: "Regras essenciais para acelerar seu aprendizado",
+      },
+    ],
+    materials: [
+      "Playlist completa: (link: https://www.youtube.com/playlist?list=PLTzvJzAFb2UzLfI71n9ebaV1AHqpwIOYH)",
+    ],
+  },
 
 
 
@@ -199,40 +213,9 @@ export const complementaryMaterials = [
 
 
 
-  {
-    id: "my-videos",
-    title: "🎥 Meus Vídeos Recomendados",
-    description:
-      "Vídeos selecionados pessoalmente para complementar seu aprendizado.",
-    type: "videos",
-    videos: [
-      {
-        id: "5BBnXnwUiXQ",
-        title: "Fluente em Inglês em 6 Meses | Meu Projeto Real",
-        duration: "1:10",
-        channel: "Kaique Bazil",
-        description: "Vídeo introdutório do meu desafio",
-      },
-      {
-        id: "DR-yMtXpzWjAlI",
-        title: "AS 4 REGRAS DA FLUÊNCIA EM INGLÊS | Para Aprender Rápido",
-        duration: "6:53",
-        channel: "Kaique Bazil",
-        description: "Regras essenciais para acelerar seu aprendizado",
-      },
-      {
-        id: "NkRbxN5v0VQ",
-        title:
-          'Destrave sua FALA no INGLÊS: O guia prático para parar de "congelar"',
-        duration: "7:30",
-        channel: "Kaique Bazil",
-        description: "Regras essenciais para acelerar seu aprendizado",
-      },
-    ],
-    materials: [
-      "Playlist completa: (link: https://www.youtube.com/playlist?list=PLTzvJzAFb2UzLfI71n9ebaV1AHqpwIOYH)",
-    ],
-  },
+
+
+
   {
     id: "resources-tools",
     title: "📱 Recursos & Aplicativos que Uso",
