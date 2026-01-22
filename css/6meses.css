@@ -210,6 +210,8 @@
   margin-bottom: 15px;
   transition: all 0.3s ease;
   margin: 10px;
+      overflow: auto;
+    max-height: 400px;
 }
 
 .week-zero-section:hover {
@@ -490,16 +492,6 @@
 
 /* Responsividade */
 @media (max-width: 600px) {
-  .week-zero-item {
-    padding: 20px;
-  }
-
-  .week-zero-header {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-  }
-
   .video-card-timeline {
     flex-direction: column;
   }
