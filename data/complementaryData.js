@@ -181,7 +181,7 @@ export const complementaryMaterials = [
       {
         name: "Teste de Nivelamento - Projeto Fluente em 6 Meses",
         url: "..links/pages/test.html",
-        description: "25 questões - Rápido e preciso"
+        description: "60 questões - Rápido e preciso"
       },
     ],
     "📚 Vocabulário Essencial": [
