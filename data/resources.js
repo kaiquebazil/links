@@ -27,6 +27,11 @@ export const resourcesDatabase = {
       "Jogo: Memory do Alfabeto (link: https://www.educaplay.com/learning-resources/23966277-alfhabet_quiz.html)",
       "Exercícios: Soletre seu Nome Completo, Nome de Familiares. Emails e coisas do dia a dia.",
     ],
+    learning: [
+      "Soletrar seu nome, email, objetos e palavras",
+      "Letras com pronúncia semelhante: B e D, M e N, P e T",
+      "Como não confundir letras: I, E, C, G, J, K, Q, S, X, Z",
+    ]
   },
 
   "Números: 1 a 1 Trilhão": {
@@ -50,6 +55,12 @@ export const resourcesDatabase = {
       "Jogo: Palavras Cruzadas de Números (link: https://www.educaplay.com/learning-resources/9030866-numbers.html)",
       "Exercícios: Escreva frases com a idade de seus familiares (dominar de 1 a 100), frases de contas de casa e preços de produtos.",
     ],
+    learning: [
+      "Como dizer sua idade, datas e preços em inglês",
+      "A lógica dos números",
+      "Do 1 ao 1 trilhão",
+      "Como não confundir humdred e thousand",
+    ]
   },
 
 
