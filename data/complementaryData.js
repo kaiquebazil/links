@@ -173,24 +173,24 @@ export const complementaryMaterials = [
       "🧪 Teste de Nivelamento": [
         {
           name: "Teste de Nivelamento - Projeto Fluente em 6 Meses",
-          url: "/pages/test.html",
+          url: "links/pages/test.html",
           description: "60 questões - Rápido e preciso",
         },
       ],
       "📚 Vocabulário Essencial": [
         {
           name: "Frases de Alta Frequência",
-          url: "/pages/frequentes/frasesfrequentes.html",
+          url: "links/pages/frequentes/frasesfrequentes.html",
           description: "Mais de 80 frases essenciais para comunicação diária",
         },
         {
           name: "100 Verbos Mais Frequentes",
-          url: "/pages/frequentes/verbosfrequentes.html",
+          url: "links/pages/frequentes/verbosfrequentes.html",
           description: "Be, have, do, say, get, make, go, know...",
         },
         {
           name: "100 Palavras Mais Frequentes",
-          url: "/pages/frequentes/palavras.html",
+          url: "links/pages/frequentes/palavras.html",
           description: "Cobre 90% das conversas diárias",
         },
       ],
