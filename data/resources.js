@@ -1,4 +1,35 @@
 export const resourcesDatabase = {
+  "Configuração Anki para aprendizado eficiente": {
+    videos: [
+      {
+        id: "ZfD0OL0ZluM",
+        title:
+          "Como Configurar o ANKI para Aprender Inglês e Não Esquecer Mais (Passo a Passo)",
+        duration: "7:37",
+        channel: "Kaique Bazil",
+      },
+    ],
+    materials: [
+      "Site Oficial para Download (PC/Mac/Linux): (link: https://apps.ankiweb.net/)",
+      "App Android: (link: https://play.google.com/store/apps/details?id=com.ichi2.anki)",
+      "App iOS: (link: https://apps.apple.com/us/app/ankimobile-flashcards/id373493387)",
+      "AnkiWeb (Acesso Online): (link: https://ankiweb.net/)",
+      "Criar Conta Gratuita: (link: https://ankiweb.net/account/register)",
+      "Login na Conta: (link: https://ankiweb.net/account/login)",
+      "Decks Compartilhados: (link: https://ankiweb.net/shared/decks/)",
+      "Manual Oficial: https://docs.ankiweb.net/",
+      "Extensões Usadas: 723520343, 1436550454",
+    ],
+    learning: [
+      "Passo 1: Baixar e instalar o Anki no computador",
+      "Passo 2: Criar conta gratuita no AnkiWeb",
+      "Passo 3: Fazer login no app desktop com sua conta",
+      "Passo 4: Instalar AnkiDroid (Android) ou AnkiMobile (iOS)",
+      "Passo 5: Fazer login no app móvel para sincronizar",
+      "Passo 6: Criar seu primeiro deck de inglês",
+      "Passo 7: Adicionar cards diariamente e revisar todos os dias",
+    ],
+  },
   "Alfabeto inglês: letras, pronúncia e soletração": {
     videos: [
       {
@@ -31,7 +62,7 @@ export const resourcesDatabase = {
       "Soletrar seu nome, email, objetos e palavras",
       "Letras com pronúncia semelhante: B e D, M e N, P e T",
       "Como não confundir letras: I, E, C, G, J, K, Q, S, X, Z",
-    ]
+    ],
   },
 
   "Números: 1 a 1 Trilhão": {
@@ -60,31 +91,31 @@ export const resourcesDatabase = {
       "A lógica dos números",
       "Do 1 ao 1 trilhão",
       "Como não confundir humdred e thousand",
-    ]
+    ],
   },
-
-
-  
 
   /* SEMANA 1 */
 
-   "Saudações formais e informais (bom dia, oi, e aí?)": {
+  "Saudações formais e informais (bom dia, oi, e aí?)": {
     videos: [
       {
         id: "tf3X7ujNKpI",
-        title: "Saudações Básicas em Inglês: Como Iniciar uma Conversa (Passo a Passo)",
+        title:
+          "Saudações Básicas em Inglês: Como Iniciar uma Conversa (Passo a Passo)",
         duration: "2:34",
         channel: "Kaique Bazil",
       },
       {
         id: "amxeGGNwwzE",
-        title: "Learn English Greetings - English Greetings Explained in Detail",
+        title:
+          "Learn English Greetings - English Greetings Explained in Detail",
         duration: "10:29",
         channel: "Learn English with Bob the Canadian",
       },
       {
         id: "fI8EsEXS59w",
-        title: "Learn Basic English Greetings – How to Greet Someone for the First Time",
+        title:
+          "Learn Basic English Greetings – How to Greet Someone for the First Time",
         duration: "5:57",
         channel: "Professor Korten",
       },
@@ -95,12 +126,12 @@ export const resourcesDatabase = {
     ],
     learning: [
       "A estrutura básica de uma saudação em inglês: saudações iniciais, perguntas de rotina e respostas naturais",
-  "Saudações formais para situações profissionais ou desconhecidos: 'Hello', 'Good morning/afternoon/evening'",
-  "Saudações informais para amigos e familiares: 'Hi', 'Hey', 'What's up?', 'How's it going?'",
-  "Perguntas comuns após cumprimentar: 'How are you?', 'How have you been?', 'How's your day?'",
-  "Respostas naturais e comuns: 'I'm good, thanks!', 'Not bad, you?', 'Pretty good, how about you?'",
-  "Despedidas rápidas após a saudação: 'See you later', 'Take care', 'Have a good one!'",
-    ]
+      "Saudações formais para situações profissionais ou desconhecidos: 'Hello', 'Good morning/afternoon/evening'",
+      "Saudações informais para amigos e familiares: 'Hi', 'Hey', 'What's up?', 'How's it going?'",
+      "Perguntas comuns após cumprimentar: 'How are you?', 'How have you been?', 'How's your day?'",
+      "Respostas naturais e comuns: 'I'm good, thanks!', 'Not bad, you?', 'Pretty good, how about you?'",
+      "Despedidas rápidas após a saudação: 'See you later', 'Take care', 'Have a good one!'",
+    ],
   },
 
   "Apresentações: nome, nacionalidade, ocupação": {
@@ -113,7 +144,8 @@ export const resourcesDatabase = {
       },
       {
         id: "UnEmEbWytI8",
-        title: "Introductions | Beginner English | Introducing Yourself in English",
+        title:
+          "Introductions | Beginner English | Introducing Yourself in English",
         duration: "1:15",
         channel: "Learn English by Pocket Passport",
       },
@@ -122,15 +154,15 @@ export const resourcesDatabase = {
       "Frases para Autointrodução (link: ../links/pages/introductions.html)",
       "Exercício: Criar seu Perfil em Inglês",
     ],
-    "learning": [
-    "A estrutura fundamental de uma apresentação: nome, origem e ocupação básica",
-    "Formas diferentes de dizer seu nome: 'My name is...', 'I'm...', 'You can call me...'",
-    "Como falar sobre sua nacionalidade ou cidade natal: 'I'm from Brazil', 'I come from São Paulo'",
-    "Maneiras de compartilhar sua profissão ou ocupação: 'I work as a...', 'I'm a student', 'I'm currently studying...'",
-    "Perguntas-chave que você pode fazer ao outro após se apresentar: 'And you?', 'What about you?', 'Where are you from?'",
-    "Pronúncia clara e confiança: falar devagar e enfatizar as informações importantes",
-    "Como praticar: criar várias versões da sua apresentação para diferentes situações"
-  ]
+    learning: [
+      "A estrutura fundamental de uma apresentação: nome, origem e ocupação básica",
+      "Formas diferentes de dizer seu nome: 'My name is...', 'I'm...', 'You can call me...'",
+      "Como falar sobre sua nacionalidade ou cidade natal: 'I'm from Brazil', 'I come from São Paulo'",
+      "Maneiras de compartilhar sua profissão ou ocupação: 'I work as a...', 'I'm a student', 'I'm currently studying...'",
+      "Perguntas-chave que você pode fazer ao outro após se apresentar: 'And you?', 'What about you?', 'Where are you from?'",
+      "Pronúncia clara e confiança: falar devagar e enfatizar as informações importantes",
+      "Como praticar: criar várias versões da sua apresentação para diferentes situações",
+    ],
   },
 
   "Expressar prazer em conhecer alguém": {
@@ -154,12 +186,11 @@ export const resourcesDatabase = {
     ],
     learning: [
       "Por que a expressão 'Nice to meet you' é considerada básica e como expandir seu vocabulário",
-    "Alternativas: 'It's a pleasure to meet you', 'Great to meet you!' ,'How wonderful to meet you!' E muito mais",
-    "Contextos apropriados para cada variação: reuniões de negócios, encontros casuais, situações sociais",
-    "Respostas comuns para quando alguém usa essas expressões com você",
-    "Entonação acompanham essas frases para soar natural",
-      
-    ]
+      "Alternativas: 'It's a pleasure to meet you', 'Great to meet you!' ,'How wonderful to meet you!' E muito mais",
+      "Contextos apropriados para cada variação: reuniões de negócios, encontros casuais, situações sociais",
+      "Respostas comuns para quando alguém usa essas expressões com você",
+      "Entonação acompanham essas frases para soar natural",
+    ],
   },
 
   "Despedidas naturais (tchau, até logo, falou)": {
@@ -180,8 +211,8 @@ export const resourcesDatabase = {
       "Informal: 'Bye', 'See ya', 'Catch you later', 'Peace out'",
       "Despedidas por telefone/online: 'Talk to you soon', 'TTYL'",
       "Despedidas temporárias: 'See you tomorrow', 'Until next time'",
-      "Despedidas com planos futuros: 'Let's catch up soon'"
-    ]
+      "Despedidas com planos futuros: 'Let's catch up soon'",
+    ],
   },
 
   // SEMANA 2
@@ -211,8 +242,8 @@ export const resourcesDatabase = {
       "Família estendida: uncle, aunt, cousin, grandparents",
       "Termos modernos: step-parent, half-brother, in-laws",
       "Descrever relações: 'He is my older brother', 'She is my maternal grandmother'",
-      "Perguntas sobre família: 'Do you have any siblings?', 'How big is your family?'"
-    ]
+      "Perguntas sobre família: 'Do you have any siblings?', 'How big is your family?'",
+    ],
   },
 
   "Falar sobre sua familia (casado, solteiro, filhos)": {
@@ -240,8 +271,8 @@ export const resourcesDatabase = {
       "Descrever situação: 'I'm single', 'I'm married with two kids'",
       "Termos para filhos: children, kids, son, daughter, toddler, teenager",
       "Frases úteis: 'I have three children', 'We don't have kids yet'",
-      "Contextos apropriados para discutir vida familiar"
-    ]
+      "Contextos apropriados para discutir vida familiar",
+    ],
   },
 
   // SEMANA 3
@@ -270,8 +301,8 @@ export const resourcesDatabase = {
       "Advérbios de frequência: always, usually, often, sometimes, rarely, never",
       "Sequência temporal: first, then, after that, finally",
       "Expressões de tempo: in the morning, at night, on weekdays, every day",
-      "Rotinas específicas: work routine, study routine, weekend routine"
-    ]
+      "Rotinas específicas: work routine, study routine, weekend routine",
+    ],
   },
 
   "Dias da semana e frequência": {
@@ -292,8 +323,8 @@ export const resourcesDatabase = {
       "Uso correto das preposições: on Monday, on Fridays",
       "Partes da semana: weekday vs weekend",
       "Expressões: 'every Monday', 'on Mondays', 'this Monday', 'next Monday'",
-      "Frequência: daily, weekly, bi-weekly, monthly"
-    ]
+      "Frequência: daily, weekly, bi-weekly, monthly",
+    ],
   },
 
   // SEMANA 4
@@ -322,8 +353,8 @@ export const resourcesDatabase = {
       "Níveis de gosto: love, enjoy, like, don't mind, dislike, hate",
       "Perguntar sobre hobbies: 'What do you do in your free time?'",
       "Descrever hobbies: 'It's relaxing', 'It helps me unwind', 'It keeps me active'",
-      "Falar sobre benefícios dos hobbies"
-    ]
+      "Falar sobre benefícios dos hobbies",
+    ],
   },
 
   "Esportes e atividades físicas": {
@@ -351,8 +382,8 @@ export const resourcesDatabase = {
       "Verbos específicos: play soccer, go swimming, do yoga",
       "Descrever habilidade: 'I'm good at...', 'I'm not very good at...'",
       "Frequência: 'I play tennis twice a week', 'I go to the gym every day'",
-      "Esportes como espectador vs participante"
-    ]
+      "Esportes como espectador vs participante",
+    ],
   },
 
   // SEMANA 5 - ALIMENTAÇÃO
@@ -375,8 +406,8 @@ export const resourcesDatabase = {
       "Fazer pedido: 'I'd like...', 'Can I have...', 'I'll take...'",
       "Modificações: 'without onions', 'extra cheese', 'on the side'",
       "Perguntas: 'What do you recommend?', 'What's the soup of the day?'",
-      "Interações com garçom/garçonete"
-    ]
+      "Interações com garçom/garçonete",
+    ],
   },
 
   "Tipos de comida e preferências": {
@@ -398,8 +429,8 @@ export const resourcesDatabase = {
       "Preferências: 'I love...', 'I can't stand...', 'I'm not a fan of...'",
       "Dietas especiais: vegetarian, vegan, gluten-free, dairy-free",
       "Alergias: 'I'm allergic to...', 'I can't eat...'",
-      "Descrever sabores: sweet, salty, spicy, sour, bitter"
-    ]
+      "Descrever sabores: sweet, salty, spicy, sour, bitter",
+    ],
   },
 
   // "TESTE: Diálogo de apresentação": {
@@ -752,8 +783,6 @@ export const resourcesDatabase = {
   //   ],
   // },
 };
-
-
 
 // Exportar recursos padrão para conteúdos não listados
 export const defaultResources = {
