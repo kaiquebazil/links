@@ -1,6 +1,5 @@
 // js/data/complementaryData.js
 export const complementaryMaterials = [
-
   {
     id: "week-0",
     title: "Preparação e Configuração",
@@ -129,8 +128,6 @@ export const complementaryMaterials = [
     ],
   },
 
-
-
   {
     id: "my-videos",
     title: "🎥 Meus Vídeos Recomendados",
@@ -166,55 +163,46 @@ export const complementaryMaterials = [
     ],
   },
 
-
-
-
-
-// Adicione este objeto após a "week-0" no arquivo complementaryData.js
-{
-  id: "level-links",
-  title: "🔗 Links Rápidos - Testes & Vocabulário",
-  description: "Teste seu nível e aprenda o vocabulário essencial",
-  type: "simple-links",
-  links: {
-    "🧪 Teste de Nivelamento": [
-      {
-        name: "Teste de Nivelamento - Projeto Fluente em 6 Meses",
-        url: "..links/pages/test.html",
-        description: "60 questões - Rápido e preciso"
-      },
-    ],
-    "📚 Vocabulário Essencial": [
-      {
-        name: "Frases de Alta Frequência",
-        url: "..links/pages/frequentes/frasesfrequentes.html",
-        description: "Mais de 80 frases essenciais para comunicação diária"
-      },
-      {
-        name: "100 Verbos Mais Frequentes",
-        url: "..links/pages/frequentes/verbosfrequentes.html",
-        description: "Be, have, do, say, get, make, go, know..."
-      },
-      {
-        name: "100 Palavras Mais Frequentes",
-        url: "..links/pages/frequentes/palavras.html",
-        description: "Cobre 90% das conversas diárias"
-      }
-    ],
-    "⚡ Ferramentas Rápidas": [
-      {
-        name: "AnkiWeb",
-        url: "https://ankiweb.net",
-        description: "Flashcards grátis"
-      },
-    ]
-  }
-},
-
-
-
-
-
+  // Adicione este objeto após a "week-0" no arquivo complementaryData.js
+  {
+    id: "level-links",
+    title: "🔗 Links Rápidos - Testes & Vocabulário",
+    description: "Teste seu nível e aprenda o vocabulário essencial",
+    type: "simple-links",
+    links: {
+      "🧪 Teste de Nivelamento": [
+        {
+          name: "Teste de Nivelamento - Projeto Fluente em 6 Meses",
+          url: "..links/pages/test.html",
+          description: "60 questões - Rápido e preciso",
+        },
+      ],
+      "📚 Vocabulário Essencial": [
+        {
+          name: "Frases de Alta Frequência",
+          url: "/pages/frequentes/frasesfrequentes.html",
+          description: "Mais de 80 frases essenciais para comunicação diária",
+        },
+        {
+          name: "100 Verbos Mais Frequentes",
+          url: "/pages/frequentes/verbosfrequentes.html",
+          description: "Be, have, do, say, get, make, go, know...",
+        },
+        {
+          name: "100 Palavras Mais Frequentes",
+          url: "/pages/frequentes/palavras.html",
+          description: "Cobre 90% das conversas diárias",
+        },
+      ],
+      "⚡ Ferramentas Rápidas": [
+        {
+          name: "AnkiWeb",
+          url: "https://ankiweb.net",
+          description: "Flashcards grátis",
+        },
+      ],
+    },
+  },
 
   {
     id: "resources-tools",
