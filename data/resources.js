@@ -137,7 +137,7 @@ export const resourcesDatabase = {
   "Apresentações: nome, nacionalidade, ocupação": {
     videos: [
       {
-        id: "KXoQBAmFM3U",
+        id: "TvZ27eIC4O0",
         title: "COMO SE APRESENTAR EM INGLÊS | Guia Completo",
         duration: "18:45",
         channel: "Kaique Bazil",
@@ -433,24 +433,25 @@ export const resourcesDatabase = {
     ],
   },
 
-  // "TESTE: Diálogo de apresentação": {
-  //   videos: [
-  //     {
-  //       id: "KXoQBAmFM3U",
-  //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
-  //       duration: "18:45",
-  //       channel: "Kaique Bazil",
-  //     },
-  //   ],
-  //   materials: [
-  //     "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Diálogo%20de%20Apresentação)",
-  //   ],
-  // },
+  // ATIVIDADES DE TESTE - PRÁTICA ORAL
+  "TESTE: Diálogo de apresentação": {
+    videos: [
+      {
+        id: "TvZ27eIC4O0",
+        title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
+        duration: "18:45",
+        channel: "Kaique Bazil",
+      },
+    ],
+    materials: [
+      "Marcar Aula Prática (link: https://wa.me/5524992046467?text=Vim%20marcar%20a%20aula%20prática%20de%20Diálogo%20de%20Apresentação)",
+    ],
+  },
 
   // "TESTE: Conte sobre sua família": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -464,7 +465,7 @@ export const resourcesDatabase = {
   // "TESTE: Descreva seu dia perfeito": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -478,7 +479,7 @@ export const resourcesDatabase = {
   // "TESTE: Recomende um filme/série para um amigo": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -492,7 +493,7 @@ export const resourcesDatabase = {
   // "REVISÃO: Simulação de encontro casual (roleplay)": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -506,7 +507,7 @@ export const resourcesDatabase = {
   // "TESTE: Pedir comida por telefone/app": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -520,7 +521,7 @@ export const resourcesDatabase = {
   // "TESTE: Negociar preço em uma feira": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -534,7 +535,7 @@ export const resourcesDatabase = {
   // "TESTE: Explicar como chegar ao seu trabalho": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -548,7 +549,7 @@ export const resourcesDatabase = {
   // "TESTE: Descrever sintomas ao médico": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -562,7 +563,7 @@ export const resourcesDatabase = {
   // "TESTE: 'A lição mais importante que aprendi'": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -576,7 +577,7 @@ export const resourcesDatabase = {
   // "TESTE: Recomendar um destino turístico": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -590,7 +591,7 @@ export const resourcesDatabase = {
   // "TESTE: Compartilhar uma conquista pessoal": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -604,7 +605,7 @@ export const resourcesDatabase = {
   // "TESTE: Explicar uma tradição para um estrangeiro": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -618,7 +619,7 @@ export const resourcesDatabase = {
   // "TESTE: Debater qual é o melhor filme/série": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -632,7 +633,7 @@ export const resourcesDatabase = {
   // "TESTE: Descrever como se sente hoje e por quê": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -646,7 +647,7 @@ export const resourcesDatabase = {
   // "TESTE: 'Onde você se vê em 5 anos?'": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -660,7 +661,7 @@ export const resourcesDatabase = {
   // "TESTE: Dar conselhos sobre um problema comum": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -674,7 +675,7 @@ export const resourcesDatabase = {
   // "TESTE: 'Como a tecnologia mudou sua vida?'": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -688,7 +689,7 @@ export const resourcesDatabase = {
   // "TESTE: Criar um plano de bem-estar semanal": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -702,7 +703,7 @@ export const resourcesDatabase = {
   // "TESTE: Propor soluções para um problema ambiental": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -716,7 +717,7 @@ export const resourcesDatabase = {
   // "TESTE: 'O que as escolas deveriam ensinar?'": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -730,7 +731,7 @@ export const resourcesDatabase = {
   // "TESTE: Contar uma história pessoal": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -744,7 +745,7 @@ export const resourcesDatabase = {
   // "TESTE: Contar uma piada em inglês": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -758,7 +759,7 @@ export const resourcesDatabase = {
   // "TESTE: 'Venda' uma ideia": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",
@@ -772,7 +773,7 @@ export const resourcesDatabase = {
   // "TESTE FINAL: Conversa de 15 minutos sobre tópico surpresa": {
   //   videos: [
   //     {
-  //       id: "KXoQBAmFM3U",
+  //       id: "TvZ27eIC4O0",
   //       title: "COMO VAI FUNCIONAR AS ATIVIDADES DE TESTE",
   //       duration: "18:45",
   //       channel: "Kaique Bazil",

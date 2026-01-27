@@ -11,6 +11,7 @@ export const studyPlan = [
           "Configuração Anki para aprendizado eficiente",
           "Alfabeto inglês: letras, pronúncia e soletração",
           "Números: 1 a 1 Trilhão",
+          "TESTE: Soletrar palavras simples e contar números",
         ],
       },
     ],
