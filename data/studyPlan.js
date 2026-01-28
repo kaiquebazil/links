@@ -37,7 +37,7 @@ export const studyPlan = [
           "Estado civil e relacionamentos",
           "Profissões mais comuns (médico, professor, estudante)",
           "Animais de estimação e preferências",
-          "TESTE: Conte sobre sua família'",
+          "TESTE: Conte sobre sua família",
         ],
       },
       {
