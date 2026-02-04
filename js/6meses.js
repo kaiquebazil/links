@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Remover o botão e modal de fluência do DOM (já que movemos para conteúdos adicionais)
   const fluencyButtonContainer = document.querySelector(
-    ".fluency-button-container"
+    ".fluency-button-container",
   );
   const fluencyModal = document.getElementById("fluency-modal");
 
@@ -48,58 +48,227 @@ document.addEventListener("DOMContentLoaded", function () {
     JSON.parse(localStorage.getItem("completedContents")) || [];
 
   // ========== FUNÇÕES DA SEMANA 0 ==========
-  
+
   // Inicializar progresso da Semana 0
   function initializeWeekZeroProgress() {
-    if (!localStorage.getItem('week0Progress')) {
+    if (!localStorage.getItem("week0Progress")) {
       const initialProgress = {
         completedSections: [],
+        completedContents: [],
         startDate: new Date().toISOString(),
-        lastAccessed: new Date().toISOString()
+        lastAccessed: new Date().toISOString(),
       };
-      localStorage.setItem('week0Progress', JSON.stringify(initialProgress));
+      localStorage.setItem("week0Progress", JSON.stringify(initialProgress));
     }
+  }
+
+  // Função auxiliar para obter ícones
+  function getIconForType(type) {
+    const icons = {
+      tutorial: "graduation-cap",
+      config: "cog",
+      conceptual: "lightbulb",
+      practical: "hands-helping",
+      overview: "map",
+      resources: "toolbox",
+      default: "file-alt",
+    };
+    return icons[type] || icons.default;
+  }
+
+  // Criar card de conteúdo da Semana 0
+  function createWeekZeroContentCard(content) {
+    const progress = JSON.parse(localStorage.getItem("week0Progress")) || {
+      completedSections: [],
+      completedContents: [],
+    };
+    const isCompleted = progress.completedContents?.includes(content.id);
+
+    return `
+      <div class="week-zero-content-card ${isCompleted ? "completed" : ""}" id="content-${content.id}">
+        <div class="content-card-header" onclick="toggleWeekZeroContent('${content.id}')">
+          <div class="content-card-icon">
+            <i class="fas fa-${getIconForType(content.type)}"></i>
+          </div>
+          <div class="content-card-title">
+            <h4>${content.title}</h4>
+            <p>${content.description}</p>
+          </div>
+          <div class="content-card-meta">
+            <span class="meta-difficulty difficulty-${content.difficulty ? content.difficulty.toLowerCase() : "fácil"}">
+              ${content.difficulty || "Fácil"}
+            </span>
+            ${
+              content.duration
+                ? `
+              <span class="meta-duration">
+                <i class="fas fa-clock"></i> ${content.duration}
+              </span>
+            `
+                : ""
+            }
+          </div>
+          <div class="content-card-toggle">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+        
+        <div class="content-card-body" id="content-body-${content.id}">
+          <!-- VÍDEOS -->
+          ${
+            content.videos && content.videos.length > 0
+              ? `
+            <div class="content-section">
+              <h5><i class="fas fa-video"></i> Vídeos</h5>
+              <div class="content-videos">
+                ${content.videos
+                  .map(
+                    (video) => `
+                  <div class="content-video-card" onclick="openVideo('${video.id}')">
+                    <img src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" alt="${video.title}" loading="lazy">
+                    <div class="video-info">
+                      <h6>${video.title}</h6>
+                      <div class="video-meta">
+                        <span>${video.channel}</span>
+                        <span>• ${video.duration}</span>
+                      </div>
+                    </div>
+                  </div>
+                `,
+                  )
+                  .join("")}
+              </div>
+            </div>
+          `
+              : ""
+          }
+          
+          <!-- MATERIAIS -->
+          ${
+            content.materials && content.materials.length > 0
+              ? `
+            <div class="content-section">
+              <h5><i class="fas fa-link"></i> Materiais & Links</h5>
+              <div class="content-materials">
+                ${content.materials
+                  .map((material) => {
+                    if (material.includes("(link:")) {
+                      const linkMatch = material.match(/\((link:[^)]+)\)/);
+                      if (linkMatch) {
+                        const linkText = linkMatch[0]
+                          .replace("(link:", "")
+                          .replace(")", "");
+                        const displayText = material
+                          .replace(linkMatch[0], "")
+                          .trim();
+                        return `
+                        <div class="material-itemm">
+                          <i class="fas fa-external-link-alt"></i>
+                          <div>
+                            <span>${displayText}</span>
+                            <a href="${linkText}" target="_blank">Abrir link</a>
+                          </div>
+                        </div>
+                      `;
+                      }
+                    }
+                    return `
+                    <div class="material-itemm">
+                      <i class="fas fa-check-circle"></i>
+                      <span>${material}</span>
+                    </div>
+                  `;
+                  })
+                  .join("")}
+              </div>
+            </div>
+          `
+              : ""
+          }
+          
+          <!-- APRENDIZAGEM -->
+          ${
+            content.learning && content.learning.length > 0
+              ? `
+            <div class="content-section">
+              <h5><i class="fas fa-graduation-cap"></i> Passo a Passo</h5>
+              <ol class="content-learning">
+                ${content.learning
+                  .map(
+                    (step) => `
+                  <li>${step}</li>
+                `,
+                  )
+                  .join("")}
+              </ol>
+            </div>
+          `
+              : ""
+          }
+          
+          <!-- BOTÃO DE CONCLUSÃO -->
+          <button class="complete-content-btn ${isCompleted ? "completed" : ""}" 
+                  onclick="completeWeekZeroContent('${content.id}')">
+            <i class="fas ${isCompleted ? "fa-check-double" : "fa-check"}"></i>
+            <span>${isCompleted ? "Concluído!" : "Marcar como Concluído"}</span>
+          </button>
+        </div>
+      </div>
+    `;
   }
 
   // Renderizar a Semana 0 no estilo timeline
   function renderWeekZeroTimeline(data) {
-    // Calcular progresso
-    const progress = JSON.parse(localStorage.getItem('week0Progress')) || { 
-      completedSections: [] 
+    const progress = JSON.parse(localStorage.getItem("week0Progress")) || {
+      completedSections: [],
+      completedContents: [],
     };
-    const completedCount = progress.completedSections.length;
-    const totalSections = data.sections?.length || 0;
-    const progressPercent = totalSections > 0 ? (completedCount / totalSections) * 100 : 0;
-    
+
     return `
       <div class="timeline-item week-zero-item" id="week-zero-timeline">
         <div class="week-zero-header">
           <div style="flex: 1;">
             <h3 class="week-zero-title">${data.title}</h3>
-
           </div>
           <button class="toggle-week-btn" id="toggle-week-zero-btn">
             <i class="fas fa-chevron-down"></i>
           </button>
         </div>
         
-        
         <div class="week-zero-content" id="week-zero-content">
-          ${data.sections ? data.sections.map((section, sectionIndex) => {
-            const isCompleted = progress.completedSections.includes(section.id);
-            
-            return `
-              <div class="week-zero-section ${isCompleted ? 'completed' : ''}" 
-                   style="border-left-color: ${isCompleted ? 'var(--accent-green)' : '#667eea'};">
+          ${
+            data.sections
+              ? data.sections
+                  .map((section, sectionIndex) => {
+                    const isSectionCompleted =
+                      progress.completedSections.includes(section.id);
+                    const sectionContentsCompleted = section.contents
+                      ? section.contents.filter((content) =>
+                          progress.completedContents?.includes(content.id),
+                        ).length
+                      : 0;
+                    const sectionTotalContents = section.contents
+                      ? section.contents.length
+                      : 0;
+
+                    return `
+              <div class="week-zero-section ${isSectionCompleted ? "completed" : ""}" 
+                   style="border-left-color: ${isSectionCompleted ? "var(--accent-green)" : "#667eea"};">
                 <div class="section-header-mini" onclick="toggleWeekZeroSection('${section.id}')">
-                  <div class="section-icon-mini" style="color: ${isCompleted ? 'var(--accent-green)' : '#667eea'};">
+                  <div class="section-icon-mini" style="color: ${isSectionCompleted ? "var(--accent-green)" : "#667eea"};">
                     <i class="fas fa-${section.icon}"></i>
                   </div>
                   <div style="flex: 1;">
                     <h4 class="section-title-mini">${section.title}</h4>
-                    ${isCompleted ? `
-                      
-                    ` : ''}
+                    ${
+                      section.contents
+                        ? `
+                      <div class="section-progress">
+                        <span>${sectionContentsCompleted}/${sectionTotalContents} conteúdos</span>
+                      </div>
+                    `
+                        : ""
+                    }
                   </div>
                   <span class="section-toggle">
                     <i class="fas fa-chevron-down"></i>
@@ -107,171 +276,292 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
                 
                 <div class="section-content" id="section-${section.id}">
-                  ${section.content?.videos && section.content.videos.length > 0 ? `
-                    <div style="margin-bottom: 15px;">
-                      <h5 style="font-size: 14px; color: var(--accent-color); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                        <i class="fas fa-video"></i>
-                        <span>Vídeos</span>
-                      </h5>
-                      <div>
-                        ${section.content.videos.map(video => `
-                          <div class="video-card-timeline" onclick="openVideo('${video.id}')">
-                            <div class="video-thumb-timeline">
-                              <img src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" alt="${video.title}" loading="lazy">
-                              <span class="video-duration-timeline">${video.duration}</span>
-                            </div>
-                            <div class="video-info-timeline">
-                              <h6 class="video-title-timeline">${video.title}</h6>
-                              <div class="video-meta-timeline">
-                                <span style="color: #667eea; font-weight: 500;">${video.channel}</span>
-                                <span>• ${video.duration}</span>
-                              </div>
-                              ${video.description ? `<p class="video-description-timeline">${video.description}</p>` : ''}
-                            </div>
-                          </div>
-                        `).join('')}
-                      </div>
+                  <!-- CONTEÚDOS DA SEÇÃO -->
+                  ${
+                    section.contents && section.contents.length > 0
+                      ? `
+                    <div class="section-contents-grid">
+                      ${section.contents.map((content) => createWeekZeroContentCard(content)).join("")}
                     </div>
-                  ` : ''}
+                  `
+                      : '<p class="no-content">Nenhum conteúdo disponível</p>'
+                  }
                   
-                  ${section.content?.materials && section.content.materials.length > 0 ? `
-                    <div style="margin-bottom: 15px;">
-                      <h5 style="font-size: 14px; color: var(--accent-color); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                        <i class="fas fa-file-alt"></i>
-                        <span>Recomendações</span>
-                      </h5>
-                      <div class="materials-list-timeline">
-                        ${section.content.materials.map(material => `
-                          <div class="material-item-timeline">
-                            <span>${material}</span>
-                          </div>
-                        `).join('')}
-                      </div>
+                  <!-- BOTÃO PARA MARCAR SEÇÃO COMO CONCLUÍDA -->
+                  ${
+                    section.contents && section.contents.length > 0
+                      ? `
+                    <div class="section-actions">
+                      <button class="complete-section-btn ${isSectionCompleted ? "completed" : ""}" 
+                              onclick="completeWeekZeroSection('${section.id}')">
+                        <i class="fas ${isSectionCompleted ? "fa-check-double" : "fa-check"}"></i>
+                        <span>${isSectionCompleted ? "Seção Concluída" : "Concluir Seção"}</span>
+                      </button>
                     </div>
-                  ` : ''}
-                  
-                  ${section.content?.learning && section.content.learning.length > 0 ? `
-                    <div>
-                      <h5 style="font-size: 14px; color: var(--accent-color); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                        <i class="fas fa-graduation-cap"></i>
-                        <span>O que você vai aprender</span>
-                      </h5>
-                      <div class="learning-list-timeline">
-                        ${section.content.learning.map(item => `
-                          <div class="learning-item-timeline">
-                            <i class="fas fa-check"></i>
-                            <span>${item}</span>
-                          </div>
-                        `).join('')}
-                      </div>
-                    </div>
-                  ` : ''}
-                  
-                 
+                  `
+                      : ""
+                  }
                 </div>
               </div>
             `;
-          }).join('') : '<p style="text-align: center; color: var(--text-secondary); padding: 20px;">Nenhuma seção disponível</p>'}
-        
+                  })
+                  .join("")
+              : '<p style="text-align: center; color: var(--text-secondary); padding: 20px;">Nenhuma seção disponível</p>'
+          }
         </div>
       </div>
     `;
   }
 
   // Funções auxiliares da Semana 0 (adicionadas ao window para acesso global)
-  window.toggleWeekZeroContent = function() {
-    const content = document.getElementById('week-zero-content');
-    const button = document.getElementById('toggle-week-zero-btn');
-    
-    if (content && button) {
-      content.classList.toggle('active');
-      button.classList.toggle('active');
+  window.toggleWeekZeroContent = function (contentId) {
+    const contentBody = document.getElementById(`content-body-${contentId}`);
+    const toggleIcon = document.querySelector(
+      `#content-${contentId} .content-card-toggle i`,
+    );
+
+    if (contentBody && toggleIcon) {
+      contentBody.classList.toggle("active");
+      toggleIcon.className = contentBody.classList.contains("active")
+        ? "fas fa-chevron-up"
+        : "fas fa-chevron-down";
     }
   };
 
-  window.toggleWeekZeroSection = function(sectionId) {
+  window.toggleWeekZeroSection = function (sectionId) {
     const section = document.getElementById(`section-${sectionId}`);
     if (section) {
-      section.classList.toggle('active');
-      
+      section.classList.toggle("active");
+
       // Atualizar ícone da seta
-      const toggleIcon = section.parentElement.querySelector('.section-header-mini .section-toggle i');
+      const toggleIcon = section.parentElement.querySelector(
+        ".section-header-mini .section-toggle i",
+      );
       if (toggleIcon) {
-        toggleIcon.className = section.classList.contains('active')
-          ? 'fas fa-chevron-down'
-          : 'fas fa-chevron-up';
+        toggleIcon.className = section.classList.contains("active")
+          ? "fas fa-chevron-up"
+          : "fas fa-chevron-down";
       }
     }
   };
 
-  window.markWeekZeroSection = function(sectionId, sectionIndex) {
-    const progress = JSON.parse(localStorage.getItem('week0Progress')) || {
+  window.markWeekZeroSection = function (sectionId, sectionIndex) {
+    const progress = JSON.parse(localStorage.getItem("week0Progress")) || {
       completedSections: [],
-      startDate: new Date().toISOString()
+      completedContents: [],
     };
-    
+
     if (!progress.completedSections.includes(sectionId)) {
       progress.completedSections.push(sectionId);
       progress.lastAccessed = new Date().toISOString();
-      localStorage.setItem('week0Progress', JSON.stringify(progress));
-      
+      localStorage.setItem("week0Progress", JSON.stringify(progress));
+
       // Atualizar interface
-      const sectionElement = document.querySelector(`#section-${sectionId}`)?.parentElement;
+      const sectionElement = document.querySelector(
+        `#section-${sectionId}`,
+      )?.parentElement;
       if (sectionElement) {
-        sectionElement.style.borderLeftColor = 'var(--accent-green)';
-        
-        const icon = sectionElement.querySelector('.section-icon-mini');
-        if (icon) icon.style.color = 'var(--accent-green)';
-        
-        const button = sectionElement.querySelector('.mark-section-btn');
+        sectionElement.style.borderLeftColor = "var(--accent-green)";
+
+        const icon = sectionElement.querySelector(".section-icon-mini");
+        if (icon) icon.style.color = "var(--accent-green)";
+
+        const button = sectionElement.querySelector(".mark-section-btn");
         if (button) {
-          button.innerHTML = '<i class="fas fa-check-double"></i><span>Seção Concluída</span>';
-          button.style.background = 'var(--accent-green)';
+          button.innerHTML =
+            '<i class="fas fa-check-double"></i><span>Seção Concluída</span>';
+          button.style.background = "var(--accent-green)";
         }
-        
+
         // Adicionar badge de concluído
-        const headerContent = sectionElement.querySelector('.section-header-mini > div:nth-child(2)');
-        if (headerContent && !headerContent.querySelector('.completed-badge')) {
-          const completedBadge = document.createElement('div');
-          completedBadge.className = 'completed-badge';
-          completedBadge.style.cssText = 'display: inline-flex; align-items: center; gap: 5px; background: rgba(59, 185, 80, 0.1); color: var(--accent-green); padding: 3px 8px; border-radius: 12px; font-size: 11px; font-weight: 500; margin-top: 5px;';
-          completedBadge.innerHTML = '<i class="fas fa-check-circle"></i><span>Concluído</span>';
+        const headerContent = sectionElement.querySelector(
+          ".section-header-mini > div:nth-child(2)",
+        );
+        if (headerContent && !headerContent.querySelector(".completed-badge")) {
+          const completedBadge = document.createElement("div");
+          completedBadge.className = "completed-badge";
+          completedBadge.style.cssText =
+            "display: inline-flex; align-items: center; gap: 5px; background: rgba(59, 185, 80, 0.1); color: var(--accent-green); padding: 3px 8px; border-radius: 12px; font-size: 11px; font-weight: 500; margin-top: 5px;";
+          completedBadge.innerHTML =
+            '<i class="fas fa-check-circle"></i><span>Concluído</span>';
           headerContent.appendChild(completedBadge);
         }
       }
-      
+
       // Atualizar progresso
       updateWeekZeroProgress();
-      
+
       // Feedback visual
       showCompletionToast(`Seção ${sectionIndex + 1} concluída!`);
     }
   };
 
+  window.completeWeekZeroContent = function (contentId) {
+    let progress = JSON.parse(localStorage.getItem("week0Progress")) || {
+      completedSections: [],
+      completedContents: [],
+    };
+
+    if (!progress.completedContents.includes(contentId)) {
+      progress.completedContents.push(contentId);
+      localStorage.setItem("week0Progress", JSON.stringify(progress));
+
+      // Atualizar interface
+      const contentCard = document.getElementById(`content-${contentId}`);
+      if (contentCard) {
+        contentCard.classList.add("completed");
+
+        const completeBtn = contentCard.querySelector(".complete-content-btn");
+        if (completeBtn) {
+          completeBtn.innerHTML =
+            '<i class="fas fa-check-double"></i><span>Concluído!</span>';
+          completeBtn.classList.add("completed");
+        }
+      }
+
+      // Atualizar contagem da seção
+      updateWeekZeroSectionProgress();
+
+      showCompletionToast("Conteúdo concluído!");
+    }
+  };
+
+  window.completeWeekZeroSection = function (sectionId) {
+    let progress = JSON.parse(localStorage.getItem("week0Progress")) || {
+      completedSections: [],
+      completedContents: [],
+    };
+
+    if (!progress.completedSections.includes(sectionId)) {
+      progress.completedSections.push(sectionId);
+      localStorage.setItem("week0Progress", JSON.stringify(progress));
+
+      // Atualizar interface
+      const section = document.querySelector(
+        `#section-${sectionId}`,
+      )?.parentElement;
+      if (section) {
+        section.classList.add("completed");
+
+        const completeBtn = section.querySelector(".complete-section-btn");
+        if (completeBtn) {
+          completeBtn.innerHTML =
+            '<i class="fas fa-check-double"></i><span>Seção Concluída</span>';
+          completeBtn.classList.add("completed");
+        }
+      }
+
+      showCompletionToast("Seção concluída!");
+    }
+  };
+
   function updateWeekZeroProgress() {
-    const progress = JSON.parse(localStorage.getItem('week0Progress')) || { completedSections: [] };
-    const weekZeroData = complementaryMaterials.find(item => item.id === 'week-0');
+    const progress = JSON.parse(localStorage.getItem("week0Progress")) || {
+      completedSections: [],
+      completedContents: [],
+    };
+    const weekZeroData = complementaryMaterials.find(
+      (item) => item.id === "week-0",
+    );
     const completedCount = progress.completedSections.length;
     const totalSections = weekZeroData?.sections?.length || 0;
-    const progressPercent = totalSections > 0 ? (completedCount / totalSections) * 100 : 0;
-    
-    // Atualizar barra de progresso
-    const progressFill = document.querySelector('.progress-fill-week');
-    const progressLabel = document.querySelector('.progress-label span:last-child');
-    const progressStats = document.querySelector('.progress-stats span:last-child');
-    
+    const progressPercent =
+      totalSections > 0 ? (completedCount / totalSections) * 100 : 0;
+
+    // Atualizar barra de progresso se existir
+    const progressFill = document.querySelector(".progress-fill-week");
+    const progressLabel = document.querySelector(
+      ".progress-label span:last-child",
+    );
+    const progressStats = document.querySelector(
+      ".progress-stats span:last-child",
+    );
+
     if (progressFill) progressFill.style.width = `${progressPercent}%`;
-    if (progressLabel) progressLabel.textContent = `${completedCount}/${totalSections}`;
-    if (progressStats) progressStats.textContent = `${progressPercent.toFixed(0)}% concluído`;
+    if (progressLabel)
+      progressLabel.textContent = `${completedCount}/${totalSections}`;
+    if (progressStats)
+      progressStats.textContent = `${progressPercent.toFixed(0)}% concluído`;
   }
 
-  window.openVideo = function(videoId) {
-    window.open(`https://youtube.com/watch?v=${videoId}`, '_blank');
+  function updateWeekZeroSectionProgress() {
+    const progress = JSON.parse(localStorage.getItem("week0Progress")) || {
+      completedSections: [],
+      completedContents: [],
+    };
+    const weekZeroData = complementaryMaterials.find(
+      (item) => item.id === "week-0",
+    );
+
+    if (!weekZeroData || !weekZeroData.sections) return;
+
+    weekZeroData.sections.forEach((section) => {
+      if (section.contents) {
+        const completedCount = section.contents.filter((content) =>
+          progress.completedContents.includes(content.id),
+        ).length;
+
+        const progressElement = document.querySelector(
+          `#section-${section.id} .section-progress span`,
+        );
+        if (progressElement) {
+          progressElement.textContent = `${completedCount}/${section.contents.length} conteúdos`;
+        }
+      }
+    });
+  }
+
+  function checkCompletedWeekZeroContents() {
+    const progress = JSON.parse(localStorage.getItem("week0Progress")) || {
+      completedSections: [],
+      completedContents: [],
+    };
+
+    progress.completedContents.forEach((contentId) => {
+      const contentCard = document.getElementById(`content-${contentId}`);
+      if (contentCard) {
+        contentCard.classList.add("completed");
+        const completeBtn = contentCard.querySelector(".complete-content-btn");
+        if (completeBtn) {
+          completeBtn.innerHTML =
+            '<i class="fas fa-check-double"></i><span>Concluído!</span>';
+          completeBtn.classList.add("completed");
+        }
+      }
+    });
+
+    progress.completedSections.forEach((sectionId) => {
+      const section = document.querySelector(
+        `#section-${sectionId}`,
+      )?.parentElement;
+      if (section) {
+        section.classList.add("completed");
+        const completeBtn = section.querySelector(".complete-section-btn");
+        if (completeBtn) {
+          completeBtn.innerHTML =
+            '<i class="fas fa-check-double"></i><span>Seção Concluída</span>';
+          completeBtn.classList.add("completed");
+        }
+      }
+    });
+  }
+
+  window.toggleWeekZeroContentGlobal = function () {
+    const content = document.getElementById("week-zero-content");
+    const button = document.getElementById("toggle-week-zero-btn");
+
+    if (content && button) {
+      content.classList.toggle("active");
+      button.classList.toggle("active");
+    }
+  };
+
+  window.openVideo = function (videoId) {
+    window.open(`https://youtube.com/watch?v=${videoId}`, "_blank");
   };
 
   function showCompletionToast(message) {
-    // Criar toast
-    const toast = document.createElement('div');
+    const toast = document.createElement("div");
     toast.style.cssText = `
       position: fixed;
       bottom: 20px;
@@ -288,7 +578,7 @@ document.addEventListener("DOMContentLoaded", function () {
       animation: slideInUp 0.3s ease;
       max-width: 300px;
     `;
-    
+
     toast.innerHTML = `
       <i class="fas fa-check-circle" style="font-size: 20px;"></i>
       <div>
@@ -296,40 +586,37 @@ document.addEventListener("DOMContentLoaded", function () {
         <span style="font-size: 13px;">${message}</span>
       </div>
     `;
-    
+
     document.body.appendChild(toast);
-    
-    // Remover após 3 segundos
+
     setTimeout(() => {
-      toast.style.animation = 'slideInUp 0.3s ease reverse';
+      toast.style.animation = "slideInUp 0.3s ease reverse";
       setTimeout(() => toast.remove(), 300);
     }, 3000);
   }
 
   // ========== FUNÇÃO PARA RENDERIZAR A SEMANA 0 COMO PRIMEIRO ITEM ==========
   function renderWeekZeroFirst() {
-    const weekZeroData = complementaryMaterials.find(item => item.id === 'week-0');
-    
+    const weekZeroData = complementaryMaterials.find(
+      (item) => item.id === "week-0",
+    );
+
     if (!weekZeroData) return;
-    
-    // Criar container para a Semana 0
-    const weekZeroSection = document.createElement('div');
-    weekZeroSection.className = 'week-zero-first-section';
+
+    const weekZeroSection = document.createElement("div");
+    weekZeroSection.className = "week-zero-first-section";
     weekZeroSection.innerHTML = `
       <div>
-        
         ${renderWeekZeroTimeline(weekZeroData)}
       </div>
     `;
-    
-    // Inserir antes dos meses
+
     monthsContainer.parentNode.insertBefore(weekZeroSection, monthsContainer);
-    
-    // Adicionar event listeners após o elemento ser inserido no DOM
+
     setTimeout(() => {
-      const toggleBtn = document.getElementById('toggle-week-zero-btn');
+      const toggleBtn = document.getElementById("toggle-week-zero-btn");
       if (toggleBtn) {
-        toggleBtn.addEventListener('click', window.toggleWeekZeroContent);
+        toggleBtn.addEventListener("click", window.toggleWeekZeroContentGlobal);
       }
     }, 100);
   }
@@ -384,8 +671,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // js/6meses.js - Função renderComplementaryMaterials COMPLETA
   function renderComplementaryMaterials() {
     // Filtrar para não incluir a Semana 0 nos conteúdos adicionais
-    const otherMaterials = complementaryMaterials.filter(item => item.id !== 'week-0');
-    
+    const otherMaterials = complementaryMaterials.filter(
+      (item) => item.id !== "week-0",
+    );
+
     if (otherMaterials.length === 0) return;
 
     // Criar container principal
@@ -407,16 +696,22 @@ document.addEventListener("DOMContentLoaded", function () {
   `;
 
     // Inserir depois da Semana 0 e antes dos meses
-    const weekZeroElement = document.querySelector('.week-zero-first-section');
+    const weekZeroElement = document.querySelector(".week-zero-first-section");
     if (weekZeroElement) {
-      weekZeroElement.parentNode.insertBefore(complementaryContainer, weekZeroElement.nextSibling);
+      weekZeroElement.parentNode.insertBefore(
+        complementaryContainer,
+        weekZeroElement.nextSibling,
+      );
     } else {
-      monthsContainer.parentNode.insertBefore(complementaryContainer, monthsContainer);
+      monthsContainer.parentNode.insertBefore(
+        complementaryContainer,
+        monthsContainer,
+      );
     }
 
     // Referências aos elementos
     const complementaryContent = document.getElementById(
-      "complementary-content"
+      "complementary-content",
     );
     const complementaryToggle = document.getElementById("complementary-toggle");
 
@@ -595,7 +890,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <h4>${rule.title}</h4>
                 <p>${rule.description}</p>
               </div>
-            `
+            `,
               )
               .join("")}
           </div>
@@ -672,7 +967,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         </div>
                       </a>
                     </div>
-                  `
+                  `,
                     )
                     .join("")}
                 </div>
@@ -685,7 +980,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   </a>
                 </div>
               </div>
-            `
+            `,
               )
               .join("")}
           </div>
@@ -764,7 +1059,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   </button>
                 </div>
               </div>
-            `
+            `,
               )
               .join("")}
           </div>
@@ -787,22 +1082,22 @@ document.addEventListener("DOMContentLoaded", function () {
                     level === "beginner"
                       ? "seedling"
                       : level === "intermediate"
-                      ? "leaf"
-                      : "tree"
+                        ? "leaf"
+                        : "tree"
                   }"></i>
                   Para ${
                     level === "beginner"
                       ? "Iniciantes"
                       : level === "intermediate"
-                      ? "Intermediários"
-                      : "Avançados"
+                        ? "Intermediários"
+                        : "Avançados"
                   }
                 </h4>
                 <ul>
                   ${items.map((item) => `<li>${item}</li>`).join("")}
                 </ul>
               </div>
-            `
+            `,
               )
               .join("")}
           </div>
@@ -824,7 +1119,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   <div class="step-number">${index + 1}</div>
                   <div class="step-content">${tip}</div>
                 </div>
-              `
+              `,
                 )
                 .join("")}
             </div>
@@ -863,7 +1158,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p><strong>Marcador:</strong> ${month.marker}</p>
                   </div>
                 </div>
-              `
+              `,
                 )
                 .join("")}
             </div>
@@ -937,12 +1232,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                   </div>
                 </div>
-              `
+              `,
                 )
                 .join("")}
             </div>
           </div>
-        `
+        `,
           )
           .join("")}
         
@@ -989,7 +1284,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   <i class="fas fa-${filter.icon}"></i>
                   ${filter.name}
                 </button>
-              `
+              `,
                 )
                 .join("")}
             </div>
@@ -999,7 +1294,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <i class="fas fa-headphones"></i>
                 <strong>${material.levels.reduce(
                   (total, level) => total + level.items.length,
-                  0
+                  0,
                 )}</strong> podcasts
               </span>
               <span class="stat">
@@ -1016,16 +1311,16 @@ document.addEventListener("DOMContentLoaded", function () {
             .map(
               (level, levelIndex) => `
             <div class="podcast-level-card level-${level.color} ${
-                levelIndex === 0 ? "active" : ""
-              }" 
+              levelIndex === 0 ? "active" : ""
+            }" 
                  data-level="${
                    level.name.toLowerCase().includes("beginner")
                      ? "beginner"
                      : level.name.toLowerCase().includes("basic")
-                     ? "basic"
-                     : level.name.toLowerCase().includes("intermediate")
-                     ? "intermediate"
-                     : "advanced"
+                       ? "basic"
+                       : level.name.toLowerCase().includes("intermediate")
+                         ? "intermediate"
+                         : "advanced"
                  }">
               
               <div class="level-header">
@@ -1064,10 +1359,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                 podcast.platform === "YouTube"
                                   ? "youtube"
                                   : podcast.platform === "Spotify"
-                                  ? "spotify"
-                                  : podcast.platform === "Apple Podcasts"
-                                  ? "podcast"
-                                  : "globe"
+                                    ? "spotify"
+                                    : podcast.platform === "Apple Podcasts"
+                                      ? "podcast"
+                                      : "globe"
                               }"></i>
                               ${podcast.platform}
                             </span>
@@ -1098,7 +1393,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             podcast.platform
                           }" 
                                   data-search="${encodeURIComponent(
-                                    podcast.name
+                                    podcast.name,
                                   )}">
                             <i class="fas fa-play"></i> Ouvir
                           </button>
@@ -1118,10 +1413,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                 level.color === "green"
                                   ? "15-20 minutos"
                                   : level.color === "blue"
-                                  ? "20-30 minutos"
-                                  : level.color === "yellow"
-                                  ? "30-45 minutos"
-                                  : "45-60 minutos"
+                                    ? "20-30 minutos"
+                                    : level.color === "yellow"
+                                      ? "30-45 minutos"
+                                      : "45-60 minutos"
                               }</li>
                               <li><strong>Foco principal:</strong> ${
                                 podcast.description.split(".")[0]
@@ -1143,14 +1438,14 @@ document.addEventListener("DOMContentLoaded", function () {
                                  <li>Repita as frases em voz alta após o apresentador</li>
                                  <li>Foque em entender o contexto geral, não cada palavra</li>`
                                   : level.color === "blue"
-                                  ? `<li>Ouça uma vez sem pausar, depois ouça novamente com pausas</li>
+                                    ? `<li>Ouça uma vez sem pausar, depois ouça novamente com pausas</li>
                                  <li>Anote 3-5 palavras novas por episódio</li>
                                  <li>Tente resumir o episódio em 2-3 frases</li>`
-                                  : level.color === "yellow"
-                                  ? `<li>Ouça sem legendas/transcrições primeiro</li>
+                                    : level.color === "yellow"
+                                      ? `<li>Ouça sem legendas/transcrições primeiro</li>
                                  <li>Foque na entonação e expressões idiomáticas</li>
                                  <li>Discuta o conteúdo com um parceiro de estudo</li>`
-                                  : `<li>Ouça como entretenimento, não como "estudo"</li>
+                                      : `<li>Ouça como entretenimento, não como "estudo"</li>
                                  <li>Pesquise contextos culturais que não entender</li>
                                  <li>Experimente fazer outras atividades enquanto ouve</li>`
                               }
@@ -1159,13 +1454,13 @@ document.addEventListener("DOMContentLoaded", function () {
                         </div>
                       </div>
                     </div>
-                  `
+                  `,
                     )
                     .join("")}
                 </div>
               </div>
             </div>
-          `
+          `,
             )
             .join("")}
         </div>
@@ -1186,7 +1481,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   <p>${tip}</p>
                 </div>
               </div>
-            `
+            `,
               )
               .join("")}
           </div>
@@ -1210,10 +1505,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     name === "Spotify"
                       ? "spotify"
                       : name === "YouTube"
-                      ? "youtube"
-                      : name === "Apple Podcasts"
-                      ? "apple"
-                      : "chrome"
+                        ? "youtube"
+                        : name === "Apple Podcasts"
+                          ? "apple"
+                          : "chrome"
                   }"></i>
                 </div>
                 <div class="platform-info">
@@ -1221,7 +1516,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   <p>Clique para acessar</p>
                 </div>
               </a>
-            `
+            `,
               )
               .join("")}
           </div>
@@ -1230,9 +1525,9 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     </div>
   `;
-      }// Adicione este case após os outros tipos (após 'podcasts' case)
-else if (material.type === "assessment") {
-  cardBodyHTML = `
+      } // Adicione este case após os outros tipos (após 'podcasts' case)
+      else if (material.type === "assessment") {
+        cardBodyHTML = `
   <div class="complementary-card-body">
     <div class="assessment-container">
       <!-- Introdução -->
@@ -1274,7 +1569,7 @@ else if (material.type === "assessment") {
                 </a>
               </div>
             </div>
-          `
+          `,
             )
             .join("")}
         </div>
@@ -1305,7 +1600,7 @@ else if (material.type === "assessment") {
                 <p><strong>Ação Recomendada:</strong> ${level.action}</p>
               </div>
             </div>
-          `
+          `,
             )
             .join("")}
         </div>
@@ -1336,7 +1631,7 @@ else if (material.type === "assessment") {
                   .map(
                     (word, idx) => `
                   <span class="vocab-word">${word}</span>
-                `
+                `,
                   )
                   .join("")}
               </div>
@@ -1344,7 +1639,7 @@ else if (material.type === "assessment") {
                 <i class="fas fa-lightbulb"></i> ${list.tip}
               </div>
             </div>
-          `
+          `,
             )
             .join("")}
         </div>
@@ -1378,13 +1673,11 @@ else if (material.type === "assessment") {
               <div class="method-steps">
                 <h6>Passos:</h6>
                 <ol>
-                  ${method.steps
-                    .map((step) => `<li>${step}</li>`)
-                    .join("")}
+                  ${method.steps.map((step) => `<li>${step}</li>`).join("")}
                 </ol>
               </div>
             </div>
-          `
+          `,
             )
             .join("")}
         </div>
@@ -1412,8 +1705,8 @@ else if (material.type === "assessment") {
     </div>
   </div>
 `;
-}else if (material.type === "simple-links") {
-  cardBodyHTML = `
+      } else if (material.type === "simple-links") {
+        cardBodyHTML = `
   <div class="complementary-card-body">
     <div class="simple-links-container">
       ${Object.entries(material.links)
@@ -1432,12 +1725,12 @@ else if (material.type === "assessment") {
                 </div>
                 <i class="fas fa-external-link-alt"></i>
               </a>
-            `
+            `,
               )
               .join("")}
           </div>
         </div>
-      `
+      `,
         )
         .join("")}
       
@@ -1447,7 +1740,7 @@ else if (material.type === "assessment") {
     </div>
   </div>
 `;
-} else {
+      } else {
         // Card padrão (fallback)
         cardBodyHTML = `
         <div class="complementary-card-body">
@@ -1471,7 +1764,7 @@ else if (material.type === "assessment") {
         e.stopPropagation();
         const targetId = this.dataset.target;
         const targetContent = document.getElementById(
-          `card-content-${targetId}`
+          `card-content-${targetId}`,
         );
         toggleCard(targetId, targetContent, this);
       });
@@ -1490,7 +1783,7 @@ else if (material.type === "assessment") {
         setTimeout(() => {
           // 1. Filtros por nível
           const filterButtons = document.querySelectorAll(
-            ".podcast-filter-btn"
+            ".podcast-filter-btn",
           );
           const levelCards = document.querySelectorAll(".podcast-level-card");
 
@@ -1583,7 +1876,7 @@ else if (material.type === "assessment") {
                 savedPodcasts.push(podcastName);
                 localStorage.setItem(
                   "savedPodcasts",
-                  JSON.stringify(savedPodcasts)
+                  JSON.stringify(savedPodcasts),
                 );
 
                 // Feedback visual
@@ -1602,11 +1895,11 @@ else if (material.type === "assessment") {
               } else {
                 // Remover se já estiver salvo
                 savedPodcasts = savedPodcasts.filter(
-                  (name) => name !== podcastName
+                  (name) => name !== podcastName,
                 );
                 localStorage.setItem(
                   "savedPodcasts",
-                  JSON.stringify(savedPodcasts)
+                  JSON.stringify(savedPodcasts),
                 );
 
                 const icon = this.querySelector("i");
@@ -1667,14 +1960,14 @@ else if (material.type === "assessment") {
     // Configurar toggles de conteúdo adicional dos vídeos (após renderização)
     setTimeout(() => {
       const videoAdditionalButtons = document.querySelectorAll(
-        ".video-additional-btn"
+        ".video-additional-btn",
       );
       videoAdditionalButtons.forEach((button) => {
         button.addEventListener("click", function (e) {
           e.stopPropagation();
           const videoId = this.dataset.video;
           const additionalContent = document.getElementById(
-            `additional-${videoId}`
+            `additional-${videoId}`,
           );
           const icon = this.querySelector("i");
 
@@ -1716,10 +2009,10 @@ else if (material.type === "assessment") {
     // Abrir o card "Meus Vídeos" por padrão
     setTimeout(() => {
       const firstCardToggle = document.querySelector(
-        '[data-target="my-videos"]'
+        '[data-target="my-videos"]',
       );
       const firstCardContent = document.getElementById(
-        "card-content-my-videos"
+        "card-content-my-videos",
       );
       if (firstCardToggle && firstCardContent) {
         toggleCard("my-videos", firstCardContent, firstCardToggle);
@@ -1733,7 +2026,7 @@ else if (material.type === "assessment") {
         button.addEventListener("click", function () {
           const videoId = this.dataset.videoId;
           const videoTitle = this.closest(
-            ".individual-video-card"
+            ".individual-video-card",
           ).querySelector("h4").textContent;
 
           // Salvar no localStorage
@@ -1748,7 +2041,7 @@ else if (material.type === "assessment") {
             });
             localStorage.setItem(
               "savedGrammarVideos",
-              JSON.stringify(savedVideos)
+              JSON.stringify(savedVideos),
             );
 
             // Feedback visual
@@ -1798,7 +2091,7 @@ else if (material.type === "assessment") {
       const { monthCompleted, monthTotal, percentage } = calculateMonthProgress(
         monthData,
         completedContents,
-        monthIndex
+        monthIndex,
       );
 
       const monthHeader = document.createElement("div");
@@ -1834,7 +2127,7 @@ else if (material.type === "assessment") {
         week.contents.forEach((content, contentIndex) => {
           const contentId = `${monthIndex}-${week.title}-${contentIndex}`;
           const isCompleted = completedContents.includes(contentId);
-          
+
           // Aplicar filtro
           if (filter === "completed" && !isCompleted) return;
           if (filter === "pending" && isCompleted) return;
@@ -1860,7 +2153,8 @@ else if (material.type === "assessment") {
           // Label - agora usando content.title se for objeto
           const label = document.createElement("span");
           label.className = `content-label ${isCompleted ? "completed" : ""}`;
-          label.textContent = typeof content === 'object' ? content.title : content;
+          label.textContent =
+            typeof content === "object" ? content.title : content;
 
           // Botão toggle
           const toggleBtn = document.createElement("button");
@@ -1872,25 +2166,27 @@ else if (material.type === "assessment") {
           expandedContent.className = "expanded-content";
 
           // Obter recursos
-          const topicTitle = typeof content === 'object' ? content.title : content;
+          const topicTitle =
+            typeof content === "object" ? content.title : content;
           const resources = getResources(topicTitle);
 
           // Seção de vídeos
           const videosSection = document.createElement("div");
           videosSection.className = "resources-section";
-          
+
           const videosHeader = document.createElement("div");
           videosHeader.className = "section-header";
-          videosHeader.innerHTML = '<i class="fas fa-video"></i> Vídeos Recomendados';
-          
+          videosHeader.innerHTML =
+            '<i class="fas fa-video"></i> Vídeos Recomendados';
+
           const videosGrid = document.createElement("div");
           videosGrid.className = "videos-grid";
-          
+
           resources.videos.forEach((video) => {
             const videoCard = createVideoCard(video);
             videosGrid.appendChild(videoCard);
           });
-          
+
           videosSection.appendChild(videosHeader);
           videosSection.appendChild(videosGrid);
           expandedContent.appendChild(videosSection);
@@ -1898,19 +2194,20 @@ else if (material.type === "assessment") {
           // Seção de materiais
           const materialsSection = document.createElement("div");
           materialsSection.className = "resources-section";
-          
+
           const materialsHeader = document.createElement("div");
           materialsHeader.className = "section-header";
-          materialsHeader.innerHTML = '<i class="fas fa-book"></i> Materiais Complementares';
-          
+          materialsHeader.innerHTML =
+            '<i class="fas fa-book"></i> Materiais Complementares';
+
           const materialsList = document.createElement("ul");
           materialsList.className = "materials-list";
-          
+
           resources.materials.forEach((material) => {
             const materialItem = createMaterialItem(material);
             materialsList.appendChild(materialItem);
           });
-          
+
           materialsSection.appendChild(materialsHeader);
           materialsSection.appendChild(materialsList);
           expandedContent.appendChild(materialsSection);
@@ -1919,21 +2216,22 @@ else if (material.type === "assessment") {
           if (resources.learning && resources.learning.length > 0) {
             const learningSection = document.createElement("div");
             learningSection.className = "learning-section";
-            
+
             const learningHeader = document.createElement("div");
             learningHeader.className = "section-header learning-header";
-            learningHeader.innerHTML = '<i class="fas fa-graduation-cap"></i> O que você vai aprender';
-            
+            learningHeader.innerHTML =
+              '<i class="fas fa-graduation-cap"></i> O que você vai aprender';
+
             const learningList = document.createElement("ul");
             learningList.className = "learning-list";
-            
+
             resources.learning.forEach((item) => {
               const learningItem = document.createElement("li");
               learningItem.className = "learning-item";
               learningItem.innerHTML = `<i class="fas fa-check-circle"></i> ${item}`;
               learningList.appendChild(learningItem);
             });
-            
+
             learningSection.appendChild(learningHeader);
             learningSection.appendChild(learningList);
             expandedContent.appendChild(learningSection);
@@ -1944,10 +2242,11 @@ else if (material.type === "assessment") {
             e.stopPropagation();
             expandedContent.classList.toggle("active");
             this.classList.toggle("expanded");
-            
+
             // Se estiver abrindo, ajustar altura
             if (expandedContent.classList.contains("active")) {
-              expandedContent.style.maxHeight = expandedContent.scrollHeight + "px";
+              expandedContent.style.maxHeight =
+                expandedContent.scrollHeight + "px";
             } else {
               expandedContent.style.maxHeight = "0px";
             }
@@ -1975,12 +2274,13 @@ else if (material.type === "assessment") {
               if (!expandedContent.classList.contains("active")) {
                 expandedContent.classList.add("active");
                 toggleBtn.classList.add("expanded");
-                expandedContent.style.maxHeight = expandedContent.scrollHeight + "px";
+                expandedContent.style.maxHeight =
+                  expandedContent.scrollHeight + "px";
               }
             } else {
               // Desmarcar
               completedContents = completedContents.filter(
-                (id) => id !== contentId
+                (id) => id !== contentId,
               );
               this.classList.remove("checked");
 
@@ -1994,7 +2294,7 @@ else if (material.type === "assessment") {
 
             localStorage.setItem(
               "completedContents",
-              JSON.stringify(completedContents)
+              JSON.stringify(completedContents),
             );
             updateProgress();
 
@@ -2006,7 +2306,7 @@ else if (material.type === "assessment") {
             } = calculateMonthProgress(
               monthData,
               completedContents,
-              monthIndex
+              monthIndex,
             );
 
             monthProgress.textContent = `${newMonthCompleted}/${newMonthTotal} (${newPercentage}%)`;
@@ -2041,7 +2341,7 @@ else if (material.type === "assessment") {
   function updateProgress() {
     const { completed, percentage } = calculateProgress(
       completedContents,
-      totalContents
+      totalContents,
     );
 
     globalProgress.style.width = `${percentage}%`;
@@ -2078,21 +2378,37 @@ else if (material.type === "assessment") {
   });
 
   // ========== INICIALIZAÇÃO ==========
-  
+
   updateDateTime();
   updateProgress();
-  
+
   // Inicializar progresso da Semana 0
   initializeWeekZeroProgress();
-  
-  
-  // 2. Conteúdos adicionais (sem a Semana 0)
-  renderComplementaryMaterials();
-  
-  // Renderizar na ordem correta:
-  // 1. Semana 0 (como primeiro item)
+
+  // 1. Renderizar Semana 0 primeiro
   renderWeekZeroFirst();
-  // 3. Plano de estudos (meses)
+
+  // 2. Inicializar conteúdos já concluídos da Semana 0
+  setTimeout(() => {
+    checkCompletedWeekZeroContents();
+
+    // Configurar event listeners para os conteúdos da Semana 0
+    const contentHeaders = document.querySelectorAll(".content-card-header");
+    contentHeaders.forEach((header) => {
+      header.addEventListener("click", function () {
+        const contentId = this.closest(".week-zero-content-card").id.replace(
+          "content-",
+          "",
+        );
+        window.toggleWeekZeroContent(contentId);
+      });
+    });
+  }, 500);
+
+  // 3. Conteúdos adicionais (sem a Semana 0)
+  renderComplementaryMaterials();
+
+  // 4. Plano de estudos (meses)
   renderStudyPlan();
 
   // Atualizar data a cada minuto
@@ -2117,7 +2433,7 @@ class PWAManager {
           .then((registration) => {
             console.log(
               "ServiceWorker registrado com sucesso:",
-              registration.scope
+              registration.scope,
             );
             this.checkForUpdates(registration);
           })
@@ -2286,9 +2602,12 @@ class PWAManager {
 
   checkForUpdates(registration) {
     // Verificar atualizações periodicamente
-    setInterval(() => {
-      registration.update();
-    }, 60 * 60 * 1000); // A cada hora
+    setInterval(
+      () => {
+        registration.update();
+      },
+      60 * 60 * 1000,
+    ); // A cada hora
   }
 
   // Métodos para funcionalidades do app

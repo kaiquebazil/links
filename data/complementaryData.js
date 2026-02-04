@@ -1,5 +1,6 @@
 // js/data/complementaryData.js
 export const complementaryMaterials = [
+  // ATUALIZE A ESTRUTURA DA WEEK-0 NO complementaryData.js:
   {
     id: "week-0",
     title: "Preparação e Configuração",
@@ -8,115 +9,383 @@ export const complementaryMaterials = [
         id: "installation",
         title: "Instalação e configuração do ambiente de estudo",
         icon: "cogs",
-        content: {
-          videos: [
-            {
-              id: "LLZ3xU6tESo",
-              title:
-                "COMO FAZER IMERSÃO | Técnica de Imersão no Inglês para quem NÃO TEM TEMPO (Modo Difuso)",
-              duration: "3:26",
-              channel: "Kaique Bazil",
-            },
-            {
-              id: "cswbKngQSgU",
-              title:
-                "COMO FAZER IMERSÃO NO INGLÊS do jeito certo (Modo Focado)",
-              duration: "14:23",
-              channel: "Kaique Bazil",
-            },
-          ],
-          materials: [
-            "1️⃣ Instalação e configuração do ambiente de estudo",
-            "💡 Ideia central: Inglês não é algo que você estuda. É algo que te cerca.",
-            "📱 Celular 100% em inglês: Idioma do sistema, Instagram, TikTok, YouTube, Teclado em inglês",
-            "🎧 Ambiente auditivo: Inglês como som de fundo (podcasts, vídeos) com conteúdo compreensível (CI)",
-            "🏠 Ambiente físico: Post-its em objetos da casa com frases simples visíveis (chunks)",
-            "🧠 Regra de ouro: 'Se dá pra fazer em inglês, faça em inglês'",
-          ],
-        },
+        // AGORA CADA SEÇÃO TEM UM ARRAY DE CONTEÚDOS EXPANSÍVEIS
+        contents: [
+          {
+            id: "celular-ingles",
+            title: "📱 Celular 100% em inglês",
+            description: "Configure seu celular para imersão total",
+            type: "tutorial",
+            difficulty: "Fácil",
+            duration: "15 min",
+            videos: [],
+            materials: [
+              "Idioma do sistema em inglês",
+              "Instagram em inglês: Configurações → Idioma → English",
+              "TikTok em inglês: Perfil → Configurações → Conteúdo e Atividade → Idioma",
+              "YouTube em inglês: Configurações → Geral → Idioma",
+              "Teclado em inglês: Configurações do teclado → Idioma",
+              "WhatsApp em inglês: Configurações → Idioma",
+            ],
+            learning: [
+              "Passo 1: Mude o idioma do sistema do celular",
+              "Passo 2: Configure cada app individualmente",
+              "Passo 3: Use teclado em inglês para praticar digitação",
+              "Passo 4: Mantenha por no mínimo 30 dias",
+            ],
+          },
+          {
+            id: "ambiente-auditivo",
+            title: "🎧 Ambiente auditivo",
+            description: "Crie um ambiente de imersão auditiva",
+            type: "config",
+            difficulty: "Médio",
+            duration: "20 min",
+            videos: [
+              {
+                id: "LLZ3xU6tESo",
+                title:
+                  "COMO FAZER IMERSÃO | Técnica de Imersão no Inglês para quem NÃO TEM TEMPO (Modo Difuso)",
+                duration: "3:26",
+                channel: "Kaique Bazil",
+              },
+              {
+                id: "cswbKngQSgU",
+                title:
+                  "COMO FAZER IMERSÃO NO INGLÊS do jeito certo (Modo Focado)",
+                duration: "14:23",
+                channel: "Kaique Bazil",
+              },
+            ],
+            materials: [
+              "1️⃣ Instalação e configuração do ambiente de estudo",
+              "💡 Ideia central: Inglês não é algo que você estuda. É algo que te cerca.",
+              "📱 Celular 100% em inglês: Idioma do sistema, Instagram, TikTok, YouTube, Teclado em inglês",
+              "🎧 Ambiente auditivo: Inglês como som de fundo (podcasts, vídeos) com conteúdo compreensível (CI)",
+              "🏠 Ambiente físico: Post-its em objetos da casa com frases simples visíveis (chunks)",
+              "🧠 Regra de ouro: 'Se dá pra fazer em inglês, faça em inglês'",
+            ],
+            learning: [
+              "Escolha conteúdo 70% compreensível",
+              "Ouça durante atividades cotidianas",
+              "Comece com 30 minutos diários",
+              "Aumente gradualmente o tempo de exposição",
+            ],
+          },
+          {
+            id: "config-anki",
+            title: "🔧 Configuração Anki para aprendizado eficiente",
+            description: "Configure o Anki passo a passo",
+            type: "tutorial",
+            difficulty: "Médio",
+            duration: "25 min",
+            videos: [
+              {
+                id: "ZfD0OL0ZluM",
+                title:
+                  "Como Configurar o ANKI para Aprender Inglês e Não Esquecer Mais (Passo a Passo)",
+                duration: "7:37",
+                channel: "Kaique Bazil",
+              },
+            ],
+            materials: [
+              "Site Oficial para Download (PC/Mac/Linux): (link: https://apps.ankiweb.net/)",
+              "App Android: (link: https://play.google.com/store/apps/details?id=com.ichi2.anki)",
+              "App iOS: (link: https://apps.apple.com/us/app/ankimobile-flashcards/id373493387)",
+              "AnkiWeb (Acesso Online): (link: https://ankiweb.net/)",
+              "Criar Conta Gratuita: (link: https://ankiweb.net/account/register)",
+              "Login na Conta: (link: https://ankiweb.net/account/login)",
+              "Decks Compartilhados: (link: https://ankiweb.net/shared/decks/)",
+              "Manual Oficial: (link: https://docs.ankiweb.net/)",
+              "Extensões Usadas: 723520343, 1436550454",
+            ],
+            learning: [
+              "Passo 1: Baixar e instalar o Anki no computador",
+              "Passo 2: Criar conta gratuita no AnkiWeb",
+              "Passo 3: Fazer login no app desktop com sua conta",
+              "Passo 4: Instalar AnkiDroid (Android) ou AnkiMobile (iOS)",
+              "Passo 5: Fazer login no app móvel para sincronizar",
+              "Passo 6: Criar seu primeiro deck de inglês",
+              "Passo 7: Adicionar cards diariamente e revisar todos os dias",
+            ],
+          },
+          {
+            id: "config-notion",
+            title: "🔧 Configuração Notion para organização de estudos",
+            description:
+              "Configure seu Notion passo a passo para gerenciar todo seu aprendizado",
+            type: "tutorial",
+            difficulty: "Médio",
+            duration: "20 min",
+            videos: [
+              {
+                id: "POPROUlBUCw",
+                title:
+                  "Como Organizar Seus Estudos no NOTION (Tutorial Completo para Iniciantes)",
+                duration: "2:05",
+                channel: "Kaique Bazil",
+              },
+              {
+                id: "zP-fAJ8uGS0",
+                title: "Como Aprender NOTION do ZERO | Aprenda a como usar o Notion em 20min",
+                duration: "21:22",
+                channel: "Paiva",
+              },
+            ],
+            materials: [
+              "Site Oficial do Notion: (link: https://www.notion.so/)",
+              "App Desktop (Windows/Mac): (link: https://www.notion.so/desktop)",
+              "App Android: (link: https://play.google.com/store/apps/details?id=notion.id)",
+              "App iOS: (link: https://apps.apple.com/app/notion-notes-projects-docs/id1232780281)",
+              "Conta Gratuita (Estudante): (link: https://www.notion.so/product/notion-for-education)",
+              "Templates Gratuitos: (link: https://www.notion.so/templates)",
+              "Comunidade de Templates em Português: (link: https://notion.pt/)",
+              "Guia Oficial em Português: (link: https://www.notion.so/help/pt-br)",
+              "Extensões Úteis: Notion Web Clipper, Notion Boost",
+            ],
+            learning: [
+              "Passo 1: Criar conta gratuita no Notion (use e-mail institucional para plano Education)",
+              "Passo 2: Baixar e instalar o app desktop e móvel",
+              "Passo 3: Explorar a interface: Sidebar, Páginas e Blocos",
+              "Passo 4: Criar sua primeira página de estudos",
+              "Passo 5: Configurar um banco de dados (database) para matérias",
+              "Passo 6: Criar templates para notas de aula e resumos",
+              "Passo 7: Usar propriedades para organizar (Status, Prioridade, Data)",
+              "Passo 8: Configurar visões diferentes (Table, Board, Calendar)",
+              "Passo 9: Criar dashboards de progresso",
+              "Passo 10: Sincronizar entre dispositivos",
+            ],
+          },
+        ],
       },
       {
         id: "goals",
         title: "Definição de metas e objetivos pessoais",
         icon: "bullseye",
-        content: {
-          videos: [
-            {
-              id: "NkRbxN5v0VQ",
-              title:
-                'Destrave sua FALA no INGLÊS: O guia prático para parar de "congelar"',
-              duration: "7:30",
-              channel: "Kaique Bazil",
-              description: "Regras essenciais para acelerar seu aprendizado",
-            },
-            // {
-            //   id: "video_id_metas",
-            //   title: "Como Definir Metas REALISTAS para Aprender Inglês em 6 Meses",
-            //   duration: "8:15",
-            //   channel: "Kaique Bazil",
-            //   description: "Framework para metas SMART em aprendizado de idiomas"
-            // }
-          ],
-          materials: [
-            "2️⃣ Definição de metas e objetivos pessoais",
-            "💡 Aqui você se diferencia de 99% dos professores.",
-            "❌ Metas erradas: 'Quero ser fluente', 'Quero aprender inglês'",
-            "✅ Metas corretas (conversacionais): 'Quero pedir informação na rua', 'Quero conversar 10 minutos com um estrangeiro', 'Quero sobreviver em uma viagem'",
-            "Exemplo: 'Em 30 dias, quero pedir comida em inglês sem travar.'",
-          ],
-        },
+        contents: [
+          {
+            id: "metas-smart",
+            title: "🎯 Metas SMART para Inglês",
+            description: "Como definir metas inteligentes e realizáveis",
+            type: "conceptual",
+            difficulty: "Fácil",
+            duration: "10 min",
+            videos: [
+              {
+                id: "NkRbxN5v0VQ",
+                title:
+                  'Destrave sua FALA no INGLÊS: O guia prático para parar de "congelar"',
+                duration: "7:30",
+                channel: "Kaique Bazil",
+              },
+            ],
+            materials: [
+              "Template de Metas SMART para Inglês",
+              "Planilha de Acompanhamento Semanal",
+              "Checklist de Progresso Mensal",
+              "Exemplos de Metas Realistas",
+            ],
+            learning: [
+              "S - Específico: 'Quero pedir comida em inglês'",
+              "M - Mensurável: 'Quero praticar 30 minutos por dia'",
+              "A - Alcançável: 'Meta compatível com minha rotina'",
+              "R - Relevante: 'Para minha viagem em 3 meses'",
+              "T - Temporal: 'Em 30 dias quero conseguir...'",
+            ],
+          },
+          {
+            id: "metas-conversacionais",
+            title: "💬 Metas Conversacionais",
+            description: "Foque em metas de comunicação, não de perfeição",
+            type: "conceptual",
+            difficulty: "Fácil",
+            duration: "10 min",
+            videos: [],
+            materials: [
+              "Lista de 20 Situações Conversacionais",
+              "Diálogos Básicos para Prática",
+              "Scripts para Situações Comuns",
+              "Checklist de Competências Conversacionais",
+            ],
+            learning: [
+              "Meta 1: Cumprimentar e se apresentar",
+              "Meta 2: Pedir informação na rua",
+              "Meta 3: Fazer pedidos em restaurantes",
+              "Meta 4: Conversar sobre hobbies",
+              "Meta 5: Falar sobre trabalho/estudos",
+            ],
+          },
+          {
+            id: "sistema-acompanhamento",
+            title: "📊 Sistema de Acompanhamento",
+            description: "Como monitorar seu progresso efetivamente",
+            type: "practical",
+            difficulty: "Fácil",
+            duration: "15 min",
+            videos: [],
+            materials: [
+              "Template de Diário de Estudos (Notion)",
+              "Planilha de Progresso (Google Sheets)",
+              "App de Hábitos (Habitica, HabitNow)",
+              "Calendário de Estudos",
+            ],
+            learning: [
+              "Escolha uma ferramenta de acompanhamento",
+              "Defina indicadores de progresso",
+              "Estabeleça checkpoints semanais",
+              "Revise e ajuste metas mensalmente",
+              "Celebre pequenas conquistas",
+            ],
+          },
+        ],
       },
       {
         id: "plan",
         title: "Introdução ao plano de estudos",
         icon: "calendar",
-        content: {
-          videos: [
-            // {
-            //   id: "video_id_plano",
-            //   title: "Plano de 6 Meses: Como Você Vai Alcançar Fluência Conversacional",
-            //   duration: "12:30",
-            //   channel: "Kaique Bazil",
-            //   description: "Visão geral da estrutura de 6 meses"
-            // }
-          ],
-          materials: [
-            "🔹 Mês 1 – Sobrevivência: Pedir informação, Se virar na rua, Frases automáticas",
-            "🔹 Mês 2 – Introdução pessoal: Quem sou, O que faço, De onde venho",
-            "🔹 Mês 3 – Conversas do dia a dia: Small talk, Opiniões simples",
-            "🔹 Mês 4 – Expansão: Contar histórias, Passado e futuro funcional",
-            "🔹 Mês 5 – Fluência real: Pensar em inglês, Responder sem traduzir",
-            "🔹 Mês 6 – Consolidação: Conversas longas, Confiança total",
-            "📌 Importante: O foco é FALA, não regra.",
-          ],
-        },
+        contents: [
+          {
+            id: "visao-geral",
+            title: "🗺️ Visão Geral do Plano",
+            description: "Entenda a estrutura dos 6 meses",
+            type: "overview",
+            difficulty: "Fácil",
+            duration: "10 min",
+            videos: [],
+            materials: [
+              "Mapa Mental dos 6 Meses",
+              "Linha do Tempo de Aprendizado",
+              "Checklist de Competências por Mês",
+              "Calendário de Marcos Importantes",
+            ],
+            learning: [
+              "Mês 1: Sobrevivência Conversacional",
+              "Mês 2: Vida Cotidiana",
+              "Mês 3: Passado e Experiências",
+              "Mês 4: Opiniões e Sentimentos",
+              "Mês 5: Tópicos Complexos",
+              "Mês 6: Fluência Natural",
+            ],
+          },
+          {
+            id: "rotina-ideal",
+            title: "⏰ Rotina de Estudos Ideal",
+            description: "Como organizar seu tempo eficientemente",
+            type: "practical",
+            difficulty: "Médio",
+            duration: "15 min",
+            videos: [],
+            materials: [
+              "Template de Agenda Semanal",
+              "Blocos de Tempo Recomendados",
+              "Checklist de Atividades Diárias",
+              "Exemplos de Rotinas de Alunos",
+            ],
+            learning: [
+              "Bloco 1: Input (30 min) - Podcasts/Vídeos",
+              "Bloco 2: Ativo (30 min) - Anki/Exercícios",
+              "Bloco 3: Output (30 min) - Fala/Escrita",
+              "Bloco 4: Imersão (60 min) - Conteúdo Nativo",
+              "Total: 2.5 horas diárias",
+            ],
+          },
+          {
+            id: "ferramentas-plano",
+            title: "🛠️ Ferramentas do Plano",
+            description: "Recursos essenciais para cada fase",
+            type: "resources",
+            difficulty: "Fácil",
+            duration: "10 min",
+            videos: [],
+            materials: [
+              "Lista de Apps por Competência",
+              "Playlists Organizadas por Mês",
+              "Decks Anki para Cada Fase",
+              "Canais YouTube Recomendados",
+            ],
+            learning: [
+              "Mês 1: Apps de Frases, Tradutor",
+              "Mês 2: HelloTalk, Tandem",
+              "Mês 3: ChatGPT para diálogos",
+              "Mês 4: Elsa Speak para pronúncia",
+              "Mês 5: Language Reactor",
+              "Mês 6: Conteúdo nativo variado",
+            ],
+          },
+        ],
       },
       {
         id: "tools",
         title: "Configuração de ferramentas e recursos",
         icon: "tools",
-        content: {
-          videos: [
-            // {
-            //   id: "video_id_ferramentas",
-            //   title: "As 5 Ferramentas Essenciais Para Aprender Inglês Sozinho",
-            //   duration: "10:45",
-            //   channel: "Kaique Bazil",
-            //   description: "Ferramentas para aprendizado autônomo eficiente"
-            // }
-          ],
-          materials: [
-            "Ferramentas essenciais:",
-            "🤖 ChatGPT: Treinar frases, Criar roleplays, Corrigir e variar respostas",
-            "🔄Anki: Memorização espaçada de frases úteis (chunks)",
-            "📺 YouTube e Tiktok: Apenas em inglês, Conteúdo compreensível",
-            "🎧 Podcast: Inglês real, repetitivo, RadioGardem",
-            "📒 Caderno ou Notion: Apenas frases úteis (chunks)",
-            "Regra importante:",
-            "❌ Não anotar palavra solta",
-            "✅ Anotar frases completas",
-          ],
-        },
+        contents: [
+          {
+            id: "chatgpt-config",
+            title: "🤖 Configuração do ChatGPT",
+            description: "Use IA para acelerar seu aprendizado",
+            type: "tutorial",
+            difficulty: "Médio",
+            duration: "20 min",
+            videos: [],
+            materials: [
+              "Conta OpenAI: (link: https://chat.openai.com/)",
+              "Prompts Pré-definidos para Inglês",
+              "Scripts de Roleplay",
+              "Template de Correções Gramaticais",
+            ],
+            learning: [
+              "Prompt 1: 'Atue como um professor de inglês...'",
+              "Prompt 2: 'Corrija este texto mantendo o significado...'",
+              "Prompt 3: 'Crie um diálogo sobre [tema]...'",
+              "Prompt 4: 'Explique esta expressão idiomática...'",
+              "Prompt 5: 'Dê sinônimos para [palavra]...'",
+            ],
+          },
+          {
+            id: "youtube-config",
+            title: "📺 YouTube para Aprendizado",
+            description: "Configure o YouTube para imersão eficiente",
+            type: "config",
+            difficulty: "Fácil",
+            duration: "15 min",
+            videos: [],
+            materials: [
+              "Extensão Language Reactor: (link: https://www.languagereactor.com/)",
+              "Extensão Video Speed Controller",
+              "Playlists Salvas: Inglês Fácil, TED-Ed",
+              "Canais Inscritos: BBC, Vox, Kurzgesagt",
+            ],
+            learning: [
+              "Passo 1: Instalar Language Reactor",
+              "Passo 2: Criar conta gratuita",
+              "Passo 3: Configurar legendas duplas",
+              "Passo 4: Criar playlist de estudos",
+              "Passo 5: Ativar notificações de canais",
+            ],
+          },
+          {
+            id: "notion-config",
+            title: "📒 Configuração do Notion",
+            description: "Organize seus estudos em um só lugar",
+            type: "tutorial",
+            difficulty: "Médio",
+            duration: "25 min",
+            videos: [],
+            materials: [
+              "Conta Notion: (link: https://www.notion.so/)",
+              "Template de Estudos de Inglês",
+              "Database de Vocabulário",
+              "Calendário de Revisão Espaçada",
+            ],
+            learning: [
+              "Criar database para vocabulário",
+              "Configurar templates de anotações",
+              "Criar calendário de estudos",
+              "Sincronizar com app móvel",
+              "Integrar com outras ferramentas",
+            ],
+          },
+        ],
       },
     ],
     tips: [
