@@ -1,35 +1,4 @@
 export const resourcesDatabase = {
-  "Configuração Anki para aprendizado eficiente": {
-    videos: [
-      {
-        id: "ZfD0OL0ZluM",
-        title:
-          "Como Configurar o ANKI para Aprender Inglês e Não Esquecer Mais (Passo a Passo)",
-        duration: "7:37",
-        channel: "Kaique Bazil",
-      },
-    ],
-    materials: [
-      "Site Oficial para Download (PC/Mac/Linux): (link: https://apps.ankiweb.net/)",
-      "App Android: (link: https://play.google.com/store/apps/details?id=com.ichi2.anki)",
-      "App iOS: (link: https://apps.apple.com/us/app/ankimobile-flashcards/id373493387)",
-      "AnkiWeb (Acesso Online): (link: https://ankiweb.net/)",
-      "Criar Conta Gratuita: (link: https://ankiweb.net/account/register)",
-      "Login na Conta: (link: https://ankiweb.net/account/login)",
-      "Decks Compartilhados: (link: https://ankiweb.net/shared/decks/)",
-      "Manual Oficial: https://docs.ankiweb.net/",
-      "Extensões Usadas: 723520343, 1436550454",
-    ],
-    learning: [
-      "Passo 1: Baixar e instalar o Anki no computador",
-      "Passo 2: Criar conta gratuita no AnkiWeb",
-      "Passo 3: Fazer login no app desktop com sua conta",
-      "Passo 4: Instalar AnkiDroid (Android) ou AnkiMobile (iOS)",
-      "Passo 5: Fazer login no app móvel para sincronizar",
-      "Passo 6: Criar seu primeiro deck de inglês",
-      "Passo 7: Adicionar cards diariamente e revisar todos os dias",
-    ],
-  },
   "Alfabeto inglês: letras, pronúncia e soletração": {
     videos: [
       {
