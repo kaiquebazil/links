@@ -1,4 +1,3 @@
-// js/data/complementaryData.js
 export const complementaryMaterials = [
   {
     id: "week-0",

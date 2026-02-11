@@ -1,6 +1,3 @@
-// js/data/studyPlan.js
-// Plano de Fluência Conversacional em 6 meses - Versão Otimizada
-
 export const studyPlan = [
   {
     month: "Mês 0: Alfabetização e Fundamentos",

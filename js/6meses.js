@@ -1,4 +1,3 @@
-// js/6meses.js
 // Importar dados e funções
 import { studyPlan } from "../data/studyPlan.js";
 import { resourcesDatabase, defaultResources } from "../data/resources.js";
@@ -76,13 +75,12 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="week-zero-header">
           <div style="flex: 1;">
             <h3 class="week-zero-title">${data.title}</h3>
-
+            <p class="week-zero-subtitle">${data.description}</p>
           </div>
           <button class="toggle-week-btn" id="toggle-week-zero-btn">
             <i class="fas fa-chevron-down"></i>
           </button>
         </div>
-        
         
         <div class="week-zero-content" id="week-zero-content">
           ${data.sections ? data.sections.map((section, sectionIndex) => {
@@ -97,9 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   </div>
                   <div style="flex: 1;">
                     <h4 class="section-title-mini">${section.title}</h4>
-                    ${isCompleted ? `
-                      
-                    ` : ''}
+                    ${isCompleted ? `<div class="completed-badge" style="display: inline-flex; align-items: center; gap: 5px; background: rgba(59, 185, 80, 0.1); color: var(--accent-green); padding: 3px 8px; border-radius: 12px; font-size: 11px; font-weight: 500; margin-top: 5px;"><i class="fas fa-check-circle"></i><span>Concluído</span></div>` : ''}
                   </div>
                   <span class="section-toggle">
                     <i class="fas fa-chevron-down"></i>
@@ -167,12 +163,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                   ` : ''}
                   
-                 
+                  <button class="mark-section-btn" onclick="markWeekZeroSection('${section.id}', ${sectionIndex})">
+                    <i class="fas fa-check-circle"></i>
+                    Marcar como Concluído
+                  </button>
                 </div>
               </div>
             `;
           }).join('') : '<p style="text-align: center; color: var(--text-secondary); padding: 20px;">Nenhuma seção disponível</p>'}
-        
         </div>
       </div>
     `;
@@ -223,12 +221,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const icon = sectionElement.querySelector('.section-icon-mini');
         if (icon) icon.style.color = 'var(--accent-green)';
         
-        const button = sectionElement.querySelector('.mark-section-btn');
-        if (button) {
-          button.innerHTML = '<i class="fas fa-check-double"></i><span>Seção Concluída</span>';
-          button.style.background = 'var(--accent-green)';
-        }
-        
         // Adicionar badge de concluído
         const headerContent = sectionElement.querySelector('.section-header-mini > div:nth-child(2)');
         if (headerContent && !headerContent.querySelector('.completed-badge')) {
@@ -254,15 +246,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const completedCount = progress.completedSections.length;
     const totalSections = weekZeroData?.sections?.length || 0;
     const progressPercent = totalSections > 0 ? (completedCount / totalSections) * 100 : 0;
-    
-    // Atualizar barra de progresso
-    const progressFill = document.querySelector('.progress-fill-week');
-    const progressLabel = document.querySelector('.progress-label span:last-child');
-    const progressStats = document.querySelector('.progress-stats span:last-child');
-    
-    if (progressFill) progressFill.style.width = `${progressPercent}%`;
-    if (progressLabel) progressLabel.textContent = `${completedCount}/${totalSections}`;
-    if (progressStats) progressStats.textContent = `${progressPercent.toFixed(0)}% concluído`;
   }
 
   window.openVideo = function(videoId) {
@@ -317,7 +300,6 @@ document.addEventListener("DOMContentLoaded", function () {
     weekZeroSection.className = 'week-zero-first-section';
     weekZeroSection.innerHTML = `
       <div>
-        
         ${renderWeekZeroTimeline(weekZeroData)}
       </div>
     `;
@@ -485,9 +467,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   </button>
                 </div>
                 
-                <div class="video-additional-content" id="additional-${
-                  video.id
-                }">
+                <div class="video-additional-content" id="additional-${video.id}">
                   <div class="video-additional-section">
                     <div class="complementary-section-title">
                       <i class="fas fa-book"></i>
@@ -644,13 +624,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     .map(
                       (video) => `
                     <div class="playlist-video-item">
-                      <a href="https://www.youtube.com/watch?v=${
-                        video.id
-                      }" target="_blank" class="video-link">
+                      <a href="https://www.youtube.com/watch?v=${video.id}" target="_blank" class="video-link">
                         <div class="video-thumb">
-                          <img src="https://img.youtube.com/vi/${
-                            video.id
-                          }/hqdefault.jpg" alt="${video.title}">
+                          <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${video.title}">
                           <div class="video-overlay">
                             <i class="fas fa-play"></i>
                             <span class="duration">${video.duration}</span>
@@ -678,9 +654,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
                 
                 <div class="playlist-actions">
-                  <a href="${
-                    playlist.link
-                  }" target="_blank" class="playlist-link-btn">
+                  <a href="${playlist.link}" target="_blank" class="playlist-link-btn">
                     <i class="fab fa-youtube"></i> Ver playlist completa
                   </a>
                 </div>
@@ -705,9 +679,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="individual-video-card">
                 <div class="video-main">
                   <div class="video-thumb-large">
-                    <img src="https://img.youtube.com/vi/${
-                      video.id
-                    }/hqdefault.jpg" alt="${video.title}">
+                    <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${video.title}">
                     <div class="video-overlay-large">
                       <i class="fas fa-play"></i>
                     </div>
@@ -733,11 +705,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                     
                     <div class="video-meta-large">
-                      <span class="difficulty difficulty-${
-                        video.difficulty
+                      <span class="difficulty difficulty-${video.difficulty
                           ? video.difficulty.toLowerCase().split(" ")[0]
-                          : "intermediate"
-                      }">
+                          : "intermediate"}">
                         ${video.difficulty || "Intermediário"}
                       </span>
                       <div class="video-tags-large">
@@ -754,9 +724,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
                 
                 <div class="video-actions">
-                  <a href="https://www.youtube.com/watch?v=${
-                    video.id
-                  }" target="_blank" class="watch-btn">
+                  <a href="https://www.youtube.com/watch?v=${video.id}" target="_blank" class="watch-btn">
                     <i class="fab fa-youtube"></i> Assistir no YouTube
                   </a>
                   <button class="save-btn" data-video-id="${video.id}">
@@ -982,9 +950,7 @@ document.addEventListener("DOMContentLoaded", function () {
               ${material.filters
                 .map(
                   (filter) => `
-                <button class="podcast-filter-btn ${
-                  filter.id === "all" ? "active" : ""
-                }" 
+                <button class="podcast-filter-btn ${filter.id === "all" ? "active" : ""}" 
                         data-filter="${filter.id}">
                   <i class="fas fa-${filter.icon}"></i>
                   ${filter.name}
@@ -1015,9 +981,7 @@ document.addEventListener("DOMContentLoaded", function () {
           ${material.levels
             .map(
               (level, levelIndex) => `
-            <div class="podcast-level-card level-${level.color} ${
-                levelIndex === 0 ? "active" : ""
-              }" 
+            <div class="podcast-level-card level-${level.color} ${levelIndex === 0 ? "active" : ""}" 
                  data-level="${
                    level.name.toLowerCase().includes("beginner")
                      ? "beginner"
@@ -1034,16 +998,12 @@ document.addEventListener("DOMContentLoaded", function () {
                   <p class="level-desc">${level.description}</p>
                 </div>
                 <div class="level-badge">
-                  <span class="badge-count">${
-                    level.items.length
-                  } podcasts</span>
+                  <span class="badge-count">${level.items.length} podcasts</span>
                   <i class="fas fa-chevron-down"></i>
                 </div>
               </div>
               
-              <div class="level-content" style="max-height: ${
-                levelIndex === 0 ? "1000px" : "0px"
-              };">
+              <div class="level-content" style="max-height: ${levelIndex === 0 ? "1000px" : "0px"};">
                 <div class="podcast-grid">
                   ${level.items
                     .map(
@@ -1094,12 +1054,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             .toLowerCase()}">
                             <i class="far fa-bookmark"></i>
                           </button>
-                          <button class="play-podcast-btn" data-platform="${
-                            podcast.platform
-                          }" 
-                                  data-search="${encodeURIComponent(
-                                    podcast.name
-                                  )}">
+                          <button class="play-podcast-btn" data-platform="${podcast.platform}" 
+                                  data-search="${encodeURIComponent(podcast.name)}">
                             <i class="fas fa-play"></i> Ouvir
                           </button>
                         </div>
@@ -1111,9 +1067,7 @@ document.addEventListener("DOMContentLoaded", function () {
                           <div class="study-plan">
                             <h6><i class="fas fa-graduation-cap"></i> Plano de Estudo Sugerido</h6>
                             <ul>
-                              <li><strong>Frequência:</strong> ${
-                                podcast.frequency
-                              }</li>
+                              <li><strong>Frequência:</strong> ${podcast.frequency}</li>
                               <li><strong>Duração por sessão:</strong> ${
                                 level.color === "green"
                                   ? "15-20 minutos"
@@ -1123,9 +1077,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                   ? "30-45 minutos"
                                   : "45-60 minutos"
                               }</li>
-                              <li><strong>Foco principal:</strong> ${
-                                podcast.description.split(".")[0]
-                              }</li>
+                              <li><strong>Foco principal:</strong> ${podcast.description.split(".")[0]}</li>
                               ${
                                 podcast.bestFor
                                   ? `<li><strong>Melhor para:</strong> ${podcast.bestFor}</li>`
@@ -1230,9 +1182,8 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     </div>
   `;
-      }// Adicione este case após os outros tipos (após 'podcasts' case)
-else if (material.type === "assessment") {
-  cardBodyHTML = `
+      } else if (material.type === "assessment") {
+        cardBodyHTML = `
   <div class="complementary-card-body">
     <div class="assessment-container">
       <!-- Introdução -->
@@ -1412,8 +1363,8 @@ else if (material.type === "assessment") {
     </div>
   </div>
 `;
-}else if (material.type === "simple-links") {
-  cardBodyHTML = `
+      } else if (material.type === "simple-links") {
+        cardBodyHTML = `
   <div class="complementary-card-body">
     <div class="simple-links-container">
       ${Object.entries(material.links)
@@ -1447,7 +1398,7 @@ else if (material.type === "assessment") {
     </div>
   </div>
 `;
-} else {
+      } else {
         // Card padrão (fallback)
         cardBodyHTML = `
         <div class="complementary-card-body">
@@ -2084,7 +2035,6 @@ else if (material.type === "assessment") {
   
   // Inicializar progresso da Semana 0
   initializeWeekZeroProgress();
-  
   
   // 2. Conteúdos adicionais (sem a Semana 0)
   renderComplementaryMaterials();
