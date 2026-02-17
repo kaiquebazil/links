@@ -1,3 +1,6 @@
+// js/data/studyPlan.js
+// Plano de Fluência Conversacional em 6 meses - Versão Otimizada
+
 export const studyPlan = [
   {
     month: "Mês 0: Alfabetização e Fundamentos",
@@ -30,9 +33,8 @@ export const studyPlan = [
         title: "Semana 2: Vida Pessoal e Relações",
         contents: [
           "Família: membros(Geral) | Comprehensible Input",
-          "Estado civil e relacionamentos",
-          "Profissões mais comuns (médico, professor, estudante)",
           "Expressões de cortesia (por favor, obrigado, desculpe)",
+          "Profissões mais comuns (médico, professor, estudante)",
           "TESTE: Conte sobre sua família",
         ],
       },

@@ -1,3 +1,4 @@
+// js/6meses.js
 // Importar dados e funções
 import { studyPlan } from "../data/studyPlan.js";
 import { resourcesDatabase, defaultResources } from "../data/resources.js";
@@ -47,12 +48,13 @@ document.addEventListener("DOMContentLoaded", function () {
     JSON.parse(localStorage.getItem("completedContents")) || [];
 
   // ========== FUNÇÕES DA SEMANA 0 ==========
-  
+
   // Inicializar progresso da Semana 0
   function initializeWeekZeroProgress() {
     if (!localStorage.getItem('week0Progress')) {
       const initialProgress = {
         completedSections: [],
+        completedContents: [],
         startDate: new Date().toISOString(),
         lastAccessed: new Date().toISOString()
       };
@@ -60,22 +62,143 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Função auxiliar para obter ícones
+  function getIconForType(type) {
+    const icons = {
+      tutorial: 'graduation-cap',
+      config: 'cog',
+      conceptual: 'lightbulb',
+      practical: 'hands-helping',
+      overview: 'map',
+      resources: 'toolbox',
+      default: 'file-alt'
+    };
+    return icons[type] || icons.default;
+  }
+
+  // Criar card de conteúdo da Semana 0
+  function createWeekZeroContentCard(content) {
+    const progress = JSON.parse(localStorage.getItem('week0Progress')) || {
+      completedSections: [],
+      completedContents: []
+    };
+    const isCompleted = progress.completedContents?.includes(content.id);
+    
+    return `
+      <div class="week-zero-content-card ${isCompleted ? 'completed' : ''}" id="content-${content.id}">
+        <div class="content-card-header" onclick="toggleWeekZeroContent('${content.id}')">
+          <div class="content-card-icon">
+            <i class="fas fa-${getIconForType(content.type)}"></i>
+          </div>
+          <div class="content-card-title">
+            <h4>${content.title}</h4>
+            <p>${content.description}</p>
+          </div>
+          <div class="content-card-meta">
+            <span class="meta-difficulty difficulty-${content.difficulty ? content.difficulty.toLowerCase() : 'fácil'}">
+              ${content.difficulty || 'Fácil'}
+            </span>
+            ${content.duration ? `
+              <span class="meta-duration">
+                <i class="fas fa-clock"></i> ${content.duration}
+              </span>
+            ` : ''}
+          </div>
+          <div class="content-card-toggle">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+        
+        <div class="content-card-body" id="content-body-${content.id}">
+          <!-- VÍDEOS -->
+          ${content.videos && content.videos.length > 0 ? `
+            <div class="content-section">
+              <h5><i class="fas fa-video"></i> Vídeos</h5>
+              <div class="content-videos">
+                ${content.videos.map(video => `
+                  <div class="content-video-card" onclick="openVideo('${video.id}')">
+                    <img src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" alt="${video.title}" loading="lazy">
+                    <div class="video-info">
+                      <h6>${video.title}</h6>
+                      <div class="video-meta">
+                        <span>${video.channel}</span>
+                        <span>• ${video.duration}</span>
+                      </div>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
+          
+          <!-- MATERIAIS -->
+          ${content.materials && content.materials.length > 0 ? `
+            <div class="content-section">
+              <h5><i class="fas fa-link"></i> Materiais & Links</h5>
+              <div class="content-materials">
+                ${content.materials.map(material => {
+                  if (material.includes("(link:")) {
+                    const linkMatch = material.match(/\((link:[^)]+)\)/);
+                    if (linkMatch) {
+                      const linkText = linkMatch[0].replace("(link:", "").replace(")", "");
+                      const displayText = material.replace(linkMatch[0], "").trim();
+                      return `
+                        <div class="material-itemm">
+                          <i class="fas fa-external-link-alt"></i>
+                          <div>
+                            <span>${displayText}</span>
+                            <a href="${linkText}" target="_blank">Abrir link</a>
+                          </div>
+                        </div>
+                      `;
+                    }
+                  }
+                  return `
+                    <div class="material-itemm">
+                      <i class="fas fa-check-circle"></i>
+                      <span>${material}</span>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+          ` : ''}
+          
+          <!-- APRENDIZAGEM -->
+          ${content.learning && content.learning.length > 0 ? `
+            <div class="content-section">
+              <h5><i class="fas fa-graduation-cap"></i> Passo a Passo</h5>
+              <ol class="content-learning">
+                ${content.learning.map(step => `
+                  <li>${step}</li>
+                `).join('')}
+              </ol>
+            </div>
+          ` : ''}
+          
+          <!-- BOTÃO DE CONCLUSÃO -->
+          <button class="complete-content-btn ${isCompleted ? 'completed' : ''}" 
+                  onclick="completeWeekZeroContent('${content.id}')">
+            <i class="fas ${isCompleted ? 'fa-check-double' : 'fa-check'}"></i>
+            <span>${isCompleted ? 'Concluído!' : 'Marcar como Concluído'}</span>
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
   // Renderizar a Semana 0 no estilo timeline
   function renderWeekZeroTimeline(data) {
-    // Calcular progresso
     const progress = JSON.parse(localStorage.getItem('week0Progress')) || { 
-      completedSections: [] 
+      completedSections: [],
+      completedContents: []
     };
-    const completedCount = progress.completedSections.length;
-    const totalSections = data.sections?.length || 0;
-    const progressPercent = totalSections > 0 ? (completedCount / totalSections) * 100 : 0;
     
     return `
       <div class="timeline-item week-zero-item" id="week-zero-timeline">
         <div class="week-zero-header">
           <div style="flex: 1;">
             <h3 class="week-zero-title">${data.title}</h3>
-            <p class="week-zero-subtitle">${data.description}</p>
           </div>
           <button class="toggle-week-btn" id="toggle-week-zero-btn">
             <i class="fas fa-chevron-down"></i>
@@ -84,18 +207,26 @@ document.addEventListener("DOMContentLoaded", function () {
         
         <div class="week-zero-content" id="week-zero-content">
           ${data.sections ? data.sections.map((section, sectionIndex) => {
-            const isCompleted = progress.completedSections.includes(section.id);
+            const isSectionCompleted = progress.completedSections.includes(section.id);
+            const sectionContentsCompleted = section.contents 
+              ? section.contents.filter(content => progress.completedContents?.includes(content.id)).length 
+              : 0;
+            const sectionTotalContents = section.contents ? section.contents.length : 0;
             
             return `
-              <div class="week-zero-section ${isCompleted ? 'completed' : ''}" 
-                   style="border-left-color: ${isCompleted ? 'var(--accent-green)' : '#667eea'};">
+              <div class="week-zero-section ${isSectionCompleted ? 'completed' : ''}" 
+                   style="border-left-color: ${isSectionCompleted ? 'var(--accent-green)' : '#667eea'};">
                 <div class="section-header-mini" onclick="toggleWeekZeroSection('${section.id}')">
-                  <div class="section-icon-mini" style="color: ${isCompleted ? 'var(--accent-green)' : '#667eea'};">
+                  <div class="section-icon-mini" style="color: ${isSectionCompleted ? 'var(--accent-green)' : '#667eea'};">
                     <i class="fas fa-${section.icon}"></i>
                   </div>
                   <div style="flex: 1;">
                     <h4 class="section-title-mini">${section.title}</h4>
-                    ${isCompleted ? `<div class="completed-badge" style="display: inline-flex; align-items: center; gap: 5px; background: rgba(59, 185, 80, 0.1); color: var(--accent-green); padding: 3px 8px; border-radius: 12px; font-size: 11px; font-weight: 500; margin-top: 5px;"><i class="fas fa-check-circle"></i><span>Concluído</span></div>` : ''}
+                    ${section.contents ? `
+                      <div class="section-progress">
+                        <span>${sectionContentsCompleted}/${sectionTotalContents} conteúdos</span>
+                      </div>
+                    ` : ''}
                   </div>
                   <span class="section-toggle">
                     <i class="fas fa-chevron-down"></i>
@@ -103,70 +234,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
                 
                 <div class="section-content" id="section-${section.id}">
-                  ${section.content?.videos && section.content.videos.length > 0 ? `
-                    <div style="margin-bottom: 15px;">
-                      <h5 style="font-size: 14px; color: var(--accent-color); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                        <i class="fas fa-video"></i>
-                        <span>Vídeos</span>
-                      </h5>
-                      <div>
-                        ${section.content.videos.map(video => `
-                          <div class="video-card-timeline" onclick="openVideo('${video.id}')">
-                            <div class="video-thumb-timeline">
-                              <img src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" alt="${video.title}" loading="lazy">
-                              <span class="video-duration-timeline">${video.duration}</span>
-                            </div>
-                            <div class="video-info-timeline">
-                              <h6 class="video-title-timeline">${video.title}</h6>
-                              <div class="video-meta-timeline">
-                                <span style="color: #667eea; font-weight: 500;">${video.channel}</span>
-                                <span>• ${video.duration}</span>
-                              </div>
-                              ${video.description ? `<p class="video-description-timeline">${video.description}</p>` : ''}
-                            </div>
-                          </div>
-                        `).join('')}
-                      </div>
+                  <!-- CONTEÚDOS DA SEÇÃO -->
+                  ${section.contents && section.contents.length > 0 ? `
+                    <div class="section-contents-grid">
+                      ${section.contents.map(content => createWeekZeroContentCard(content)).join('')}
+                    </div>
+                  ` : '<p class="no-content">Nenhum conteúdo disponível</p>'}
+                  
+                  <!-- BOTÃO PARA MARCAR SEÇÃO COMO CONCLUÍDA -->
+                  ${section.contents && section.contents.length > 0 ? `
+                    <div class="section-actions">
+                      <button class="complete-section-btn ${isSectionCompleted ? 'completed' : ''}" 
+                              onclick="completeWeekZeroSection('${section.id}')">
+                        <i class="fas ${isSectionCompleted ? 'fa-check-double' : 'fa-check'}"></i>
+                        <span>${isSectionCompleted ? 'Seção Concluída' : 'Concluir Seção'}</span>
+                      </button>
                     </div>
                   ` : ''}
-                  
-                  ${section.content?.materials && section.content.materials.length > 0 ? `
-                    <div style="margin-bottom: 15px;">
-                      <h5 style="font-size: 14px; color: var(--accent-color); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                        <i class="fas fa-file-alt"></i>
-                        <span>Recomendações</span>
-                      </h5>
-                      <div class="materials-list-timeline">
-                        ${section.content.materials.map(material => `
-                          <div class="material-item-timeline">
-                            <span>${material}</span>
-                          </div>
-                        `).join('')}
-                      </div>
-                    </div>
-                  ` : ''}
-                  
-                  ${section.content?.learning && section.content.learning.length > 0 ? `
-                    <div>
-                      <h5 style="font-size: 14px; color: var(--accent-color); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                        <i class="fas fa-graduation-cap"></i>
-                        <span>O que você vai aprender</span>
-                      </h5>
-                      <div class="learning-list-timeline">
-                        ${section.content.learning.map(item => `
-                          <div class="learning-item-timeline">
-                            <i class="fas fa-check"></i>
-                            <span>${item}</span>
-                          </div>
-                        `).join('')}
-                      </div>
-                    </div>
-                  ` : ''}
-                  
-                  <button class="mark-section-btn" onclick="markWeekZeroSection('${section.id}', ${sectionIndex})">
-                    <i class="fas fa-check-circle"></i>
-                    Marcar como Concluído
-                  </button>
                 </div>
               </div>
             `;
@@ -177,13 +261,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Funções auxiliares da Semana 0 (adicionadas ao window para acesso global)
-  window.toggleWeekZeroContent = function() {
-    const content = document.getElementById('week-zero-content');
-    const button = document.getElementById('toggle-week-zero-btn');
+  window.toggleWeekZeroContent = function(contentId) {
+    const contentBody = document.getElementById(`content-body-${contentId}`);
+    const toggleIcon = document.querySelector(`#content-${contentId} .content-card-toggle i`);
     
-    if (content && button) {
-      content.classList.toggle('active');
-      button.classList.toggle('active');
+    if (contentBody && toggleIcon) {
+      contentBody.classList.toggle('active');
+      toggleIcon.className = contentBody.classList.contains('active')
+        ? 'fas fa-chevron-up'
+        : 'fas fa-chevron-down';
     }
   };
 
@@ -196,8 +282,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const toggleIcon = section.parentElement.querySelector('.section-header-mini .section-toggle i');
       if (toggleIcon) {
         toggleIcon.className = section.classList.contains('active')
-          ? 'fas fa-chevron-down'
-          : 'fas fa-chevron-up';
+          ? 'fas fa-chevron-up'
+          : 'fas fa-chevron-down';
       }
     }
   };
@@ -205,7 +291,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.markWeekZeroSection = function(sectionId, sectionIndex) {
     const progress = JSON.parse(localStorage.getItem('week0Progress')) || {
       completedSections: [],
-      startDate: new Date().toISOString()
+      completedContents: []
     };
     
     if (!progress.completedSections.includes(sectionId)) {
@@ -220,6 +306,12 @@ document.addEventListener("DOMContentLoaded", function () {
         
         const icon = sectionElement.querySelector('.section-icon-mini');
         if (icon) icon.style.color = 'var(--accent-green)';
+        
+        const button = sectionElement.querySelector('.mark-section-btn');
+        if (button) {
+          button.innerHTML = '<i class="fas fa-check-double"></i><span>Seção Concluída</span>';
+          button.style.background = 'var(--accent-green)';
+        }
         
         // Adicionar badge de concluído
         const headerContent = sectionElement.querySelector('.section-header-mini > div:nth-child(2)');
@@ -240,20 +332,147 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  window.completeWeekZeroContent = function(contentId) {
+    let progress = JSON.parse(localStorage.getItem('week0Progress')) || {
+      completedSections: [],
+      completedContents: []
+    };
+    
+    if (!progress.completedContents.includes(contentId)) {
+      progress.completedContents.push(contentId);
+      localStorage.setItem('week0Progress', JSON.stringify(progress));
+      
+      // Atualizar interface
+      const contentCard = document.getElementById(`content-${contentId}`);
+      if (contentCard) {
+        contentCard.classList.add('completed');
+        
+        const completeBtn = contentCard.querySelector('.complete-content-btn');
+        if (completeBtn) {
+          completeBtn.innerHTML = '<i class="fas fa-check-double"></i><span>Concluído!</span>';
+          completeBtn.classList.add('completed');
+        }
+      }
+      
+      // Atualizar contagem da seção
+      updateWeekZeroSectionProgress();
+      
+      showCompletionToast('Conteúdo concluído!');
+    }
+  };
+
+  window.completeWeekZeroSection = function(sectionId) {
+    let progress = JSON.parse(localStorage.getItem('week0Progress')) || {
+      completedSections: [],
+      completedContents: []
+    };
+    
+    if (!progress.completedSections.includes(sectionId)) {
+      progress.completedSections.push(sectionId);
+      localStorage.setItem('week0Progress', JSON.stringify(progress));
+      
+      // Atualizar interface
+      const section = document.querySelector(`#section-${sectionId}`)?.parentElement;
+      if (section) {
+        section.classList.add('completed');
+        
+        const completeBtn = section.querySelector('.complete-section-btn');
+        if (completeBtn) {
+          completeBtn.innerHTML = '<i class="fas fa-check-double"></i><span>Seção Concluída</span>';
+          completeBtn.classList.add('completed');
+        }
+      }
+      
+      showCompletionToast('Seção concluída!');
+    }
+  };
+
   function updateWeekZeroProgress() {
-    const progress = JSON.parse(localStorage.getItem('week0Progress')) || { completedSections: [] };
+    const progress = JSON.parse(localStorage.getItem('week0Progress')) || { completedSections: [], completedContents: [] };
     const weekZeroData = complementaryMaterials.find(item => item.id === 'week-0');
     const completedCount = progress.completedSections.length;
     const totalSections = weekZeroData?.sections?.length || 0;
     const progressPercent = totalSections > 0 ? (completedCount / totalSections) * 100 : 0;
+    
+    // Atualizar barra de progresso se existir
+    const progressFill = document.querySelector('.progress-fill-week');
+    const progressLabel = document.querySelector('.progress-label span:last-child');
+    const progressStats = document.querySelector('.progress-stats span:last-child');
+    
+    if (progressFill) progressFill.style.width = `${progressPercent}%`;
+    if (progressLabel) progressLabel.textContent = `${completedCount}/${totalSections}`;
+    if (progressStats) progressStats.textContent = `${progressPercent.toFixed(0)}% concluído`;
   }
+
+  function updateWeekZeroSectionProgress() {
+    const progress = JSON.parse(localStorage.getItem('week0Progress')) || {
+      completedSections: [],
+      completedContents: []
+    };
+    const weekZeroData = complementaryMaterials.find(item => item.id === 'week-0');
+    
+    if (!weekZeroData || !weekZeroData.sections) return;
+    
+    weekZeroData.sections.forEach(section => {
+      if (section.contents) {
+        const completedCount = section.contents
+          .filter(content => progress.completedContents.includes(content.id))
+          .length;
+        
+        const progressElement = document.querySelector(`#section-${section.id} .section-progress span`);
+        if (progressElement) {
+          progressElement.textContent = `${completedCount}/${section.contents.length} conteúdos`;
+        }
+      }
+    });
+  }
+
+  function checkCompletedWeekZeroContents() {
+    const progress = JSON.parse(localStorage.getItem('week0Progress')) || {
+      completedSections: [],
+      completedContents: []
+    };
+    
+    progress.completedContents.forEach(contentId => {
+      const contentCard = document.getElementById(`content-${contentId}`);
+      if (contentCard) {
+        contentCard.classList.add('completed');
+        const completeBtn = contentCard.querySelector('.complete-content-btn');
+        if (completeBtn) {
+          completeBtn.innerHTML = '<i class="fas fa-check-double"></i><span>Concluído!</span>';
+          completeBtn.classList.add('completed');
+        }
+      }
+    });
+    
+    progress.completedSections.forEach(sectionId => {
+      const section = document.querySelector(`#section-${sectionId}`)?.parentElement;
+      if (section) {
+        section.classList.add('completed');
+        const completeBtn = section.querySelector('.complete-section-btn');
+        if (completeBtn) {
+          completeBtn.innerHTML = '<i class="fas fa-check-double"></i><span>Seção Concluída</span>';
+          completeBtn.classList.add('completed');
+        }
+      }
+    });
+  }
+
+  window.toggleWeekZeroContentGlobal = function() {
+    const content = document.getElementById('week-zero-content');
+    const button = document.getElementById('toggle-week-zero-btn');
+    
+    if (content && button) {
+      content.classList.toggle('active');
+      button.classList.toggle('active');
+    }
+  };
 
   window.openVideo = function(videoId) {
     window.open(`https://youtube.com/watch?v=${videoId}`, '_blank');
   };
 
   function showCompletionToast(message) {
-    // Criar toast
     const toast = document.createElement('div');
     toast.style.cssText = `
       position: fixed;
@@ -282,7 +501,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
     document.body.appendChild(toast);
     
-    // Remover após 3 segundos
     setTimeout(() => {
       toast.style.animation = 'slideInUp 0.3s ease reverse';
       setTimeout(() => toast.remove(), 300);
@@ -295,7 +513,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
     if (!weekZeroData) return;
     
-    // Criar container para a Semana 0
     const weekZeroSection = document.createElement('div');
     weekZeroSection.className = 'week-zero-first-section';
     weekZeroSection.innerHTML = `
@@ -304,14 +521,12 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     `;
     
-    // Inserir antes dos meses
     monthsContainer.parentNode.insertBefore(weekZeroSection, monthsContainer);
     
-    // Adicionar event listeners após o elemento ser inserido no DOM
     setTimeout(() => {
       const toggleBtn = document.getElementById('toggle-week-zero-btn');
       if (toggleBtn) {
-        toggleBtn.addEventListener('click', window.toggleWeekZeroContent);
+        toggleBtn.addEventListener('click', window.toggleWeekZeroContentGlobal);
       }
     }, 100);
   }
@@ -467,7 +682,9 @@ document.addEventListener("DOMContentLoaded", function () {
                   </button>
                 </div>
                 
-                <div class="video-additional-content" id="additional-${video.id}">
+                <div class="video-additional-content" id="additional-${
+                  video.id
+                }">
                   <div class="video-additional-section">
                     <div class="complementary-section-title">
                       <i class="fas fa-book"></i>
@@ -624,9 +841,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     .map(
                       (video) => `
                     <div class="playlist-video-item">
-                      <a href="https://www.youtube.com/watch?v=${video.id}" target="_blank" class="video-link">
+                      <a href="https://www.youtube.com/watch?v=${
+                        video.id
+                      }" target="_blank" class="video-link">
                         <div class="video-thumb">
-                          <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${video.title}">
+                          <img src="https://img.youtube.com/vi/${
+                            video.id
+                          }/hqdefault.jpg" alt="${video.title}">
                           <div class="video-overlay">
                             <i class="fas fa-play"></i>
                             <span class="duration">${video.duration}</span>
@@ -654,7 +875,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
                 
                 <div class="playlist-actions">
-                  <a href="${playlist.link}" target="_blank" class="playlist-link-btn">
+                  <a href="${
+                    playlist.link
+                  }" target="_blank" class="playlist-link-btn">
                     <i class="fab fa-youtube"></i> Ver playlist completa
                   </a>
                 </div>
@@ -679,7 +902,9 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="individual-video-card">
                 <div class="video-main">
                   <div class="video-thumb-large">
-                    <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="${video.title}">
+                    <img src="https://img.youtube.com/vi/${
+                      video.id
+                    }/hqdefault.jpg" alt="${video.title}">
                     <div class="video-overlay-large">
                       <i class="fas fa-play"></i>
                     </div>
@@ -705,9 +930,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                     
                     <div class="video-meta-large">
-                      <span class="difficulty difficulty-${video.difficulty
+                      <span class="difficulty difficulty-${
+                        video.difficulty
                           ? video.difficulty.toLowerCase().split(" ")[0]
-                          : "intermediate"}">
+                          : "intermediate"
+                      }">
                         ${video.difficulty || "Intermediário"}
                       </span>
                       <div class="video-tags-large">
@@ -724,7 +951,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
                 
                 <div class="video-actions">
-                  <a href="https://www.youtube.com/watch?v=${video.id}" target="_blank" class="watch-btn">
+                  <a href="https://www.youtube.com/watch?v=${
+                    video.id
+                  }" target="_blank" class="watch-btn">
                     <i class="fab fa-youtube"></i> Assistir no YouTube
                   </a>
                   <button class="save-btn" data-video-id="${video.id}">
@@ -950,7 +1179,9 @@ document.addEventListener("DOMContentLoaded", function () {
               ${material.filters
                 .map(
                   (filter) => `
-                <button class="podcast-filter-btn ${filter.id === "all" ? "active" : ""}" 
+                <button class="podcast-filter-btn ${
+                  filter.id === "all" ? "active" : ""
+                }" 
                         data-filter="${filter.id}">
                   <i class="fas fa-${filter.icon}"></i>
                   ${filter.name}
@@ -981,7 +1212,9 @@ document.addEventListener("DOMContentLoaded", function () {
           ${material.levels
             .map(
               (level, levelIndex) => `
-            <div class="podcast-level-card level-${level.color} ${levelIndex === 0 ? "active" : ""}" 
+            <div class="podcast-level-card level-${level.color} ${
+                levelIndex === 0 ? "active" : ""
+              }" 
                  data-level="${
                    level.name.toLowerCase().includes("beginner")
                      ? "beginner"
@@ -998,12 +1231,16 @@ document.addEventListener("DOMContentLoaded", function () {
                   <p class="level-desc">${level.description}</p>
                 </div>
                 <div class="level-badge">
-                  <span class="badge-count">${level.items.length} podcasts</span>
+                  <span class="badge-count">${
+                    level.items.length
+                  } podcasts</span>
                   <i class="fas fa-chevron-down"></i>
                 </div>
               </div>
               
-              <div class="level-content" style="max-height: ${levelIndex === 0 ? "1000px" : "0px"};">
+              <div class="level-content" style="max-height: ${
+                levelIndex === 0 ? "1000px" : "0px"
+              };">
                 <div class="podcast-grid">
                   ${level.items
                     .map(
@@ -1054,8 +1291,12 @@ document.addEventListener("DOMContentLoaded", function () {
                             .toLowerCase()}">
                             <i class="far fa-bookmark"></i>
                           </button>
-                          <button class="play-podcast-btn" data-platform="${podcast.platform}" 
-                                  data-search="${encodeURIComponent(podcast.name)}">
+                          <button class="play-podcast-btn" data-platform="${
+                            podcast.platform
+                          }" 
+                                  data-search="${encodeURIComponent(
+                                    podcast.name
+                                  )}">
                             <i class="fas fa-play"></i> Ouvir
                           </button>
                         </div>
@@ -1067,7 +1308,9 @@ document.addEventListener("DOMContentLoaded", function () {
                           <div class="study-plan">
                             <h6><i class="fas fa-graduation-cap"></i> Plano de Estudo Sugerido</h6>
                             <ul>
-                              <li><strong>Frequência:</strong> ${podcast.frequency}</li>
+                              <li><strong>Frequência:</strong> ${
+                                podcast.frequency
+                              }</li>
                               <li><strong>Duração por sessão:</strong> ${
                                 level.color === "green"
                                   ? "15-20 minutos"
@@ -1077,7 +1320,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                   ? "30-45 minutos"
                                   : "45-60 minutos"
                               }</li>
-                              <li><strong>Foco principal:</strong> ${podcast.description.split(".")[0]}</li>
+                              <li><strong>Foco principal:</strong> ${
+                                podcast.description.split(".")[0]
+                              }</li>
                               ${
                                 podcast.bestFor
                                   ? `<li><strong>Melhor para:</strong> ${podcast.bestFor}</li>`
@@ -1182,8 +1427,9 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     </div>
   `;
-      } else if (material.type === "assessment") {
-        cardBodyHTML = `
+      }// Adicione este case após os outros tipos (após 'podcasts' case)
+else if (material.type === "assessment") {
+  cardBodyHTML = `
   <div class="complementary-card-body">
     <div class="assessment-container">
       <!-- Introdução -->
@@ -1363,8 +1609,8 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
   </div>
 `;
-      } else if (material.type === "simple-links") {
-        cardBodyHTML = `
+}else if (material.type === "simple-links") {
+  cardBodyHTML = `
   <div class="complementary-card-body">
     <div class="simple-links-container">
       ${Object.entries(material.links)
@@ -1398,7 +1644,7 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
   </div>
 `;
-      } else {
+} else {
         // Card padrão (fallback)
         cardBodyHTML = `
         <div class="complementary-card-body">
@@ -2036,13 +2282,27 @@ document.addEventListener("DOMContentLoaded", function () {
   // Inicializar progresso da Semana 0
   initializeWeekZeroProgress();
   
-  // 2. Conteúdos adicionais (sem a Semana 0)
+  // 1. Renderizar Semana 0 primeiro
+  renderWeekZeroFirst();
+  
+  // 2. Inicializar conteúdos já concluídos da Semana 0
+  setTimeout(() => {
+    checkCompletedWeekZeroContents();
+    
+    // Configurar event listeners para os conteúdos da Semana 0
+    const contentHeaders = document.querySelectorAll('.content-card-header');
+    contentHeaders.forEach(header => {
+      header.addEventListener('click', function() {
+        const contentId = this.closest('.week-zero-content-card').id.replace('content-', '');
+        window.toggleWeekZeroContent(contentId);
+      });
+    });
+  }, 500);
+  
+  // 3. Conteúdos adicionais (sem a Semana 0)
   renderComplementaryMaterials();
   
-  // Renderizar na ordem correta:
-  // 1. Semana 0 (como primeiro item)
-  renderWeekZeroFirst();
-  // 3. Plano de estudos (meses)
+  // 4. Plano de estudos (meses)
   renderStudyPlan();
 
   // Atualizar data a cada minuto

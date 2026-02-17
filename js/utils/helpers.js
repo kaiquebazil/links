@@ -1,3 +1,5 @@
+// js/utils/helpers.js
+
 // Função para obter data formatada
 export function getFormattedDate() {
   const now = new Date();

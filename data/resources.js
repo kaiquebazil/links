@@ -51,30 +51,6 @@ export const resourcesDatabase = {
         duration: "1:29",
         channel: "Finny The Shark",
       },
-          {
-        // FORMATO NOVO: Identificação clara da plataforma
-        platform: "youtube", // ou "tiktok"
-        videoId: "pGdos0z14aQ", // ID do vídeo (sem URL completa)
-        title: "ALFABETO EM INGLÊS: Pronúncia completa e dicas | Meu vídeo",
-        duration: "8:42",
-        channel: "Kaique Bazil",
-        tags: ["completo", "detalhado"] // opcional
-      },
-      {
-        platform: "tiktok",
-        videoId: "7345901234567890123", // Exemplo de ID do TikTok
-        title: "Alfabeto em 60 segundos!",
-        duration: "1:01",
-        channel: "Kaique Bazil",
-        tags: ["rápido", "resumido"]
-      },
-      {
-        platform: "youtube",
-        videoId: "ChqnN3cKzXQ",
-        title: "ABC Phonics Chant for Children | Sounds and Actions from A to Z",
-        duration: "4:22",
-        channel: "Tora the Teacher"
-      },
     ],
     materials: [
       "Site com Alfabeto e treinos de escuta e fala (link: https://www.languageguide.org/english/alphabet/)",
