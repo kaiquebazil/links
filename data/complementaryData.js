@@ -1,362 +1,208 @@
 // js/data/complementaryData.js
 export const complementaryMaterials = [
- // ATUALIZE A ESTRUTURA DA WEEK-0 NO complementaryData.js:
+  // ATUALIZE A ESTRUTURA DA WEEK-0 NO complementaryData.js:
+  {
+    id: "week-0",
+    title: "⚙️ Preparação e Configuração do Ambiente",
+    type: "setup",
+    icon: "tools",
+    // Conteúdos diretos, sem subseções
+    contents: [
+      {
+        id: "visao-geral",
+        title: "🗺️ Visão Geral do Plano",
+        description: "Entenda a estrutura dos 6 meses",
+        type: "overview",
+        difficulty: "recomendado",
+        duration: "10 min",
+        videos: [],
+        materials: [
+          "Mapa Mental dos 6 Meses",
+          "Linha do Tempo de Aprendizado",
+          "Checklist de Competências por Mês",
+          "Calendário de Marcos Importantes",
+        ],
+        learning: [
+          "Mês 1: Sobrevivência Conversacional",
+          "Mês 2: Vida Cotidiana",
+          "Mês 3: Passado e Experiências",
+          "Mês 4: Opiniões e Sentimentos",
+          "Mês 5: Tópicos Complexos",
+          "Mês 6: Fluência Natural",
+        ],
+      },
+      // Dentro do array contents do objeto com id "week-0", adicione este novo objeto:
+
 {
-  id: "week-0",
-  title: "Preparação e Configuração",
-  sections: [
+  id: "modo-difuso-imersao",
+  title: "🧠 Técnica de Imersão (Modo Difuso)",
+  description: "Aprenda a fazer imersão no inglês mesmo sem tempo, usando seu 'tempo morto'",
+  type: "tutorial",
+  difficulty: "Essencial",
+  duration: "8 min",
+  videos: [
     {
-      id: "installation",
-      title: "Instalação e configuração do ambiente de estudo",
-      icon: "cogs",
-      // AGORA CADA SEÇÃO TEM UM ARRAY DE CONTEÚDOS EXPANSÍVEIS
-      contents: [
-        {
-          id: "celular-ingles",
-          title: "📱 Celular 100% em inglês",
-          description: "Configure seu celular para imersão total",
-          type: "tutorial",
-          difficulty: "Fácil",
-          duration: "15 min",
-          videos: [],
-          materials: [
-            "Idioma do sistema em inglês",
-            "Instagram em inglês: Configurações → Idioma → English",
-            "TikTok em inglês: Perfil → Configurações → Conteúdo e Atividade → Idioma",
-            "YouTube em inglês: Configurações → Geral → Idioma",
-            "Teclado em inglês: Configurações do teclado → Idioma",
-            "WhatsApp em inglês: Configurações → Idioma"
-          ],
-          learning: [
-            "Passo 1: Mude o idioma do sistema do celular",
-            "Passo 2: Configure cada app individualmente",
-            "Passo 3: Use teclado em inglês para praticar digitação",
-            "Passo 4: Mantenha por no mínimo 30 dias"
-          ]
-        },
-        {
-          id: "ambiente-auditivo",
-          title: "🎧 Ambiente auditivo",
-          description: "Crie um ambiente de imersão auditiva",
-          type: "config",
-          difficulty: "Médio",
-          duration: "20 min",
-          videos: [],
-          materials: [
-            "Podcasts em inglês como som de fundo",
-            "Vídeos do YouTube em velocidade reduzida",
-            "Músicas em inglês com letras",
-            "Audiobooks em inglês",
-            "Rádios online (Radio Garden)"
-          ],
-          learning: [
-            "Escolha conteúdo 70% compreensível",
-            "Ouça durante atividades cotidianas",
-            "Comece com 30 minutos diários",
-            "Aumente gradualmente o tempo de exposição"
-          ]
-        },
-        {
-          id: "config-anki",
-          title: "🔧 Configuração Anki para aprendizado eficiente",
-          description: "Configure o Anki passo a passo",
-          type: "tutorial",
-          difficulty: "Médio",
-          duration: "25 min",
-          videos: [
-            {
-              id: "ZfD0OL0ZluM",
-              title: "Como Configurar o ANKI para Aprender Inglês e Não Esquecer Mais (Passo a Passo)",
-              duration: "7:37",
-              channel: "Kaique Bazil",
-            },
-          ],
-          materials: [
-            "Site Oficial para Download (PC/Mac/Linux): (link: https://apps.ankiweb.net/)",
-            "App Android: (link: https://play.google.com/store/apps/details?id=com.ichi2.anki)",
-            "App iOS: (link: https://apps.apple.com/us/app/ankimobile-flashcards/id373493387)",
-            "AnkiWeb (Acesso Online): (link: https://ankiweb.net/)",
-            "Criar Conta Gratuita: (link: https://ankiweb.net/account/register)",
-            "Login na Conta: (link: https://ankiweb.net/account/login)",
-            "Decks Compartilhados: (link: https://ankiweb.net/shared/decks/)",
-            "Manual Oficial: (link: https://docs.ankiweb.net/)",
-            "Extensões Usadas: 723520343, 1436550454",
-          ],
-          learning: [
-            "Passo 1: Baixar e instalar o Anki no computador",
-            "Passo 2: Criar conta gratuita no AnkiWeb",
-            "Passo 3: Fazer login no app desktop com sua conta",
-            "Passo 4: Instalar AnkiDroid (Android) ou AnkiMobile (iOS)",
-            "Passo 5: Fazer login no app móvel para sincronizar",
-            "Passo 6: Criar seu primeiro deck de inglês",
-            "Passo 7: Adicionar cards diariamente e revisar todos os dias",
-          ],
-        },
-        {
-          id: "config-chat",
-          title: "🔧 Configuração Chat GPT",
-          description: "Configure o Chat GPT para aprendizado de inglês",
-          type: "tutorial",
-          difficulty: "Médio",
-          duration: "10 min",
-          videos: [
-            {
-              id: "RezD4X6GxDE",
-              title: "Como Configurar o Chat GPT para Aprender Inglês",
-              duration: "10:07",
-              channel: "Kaique Bazil",
-            },
-          ],
-          materials: [
-            "Criar Conta OpenAI: (link: https://chat.openai.com/auth/register)",
-            "Configurações de Perfil: Acessar configurações → Personalização",
-          ],
-          learning: [
-            "Passo 1: Criar conta gratuita no ChatGPT",
-            "Passo 2: Acessar configurações de perfil",
-            "Passo 3: Personalizar preferências de idioma",
-          ]
-        },
-      ],
-    },
-    {
-      id: "goals",
-      title: "Definição de metas e objetivos pessoais",
-      icon: "bullseye",
-      contents: [
-        {
-          id: "metas-smart",
-          title: "🎯 Metas SMART para Inglês",
-          description: "Como definir metas inteligentes e realizáveis",
-          type: "conceptual",
-          difficulty: "Fácil",
-          duration: "10 min",
-          videos: [
-            {
-              id: "NkRbxN5v0VQ",
-              title: 'Destrave sua FALA no INGLÊS: O guia prático para parar de "congelar"',
-              duration: "7:30",
-              channel: "Kaique Bazil",
-            },
-          ],
-          materials: [
-            "Template de Metas SMART para Inglês",
-            "Planilha de Acompanhamento Semanal",
-            "Checklist de Progresso Mensal",
-            "Exemplos de Metas Realistas"
-          ],
-          learning: [
-            "S - Específico: 'Quero pedir comida em inglês'",
-            "M - Mensurável: 'Quero praticar 30 minutos por dia'",
-            "A - Alcançável: 'Meta compatível com minha rotina'",
-            "R - Relevante: 'Para minha viagem em 3 meses'",
-            "T - Temporal: 'Em 30 dias quero conseguir...'"
-          ]
-        },
-        {
-          id: "metas-conversacionais",
-          title: "💬 Metas Conversacionais",
-          description: "Foque em metas de comunicação, não de perfeição",
-          type: "conceptual",
-          difficulty: "Fácil",
-          duration: "10 min",
-          videos: [],
-          materials: [
-            "Lista de 20 Situações Conversacionais",
-            "Diálogos Básicos para Prática",
-            "Scripts para Situações Comuns",
-            "Checklist de Competências Conversacionais"
-          ],
-          learning: [
-            "Meta 1: Cumprimentar e se apresentar",
-            "Meta 2: Pedir informação na rua",
-            "Meta 3: Fazer pedidos em restaurantes",
-            "Meta 4: Conversar sobre hobbies",
-            "Meta 5: Falar sobre trabalho/estudos"
-          ]
-        },
-        {
-          id: "sistema-acompanhamento",
-          title: "📊 Sistema de Acompanhamento",
-          description: "Como monitorar seu progresso efetivamente",
-          type: "practical",
-          difficulty: "Fácil",
-          duration: "15 min",
-          videos: [],
-          materials: [
-            "Template de Diário de Estudos (Notion)",
-            "Planilha de Progresso (Google Sheets)",
-            "App de Hábitos (Habitica, HabitNow)",
-            "Calendário de Estudos"
-          ],
-          learning: [
-            "Escolha uma ferramenta de acompanhamento",
-            "Defina indicadores de progresso",
-            "Estabeleça checkpoints semanais",
-            "Revise e ajuste metas mensalmente",
-            "Celebre pequenas conquistas"
-          ]
-        }
-      ]
-    },
-    {
-      id: "plan",
-      title: "Introdução ao plano de estudos",
-      icon: "calendar",
-      contents: [
-        {
-          id: "visao-geral",
-          title: "🗺️ Visão Geral do Plano",
-          description: "Entenda a estrutura dos 6 meses",
-          type: "overview",
-          difficulty: "Fácil",
-          duration: "10 min",
-          videos: [],
-          materials: [
-            "Mapa Mental dos 6 Meses",
-            "Linha do Tempo de Aprendizado",
-            "Checklist de Competências por Mês",
-            "Calendário de Marcos Importantes"
-          ],
-          learning: [
-            "Mês 1: Sobrevivência Conversacional",
-            "Mês 2: Vida Cotidiana",
-            "Mês 3: Passado e Experiências",
-            "Mês 4: Opiniões e Sentimentos",
-            "Mês 5: Tópicos Complexos",
-            "Mês 6: Fluência Natural"
-          ]
-        },
-        {
-          id: "rotina-ideal",
-          title: "⏰ Rotina de Estudos Ideal",
-          description: "Como organizar seu tempo eficientemente",
-          type: "practical",
-          difficulty: "Médio",
-          duration: "15 min",
-          videos: [],
-          materials: [
-            "Template de Agenda Semanal",
-            "Blocos de Tempo Recomendados",
-            "Checklist de Atividades Diárias",
-            "Exemplos de Rotinas de Alunos"
-          ],
-          learning: [
-            "Bloco 1: Input (30 min) - Podcasts/Vídeos",
-            "Bloco 2: Ativo (30 min) - Anki/Exercícios",
-            "Bloco 3: Output (30 min) - Fala/Escrita",
-            "Bloco 4: Imersão (60 min) - Conteúdo Nativo",
-            "Total: 2.5 horas diárias"
-          ]
-        },
-        {
-          id: "ferramentas-plano",
-          title: "🛠️ Ferramentas do Plano",
-          description: "Recursos essenciais para cada fase",
-          type: "resources",
-          difficulty: "Fácil",
-          duration: "10 min",
-          videos: [],
-          materials: [
-            "Lista de Apps por Competência",
-            "Playlists Organizadas por Mês",
-            "Decks Anki para Cada Fase",
-            "Canais YouTube Recomendados"
-          ],
-          learning: [
-            "Mês 1: Apps de Frases, Tradutor",
-            "Mês 2: HelloTalk, Tandem",
-            "Mês 3: ChatGPT para diálogos",
-            "Mês 4: Elsa Speak para pronúncia",
-            "Mês 5: Language Reactor",
-            "Mês 6: Conteúdo nativo variado"
-          ]
-        }
-      ]
-    },
-    {
-      id: "tools",
-      title: "Configuração de ferramentas e recursos",
-      icon: "tools",
-      contents: [
-        {
-          id: "chatgpt-config",
-          title: "🤖 Configuração do ChatGPT",
-          description: "Use IA para acelerar seu aprendizado",
-          type: "tutorial",
-          difficulty: "Médio",
-          duration: "20 min",
-          videos: [],
-          materials: [
-            "Conta OpenAI: (link: https://chat.openai.com/)",
-            "Prompts Pré-definidos para Inglês",
-            "Scripts de Roleplay",
-            "Template de Correções Gramaticais"
-          ],
-          learning: [
-            "Prompt 1: 'Atue como um professor de inglês...'",
-            "Prompt 2: 'Corrija este texto mantendo o significado...'",
-            "Prompt 3: 'Crie um diálogo sobre [tema]...'",
-            "Prompt 4: 'Explique esta expressão idiomática...'",
-            "Prompt 5: 'Dê sinônimos para [palavra]...'"
-          ]
-        },
-        {
-          id: "youtube-config",
-          title: "📺 YouTube para Aprendizado",
-          description: "Configure o YouTube para imersão eficiente",
-          type: "config",
-          difficulty: "Fácil",
-          duration: "15 min",
-          videos: [],
-          materials: [
-            "Extensão Language Reactor: (link: https://www.languagereactor.com/)",
-            "Extensão Video Speed Controller",
-            "Playlists Salvas: Inglês Fácil, TED-Ed",
-            "Canais Inscritos: BBC, Vox, Kurzgesagt"
-          ],
-          learning: [
-            "Passo 1: Instalar Language Reactor",
-            "Passo 2: Criar conta gratuita",
-            "Passo 3: Configurar legendas duplas",
-            "Passo 4: Criar playlist de estudos",
-            "Passo 5: Ativar notificações de canais"
-          ]
-        },
-        {
-          id: "notion-config",
-          title: "📒 Configuração do Notion",
-          description: "Organize seus estudos em um só lugar",
-          type: "tutorial",
-          difficulty: "Médio",
-          duration: "25 min",
-          videos: [],
-          materials: [
-            "Conta Notion: (link: https://www.notion.so/)",
-            "Template de Estudos de Inglês",
-            "Database de Vocabulário",
-            "Calendário de Revisão Espaçada"
-          ],
-          learning: [
-            "Criar database para vocabulário",
-            "Configurar templates de anotações",
-            "Criar calendário de estudos",
-            "Sincronizar com app móvel",
-            "Integrar com outras ferramentas"
-          ]
-        }
-      ]
+      id: "LLZ3xU6tESo",
+      title: "COMO FAZER IMERSÃO | Técnica de Imersão no Inglês para quem NÃO TEM TEMPO (Modo Difuso)",
+      duration: "7:53", // Aproximado
+      channel: "Kaique Bazil",
     }
   ],
-  tips: [
-    "Dedique 1-2 horas para configurar tudo corretamente antes de começar",
-    "Faça um print das suas metas e coloque como wallpaper do celular",
-    "Teste todas as ferramentas para garantir que funcionam",
-    "Compartilhe suas metas com alguém para ter accountability",
-    "Configure lembretes diários no seu calendário",
-  ]
+  materials: [
+    "Livro: Hábitos Atômicos - James Clear (link: https://www.amazon.com.br/Hábitos-Atômicos-James-Clear/dp/8550807563/)",
+    "App: TV Garden (link: https://tv.garden/)",
+    "App: Radio Garden (link: https://radio.garden/)",
+    "Dica: Configurar celular e apps em inglês para imersão passiva.",
+  ],
+  learning: [
+    "O que é o Modo Difuso: Contato com o inglês sem a pressão de entender tudo.",
+    "Gestão de Tempo: Acumule até 2 horas de imersão diária usando intervalos de 15 minutos ('tempo morto').",
+    "Criação de Hábitos: Use 'deixas' (gatilhos) para automatizar seus estudos (ex: 'depois do café, 15 min de rádio').",
+    "Ferramentas: Utilize TV Garden e Radio Garden para ouvir inglês de qualquer lugar.",
+    "Dica Prática: Mude o idioma do celular e apps para inglês.",
+  ],
 },
+// Dentro do array contents do objeto com id "week-0", adicione este novo objeto após o conteúdo do Modo Difuso:
 
+{
+  id: "modo-focado-imersao",
+  title: "🎯 Técnica de Imersão (Modo Focado)",
+  description: "Aprenda a fazer imersão ativa e concentrada para acelerar seu aprendizado",
+  type: "tutorial",
+  difficulty: "Essencial",
+  duration: "8-10 min",
+  videos: [
+    {
+      id: "cswbKngQSgU",
+      title: "COMO FAZER IMERSÃO NO INGLÊS do jeito certo (Modo Focado)",
+      duration: "8:00", // Duração aproximada
+      channel: "Kaique Bazil",
+    }
+  ],
+  materials: [
+    "Material de apoio para anotações durante o modo focado",
+    "Fones de ouvido para melhor concentração",
+    "Transcrições ou legendas (quando disponíveis)",
+    "App Language Reactor para legendas duplas: (link: https://www.languagereactor.com/)",
+    "Dica: Use timer Pomodoro (25 min foco / 5 min pausa)",
+  ],
+  learning: [
+    "O que é o Modo Focado: Estudo ativo e concentrado sem distrações.",
+    "Diferença entre Modo Focado x Modo Difuso: Quando usar cada um.",
+    "Técnicas para manter a concentração durante a imersão ativa.",
+    "Como usar legendas de forma estratégica no modo focado.",
+    "Prática de shadowing (repetição em voz alta) para melhorar pronúncia.",
+    "Anotação de vocabulário novo e expressões durante o estudo.",
+    "Como combinar Modo Focado (manhã) e Modo Difuso (ao longo do dia).",
+  ],
+},
+      {
+        id: "config-anki",
+        title: "🔧 Configuração Anki para aprendizado eficiente",
+        description: "Configure o Anki passo a passo",
+        type: "tutorial",
+        difficulty: "essencial",
+        duration: "25 min",
+        videos: [
+          {
+            id: "ZfD0OL0ZluM",
+            title: "Como Configurar o ANKI para Aprender Inglês e Não Esquecer Mais (Passo a Passo)",
+            duration: "7:37",
+            channel: "Kaique Bazil",
+          },
+        ],
+        materials: [
+          "Site Oficial para Download (PC/Mac/Linux): (link: https://apps.ankiweb.net/)",
+          "App Android: (link: https://play.google.com/store/apps/details?id=com.ichi2.anki)",
+          "App iOS: (link: https://apps.apple.com/us/app/ankimobile-flashcards/id373493387)",
+          "AnkiWeb (Acesso Online): (link: https://ankiweb.net/)",
+          "Criar Conta Gratuita: (link: https://ankiweb.net/account/register)",
+          "Login na Conta: (link: https://ankiweb.net/account/login)",
+          "Decks Compartilhados: (link: https://ankiweb.net/shared/decks/)",
+          "Manual Oficial: (link: https://docs.ankiweb.net/)",
+          "Extensões Usadas: 723520343, 1436550454",
+        ],
+        learning: [
+          "Passo 1: Baixar e instalar o Anki no computador",
+          "Passo 2: Criar conta gratuita no AnkiWeb",
+          "Passo 3: Fazer login no app desktop com sua conta",
+          "Passo 4: Instalar AnkiDroid (Android) ou AnkiMobile (iOS)",
+          "Passo 5: Fazer login no app móvel para sincronizar",
+          "Passo 6: Criar seu primeiro deck de inglês",
+          "Passo 7: Adicionar cards diariamente e revisar todos os dias",
+        ],
+      },
+      {
+        id: "notion-config-ingles",
+        title: "📝 Configuração do Notion para Aprender Inglês",
+        description: "Organize seu vocabulário e frases de alta frequência",
+        type: "tutorial",
+        difficulty: "Recomendado",
+        duration: "2 min",
+        videos: [
+          {
+            id: "POPROUlBUCw",
+            title: "COMO USAR O NOTION PARA APRENDER INGLÊS",
+            duration: "02:11",
+            channel: "Kaique Bazil",
+          },
+        ],
+        materials: [
+          "Conta Notion: (link: https://www.notion.so/)",
+          "Aplicativo Notion (Desktop ou Mobile)",
+          "Projeto Fluência Conversacional (Recursos Adicionais)",
+          "Lista de Frases de Alta Frequência",
+        ],
+        learning: [
+          "Criar página para Roleplays e Vida Real",
+          "Separar conteúdo por categorias (Pessoal, Escola, Trabalho)",
+          "Estruturar frases com inglês seguido de tradução",
+          "Criar página de palavras esquecidas com frequência",
+          "Desenvolver repertório e tendências linguísticas",
+        ],
+      },
+      {
+        id: "chatgpt-ingles-config",
+        title: "🤖 Configuração do ChatGPT para Aprender Inglês",
+        description: "Estratégias para usar IA como tutor pessoal",
+        type: "tutorial",
+        difficulty: "Recomendado",
+        duration: "10 min",
+        videos: [
+          {
+            id: "RezD4X6GxDE",
+            title: "COMO APRENDER INGLÊS COM CHATGPT",
+            duration: "10:23",
+            channel: "Kaique Bazil",
+          },
+        ],
+        materials: [
+          "Conta no ChatGPT (Web ou Mobile)",
+          "Teste de Nivelamento",
+          "Anki (para repetição espaçada)",
+          "Notion (para registro de Roleplays)",
+        ],
+        learning: [
+          "Configurar Instruções Personalizadas",
+          "Criar chat para depósito de frases naturais",
+          "Desenvolver Roleplays baseados na vida real",
+          "Praticar com o método Rapid Fire (Perguntas Rápidas)",
+          "Integrar frases do ChatGPT com Anki e Notion",
+          "instrucoes pessoais: Estou aprendendo inglês (nível intermediário/básico). Quero que você seja meu mentor nesta jornada. Fale sempre em inglês (se nível intermediário) de forma simples e fácil de entender. Tudo que eu enviar, mande a tradução em inglês logo abaixo.",
+          "deposito de frases: Neste chat eu vou enviar frases a você em português e quero que você me traga a forma que é falada de forma natural em inglês, sempre com diversas variações e exemplos.",
+          "criacao_roleplays: Este chat é para criação de roleplays personalizados baseados na minha vida real. Para cada assunto, traga as formas e variações de falar. As falas precisam ser em inglês com a tradução ao lado.",
+          "rapid_fire: Quero criar um Rapid Fire com você de perguntas e respostas, onde você me faz perguntas e eu respondo da forma mais seca, rápida e direta possível em inglês.",
+        ],
+      },
+    ],
+    tips: [
+      "Dedique 1-2 horas para configurar tudo corretamente antes de começar",
+      "Faça um print das suas metas e coloque como wallpaper do celular",
+      "Teste todas as ferramentas para garantir que funcionam",
+      "Compartilhe suas metas com alguém para ter accountability",
+      "Configure lembretes diários no seu calendário",
+    ],
+  },
   {
     id: "my-videos",
     title: "🎥 Meus Vídeos Recomendados",

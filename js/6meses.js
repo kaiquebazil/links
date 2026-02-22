@@ -47,13 +47,12 @@ document.addEventListener("DOMContentLoaded", function () {
   let completedContents =
     JSON.parse(localStorage.getItem("completedContents")) || [];
 
-  // ========== FUNÇÕES DA SEMANA 0 ==========
+  // ========== FUNÇÕES DA SEMANA 0 COM TOGGLE ÚNICO ==========
 
   // Inicializar progresso da Semana 0
   function initializeWeekZeroProgress() {
     if (!localStorage.getItem('week0Progress')) {
       const initialProgress = {
-        completedSections: [],
         completedContents: [],
         startDate: new Date().toISOString(),
         lastAccessed: new Date().toISOString()
@@ -79,7 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Criar card de conteúdo da Semana 0
   function createWeekZeroContentCard(content) {
     const progress = JSON.parse(localStorage.getItem('week0Progress')) || {
-      completedSections: [],
       completedContents: []
     };
     const isCompleted = progress.completedContents?.includes(content.id);
@@ -187,18 +185,24 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
   }
 
-  // Renderizar a Semana 0 no estilo timeline
-  function renderWeekZeroTimeline(data) {
+  // Renderizar a Semana 0 com toggle único
+  function renderWeekZeroSimple(data) {
     const progress = JSON.parse(localStorage.getItem('week0Progress')) || { 
-      completedSections: [],
       completedContents: []
     };
+    
+    const totalContents = data.contents?.length || 0;
+    const completedCount = data.contents?.filter(content => 
+      progress.completedContents?.includes(content.id)
+    ).length || 0;
     
     return `
       <div class="timeline-item week-zero-item" id="week-zero-timeline">
         <div class="week-zero-header">
           <div style="flex: 1;">
-            <h3 class="week-zero-title">${data.title}</h3>
+            <h3 class="week-zero-title">
+              <i class="fas fa-${data.icon || 'tools'}"></i> ${data.title}
+            </h3>
           </div>
           <button class="toggle-week-btn" id="toggle-week-zero-btn">
             <i class="fas fa-chevron-down"></i>
@@ -206,61 +210,59 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
         
         <div class="week-zero-content" id="week-zero-content">
-          ${data.sections ? data.sections.map((section, sectionIndex) => {
-            const isSectionCompleted = progress.completedSections.includes(section.id);
-            const sectionContentsCompleted = section.contents 
-              ? section.contents.filter(content => progress.completedContents?.includes(content.id)).length 
-              : 0;
-            const sectionTotalContents = section.contents ? section.contents.length : 0;
+          <div class="week-zero-section" style="padding: 10px;">
+            <!-- GRADE DE CONTEÚDOS -->
+            <div class="section-contents-grid">
+              ${data.contents && data.contents.length > 0 
+                ? data.contents.map(content => createWeekZeroContentCard(content)).join('')
+                : '<p class="no-content">Nenhum conteúdo disponível</p>'
+              }
+            </div>
             
-            return `
-              <div class="week-zero-section ${isSectionCompleted ? 'completed' : ''}" 
-                   style="border-left-color: ${isSectionCompleted ? 'var(--accent-green)' : '#667eea'};">
-                <div class="section-header-mini" onclick="toggleWeekZeroSection('${section.id}')">
-                  <div class="section-icon-mini" style="color: ${isSectionCompleted ? 'var(--accent-green)' : '#667eea'};">
-                    <i class="fas fa-${section.icon}"></i>
-                  </div>
-                  <div style="flex: 1;">
-                    <h4 class="section-title-mini">${section.title}</h4>
-                    ${section.contents ? `
-                      <div class="section-progress">
-                        <span>${sectionContentsCompleted}/${sectionTotalContents} conteúdos</span>
-                      </div>
-                    ` : ''}
-                  </div>
-                  <span class="section-toggle">
-                    <i class="fas fa-chevron-down"></i>
-                  </span>
+            <!-- DICAS -->
+            ${data.tips && data.tips.length > 0 ? `
+              <div class="week-zero-tips">
+                <div class="tips-header">
+                  <i class="fas fa-lightbulb"></i>
+                  <h4>Dicas para Configuração</h4>
                 </div>
-                
-                <div class="section-content" id="section-${section.id}">
-                  <!-- CONTEÚDOS DA SEÇÃO -->
-                  ${section.contents && section.contents.length > 0 ? `
-                    <div class="section-contents-grid">
-                      ${section.contents.map(content => createWeekZeroContentCard(content)).join('')}
+                <div class="tips-list-timeline">
+                  ${data.tips.map(tip => `
+                    <div class="tip-item-timeline">
+                      <i class="fas fa-check"></i>
+                      <span>${tip}</span>
                     </div>
-                  ` : '<p class="no-content">Nenhum conteúdo disponível</p>'}
-                  
-                  <!-- BOTÃO PARA MARCAR SEÇÃO COMO CONCLUÍDA -->
-                  ${section.contents && section.contents.length > 0 ? `
-                    <div class="section-actions">
-                      <button class="complete-section-btn ${isSectionCompleted ? 'completed' : ''}" 
-                              onclick="completeWeekZeroSection('${section.id}')">
-                        <i class="fas ${isSectionCompleted ? 'fa-check-double' : 'fa-check'}"></i>
-                        <span>${isSectionCompleted ? 'Seção Concluída' : 'Concluir Seção'}</span>
-                      </button>
-                    </div>
-                  ` : ''}
+                  `).join('')}
                 </div>
               </div>
-            `;
-          }).join('') : '<p style="text-align: center; color: var(--text-secondary); padding: 20px;">Nenhuma seção disponível</p>'}
+            ` : ''}
+          </div>
         </div>
       </div>
     `;
   }
 
-  // Funções auxiliares da Semana 0 (adicionadas ao window para acesso global)
+  // Renderizar a Semana 0 como primeiro item
+  function renderWeekZeroFirst() {
+    const weekZeroData = complementaryMaterials.find(item => item.id === 'week-0');
+    
+    if (!weekZeroData) return;
+    
+    const weekZeroSection = document.createElement('div');
+    weekZeroSection.className = 'week-zero-first-section';
+    weekZeroSection.innerHTML = renderWeekZeroSimple(weekZeroData);
+    
+    monthsContainer.parentNode.insertBefore(weekZeroSection, monthsContainer);
+    
+    setTimeout(() => {
+      const toggleBtn = document.getElementById('toggle-week-zero-btn');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', toggleWeekZeroContentGlobal);
+      }
+    }, 100);
+  }
+
+  // Funções globais da Semana 0
   window.toggleWeekZeroContent = function(contentId) {
     const contentBody = document.getElementById(`content-body-${contentId}`);
     const toggleIcon = document.querySelector(`#content-${contentId} .content-card-toggle i`);
@@ -273,68 +275,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  window.toggleWeekZeroSection = function(sectionId) {
-    const section = document.getElementById(`section-${sectionId}`);
-    if (section) {
-      section.classList.toggle('active');
-      
-      // Atualizar ícone da seta
-      const toggleIcon = section.parentElement.querySelector('.section-header-mini .section-toggle i');
-      if (toggleIcon) {
-        toggleIcon.className = section.classList.contains('active')
-          ? 'fas fa-chevron-up'
-          : 'fas fa-chevron-down';
-      }
-    }
-  };
-
-  window.markWeekZeroSection = function(sectionId, sectionIndex) {
-    const progress = JSON.parse(localStorage.getItem('week0Progress')) || {
-      completedSections: [],
-      completedContents: []
-    };
-    
-    if (!progress.completedSections.includes(sectionId)) {
-      progress.completedSections.push(sectionId);
-      progress.lastAccessed = new Date().toISOString();
-      localStorage.setItem('week0Progress', JSON.stringify(progress));
-      
-      // Atualizar interface
-      const sectionElement = document.querySelector(`#section-${sectionId}`)?.parentElement;
-      if (sectionElement) {
-        sectionElement.style.borderLeftColor = 'var(--accent-green)';
-        
-        const icon = sectionElement.querySelector('.section-icon-mini');
-        if (icon) icon.style.color = 'var(--accent-green)';
-        
-        const button = sectionElement.querySelector('.mark-section-btn');
-        if (button) {
-          button.innerHTML = '<i class="fas fa-check-double"></i><span>Seção Concluída</span>';
-          button.style.background = 'var(--accent-green)';
-        }
-        
-        // Adicionar badge de concluído
-        const headerContent = sectionElement.querySelector('.section-header-mini > div:nth-child(2)');
-        if (headerContent && !headerContent.querySelector('.completed-badge')) {
-          const completedBadge = document.createElement('div');
-          completedBadge.className = 'completed-badge';
-          completedBadge.style.cssText = 'display: inline-flex; align-items: center; gap: 5px; background: rgba(59, 185, 80, 0.1); color: var(--accent-green); padding: 3px 8px; border-radius: 12px; font-size: 11px; font-weight: 500; margin-top: 5px;';
-          completedBadge.innerHTML = '<i class="fas fa-check-circle"></i><span>Concluído</span>';
-          headerContent.appendChild(completedBadge);
-        }
-      }
-      
-      // Atualizar progresso
-      updateWeekZeroProgress();
-      
-      // Feedback visual
-      showCompletionToast(`Seção ${sectionIndex + 1} concluída!`);
-    }
-  };
-
   window.completeWeekZeroContent = function(contentId) {
     let progress = JSON.parse(localStorage.getItem('week0Progress')) || {
-      completedSections: [],
       completedContents: []
     };
     
@@ -354,108 +296,28 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
       
-      // Atualizar contagem da seção
-      updateWeekZeroSectionProgress();
+      // Atualizar badge de progresso
+      updateWeekZeroProgressBadge();
       
       showCompletionToast('Conteúdo concluído!');
     }
   };
 
-  window.completeWeekZeroSection = function(sectionId) {
-    let progress = JSON.parse(localStorage.getItem('week0Progress')) || {
-      completedSections: [],
+  function updateWeekZeroProgressBadge() {
+    const progress = JSON.parse(localStorage.getItem('week0Progress')) || {
       completedContents: []
     };
+    const weekZeroData = complementaryMaterials.find(item => item.id === 'week-0');
     
-    if (!progress.completedSections.includes(sectionId)) {
-      progress.completedSections.push(sectionId);
-      localStorage.setItem('week0Progress', JSON.stringify(progress));
-      
-      // Atualizar interface
-      const section = document.querySelector(`#section-${sectionId}`)?.parentElement;
-      if (section) {
-        section.classList.add('completed');
-        
-        const completeBtn = section.querySelector('.complete-section-btn');
-        if (completeBtn) {
-          completeBtn.innerHTML = '<i class="fas fa-check-double"></i><span>Seção Concluída</span>';
-          completeBtn.classList.add('completed');
-        }
-      }
-      
-      showCompletionToast('Seção concluída!');
+    if (!weekZeroData || !weekZeroData.contents) return;
+    
+    const totalContents = weekZeroData.contents.length;
+    const completedCount = progress.completedContents.length;
+    
+    const badge = document.querySelector('.week-zero-badge span');
+    if (badge) {
+      badge.textContent = `${completedCount}/${totalContents} conteúdos configurados`;
     }
-  };
-
-  function updateWeekZeroProgress() {
-    const progress = JSON.parse(localStorage.getItem('week0Progress')) || { completedSections: [], completedContents: [] };
-    const weekZeroData = complementaryMaterials.find(item => item.id === 'week-0');
-    const completedCount = progress.completedSections.length;
-    const totalSections = weekZeroData?.sections?.length || 0;
-    const progressPercent = totalSections > 0 ? (completedCount / totalSections) * 100 : 0;
-    
-    // Atualizar barra de progresso se existir
-    const progressFill = document.querySelector('.progress-fill-week');
-    const progressLabel = document.querySelector('.progress-label span:last-child');
-    const progressStats = document.querySelector('.progress-stats span:last-child');
-    
-    if (progressFill) progressFill.style.width = `${progressPercent}%`;
-    if (progressLabel) progressLabel.textContent = `${completedCount}/${totalSections}`;
-    if (progressStats) progressStats.textContent = `${progressPercent.toFixed(0)}% concluído`;
-  }
-
-  function updateWeekZeroSectionProgress() {
-    const progress = JSON.parse(localStorage.getItem('week0Progress')) || {
-      completedSections: [],
-      completedContents: []
-    };
-    const weekZeroData = complementaryMaterials.find(item => item.id === 'week-0');
-    
-    if (!weekZeroData || !weekZeroData.sections) return;
-    
-    weekZeroData.sections.forEach(section => {
-      if (section.contents) {
-        const completedCount = section.contents
-          .filter(content => progress.completedContents.includes(content.id))
-          .length;
-        
-        const progressElement = document.querySelector(`#section-${section.id} .section-progress span`);
-        if (progressElement) {
-          progressElement.textContent = `${completedCount}/${section.contents.length} conteúdos`;
-        }
-      }
-    });
-  }
-
-  function checkCompletedWeekZeroContents() {
-    const progress = JSON.parse(localStorage.getItem('week0Progress')) || {
-      completedSections: [],
-      completedContents: []
-    };
-    
-    progress.completedContents.forEach(contentId => {
-      const contentCard = document.getElementById(`content-${contentId}`);
-      if (contentCard) {
-        contentCard.classList.add('completed');
-        const completeBtn = contentCard.querySelector('.complete-content-btn');
-        if (completeBtn) {
-          completeBtn.innerHTML = '<i class="fas fa-check-double"></i><span>Concluído!</span>';
-          completeBtn.classList.add('completed');
-        }
-      }
-    });
-    
-    progress.completedSections.forEach(sectionId => {
-      const section = document.querySelector(`#section-${sectionId}`)?.parentElement;
-      if (section) {
-        section.classList.add('completed');
-        const completeBtn = section.querySelector('.complete-section-btn');
-        if (completeBtn) {
-          completeBtn.innerHTML = '<i class="fas fa-check-double"></i><span>Seção Concluída</span>';
-          completeBtn.classList.add('completed');
-        }
-      }
-    });
   }
 
   window.toggleWeekZeroContentGlobal = function() {
@@ -507,28 +369,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 3000);
   }
 
-  // ========== FUNÇÃO PARA RENDERIZAR A SEMANA 0 COMO PRIMEIRO ITEM ==========
-  function renderWeekZeroFirst() {
-    const weekZeroData = complementaryMaterials.find(item => item.id === 'week-0');
+  function checkCompletedWeekZeroContents() {
+    const progress = JSON.parse(localStorage.getItem('week0Progress')) || {
+      completedContents: []
+    };
     
-    if (!weekZeroData) return;
-    
-    const weekZeroSection = document.createElement('div');
-    weekZeroSection.className = 'week-zero-first-section';
-    weekZeroSection.innerHTML = `
-      <div>
-        ${renderWeekZeroTimeline(weekZeroData)}
-      </div>
-    `;
-    
-    monthsContainer.parentNode.insertBefore(weekZeroSection, monthsContainer);
-    
-    setTimeout(() => {
-      const toggleBtn = document.getElementById('toggle-week-zero-btn');
-      if (toggleBtn) {
-        toggleBtn.addEventListener('click', window.toggleWeekZeroContentGlobal);
+    progress.completedContents.forEach(contentId => {
+      const contentCard = document.getElementById(`content-${contentId}`);
+      if (contentCard) {
+        contentCard.classList.add('completed');
+        const completeBtn = contentCard.querySelector('.complete-content-btn');
+        if (completeBtn) {
+          completeBtn.innerHTML = '<i class="fas fa-check-double"></i><span>Concluído!</span>';
+          completeBtn.classList.add('completed');
+        }
       }
-    }, 100);
+    });
   }
 
   // Atualizar data e dia
@@ -538,7 +394,7 @@ document.addEventListener("DOMContentLoaded", function () {
     currentDateElement.textContent = `${day} de ${month} de ${year}`;
   }
 
-  // ========== SISTEMA DE TOGGLE ÚNICO ==========
+  // ========== SISTEMA DE TOGGLE ÚNICO PARA CONTEÚDOS ADICIONAIS ==========
   let currentlyOpenCard = null;
 
   function closeAllCards() {
@@ -578,7 +434,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // js/6meses.js - Função renderComplementaryMaterials COMPLETA
+  // Renderizar Conteúdos Adicionais
   function renderComplementaryMaterials() {
     // Filtrar para não incluir a Semana 0 nos conteúdos adicionais
     const otherMaterials = complementaryMaterials.filter(item => item.id !== 'week-0');
@@ -1427,224 +1283,223 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     </div>
   `;
-      }// Adicione este case após os outros tipos (após 'podcasts' case)
-else if (material.type === "assessment") {
-  cardBodyHTML = `
-  <div class="complementary-card-body">
-    <div class="assessment-container">
-      <!-- Introdução -->
-      <div class="assessment-intro">
-        <h4><i class="fas fa-chart-line"></i> Comece pelo Nível Certo</h4>
-        <p>Antes de começar seu estudo, é essencial saber <strong>exatamente onde você está</strong> e <strong>quais palavras priorizar</strong> para ter o máximo de progresso no menor tempo.</p>
-      </div>
-      
-      <!-- Testes de Nivelamento -->
-      <div class="complementary-section">
-        <div class="complementary-section-title">
-          <i class="fas fa-clipboard-check"></i>
-          <span>Testes de Nivelamento</span>
-        </div>
-        
-        <div class="tests-grid">
-          ${material.sections[0].items
-            .map(
-              (test, index) => `
-            <div class="test-card">
-              <div class="test-icon">
-                <i class="fas fa-${test.icon}"></i>
-              </div>
-              <div class="test-content">
-                <h5>${test.name}</h5>
-                <p class="test-desc">${test.description}</p>
-                <div class="test-meta">
-                  <span class="duration-badge">
-                    <i class="fas fa-clock"></i> ${test.duration}
-                  </span>
-                  <span class="bestfor-badge">
-                    <i class="fas fa-bullseye"></i> ${test.bestFor}
-                  </span>
-                </div>
-              </div>
-              <div class="test-action">
-                <a href="${test.link}" target="_blank" class="test-btn">
-                  <i class="fas fa-external-link-alt"></i> Fazer Teste
-                </a>
-              </div>
+      } else if (material.type === "assessment") {
+        cardBodyHTML = `
+        <div class="complementary-card-body">
+          <div class="assessment-container">
+            <!-- Introdução -->
+            <div class="assessment-intro">
+              <h4><i class="fas fa-chart-line"></i> Comece pelo Nível Certo</h4>
+              <p>Antes de começar seu estudo, é essencial saber <strong>exatamente onde você está</strong> e <strong>quais palavras priorizar</strong> para ter o máximo de progresso no menor tempo.</p>
             </div>
-          `
-            )
-            .join("")}
-        </div>
-        
-        <div class="test-tips">
-          <p><i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Faça 2 testes diferentes para ter uma média precisa do seu nível.</p>
-        </div>
-      </div>
-      
-      <!-- Níveis de Proficiência -->
-      <div class="complementary-section">
-        <div class="complementary-section-title">
-          <i class="fas fa-layer-group"></i>
-          <span>Entenda Seus Resultados</span>
-        </div>
-        
-        <div class="levels-grid">
-          ${material.sections[1].levels
-            .map(
-              (level) => `
-            <div class="level-card-assessment">
-              <div class="level-header-assessment">
-                <h5>${level.level}</h5>
-                <span class="words-count">${level.words}</span>
+            
+            <!-- Testes de Nivelamento -->
+            <div class="complementary-section">
+              <div class="complementary-section-title">
+                <i class="fas fa-clipboard-check"></i>
+                <span>Testes de Nivelamento</span>
               </div>
-              <div class="level-body-assessment">
-                <p><strong>Consegue:</strong> ${level.description}</p>
-                <p><strong>Ação Recomendada:</strong> ${level.action}</p>
-              </div>
-            </div>
-          `
-            )
-            .join("")}
-        </div>
-      </div>
-      
-      <!-- Vocabulário de Alta Frequência -->
-      <div class="complementary-section">
-        <div class="complementary-section-title">
-          <i class="fas fa-star"></i>
-          <span>Vocabulário de Alta Frequência</span>
-        </div>
-        
-        <div class="vocab-intro">
-          <p>Estas palavras cobrem <strong>80% das conversas diárias</strong>. Aprenda-as primeiro para maior retorno sobre investimento de tempo.</p>
-        </div>
-        
-        <div class="vocab-lists">
-          ${material.sections[2].wordLists
-            .map(
-              (list) => `
-            <div class="vocab-list-card">
-              <div class="vocab-list-header">
-                <h5>${list.name}</h5>
-                <p class="vocab-list-desc">${list.description}</p>
-              </div>
-              <div class="vocab-words">
-                ${list.words
+              
+              <div class="tests-grid">
+                ${material.sections[0].items
                   .map(
-                    (word, idx) => `
-                  <span class="vocab-word">${word}</span>
+                    (test, index) => `
+                  <div class="test-card">
+                    <div class="test-icon">
+                      <i class="fas fa-${test.icon}"></i>
+                    </div>
+                    <div class="test-content">
+                      <h5>${test.name}</h5>
+                      <p class="test-desc">${test.description}</p>
+                      <div class="test-meta">
+                        <span class="duration-badge">
+                          <i class="fas fa-clock"></i> ${test.duration}
+                        </span>
+                        <span class="bestfor-badge">
+                          <i class="fas fa-bullseye"></i> ${test.bestFor}
+                        </span>
+                      </div>
+                    </div>
+                    <div class="test-action">
+                      <a href="${test.link}" target="_blank" class="test-btn">
+                        <i class="fas fa-external-link-alt"></i> Fazer Teste
+                      </a>
+                    </div>
+                  </div>
                 `
                   )
                   .join("")}
               </div>
-              <div class="vocab-tip">
-                <i class="fas fa-lightbulb"></i> ${list.tip}
+              
+              <div class="test-tips">
+                <p><i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Faça 2 testes diferentes para ter uma média precisa do seu nível.</p>
               </div>
             </div>
-          `
-            )
-            .join("")}
-        </div>
-        
-        <div class="study-tips-section">
-          <h5><i class="fas fa-graduation-cap"></i> Dicas de Estudo</h5>
-          <ul class="vocab-study-tips">
-            ${material.sections[2].studyTips
-              .map((tip) => `<li>${tip}</li>`)
-              .join("")}
-          </ul>
-        </div>
-      </div>
-      
-      <!-- Métodos de Prática -->
-      <div class="complementary-section">
-        <div class="complementary-section-title">
-          <i class="fas fa-gamepad"></i>
-          <span>Como Praticar Este Vocabulário</span>
-        </div>
-        
-        <div class="methods-grid">
-          ${material.sections[3].methods
-            .map(
-              (method) => `
-            <div class="method-card">
-              <div class="method-header">
-                <h5>${method.name}</h5>
-                <p>${method.description}</p>
+            
+            <!-- Níveis de Proficiência -->
+            <div class="complementary-section">
+              <div class="complementary-section-title">
+                <i class="fas fa-layer-group"></i>
+                <span>Entenda Seus Resultados</span>
               </div>
-              <div class="method-steps">
-                <h6>Passos:</h6>
-                <ol>
-                  ${method.steps
-                    .map((step) => `<li>${step}</li>`)
+              
+              <div class="levels-grid">
+                ${material.sections[1].levels
+                  .map(
+                    (level) => `
+                  <div class="level-card-assessment">
+                    <div class="level-header-assessment">
+                      <h5>${level.level}</h5>
+                      <span class="words-count">${level.words}</span>
+                    </div>
+                    <div class="level-body-assessment">
+                      <p><strong>Consegue:</strong> ${level.description}</p>
+                      <p><strong>Ação Recomendada:</strong> ${level.action}</p>
+                    </div>
+                  </div>
+                `
+                  )
+                  .join("")}
+              </div>
+            </div>
+            
+            <!-- Vocabulário de Alta Frequência -->
+            <div class="complementary-section">
+              <div class="complementary-section-title">
+                <i class="fas fa-star"></i>
+                <span>Vocabulário de Alta Frequência</span>
+              </div>
+              
+              <div class="vocab-intro">
+                <p>Estas palavras cobrem <strong>80% das conversas diárias</strong>. Aprenda-as primeiro para maior retorno sobre investimento de tempo.</p>
+              </div>
+              
+              <div class="vocab-lists">
+                ${material.sections[2].wordLists
+                  .map(
+                    (list) => `
+                  <div class="vocab-list-card">
+                    <div class="vocab-list-header">
+                      <h5>${list.name}</h5>
+                      <p class="vocab-list-desc">${list.description}</p>
+                    </div>
+                    <div class="vocab-words">
+                      ${list.words
+                        .map(
+                          (word, idx) => `
+                        <span class="vocab-word">${word}</span>
+                      `
+                        )
+                        .join("")}
+                    </div>
+                    <div class="vocab-tip">
+                      <i class="fas fa-lightbulb"></i> ${list.tip}
+                    </div>
+                  </div>
+                `
+                  )
+                  .join("")}
+              </div>
+              
+              <div class="study-tips-section">
+                <h5><i class="fas fa-graduation-cap"></i> Dicas de Estudo</h5>
+                <ul class="vocab-study-tips">
+                  ${material.sections[2].studyTips
+                    .map((tip) => `<li>${tip}</li>`)
                     .join("")}
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Métodos de Prática -->
+            <div class="complementary-section">
+              <div class="complementary-section-title">
+                <i class="fas fa-gamepad"></i>
+                <span>Como Praticar Este Vocabulário</span>
+              </div>
+              
+              <div class="methods-grid">
+                ${material.sections[3].methods
+                  .map(
+                    (method) => `
+                  <div class="method-card">
+                    <div class="method-header">
+                      <h5>${method.name}</h5>
+                      <p>${method.description}</p>
+                    </div>
+                    <div class="method-steps">
+                      <h6>Passos:</h6>
+                      <ol>
+                        ${method.steps
+                          .map((step) => `<li>${step}</li>`)
+                          .join("")}
+                      </ol>
+                    </div>
+                  </div>
+                `
+                  )
+                  .join("")}
+              </div>
+            </div>
+            
+            <!-- Dicas Finais -->
+            <div class="assessment-footer">
+              <div class="final-tips">
+                <h5><i class="fas fa-gem"></i> Dicas Importantes</h5>
+                <ul>
+                  ${material.tips.map((tip) => `<li>${tip}</li>`).join("")}
+                </ul>
+              </div>
+              
+              <div class="next-steps">
+                <h5><i class="fas fa-arrow-right"></i> Próximos Passos</h5>
+                <p>Após fazer o teste e aprender as palavras básicas:</p>
+                <ol>
+                  <li>Volte ao seu nível no plano de estudos</li>
+                  <li>Configure seu ambiente de estudo (Semana 0)</li>
+                  <li>Comece com 30 minutos diários de prática</li>
                 </ol>
               </div>
             </div>
-          `
-            )
-            .join("")}
+          </div>
         </div>
-      </div>
-      
-      <!-- Dicas Finais -->
-      <div class="assessment-footer">
-        <div class="final-tips">
-          <h5><i class="fas fa-gem"></i> Dicas Importantes</h5>
-          <ul>
-            ${material.tips.map((tip) => `<li>${tip}</li>`).join("")}
-          </ul>
-        </div>
-        
-        <div class="next-steps">
-          <h5><i class="fas fa-arrow-right"></i> Próximos Passos</h5>
-          <p>Após fazer o teste e aprender as palavras básicas:</p>
-          <ol>
-            <li>Volte ao seu nível no plano de estudos</li>
-            <li>Configure seu ambiente de estudo (Semana 0)</li>
-            <li>Comece com 30 minutos diários de prática</li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
-`;
-}else if (material.type === "simple-links") {
-  cardBodyHTML = `
-  <div class="complementary-card-body">
-    <div class="simple-links-container">
-      ${Object.entries(material.links)
-        .map(
-          ([category, links]) => `
-        <div class="links-category">
-          <h4>${category}</h4>
-          <div class="links-list">
-            ${links
+      `;
+      } else if (material.type === "simple-links") {
+        cardBodyHTML = `
+        <div class="complementary-card-body">
+          <div class="simple-links-container">
+            ${Object.entries(material.links)
               .map(
-                (link) => `
-              <a href="${link.url}" target="_blank" class="simple-link">
-                <div class="link-content">
-                  <span class="link-name">${link.name}</span>
-                  <span class="link-desc">${link.description}</span>
+                ([category, links]) => `
+              <div class="links-category">
+                <h4>${category}</h4>
+                <div class="links-list">
+                  ${links
+                    .map(
+                      (link) => `
+                    <a href="${link.url}" target="_blank" class="simple-link">
+                      <div class="link-content">
+                        <span class="link-name">${link.name}</span>
+                        <span class="link-desc">${link.description}</span>
+                      </div>
+                      <i class="fas fa-external-link-alt"></i>
+                    </a>
+                  `
+                    )
+                    .join("")}
                 </div>
-                <i class="fas fa-external-link-alt"></i>
-              </a>
+              </div>
             `
               )
               .join("")}
+            
+            <div class="links-tips">
+              <p><strong>💡 Dica:</strong> Faça um teste para saber seu nível, depois foque no vocabulário correspondente.</p>
+            </div>
           </div>
         </div>
-      `
-        )
-        .join("")}
-      
-      <div class="links-tips">
-        <p><strong>💡 Dica:</strong> Faça um teste para saber seu nível, depois foque no vocabulário correspondente.</p>
-      </div>
-    </div>
-  </div>
-`;
-} else {
+      `;
+      } else {
         // Card padrão (fallback)
         cardBodyHTML = `
         <div class="complementary-card-body">
@@ -1672,191 +1527,6 @@ else if (material.type === "assessment") {
         );
         toggleCard(targetId, targetContent, this);
       });
-
-      // Configurar toggles de conteúdo adicional dos vídeos (se houver)
-      if (
-        material.type === "videos" &&
-        material.videos &&
-        material.videos.some((v) => v.additionalContent)
-      ) {
-        // Configuração será feita após o timeout abaixo
-      }
-
-      // Adicionar funcionalidades específicas para podcasts
-      if (material.type === "podcasts") {
-        setTimeout(() => {
-          // 1. Filtros por nível
-          const filterButtons = document.querySelectorAll(
-            ".podcast-filter-btn"
-          );
-          const levelCards = document.querySelectorAll(".podcast-level-card");
-
-          filterButtons.forEach((button) => {
-            button.addEventListener("click", function () {
-              const filter = this.dataset.filter;
-
-              // Atualizar botão ativo
-              filterButtons.forEach((btn) => btn.classList.remove("active"));
-              this.classList.add("active");
-
-              // Mostrar/ocultar níveis baseado no filtro
-              levelCards.forEach((card) => {
-                const levelType = card.dataset.level;
-
-                if (filter === "all" || levelType === filter) {
-                  card.style.display = "block";
-                  // Se for o primeiro, garantir que está expandido
-                  if (filter !== "all" && !card.classList.contains("active")) {
-                    const header = card.querySelector(".level-header");
-                    if (header) header.click();
-                  }
-                } else {
-                  card.style.display = "none";
-                }
-              });
-            });
-          });
-
-          // 2. Expandir/colapsar níveis
-          document.querySelectorAll(".level-header").forEach((header) => {
-            header.addEventListener("click", function () {
-              const levelCard = this.closest(".podcast-level-card");
-              const content = levelCard.querySelector(".level-content");
-              const icon = this.querySelector(".fa-chevron-down");
-
-              levelCard.classList.toggle("active");
-
-              if (levelCard.classList.contains("active")) {
-                content.style.maxHeight = content.scrollHeight + "px";
-                icon.style.transform = "rotate(180deg)";
-              } else {
-                content.style.maxHeight = "0px";
-                icon.style.transform = "rotate(0deg)";
-              }
-            });
-          });
-
-          // 3. Expandir detalhes do podcast
-          document.querySelectorAll(".podcast-card").forEach((card) => {
-            card.addEventListener("click", function (e) {
-              // Não disparar se clicar nos botões de ação
-              if (e.target.closest(".podcast-actions")) return;
-
-              const podcastItem = this.closest(".podcast-item");
-              const details = podcastItem.querySelector(".podcast-details");
-
-              // Fechar outros abertos
-              document
-                .querySelectorAll(".podcast-item.active")
-                .forEach((item) => {
-                  if (item !== podcastItem) {
-                    item.classList.remove("active");
-                    const detailsEl = item.querySelector(".podcast-details");
-                    if (detailsEl) detailsEl.style.maxHeight = "0px";
-                  }
-                });
-
-              podcastItem.classList.toggle("active");
-
-              if (podcastItem.classList.contains("active")) {
-                details.style.maxHeight = details.scrollHeight + "px";
-              } else {
-                details.style.maxHeight = "0px";
-              }
-            });
-          });
-
-          // 4. Botão de salvar podcast
-          document.querySelectorAll(".save-podcast-btn").forEach((button) => {
-            button.addEventListener("click", function (e) {
-              e.stopPropagation();
-              const podcastName = this.dataset.podcast;
-
-              // Salvar no localStorage
-              let savedPodcasts =
-                JSON.parse(localStorage.getItem("savedPodcasts")) || [];
-
-              if (!savedPodcasts.includes(podcastName)) {
-                savedPodcasts.push(podcastName);
-                localStorage.setItem(
-                  "savedPodcasts",
-                  JSON.stringify(savedPodcasts)
-                );
-
-                // Feedback visual
-                const icon = this.querySelector("i");
-                icon.classList.remove("far", "fa-bookmark");
-                icon.classList.add("fas", "fa-check");
-                this.style.color = "var(--accent-green)";
-                this.style.borderColor = "var(--accent-green)";
-
-                setTimeout(() => {
-                  icon.classList.remove("fas", "fa-check");
-                  icon.classList.add("far", "fa-bookmark");
-                  this.style.color = "";
-                  this.style.borderColor = "";
-                }, 1500);
-              } else {
-                // Remover se já estiver salvo
-                savedPodcasts = savedPodcasts.filter(
-                  (name) => name !== podcastName
-                );
-                localStorage.setItem(
-                  "savedPodcasts",
-                  JSON.stringify(savedPodcasts)
-                );
-
-                const icon = this.querySelector("i");
-                icon.classList.remove("far", "fa-bookmark");
-                icon.classList.add("fas", "fa-times");
-                this.style.color = "var(--accent-pink)";
-                this.style.borderColor = "var(--accent-pink)";
-
-                setTimeout(() => {
-                  icon.classList.remove("fas", "fa-times");
-                  icon.classList.add("far", "fa-bookmark");
-                  this.style.color = "";
-                  this.style.borderColor = "";
-                }, 1500);
-              }
-            });
-          });
-
-          // 5. Botão de ouvir (redirecionar para plataforma)
-          document.querySelectorAll(".play-podcast-btn").forEach((button) => {
-            button.addEventListener("click", function (e) {
-              e.stopPropagation();
-              const platform = this.dataset.platform;
-              const searchQuery = this.dataset.search;
-
-              let url = "";
-              switch (platform) {
-                case "YouTube":
-                  url = `https://www.youtube.com/results?search_query=${searchQuery}`;
-                  break;
-                case "Spotify":
-                  url = `https://open.spotify.com/search/${searchQuery}`;
-                  break;
-                case "Apple Podcasts":
-                  url = `https://podcasts.apple.com/us/search?term=${searchQuery}`;
-                  break;
-                default:
-                  // Para sites próprios, tenta buscar no Google
-                  url = `https://www.google.com/search?q=${searchQuery}+podcast`;
-              }
-
-              window.open(url, "_blank");
-            });
-          });
-
-          // 6. Inicializar com o primeiro nível expandido
-          const firstLevel = document.querySelector(".podcast-level-card");
-          if (firstLevel && !firstLevel.classList.contains("active")) {
-            const firstHeader = firstLevel.querySelector(".level-header");
-            if (firstHeader) firstHeader.click();
-          }
-        }, 300);
-      }
     });
 
     complementaryContent.appendChild(materialsGrid);
@@ -2229,7 +1899,7 @@ else if (material.type === "assessment") {
     });
   }
 
-  // Adicione também a função getResources no topo do arquivo
+  // Função para obter recursos
   function getResources(topic) {
     return resourcesDatabase[topic] || defaultResources;
   }
