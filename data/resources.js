@@ -415,13 +415,11 @@ export const resourcesDatabase = {
       },
     ],
     learning: [
-      "Teste de fundamentos de 30 minutos (Mês 0)",
-      "Parte 1: Soletrar 10 palavras simples em inglês",
-      "Parte 2: Contar números de 1 a 100 em voz alta",
-      "Parte 3: Soletrar seu nome completo, email e endereço",
-      "Parte 4: Ler números complexos (datas, preços, telefones)",
+      "Soletrar palavras simples em inglês",
+      "Contar números",
+      "Soletrar seu nome completo, email e endereço",
+      "Ler números (datas, preços, telefones)",
       "Feedback sobre pronúncia do alfabeto e clareza na fala",
-      "Correção de erros comuns: B/D, M/N, 13/30, 14/40",
     ],
     materials: [
       "📝 Checklist de Preparação:",
