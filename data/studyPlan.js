@@ -32,8 +32,8 @@ export const studyPlan = [
         title: "Semana 2: Vida Pessoal e Relações",
         contents: [
           "Família: membros(Geral) | Comprehensible Input",
-          "Expressões de cortesia (por favor, obrigado, desculpe)",
-          "Profissões mais comuns (médico, professor, estudante)",
+          "Expandindo Familiares | Comprehensible Input",
+          "Profissões mais comuns",
           "TESTE: Conte sobre sua família",
         ],
       },
