@@ -215,6 +215,36 @@ export const resourcesDatabase = {
     ],
   },
 
+  "Expandindo Familiares (cunhado, sogro, genro) | Comprehensible Input": {
+    videos: [
+      {
+        id: "JsCHHLPNAec",
+        title: "Talking About Your Family in English | Comprehensible Input 🗣️",
+        duration: "12:07",
+        channel: "Kaique Bazil",
+      },
+      {
+        id: "24GWC1dDyUM",
+        title: "Learn Family Members in English | Family Vocabulary",
+        duration: "3:20",
+        channel: "Fun Kids English",
+      },
+    ],
+    materials: [
+      "Árvore Genealógica (link: ../links/pages/week2/familyinlaw.html)",
+      "Jogo: Memory Game - Family Members (link: https://wordwall.net/pt/resource/18546561/family-members-9-members)",
+      "Lista de Vocabulário: Pais, irmãos, avós, tios, primos, sobrinhos",
+      "Exercício: Crie sua própria árvore genealógica em inglês com nomes e relações",
+    ],
+    learning: [
+      "Termos básicos: mother, father, brother, sister",
+      "Família estendida: uncle, aunt, cousin, grandparents",
+      "Termos modernos: step-parent, half-brother, in-laws",
+      "Descrever relações: 'He is my older brother', 'She is my maternal grandmother'",
+      "Perguntas sobre família: 'Do you have any siblings?', 'How big is your family?'",
+    ],
+  },
+
   "Falar sobre sua familia (casado, solteiro, filhos)": {
     videos: [
       {
