@@ -241,32 +241,30 @@ export const resourcesDatabase = {
     ],
   },
 
-  "Falar sobre sua familia (casado, solteiro, filhos)": {
+  "Falar sobre profissões": {
     videos: [
       {
-        id: "VqBgYrFH-js",
-        title: "Talking About Your Family in English - Spoken English Lesson",
-        duration: "11:00",
-        channel: "Oxford Online English",
-      },
-      {
-        id: "pNj9ygMC4v4",
-        title: "Marital Status Vocabulary | English Lesson",
-        duration: "3:15",
-        channel: "English with Lucy",
+        id: "JX-FNrghbgk",
+        title: "Profissões em Inglês",
+        duration: "2:47",
+        channel: "kaiquebazil",
       },
     ],
     materials: [
-      "Flashcards: Estados civis (single, married, divorced, widowed, engaged)",
-      "Diálogos Modelo: Apresentando sua situação familiar",
-      "Template de Conversa: Perguntas e respostas sobre situação familiar",
+      "Lista de Vocabulário: +50 profissões comuns(link: https://www.languageguide.org/english/vocabulary/jobs/)",
+      "Prompt de IA: Configuração de chat fechado para frases naturais",
+      "Flashcards Anki: Estruturas de profissões (I work as/in/at)",
+      "Grade de Conteúdo: Semanas 2 - Vida Pessoal e Relações",
     ],
     learning: [
-      "Estados civis: single, married, divorced, widowed, separated, engaged",
-      "Descrever situação: 'I'm single', 'I'm married with two kids'",
-      "Termos para filhos: children, kids, son, daughter, toddler, teenager",
-      "Frases úteis: 'I have three children', 'We don't have kids yet'",
-      "Contextos apropriados para discutir vida familiar",
+      "Perguntas comuns: 'What do you do?', 'What is your job?' e variações",
+      "Diferença de contexto: 'What do you do' focado em trabalho vs. rotina",
+      "Estrutura principal: 'I'm a...' (ex: I'm a Doctor)",
+      "Uso de preposições: 'I work as' (função), 'I work in' (área), 'I work at' (local)",
+      "Expressão coloquial: Uso de 'I do...' para simplificar (ex: I do marketing)",
+      "Configuração de Prompt: Como usar o ChatGPT para gerar variações naturais",
+      "Gramática aplicada: Regra do 'S' para terceira pessoa (She works)",
+      "Exercício prático: Descrever a profissão de cada membro da família",
     ],
   },
 
@@ -429,7 +427,7 @@ export const resourcesDatabase = {
   },
 
   // ATIVIDADES DE TESTE - PRÁTICA ORAL COM MATERIAIS COMPLETOS
-  
+
   /* TESTES MÊS 0 */
   "TESTE: Soletrar palavras simples e contar números": {
     videos: [
@@ -450,7 +448,7 @@ export const resourcesDatabase = {
     materials: [
       "📝 Checklist de Preparação:",
       "1. Pratique soletrar: apple, book, cat, door, elephant, friend, garden, house, internet, jacket",
-      "2. Pratique números: 1-20, dezenas (20, 30, 40...), 100-110",
+      "2. Pratique números: 1-20, dezenas (20, 30, 40...), 100",
       "3. Prepare-se para soletrar: seu nome completo, email, cidade natal",
       "4. Pratique números especiais: datas (12/25/2023), preços ($19.99), telefones (+55 21 99999-9999)",
       "🎯 Dicas para o Teste:",
@@ -525,7 +523,7 @@ export const resourcesDatabase = {
     materials: [
       "📝 Preparação para o Teste:",
       "1. Crie sua árvore genealógica em inglês",
-      "2. Escreva sobre cada membro: nome, idade, profissão, personalidade",
+      "2. Escreva sobre cada membro: nome, idade, profissão.",
       "3. Prepare descrições de relações: 'He is my older brother who lives in...'",
       "4. Pratique falar sobre tradições familiares",
       "🎯 Estrutura Sugerida:",

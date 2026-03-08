@@ -33,7 +33,7 @@ export const studyPlan = [
         contents: [
           "Família: membros(Geral) | Comprehensible Input",
           "Expandindo Familiares (cunhado, sogro, genro)",
-          "Profissões mais comuns",
+          "Falar sobre profissões",
           "TESTE: Conte sobre sua família",
         ],
       },
