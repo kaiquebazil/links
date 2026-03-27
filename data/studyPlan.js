@@ -6,7 +6,26 @@ export const studyPlan = [
     month: "Mês 0: Alfabetização e Fundamentos",
     weeks: [
       {
-        title: "Pré-requisito",
+        title: "Preparação e Configuração do Ambiente",
+        contents: [
+          "🗺️ Visão Geral do Plano",
+          "🧠 Técnica de Imersão (Modo Difuso)",
+          "🎯 Técnica de Imersão (Modo Focado)",
+          "🔧 Configuração Anki para aprendizado eficiente",
+          "📝 Configuração do Notion para Aprender Inglês",
+          "🤖 Configuração do ChatGPT para Aprender Inglês",
+        ],
+      },
+      {
+        title: "Links Rápidos - Testes & Vocabulário",
+        contents: [
+          "🧪 Teste de Nivelamento",
+          "📚 Vocabulário Essencial",
+          "⚡ Ferramentas Rápidas",
+        ],
+      },
+      {
+        title: "Fundamentos Básicos",
         contents: [
           "Alfabeto inglês: letras, pronúncia e soletração",
           "Números: 1 a 1 Trilhão",

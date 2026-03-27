@@ -242,24 +242,10 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
   }
 
-  // Renderizar a Semana 0 como primeiro item
+  // Renderizar a Semana 0 como primeiro item (Desativado - Movido para Mês 0)
   function renderWeekZeroFirst() {
-    const weekZeroData = complementaryMaterials.find(item => item.id === 'week-0');
-    
-    if (!weekZeroData) return;
-    
-    const weekZeroSection = document.createElement('div');
-    weekZeroSection.className = 'week-zero-first-section';
-    weekZeroSection.innerHTML = renderWeekZeroSimple(weekZeroData);
-    
-    monthsContainer.parentNode.insertBefore(weekZeroSection, monthsContainer);
-    
-    setTimeout(() => {
-      const toggleBtn = document.getElementById('toggle-week-zero-btn');
-      if (toggleBtn) {
-        toggleBtn.addEventListener('click', toggleWeekZeroContentGlobal);
-      }
-    }, 100);
+    // Conteúdo movido para o Mês 0 no studyPlan.js
+    return;
   }
 
   // Funções globais da Semana 0
@@ -304,20 +290,8 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   function updateWeekZeroProgressBadge() {
-    const progress = JSON.parse(localStorage.getItem('week0Progress')) || {
-      completedContents: []
-    };
-    const weekZeroData = complementaryMaterials.find(item => item.id === 'week-0');
-    
-    if (!weekZeroData || !weekZeroData.contents) return;
-    
-    const totalContents = weekZeroData.contents.length;
-    const completedCount = progress.completedContents.length;
-    
-    const badge = document.querySelector('.week-zero-badge span');
-    if (badge) {
-      badge.textContent = `${completedCount}/${totalContents} conteúdos configurados`;
-    }
+    // Desativado - Conteúdo movido para Mês 0
+    return;
   }
 
   window.toggleWeekZeroContentGlobal = function() {
@@ -437,7 +411,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Renderizar Conteúdos Adicionais
   function renderComplementaryMaterials() {
     // Filtrar para não incluir a Semana 0 nos conteúdos adicionais
-    const otherMaterials = complementaryMaterials.filter(item => item.id !== 'week-0');
+    const otherMaterials = complementaryMaterials;
     
     if (otherMaterials.length === 0) return;
 

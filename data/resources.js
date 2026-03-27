@@ -1,4 +1,186 @@
 export const resourcesDatabase = {
+  "🗺️ Visão Geral do Plano": {
+    videos: [],
+    materials: [
+      "Mapa Mental dos 6 Meses",
+      "Linha do Tempo de Aprendizado",
+      "Checklist de Competências por Mês",
+      "Calendário de Marcos Importantes",
+    ],
+    learning: [
+      "Mês 1: Sobrevivência Conversacional",
+      "Mês 2: Vida Cotidiana",
+      "Mês 3: Passado e Experiências",
+      "Mês 4: Opiniões e Sentimentos",
+      "Mês 5: Tópicos Complexos",
+      "Mês 6: Fluência Natural",
+    ],
+  },
+
+  "🧠 Técnica de Imersão (Modo Difuso)": {
+    videos: [
+      {
+        id: "LLZ3xU6tESo",
+        title: "COMO FAZER IMERSÃO | Técnica de Imersão no Inglês para quem NÃO TEM TEMPO (Modo Difuso)",
+        duration: "7:53",
+        channel: "Kaique Bazil",
+      }
+    ],
+    materials: [
+      "Livro: Hábitos Atômicos - James Clear (link: https://www.amazon.com.br/Hábitos-Atômicos-James-Clear/dp/8550807563/)",
+      "App: TV Garden (link: https://tv.garden/)",
+      "App: Radio Garden (link: https://radio.garden/)",
+      "Dica: Configurar celular e apps em inglês para imersão passiva.",
+    ],
+    learning: [
+      "O que é o Modo Difuso: Contato com o inglês sem a pressão de entender tudo.",
+      "Gestão de Tempo: Acumule até 2 horas de imersão diária usando intervalos de 15 minutos ('tempo morto').",
+      "Criação de Hábitos: Use 'deixas' (gatilhos) para automatizar seus estudos (ex: 'depois do café, 15 min de rádio').",
+      "Ferramentas: Utilize TV Garden e Radio Garden para ouvir inglês de qualquer lugar.",
+      "Dica Prática: Mude o idioma do celular e apps para inglês.",
+    ],
+  },
+
+  "🎯 Técnica de Imersão (Modo Focado)": {
+    videos: [
+      {
+        id: "cswbKngQSgU",
+        title: "COMO FAZER IMERSÃO NO INGLÊS do jeito certo (Modo Focado)",
+        duration: "8:00",
+        channel: "Kaique Bazil",
+      }
+    ],
+    materials: [
+      "Material de apoio para anotações durante o modo focado",
+      "Fones de ouvido para melhor concentração",
+      "Transcrições ou legendas (quando disponíveis)",
+      "App Language Reactor para legendas duplas: (link: https://www.languagereactor.com/)",
+      "Dica: Use timer Pomodoro (25 min foco / 5 min pausa)",
+    ],
+    learning: [
+      "O que é o Modo Focado: Estudo ativo e concentrado sem distrações.",
+      "Diferença entre Modo Focado x Modo Difuso: Quando usar cada um.",
+      "Técnicas para manter a concentração durante a imersão ativa.",
+      "Como usar legendas de forma estratégica no modo focado.",
+      "Prática de shadowing (repetição em voz alta) para melhorar pronúncia.",
+      "Anotação de vocabulário novo e expressões durante o estudo.",
+      "Como combinar Modo Focado (manhã) e Modo Difuso (ao longo do dia).",
+    ],
+  },
+
+  "🔧 Configuração Anki para aprendizado eficiente": {
+    videos: [
+      {
+        id: "ZfD0OL0ZluM",
+        title: "Como Configurar o ANKI para Aprender Inglês e Não Esquecer Mais (Passo a Passo)",
+        duration: "7:37",
+        channel: "Kaique Bazil",
+      },
+    ],
+    materials: [
+      "Site Oficial para Download (PC/Mac/Linux): (link: https://apps.ankiweb.net/)",
+      "App Android: (link: https://play.google.com/store/apps/details?id=com.ichi2.anki)",
+      "App iOS: (link: https://apps.apple.com/us/app/ankimobile-flashcards/id373493387)",
+      "AnkiWeb (Acesso Online): (link: https://ankiweb.net/)",
+      "Criar Conta Gratuita: (link: https://ankiweb.net/account/register)",
+      "Login na Conta: (link: https://ankiweb.net/account/login)",
+      "Decks Compartilhados: (link: https://ankiweb.net/shared/decks/)",
+      "Manual Oficial: (link: https://docs.ankiweb.net/)",
+      "Extensões Usadas: 723520343, 1436550454",
+    ],
+    learning: [
+      "Passo 1: Baixar e instalar o Anki no computador",
+      "Passo 2: Criar conta gratuita no AnkiWeb",
+      "Passo 3: Fazer login no app desktop com sua conta",
+      "Passo 4: Instalar AnkiDroid (Android) ou AnkiMobile (iOS)",
+      "Passo 5: Fazer login no app móvel para sincronizar",
+      "Passo 6: Criar seu primeiro deck de inglês",
+      "Passo 7: Adicionar cards diariamente e revisar todos os dias",
+    ],
+  },
+
+  "📝 Configuração do Notion para Aprender Inglês": {
+    videos: [
+      {
+        id: "POPROUlBUCw",
+        title: "COMO USAR O NOTION PARA APRENDER INGLÊS",
+        duration: "02:11",
+        channel: "Kaique Bazil",
+      },
+    ],
+    materials: [
+      "Conta Notion: (link: https://www.notion.so/)",
+      "Aplicativo Notion (Desktop ou Mobile)",
+      "Projeto Fluência Conversacional (Recursos Adicionais)",
+      "Lista de Frases de Alta Frequência",
+    ],
+    learning: [
+      "Criar página para Roleplays e Vida Real",
+      "Separar conteúdo por categorias (Pessoal, Escola, Trabalho)",
+      "Estruturar frases com inglês seguido de tradução",
+      "Criar página de palavras esquecidas com frequência",
+      "Desenvolver repertório e tendências linguísticas",
+    ],
+  },
+
+  "🤖 Configuração do ChatGPT para Aprender Inglês": {
+    videos: [
+      {
+        id: "RezD4X6GxDE",
+        title: "COMO APRENDER INGLÊS COM CHATGPT",
+        duration: "10:23",
+        channel: "Kaique Bazil",
+      },
+    ],
+    materials: [
+      "Conta no ChatGPT (Web ou Mobile)",
+      "Teste de Nivelamento",
+      "Anki (para repetição espaçada)",
+      "Notion (para registro de Roleplays)",
+    ],
+    learning: [
+      "Configurar Instruções Personalizadas",
+      "Criar chat para depósito de frases naturais",
+      "Desenvolver Roleplays baseados na vida real",
+      "Praticar com o método Rapid Fire (Perguntas Rápidas)",
+      "Integrar frases do ChatGPT com Anki e Notion",
+    ],
+  },
+
+  "🧪 Teste de Nivelamento": {
+    videos: [],
+    materials: [
+      "Teste de Nivelamento - Projeto Fluente em 6 Meses (link: ../links/pages/test.html)",
+    ],
+    learning: [
+      "60 questões - Rápido e preciso",
+    ],
+  },
+
+  "📚 Vocabulário Essencial": {
+    videos: [],
+    materials: [
+      "Frases de Alta Frequência (link: ../links/pages/frequentes/frasesfrequentes.html)",
+      "100 Verbos Mais Frequentes (link: ../links/pages/frequentes/verbosfrequentes.html)",
+      "100 Palavras Mais Frequentes (link: ../links/pages/frequentes/palavras.html)",
+    ],
+    learning: [
+      "Mais de 80 frases essenciais para comunicação diária",
+      "Be, have, do, say, get, make, go, know...",
+      "Cobre 90% das conversas diárias",
+    ],
+  },
+
+  "⚡ Ferramentas Rápidas": {
+    videos: [],
+    materials: [
+      "AnkiWeb (link: https://ankiweb.net)",
+    ],
+    learning: [
+      "Flashcards grátis",
+    ],
+  },
+
   "Alfabeto inglês: letras, pronúncia e soletração": {
     videos: [
       {
