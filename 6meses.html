@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Plano de Estudo de Inglês</title>
+    <title>Plano de Estudo de Inglês - 6 Meses</title>
     <link rel="shortcut icon" href="icons/icon.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,134 +16,133 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="css/6meses.css" />
-    <!-- Adicione estas tags no <head> do 6meses.html -->
+    <!-- PWA Configuration -->
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#58a6ff" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Inglês6Meses" />
-    <link rel="apple-touch-icon" href="icons/icon-152x152.png" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="icons/icon-192x192.png"
-    />
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192x192.png" />
     <meta name="msapplication-TileColor" content="#58a6ff" />
     <meta name="msapplication-TileImage" content="icons/icon-144x144.png" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
   </head>
   <body>
     <div class="container">
-      <!-- Header com data -->
-      <div class="header">
-        <div class="app-info">
-          <div class="app-icon">
-            <img src="icons/icon.ico" width="40" alt="" />
+      <!-- ===== HEADER ===== -->
+      <header class="header">
+        <div class="header-content">
+          <div class="app-info">
+            <div class="app-icon">
+              <img src="icons/icon.ico" width="40" alt="Ícone do App" />
+            </div>
+            <div class="app-header">
+              <h1 class="app-title">Fluência em 6 Meses</h1>
+              <p class="app-subtitle">Seu plano estruturado de estudo</p>
+            </div>
           </div>
-          <h1 class="app-title">Fluência em 6 Meses</h1>
-        </div>
-        <div class="header-right">
-          <div class="date-info">
+          <div class="date-card">
             <div class="current-day" id="currentDay">Segunda-feira</div>
-            <div class="current-date" id="currentDate">
-              21 de Dezembro de 2025
+            <div class="current-date" id="currentDate">21 de Dezembro de 2025</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===== PROGRESS OVERVIEW ===== -->
+      <section class="progress-overview">
+        <div class="progress-main">
+          <div class="progress-header">
+            <h2><i class="fas fa-chart-line"></i> Seu Progresso</h2>
+            <span class="progress-percentage" id="progress-text">0%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar">
+              <div class="progress-fill" id="global-progress"></div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Progresso Global -->
-      <div class="progress-container">
-        <h2 class="section-title">
-          <i class="fas fa-chart-line"></i> Seu Progresso Geral
-        </h2>
-        <div class="progress-bar">
-          <div class="progress" id="global-progress"></div>
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-content">
+              <div class="stat-number" id="contents-completed">0</div>
+              <div class="stat-label">Concluídos</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-list"></i>
+            </div>
+            <div class="stat-content">
+              <div class="stat-number" id="total-contents">0</div>
+              <div class="stat-label">Total</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <i class="fas fa-fire"></i>
+            </div>
+            <div class="stat-content">
+              <div class="stat-number" id="completion-rate">0%</div>
+              <div class="stat-label">Taxa</div>
+            </div>
+          </div>
         </div>
-        <p class="progress-text" id="progress-text">0% Completo</p>
-      </div>
+      </section>
 
-      <!-- Estatísticas -->
-      <div class="stats">
-        <div class="stat-card">
-          <div class="stat-number" id="contents-completed">0</div>
-          <div class="stat-label">Concluídos</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number" id="total-contents">0</div>
-          <div class="stat-label">Total de Conteúdos</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number" id="completion-rate">0%</div>
-          <div class="stat-label">Taxa de Conclusão</div>
-        </div>
-      </div>
-
-      <!-- Controles -->
-      <div class="controls">
-        <div class="filter-buttons">
+      <!-- ===== CONTROLS ===== -->
+      <section class="controls-section">
+        <div class="filter-group">
           <button class="filter-btn active" data-filter="all">
-            <i class="fas fa-list"></i> Todos
+            <i class="fas fa-list"></i> <span>Todos</span>
           </button>
           <button class="filter-btn" data-filter="completed">
-            <i class="fas fa-check-circle"></i> Concluídos
+            <i class="fas fa-check-circle"></i> <span>Concluídos</span>
           </button>
           <button class="filter-btn" data-filter="pending">
-            <i class="fas fa-clock"></i> Pendentes
+            <i class="fas fa-clock"></i> <span>Pendentes</span>
           </button>
         </div>
-        <button class="reset-btn" id="reset-btn">
-          <i class="fas fa-redo"></i> Reiniciar
+        <button class="reset-btn" id="reset-btn" title="Reiniciar progresso">
+          <i class="fas fa-redo"></i> <span>Reiniciar</span>
         </button>
-      </div>
+      </section>
 
-      <!-- <div class="leveltest-container">
-        <a href="test.html" class="leveltest-btn" id="leveltest-btn">
-          <i class="fas fa-flask"></i> Teste de Nivelamento
-        </a>
-      </div> -->
+      <!-- ===== MAIN CONTENT ===== -->
+      <main class="main-content">
+        <div class="months-container" id="months-container">
+          <!-- Conteúdo dinâmico será inserido aqui -->
+        </div>
+      </main>
 
-      <!-- Container de Meses -->
-      <div class="months-container" id="months-container">
-        <!-- O JavaScript vai inserir:
-            1. Primeiro: Os Conteúdos Adicionais (complementary-container)
-            2. Depois: Os meses do plano de estudo
-        -->
-      </div>
-
-      <!-- Footer -->
-      <div class="footer">
-        <p>Plano de Estudo de Inglês • 6 Meses •</p>
-        <div class="footer-links">
-          <a href="#" class="footer-link">
+      <!-- ===== FOOTER ===== -->
+      <footer class="footer">
+        <div class="footer-content">
+          <p class="footer-text">
+            <i class="fas fa-graduation-cap"></i> Plano de Estudo de Inglês • 6 Meses
+          </p>
+          <p class="footer-hint">
+            <i class="fas fa-info-circle"></i> Marque cada conteúdo para acompanhar seu progresso
+          </p>
+        </div>
+        <div class="footer-actions">
+          <a href="#" class="footer-link" title="Ajuda">
             <i class="fas fa-question-circle"></i>
           </a>
-          <a href="#" class="footer-link">
-            <i class="fas fa-download"></i>
-          </a>
-          <a href="#" class="footer-link">
+          <a href="#" class="footer-link" title="Compartilhar">
             <i class="fas fa-share-alt"></i>
           </a>
         </div>
-        <p style="margin-top: 15px; font-size: 12px; font-weight: 500">
-          Marque cada conteúdo estudado para acompanhar seu progresso!
-        </p>
-      </div>
+      </footer>
     </div>
 
-    <a
-      href="https://wa.me/5524992046467"
-      target="_blank"
-      class="whatsapp-float"
-      title="Enviar mensagem no WhatsApp"
-    >
+    <!-- ===== FLOATING BUTTONS ===== -->
+    <a href="https://wa.me/5524992046467" target="_blank" class="whatsapp-float" title="Enviar mensagem no WhatsApp">
       <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -152,29 +151,27 @@
       <span>Voltar</span>
     </a>
 
-    <!-- Importação dos scripts -->
+    <!-- ===== SCRIPTS ===== -->
     <script type="module" src="js/6meses.js"></script>
     <script>
-      // Inicializar o app quando a página carregar
       document.addEventListener("DOMContentLoaded", function () {
         window.pwaManager = new PWAManager();
-
-        // Adicionar botão de compartilhar no footer
         addShareButton();
       });
 
       function addShareButton() {
-        const footerLinks = document.querySelector(".footer-links");
-        if (footerLinks && navigator.share) {
+        const footerActions = document.querySelector(".footer-actions");
+        if (footerActions && navigator.share) {
           const shareLink = document.createElement("a");
           shareLink.href = "#";
           shareLink.className = "footer-link";
+          shareLink.title = "Compartilhar progresso";
           shareLink.innerHTML = '<i class="fas fa-share-alt"></i>';
           shareLink.onclick = function (e) {
             e.preventDefault();
             PWAManager.shareProgress();
           };
-          footerLinks.appendChild(shareLink);
+          footerActions.appendChild(shareLink);
         }
       }
     </script>
