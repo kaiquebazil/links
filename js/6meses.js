@@ -108,78 +108,69 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
         
         <div class="content-card-body" id="content-body-${content.id}">
-          <!-- VÍDEOS -->
-          ${content.videos && content.videos.length > 0 ? `
-            <div class="content-section">
-              <h5><i class="fas fa-video"></i> Vídeos</h5>
-              <div class="content-videos">
-                ${content.videos.map(video => `
-                  <div class="content-video-card" onclick="openVideo('${video.id}')">
-                    <img src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" alt="${video.title}" loading="lazy">
-                    <div class="video-info">
-                      <h6>${video.title}</h6>
-                      <div class="video-meta">
-                        <span>${video.channel}</span>
-                        <span>• ${video.duration}</span>
+          <div class="old-style-content">
+            <!-- VÍDEOS -->
+            ${content.videos && content.videos.length > 0 ? `
+              <div class="content-card">
+                <h3><i class="fas fa-video"></i> Vídeos da Aula</h3>
+                <div class="content-videos">
+                  ${content.videos.map(video => `
+                    <div class="content-video-card" onclick="openVideo('${video.id}')">
+                      <img src="https://img.youtube.com/vi/${video.id}/mqdefault.jpg" alt="${video.title}" loading="lazy">
+                      <div class="video-info">
+                        <h6>${video.title}</h6>
+                        <div class="video-meta">
+                          <span>${video.channel}</span>
+                          <span>• ${video.duration}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                `).join('')}
+                  `).join('')}
+                </div>
               </div>
-            </div>
-          ` : ''}
-          
-          <!-- MATERIAIS -->
-          ${content.materials && content.materials.length > 0 ? `
-            <div class="content-section">
-              <h5><i class="fas fa-link"></i> Materiais & Links</h5>
-              <div class="content-materials">
-                ${content.materials.map(material => {
-                  if (material.includes("(link:")) {
-                    const linkMatch = material.match(/\((link:[^)]+)\)/);
-                    if (linkMatch) {
-                      const linkText = linkMatch[0].replace("(link:", "").replace(")", "");
-                      const displayText = material.replace(linkMatch[0], "").trim();
-                      return `
-                        <div class="material-itemm">
-                          <i class="fas fa-external-link-alt"></i>
-                          <div>
-                            <span>${displayText}</span>
-                            <a href="${linkText}" target="_blank">Abrir link</a>
-                          </div>
-                        </div>
-                      `;
-                    }
-                  }
-                  return `
-                    <div class="material-itemm">
-                      <i class="fas fa-check-circle"></i>
-                      <span>${material}</span>
-                    </div>
-                  `;
-                }).join('')}
+            ` : ''}
+            
+            <!-- MATERIAIS -->
+            ${content.materials && content.materials.length > 0 ? `
+              <div class="content-card">
+                <h3><i class="fas fa-book"></i> Materiais de Apoio</h3>
+                <div class="example-box">
+                  <ul class="usage-list">
+                    ${content.materials.map(material => {
+                      if (material.includes("(link:")) {
+                        const linkMatch = material.match(/\((link:[^)]+)\)/);
+                        if (linkMatch) {
+                          const linkText = linkMatch[0].replace("(link:", "").replace(")", "");
+                          const displayText = material.replace(linkMatch[0], "").trim();
+                          return `<li>${displayText} <a href="${linkText}" target="_blank" class="highlight">Acessar</a></li>`;
+                        }
+                      }
+                      return `<li>${material}</li>`;
+                    }).join('')}
+                  </ul>
+                </div>
               </div>
-            </div>
-          ` : ''}
-          
-          <!-- APRENDIZAGEM -->
-          ${content.learning && content.learning.length > 0 ? `
-            <div class="content-section">
-              <h5><i class="fas fa-graduation-cap"></i> Passo a Passo</h5>
-              <ol class="content-learning">
-                ${content.learning.map(step => `
-                  <li>${step}</li>
-                `).join('')}
-              </ol>
-            </div>
-          ` : ''}
-          
-          <!-- BOTÃO DE CONCLUSÃO -->
-          <button class="complete-content-btn ${isCompleted ? 'completed' : ''}" 
-                  onclick="completeWeekZeroContent('${content.id}')">
-            <i class="fas ${isCompleted ? 'fa-check-double' : 'fa-check'}"></i>
-            <span>${isCompleted ? 'Concluído!' : 'Marcar como Concluído'}</span>
-          </button>
+            ` : ''}
+            
+            <!-- APRENDIZAGEM -->
+            ${content.learning && content.learning.length > 0 ? `
+              <div class="content-card">
+                <h3><i class="fas fa-graduation-cap"></i> O que você vai aprender</h3>
+                <div class="important-note">
+                  <ul class="usage-list">
+                    ${content.learning.map(step => `<li>${step}</li>`).join('')}
+                  </ul>
+                </div>
+              </div>
+            ` : ''}
+            
+            <!-- BOTÃO DE CONCLUSÃO -->
+            <button class="complete-content-btn ${isCompleted ? 'completed' : ''}" 
+                    onclick="completeWeekZeroContent('${content.id}')">
+              <i class="fas ${isCompleted ? 'fa-check-double' : 'fa-check'}"></i>
+              <span>${isCompleted ? 'Concluído!' : 'Marcar como Concluído'}</span>
+            </button>
+          </div>
         </div>
       </div>
     `;
@@ -1716,68 +1707,149 @@ document.addEventListener("DOMContentLoaded", function () {
           const topicTitle = typeof content === 'object' ? content.title : content;
           const resources = getResources(topicTitle);
 
-          // Seção de vídeos
-          const videosSection = document.createElement("div");
-          videosSection.className = "resources-section";
-          
-          const videosHeader = document.createElement("div");
-          videosHeader.className = "section-header";
-          videosHeader.innerHTML = '<i class="fas fa-video"></i> Vídeos Recomendados';
-          
-          const videosGrid = document.createElement("div");
-          videosGrid.className = "videos-grid";
-          
-          resources.videos.forEach((video) => {
-            const videoCard = createVideoCard(video);
-            videosGrid.appendChild(videoCard);
-          });
-          
-          videosSection.appendChild(videosHeader);
-          videosSection.appendChild(videosGrid);
-          expandedContent.appendChild(videosSection);
-
-          // Seção de materiais
-          const materialsSection = document.createElement("div");
-          materialsSection.className = "resources-section";
-          
-          const materialsHeader = document.createElement("div");
-          materialsHeader.className = "section-header";
-          materialsHeader.innerHTML = '<i class="fas fa-book"></i> Materiais Complementares';
-          
-          const materialsList = document.createElement("ul");
-          materialsList.className = "materials-list";
-          
-          resources.materials.forEach((material) => {
-            const materialItem = createMaterialItem(material);
-            materialsList.appendChild(materialItem);
-          });
-          
-          materialsSection.appendChild(materialsHeader);
-          materialsSection.appendChild(materialsList);
-          expandedContent.appendChild(materialsSection);
-
-          // SEÇÃO DE APRENDIZAGEM (NO FINAL)
-          if (resources.learning && resources.learning.length > 0) {
-            const learningSection = document.createElement("div");
-            learningSection.className = "learning-section";
+          // Verificar se é Mês 0 para aplicar estilização antiga
+          if (monthIndex === 0) {
+            // Estilização antiga (Mês 0)
+            const oldStyleContainer = document.createElement("div");
+            oldStyleContainer.className = "old-style-content";
             
-            const learningHeader = document.createElement("div");
-            learningHeader.className = "section-header learning-header";
-            learningHeader.innerHTML = '<i class="fas fa-graduation-cap"></i> O que você vai aprender';
+            // Vídeos com estilo antigo
+            if (resources.videos && resources.videos.length > 0) {
+              const videosSection = document.createElement("div");
+              videosSection.className = "content-card";
+              videosSection.innerHTML = `<h3><i class="fas fa-video"></i> Vídeos da Aula</h3>`;
+              
+              const videosGrid = document.createElement("div");
+              videosGrid.className = "videos-grid";
+              
+              resources.videos.forEach((video) => {
+                const videoCard = createVideoCard(video);
+                videosGrid.appendChild(videoCard);
+              });
+              
+              videosSection.appendChild(videosGrid);
+              oldStyleContainer.appendChild(videosSection);
+            }
             
-            const learningList = document.createElement("ul");
-            learningList.className = "learning-list";
+            // Materiais com estilo antigo (Example Box style)
+            if (resources.materials && resources.materials.length > 0) {
+              const materialsSection = document.createElement("div");
+              materialsSection.className = "content-card";
+              materialsSection.innerHTML = `<h3><i class="fas fa-book"></i> Materiais de Apoio</h3>`;
+              
+              const materialsBox = document.createElement("div");
+              materialsBox.className = "example-box";
+              
+              const materialsList = document.createElement("ul");
+              materialsList.className = "usage-list";
+              
+              resources.materials.forEach((material) => {
+                const li = document.createElement("li");
+                if (material.includes("(link:")) {
+                  const linkMatch = material.match(/\((link:[^)]+)\)/);
+                  const linkText = linkMatch[0].replace("(link:", "").replace(")", "");
+                  const displayText = material.replace(linkMatch[0], "").trim();
+                  li.innerHTML = `${displayText} <a href="${linkText}" target="_blank" class="highlight">Acessar</a>`;
+                } else {
+                  li.textContent = material;
+                }
+                materialsList.appendChild(li);
+              });
+              
+              materialsBox.appendChild(materialsList);
+              materialsSection.appendChild(materialsBox);
+              oldStyleContainer.appendChild(materialsSection);
+            }
             
-            resources.learning.forEach((item) => {
-              const learningItem = document.createElement("li");
-              learningItem.className = "learning-item";
-              learningItem.innerHTML = `<i class="fas fa-check-circle"></i> ${item}`;
-              learningList.appendChild(learningItem);
+            // Aprendizagem com estilo antigo (Important Note style)
+            if (resources.learning && resources.learning.length > 0) {
+              const learningSection = document.createElement("div");
+              learningSection.className = "content-card";
+              learningSection.innerHTML = `<h3><i class="fas fa-graduation-cap"></i> O que você vai aprender</h3>`;
+              
+              const learningNote = document.createElement("div");
+              learningNote.className = "important-note";
+              
+              const learningList = document.createElement("ul");
+              learningList.className = "usage-list";
+              
+              resources.learning.forEach((item) => {
+                const li = document.createElement("li");
+                li.textContent = item;
+                learningList.appendChild(li);
+              });
+              
+              learningNote.appendChild(learningList);
+              learningSection.appendChild(learningNote);
+              oldStyleContainer.appendChild(learningSection);
+            }
+            
+            expandedContent.appendChild(oldStyleContainer);
+          } else {
+            // Estilização padrão (outros meses)
+            // Seção de vídeos
+            const videosSection = document.createElement("div");
+            videosSection.className = "resources-section";
+            
+            const videosHeader = document.createElement("div");
+            videosHeader.className = "section-header";
+            videosHeader.innerHTML = '<i class="fas fa-video"></i> Vídeos Recomendados';
+            
+            const videosGrid = document.createElement("div");
+            videosGrid.className = "videos-grid";
+            
+            resources.videos.forEach((video) => {
+              const videoCard = createVideoCard(video);
+              videosGrid.appendChild(videoCard);
             });
             
-            learningSection.appendChild(learningHeader);
-            learningSection.appendChild(learningList);
-            expandedContent.appendChild(learningSection);
+            videosSection.appendChild(videosHeader);
+            videosSection.appendChild(videosGrid);
+            expandedContent.appendChild(videosSection);
+
+            // Seção de materiais
+            const materialsSection = document.createElement("div");
+            materialsSection.className = "resources-section";
+            
+            const materialsHeader = document.createElement("div");
+            materialsHeader.className = "section-header";
+            materialsHeader.innerHTML = '<i class="fas fa-book"></i> Materiais Complementares';
+            
+            const materialsList = document.createElement("ul");
+            materialsList.className = "materials-list";
+            
+            resources.materials.forEach((material) => {
+              const materialItem = createMaterialItem(material);
+              materialsList.appendChild(materialItem);
+            });
+            
+            materialsSection.appendChild(materialsHeader);
+            materialsSection.appendChild(materialsList);
+            expandedContent.appendChild(materialsSection);
+
+            // SEÇÃO DE APRENDIZAGEM (NO FINAL)
+            if (resources.learning && resources.learning.length > 0) {
+              const learningSection = document.createElement("div");
+              learningSection.className = "learning-section";
+              
+              const learningHeader = document.createElement("div");
+              learningHeader.className = "section-header learning-header";
+              learningHeader.innerHTML = '<i class="fas fa-graduation-cap"></i> O que você vai aprender';
+              
+              const learningList = document.createElement("ul");
+              learningList.className = "learning-list";
+              
+              resources.learning.forEach((item) => {
+                const learningItem = document.createElement("li");
+                learningItem.className = "learning-item";
+                learningItem.innerHTML = `<i class="fas fa-check-circle"></i> ${item}`;
+                learningList.appendChild(learningItem);
+              });
+              
+              learningSection.appendChild(learningHeader);
+              learningSection.appendChild(learningList);
+              expandedContent.appendChild(learningSection);
+            }
           }
 
           // Evento do toggle
