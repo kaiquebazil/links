@@ -245,10 +245,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const toggleIcon = document.querySelector(`#content-${contentId} .content-card-toggle i`);
     
     if (contentBody && toggleIcon) {
-      contentBody.classList.toggle('active');
-      toggleIcon.className = contentBody.classList.contains('active')
-        ? 'fas fa-chevron-up'
-        : 'fas fa-chevron-down';
+      const isOpening = !contentBody.classList.contains('active');
+      
+      if (isOpening) {
+        // Fechar todos os outros conteúdos da Semana 0
+        const allBodies = document.querySelectorAll('.week-zero-content-card .content-card-body');
+        const allIcons = document.querySelectorAll('.week-zero-content-card .content-card-toggle i');
+        
+        allBodies.forEach(body => body.classList.remove('active'));
+        allIcons.forEach(icon => icon.className = 'fas fa-chevron-down');
+        
+        // Abrir o atual
+        contentBody.classList.add('active');
+        toggleIcon.className = 'fas fa-chevron-up';
+      } else {
+        // Fechar o atual
+        contentBody.classList.remove('active');
+        toggleIcon.className = 'fas fa-chevron-down';
+      }
     }
   };
 
@@ -1852,16 +1866,34 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           }
 
-          // Evento do toggle
+          // Evento do toggle (Lógica de Accordion: apenas um aberto por vez)
           toggleBtn.addEventListener("click", function (e) {
             e.stopPropagation();
-            expandedContent.classList.toggle("active");
-            this.classList.toggle("expanded");
             
-            // Se estiver abrindo, ajustar altura
-            if (expandedContent.classList.contains("active")) {
+            const isOpening = !expandedContent.classList.contains("active");
+            
+            if (isOpening) {
+              // Fechar todos os outros conteúdos abertos no container de meses
+              const allExpanded = monthsContainer.querySelectorAll(".expanded-content.active");
+              const allToggleBtns = monthsContainer.querySelectorAll(".toggle-btn.expanded");
+              
+              allExpanded.forEach(el => {
+                el.classList.remove("active");
+                el.style.maxHeight = "0px";
+              });
+              
+              allToggleBtns.forEach(btn => {
+                btn.classList.remove("expanded");
+              });
+              
+              // Abrir o atual
+              expandedContent.classList.add("active");
+              this.classList.add("expanded");
               expandedContent.style.maxHeight = expandedContent.scrollHeight + "px";
             } else {
+              // Fechar o atual
+              expandedContent.classList.remove("active");
+              this.classList.remove("expanded");
               expandedContent.style.maxHeight = "0px";
             }
           });
@@ -1884,8 +1916,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
               label.classList.add("completed");
 
-              // Expandir automaticamente quando marcar como concluído
+              // Expandir automaticamente quando marcar como concluído (Accordion)
               if (!expandedContent.classList.contains("active")) {
+                // Fechar outros antes de abrir
+                const allExpanded = monthsContainer.querySelectorAll(".expanded-content.active");
+                const allToggleBtns = monthsContainer.querySelectorAll(".toggle-btn.expanded");
+                
+                allExpanded.forEach(el => {
+                  el.classList.remove("active");
+                  el.style.maxHeight = "0px";
+                });
+                
+                allToggleBtns.forEach(btn => {
+                  btn.classList.remove("expanded");
+                });
+
                 expandedContent.classList.add("active");
                 toggleBtn.classList.add("expanded");
                 expandedContent.style.maxHeight = expandedContent.scrollHeight + "px";
