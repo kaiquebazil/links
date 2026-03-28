@@ -246,14 +246,17 @@ document.addEventListener("DOMContentLoaded", function () {
     
     if (contentBody && toggleIcon) {
       const isOpening = !contentBody.classList.contains('active');
+      const isDesktop = window.innerWidth > 768;
       
       if (isOpening) {
-        // Fechar todos os outros conteúdos da Semana 0
-        const allBodies = document.querySelectorAll('.week-zero-content-card .content-card-body');
-        const allIcons = document.querySelectorAll('.week-zero-content-card .content-card-toggle i');
-        
-        allBodies.forEach(body => body.classList.remove('active'));
-        allIcons.forEach(icon => icon.className = 'fas fa-chevron-down');
+        // Se for desktop, fechar todos os outros conteúdos da Semana 0
+        if (isDesktop) {
+          const allBodies = document.querySelectorAll('.week-zero-content-card .content-card-body');
+          const allIcons = document.querySelectorAll('.week-zero-content-card .content-card-toggle i');
+          
+          allBodies.forEach(body => body.classList.remove('active'));
+          allIcons.forEach(icon => icon.className = 'fas fa-chevron-down');
+        }
         
         // Abrir o atual
         contentBody.classList.add('active');
@@ -1866,25 +1869,28 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           }
 
-          // Evento do toggle (Lógica de Accordion: apenas um aberto por vez)
+          // Evento do toggle (Lógica de Accordion apenas para Desktop)
           toggleBtn.addEventListener("click", function (e) {
             e.stopPropagation();
             
             const isOpening = !expandedContent.classList.contains("active");
+            const isDesktop = window.innerWidth > 768;
             
             if (isOpening) {
-              // Fechar todos os outros conteúdos abertos no container de meses
-              const allExpanded = monthsContainer.querySelectorAll(".expanded-content.active");
-              const allToggleBtns = monthsContainer.querySelectorAll(".toggle-btn.expanded");
-              
-              allExpanded.forEach(el => {
-                el.classList.remove("active");
-                el.style.maxHeight = "0px";
-              });
-              
-              allToggleBtns.forEach(btn => {
-                btn.classList.remove("expanded");
-              });
+              // Se for desktop, fechar outros antes de abrir o atual
+              if (isDesktop) {
+                const allExpanded = monthsContainer.querySelectorAll(".expanded-content.active");
+                const allToggleBtns = monthsContainer.querySelectorAll(".toggle-btn.expanded");
+                
+                allExpanded.forEach(el => {
+                  el.classList.remove("active");
+                  el.style.maxHeight = "0px";
+                });
+                
+                allToggleBtns.forEach(btn => {
+                  btn.classList.remove("expanded");
+                });
+              }
               
               // Abrir o atual
               expandedContent.classList.add("active");
@@ -1916,20 +1922,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
               label.classList.add("completed");
 
-              // Expandir automaticamente quando marcar como concluído (Accordion)
+              // Expandir automaticamente quando marcar como concluído
               if (!expandedContent.classList.contains("active")) {
-                // Fechar outros antes de abrir
-                const allExpanded = monthsContainer.querySelectorAll(".expanded-content.active");
-                const allToggleBtns = monthsContainer.querySelectorAll(".toggle-btn.expanded");
+                const isDesktop = window.innerWidth > 768;
                 
-                allExpanded.forEach(el => {
-                  el.classList.remove("active");
-                  el.style.maxHeight = "0px";
-                });
-                
-                allToggleBtns.forEach(btn => {
-                  btn.classList.remove("expanded");
-                });
+                // Se for desktop, fechar outros antes de abrir
+                if (isDesktop) {
+                  const allExpanded = monthsContainer.querySelectorAll(".expanded-content.active");
+                  const allToggleBtns = monthsContainer.querySelectorAll(".toggle-btn.expanded");
+                  
+                  allExpanded.forEach(el => {
+                    el.classList.remove("active");
+                    el.style.maxHeight = "0px";
+                  });
+                  
+                  allToggleBtns.forEach(btn => {
+                    btn.classList.remove("expanded");
+                  });
+                }
 
                 expandedContent.classList.add("active");
                 toggleBtn.classList.add("expanded");
