@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfólio Links | Kaique Bazil</title>
+    <title>Kaique Bazil — Links</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="shortcut icon" href="icon.jpg" type="image/x-icon" />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
       rel="stylesheet"
     />
     
@@ -20,11 +20,17 @@
     <link rel="stylesheet" href="css/main.css" />
   </head>
   <body>
+    <!-- Background Effects -->
+    <div class="particles-container" id="particles"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
     <a
       href="https://wa.me/5524992046467"
       target="_blank"
-      class="whatsapp-float"
-      title="Enviar mensagem no WhatsApp"
+      class="whatsapp-float magnetic-btn"
+      data-tooltip="Fale comigo no WhatsApp"
     >
       <i class="fab fa-whatsapp"></i>
     </a>
@@ -47,7 +53,7 @@
         </div> -->
       </div>
       <!-- Redes Sociais -->
-      <div class="section">
+      <div class="section reveal">
         <h2 class="section-title">
           <span><i class="fas fa-share-alt"></i> Redes Sociais</span>
         </h2>
@@ -55,7 +61,8 @@
           <a
             href="https://github.com/kaiquebazil"
             target="_blank"
-            class="social-block"
+            class="social-block spotlight-card"
+            data-tooltip="Ver meus projetos no GitHub"
           >
             <div class="social-icon" style="color: #f0f6fc">
               <i class="fab fa-github"></i>
@@ -66,7 +73,8 @@
           <a
             href="https://www.tiktok.com/@kaiquesjorney"
             target="_blank"
-            class="social-block"
+            class="social-block spotlight-card"
+            data-tooltip="Siga-me no TikTok"
           >
             <div class="social-icon" style="color: #723ed3">
               <i class="fab fa-tiktok"></i>
@@ -77,7 +85,8 @@
           <a
             href="https://instagram.com/kaiquebazil"
             target="_blank"
-            class="social-block"
+            class="social-block spotlight-card"
+            data-tooltip="Siga-me no Instagram"
           >
             <div class="social-icon" style="color: #e4405f">
               <i class="fab fa-instagram"></i>
@@ -88,7 +97,8 @@
           <a
             href="https://www.youtube.com/@KaiqueJournal/"
             target="_blank"
-            class="social-block"
+            class="social-block spotlight-card"
+            data-tooltip="Inscreva-se no meu canal"
           >
             <div class="social-icon" style="color: #da2626">
               <i class="fab fa-youtube"></i>
@@ -100,7 +110,7 @@
       </div>
 
       <!-- Meus Projetos -->
-      <div class="section">
+      <div class="section reveal">
         <h2 class="section-title">
           <span><i class="fas fa-code"></i> Meus Projetos</span>
           <a
@@ -112,7 +122,7 @@
           </a>
         </h2>
         <div class="projects-grid">
-          <div class="project-item">
+          <div class="project-item spotlight-card">
             <div class="project-info">
               <div class="project-title">
                 <img src="icons/icon.ico" class="project-title" width="20" alt=""> Fluência 6 Meses
@@ -121,13 +131,13 @@
                 Meu plano detalhado para alcançar a fluência em inglês em 6
                 meses
               </div>
-              <span class="project-tech">HTML/CSS/JS</span>
+              <span class="project-tech"><i class="fas fa-code"></i> HTML/CSS/JS</span>
             </div>
-            <a href="https://kaiquebazil.github.io/6meses/" class="project-link">
+            <a href="https://kaiquebazil.github.io/6meses/" class="project-link" data-tooltip="Abrir projeto">
               <i class="fas fa-external-link-alt"></i>
             </a>
           </div>
-          <div class="project-item">
+          <div class="project-item spotlight-card">
             <div class="project-info">
               <div class="project-title">
                 <img src="icons/portifolio.png" class="project-title" width="20" alt=""> Kaique Bazil Portfólio
@@ -135,50 +145,62 @@
               <div class="project-desc">
                 Site pessoal com meus trabalhos e habilidades
               </div>
-              <span class="project-tech">HTML/CSS/JS</span>
+              <span class="project-tech"><i class="fas fa-code"></i> HTML/CSS/JS</span>
             </div>
             <a
               href="https://kaiquebazil.github.io/portifolio/"
               target="_blank"
               class="project-link"
+              data-tooltip="Abrir projeto"
             >
               <i class="fas fa-external-link-alt"></i>
             </a>
           </div>
-          <div class="project-item">
+          <div class="project-item spotlight-card">
             <div class="project-info">
               <div class="project-title">
                 <i class="fas fa-wallet" style="color: #723ed3;"></i> Finance Flex
               </div>
               <div class="project-desc">
-                Aplicativo de gerrenciamento financeiro pessoal
+                Aplicativo de gerenciamento financeiro pessoal
               </div>
-              <span class="project-tech">HTML/CSS/JS</span>
+              <span class="project-tech"><i class="fas fa-code"></i> HTML/CSS/JS </span>
+              <span class="project-tech"><i class="fas fa-mobile-alt"></i> React Native </span>
+              <span class="project-tech"><i class="fas fa-database"></i> Firebase </span>
+              <span class="project-tech"><i class="fas fa-code"></i> TypeScript </span>
             </div>
             <a
               href="https://kaiquebazil.github.io/FinanceFlex/"
               target="_blank"
               class="project-link"
+              data-tooltip="Abrir Versão Web"
+            >
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+            <a
+              href="https://kaiquebazil.github.io/FinanceFlex/"
+              target="_blank"
+              class="project-link"
+              data-tooltip="Abrir Versão Mobile"
             >
               <i class="fas fa-external-link-alt"></i>
             </a>
           </div>
-          <div class="project-item">
+          <div class="project-item spotlight-card">
             <div class="project-info">
               <div class="project-title">
-                <i class="fas fa-chart-line"></i> Learning Portuguese with
-                Kaique
+                <i class="fas fa-chart-line"></i> Lingua Flash
               </div>
               <div class="project-desc">
-                Aprenda frases comuns, vocabulário e gramática em português e
-                fale comigo.
+                Aprenda frases comuns em diversos idiomas com flashcards interativos
               </div>
-              <span class="project-tech">HTML/CSS/JS</span>
+              <span class="project-tech"><i class="fas fa-code"></i> HTML/CSS/JS</span>
             </div>
             <a
-              href="https://kaiquebazil.github.io/LearningPortuguese/"
+              href="https://kaiquebazil.github.io/LinguaFlash/"
               target="_blank"
               class="project-link"
+              data-tooltip="Abrir projeto"
             >
               <i class="fas fa-external-link-alt"></i>
             </a>
@@ -187,14 +209,14 @@
       </div>
 
       <!-- Minhas Metas - COM NOVO DESIGN DE MINI CHECKS ANIMADOS -->
-      <div class="section">
+      <div class="section reveal">
         <h2 class="section-title">
           <span><i class="fas fa-flag-checkered"></i> Minhas Metas</span>
         </h2>
         <div class="goals-container">
-          <div class="goal-item">
-            <div class="goal-checkbox">
-              <!-- <i class="fas fa-check"></i> -->
+          <div class="goal-item spotlight-card">
+            <div class="goal-checkbox" data-tooltip="Marcar como concluída">
+              <i class="fas fa-check"></i>
             </div>
             <div class="goal-content">
               <a href="https://kaiquebazil.github.io/6meses/" class="goal-link">
@@ -207,16 +229,16 @@
                 <div
                   class="progress-bar"
                   style="
-                    background-color: var(--accent-yellow);
                     --progress-width: 42%;
                   "
+                  data-progress="42"
                 ></div>
               </div>
             </div>
           </div>
-          <div class="goal-item">
-            <div class="goal-checkbox">
-              <!-- <i class="fas fa-check"></i> -->
+          <div class="goal-item spotlight-card">
+            <div class="goal-checkbox" data-tooltip="Marcar como concluída">
+              <i class="fas fa-check"></i>
             </div>
             <div class="goal-content">
               <div class="goal-title">Corpo forte e resistente</div>
@@ -225,17 +247,17 @@
                 <div
                   class="progress-bar"
                   style="
-                    background-color: var(--accent-green);
                     --progress-width: 10%;
                   "
+                  data-progress="10"
                 ></div>
               </div>
             </div>
           </div>
-          <div class="goal-item">
-            <div class="goal-checkbox" data-progress="66">
-              <!-- Mini checks aparecerão via JavaScript -->
+          <div class="goal-item spotlight-card">
+            <div class="goal-checkbox" data-progress="66" data-tooltip="Marcar como concluída">
               <div class="mini-checks"></div>
+              <i class="fas fa-check"></i>
             </div>
             <div class="goal-content">
               <div class="goal-title">Tornar-me um programador fullstack</div>
@@ -246,17 +268,17 @@
                 <div
                   class="progress-bar"
                   style="
-                    background-color: var(--accent-color);
                     --progress-width: 56%;
                   "
+                  data-progress="56"
                 ></div>
               </div>
             </div>
           </div>
-          <div class="goal-item">
-            <div class="goal-checkbox" data-progress="40">
-              <!-- Mini checks aparecerão via JavaScript -->
+          <div class="goal-item spotlight-card">
+            <div class="goal-checkbox" data-progress="40" data-tooltip="Marcar como concluída">
               <div class="mini-checks"></div>
+              <i class="fas fa-check"></i>
             </div>
             <div class="goal-content">
               <div class="goal-title">Ter 5 Mil seguidores</div>
@@ -265,9 +287,9 @@
                 <div
                   class="progress-bar"
                   style="
-                    background-color: var(--accent-orange);
                     --progress-width: 5%;
                   "
+                  data-progress="5"
                 ></div>
               </div>
             </div>
@@ -275,41 +297,37 @@
         </div>
 
         <!-- Seção de Fluência -->
-        <div class="fluency-section">
+        <div class="fluency-section reveal">
           <div class="fluency-header">
-            <div class="fluency-title">Nível de Fluência</div>
+            <div class="fluency-title"><i class="fas fa-chart-bar"></i> Nível de Fluência</div>
             <div class="fluency-score">5/10</div>
           </div>
           <div class="fluency-desc">Progresso atual nas minhas habilidades</div>
           <div class="fluency-bars">
-            <div class="fluency-bar">
+            <div class="fluency-bar" data-tooltip="Escuta: 80%">
               <div
                 class="fluency-fill"
-                id="fluencyBar1"
                 style="--progress-width: 80%"
               ></div>
               <div class="fluency-label">Escuta</div>
             </div>
-            <div class="fluency-bar">
+            <div class="fluency-bar" data-tooltip="Leitura: 75%">
               <div
                 class="fluency-fill"
-                id="fluencyBar2"
                 style="--progress-width: 75%"
               ></div>
               <div class="fluency-label">Leitura</div>
             </div>
-            <div class="fluency-bar">
+            <div class="fluency-bar" data-tooltip="Escrita: 30%">
               <div
                 class="fluency-fill"
-                id="fluencyBar3"
                 style="--progress-width: 30%"
               ></div>
               <div class="fluency-label">Escrita</div>
             </div>
-            <div class="fluency-bar">
+            <div class="fluency-bar" data-tooltip="Fala: 42%">
               <div
                 class="fluency-fill"
-                id="fluencyBar3"
                 style="--progress-width: 42%"
               ></div>
               <div class="fluency-label">Fala</div>
@@ -318,12 +336,10 @@
         </div>
       </div>
 
-      <div class="divider"></div>
-
       <!-- Footer -->
       <div class="footer">
         <p>
-          Portfólio Digital • Atualizado em <span id="currentYear">2026</span>
+          Kaique Bazil • Atualizado em <span id="currentYear">2026</span>
         </p>
         <!-- <div class="contact-links">
           <a href="mailto:contato@exemplo.com" class="contact-link">
@@ -339,64 +355,201 @@
             <i class="fas fa-share-alt"></i>
           </a>
         </div> -->
-        <p style="margin-top: 15px; font-size: 12px; font-weight: 500">
+        <!-- <p style="margin-top: 15px; font-size: 12px; font-weight: 500">
           Clique nas metas para marcá-las como concluídas
-        </p>
+        </p> -->
       </div>
     </div>
     <script>
-      // Função para inicializar as barras de progresso
-      function initializeProgressBars() {
-        // Barras de progresso das metas
-        document
-          .querySelectorAll(".goal-progress .progress-bar")
-          .forEach((bar) => {
-            const width =
-              getComputedStyle(bar).getPropertyValue("--progress-width");
-            // Aplica a largura diretamente
-            bar.style.width = width;
-          });
+      // ============================================
+      // MODERN ANIMATIONS AND INTERACTIONS
+      // ============================================
 
-        // Barras de fluência
-        document.querySelectorAll(".fluency-fill").forEach((bar) => {
-          const width =
-            getComputedStyle(bar).getPropertyValue("--progress-width");
-          // Aplica a largura diretamente
-          bar.style.width = width;
-        });
-      }
-
-      // Chame esta função no final do DOMContentLoaded
-      document.addEventListener("DOMContentLoaded", function () {
-        // Seu código existente...
-
-        // Inicialize as barras de progresso
-        initializeProgressBars();
-
-        // Animar barras de fluência ao carregar
-        setTimeout(() => {
-          animateFluencyBars();
-        }, 500);
+      document.addEventListener('DOMContentLoaded', function() {
+        // Initialize all features
+        initParticles();
+        initSpotlightEffect();
+        initMagneticButtons();
+        initProgressBars();
+        initGoalCheckboxes();
+        initScrollReveal();
+        initYear();
       });
 
-      // Função para animar as barras de fluência
-      function animateFluencyBars() {
-        const bars = document.querySelectorAll(".fluency-fill");
-        bars.forEach((bar) => {
-          const currentWidth = bar.style.width;
-          // Guarda a largura original
-          const targetWidth =
-            getComputedStyle(bar).getPropertyValue("--progress-width");
+      // Animated Particles Background
+      function initParticles() {
+        const container = document.getElementById('particles');
+        const particleCount = 30;
 
-          // Reseta para 0
-          bar.style.width = "0%";
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
+          particle.style.animationDelay = Math.random() * 5 + 's';
+          particle.style.opacity = Math.random() * 0.5 + 0.2;
+          container.appendChild(particle);
+        }
+      }
 
-          // Anima para a largura alvo
-          setTimeout(() => {
-            bar.style.width = targetWidth;
-          }, 300);
+      // Spotlight Effect for Cards
+      function initSpotlightEffect() {
+        const cards = document.querySelectorAll('.spotlight-card');
+
+        cards.forEach(card => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty('--mouse-x', x + '%');
+            card.style.setProperty('--mouse-y', y + '%');
+          });
         });
       }
+
+      // Magnetic Button Effect
+      function initMagneticButtons() {
+        const buttons = document.querySelectorAll('.magnetic-btn');
+
+        buttons.forEach(btn => {
+          btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+          });
+
+          btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate(0, 0)';
+          });
+        });
+      }
+
+      // Progress Bars Animation
+      function initProgressBars() {
+        // Goal progress bars
+        document.querySelectorAll('.goal-progress .progress-bar').forEach(bar => {
+          const targetWidth = bar.getAttribute('data-progress') || '0%';
+          bar.style.width = '0%';
+
+          setTimeout(() => {
+            bar.style.width = targetWidth + '%';
+          }, 800);
+        });
+
+        // Fluency bars with stagger
+        document.querySelectorAll('.fluency-fill').forEach((bar, index) => {
+          const targetWidth = bar.style.getPropertyValue('--progress-width');
+          bar.style.width = '0%';
+
+          setTimeout(() => {
+            bar.style.width = targetWidth;
+          }, 1000 + (index * 200));
+        });
+      }
+
+      // Goal Checkboxes Interaction
+      function initGoalCheckboxes() {
+        const checkboxes = document.querySelectorAll('.goal-checkbox');
+
+        checkboxes.forEach(checkbox => {
+          checkbox.addEventListener('click', function() {
+            this.classList.toggle('checked');
+
+            // Add mini sparkle effect
+            if (this.classList.contains('checked')) {
+              createSparkles(this);
+            }
+          });
+        });
+      }
+
+      // Create Sparkle Effect
+      function createSparkles(element) {
+        const rect = element.getBoundingClientRect();
+        const colors = ['#4facfe', '#00f2fe', '#ff5e62', '#f9d423'];
+
+        for (let i = 0; i < 8; i++) {
+          const sparkle = document.createElement('div');
+          sparkle.style.cssText = `
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: ${colors[Math.floor(Math.random() * colors.length)]};
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            left: ${rect.left + rect.width / 2}px;
+            top: ${rect.top + rect.height / 2}px;
+          `;
+          document.body.appendChild(sparkle);
+
+          const angle = (i / 8) * Math.PI * 2;
+          const distance = 30 + Math.random() * 20;
+          const duration = 600 + Math.random() * 400;
+
+          sparkle.animate([
+            { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+            { transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0)`, opacity: 0 }
+          ], {
+            duration: duration,
+            easing: 'cubic-bezier(0, .9, .57, 1)'
+          }).onfinish = () => sparkle.remove();
+        }
+      }
+
+      // Scroll Reveal Animation
+      function initScrollReveal() {
+        const reveals = document.querySelectorAll('.reveal');
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('active');
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+
+        reveals.forEach(el => observer.observe(el));
+      }
+
+      // Update Year
+      function initYear() {
+        const yearEl = document.getElementById('currentYear');
+        if (yearEl) {
+          yearEl.textContent = new Date().getFullYear();
+        }
+      }
+
+      // Typing Effect for Title (optional enhancement)
+      function typeWriter(element, text, speed = 100) {
+        let i = 0;
+        element.textContent = '';
+
+        function type() {
+          if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+          }
+        }
+        type();
+      }
+
+      // Parallax Effect on Scroll
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const orbs = document.querySelectorAll('.orb');
+
+        orbs.forEach((orb, index) => {
+          const speed = 0.1 * (index + 1);
+          orb.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+      });
     </script>
   </body>
 </html>

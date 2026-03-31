@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s https://raw.githubusercontent.com/kaiquebazil/portifolio/main/README.md)",
+      "Bash(curl -s https://raw.githubusercontent.com/kaiquebazil/portifolio/master/README.md)",
+      "Bash(curl -s https://api.github.com/repos/kaiquebazil/portifolio/contents/css)",
+      "Bash(gh api:*)",
+      "Bash(curl -sL https://raw.githubusercontent.com/kaiquebazil/portifolio/main/css/style.css)",
+      "Read(//tmp/**)",
+      "Bash(curl -sL https://raw.githubusercontent.com/kaiquebazil/portifolio/main/index.html)"
+    ]
+  }
+}
