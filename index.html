@@ -281,16 +281,59 @@
               <i class="fas fa-check"></i>
             </div>
             <div class="goal-content">
-              <div class="goal-title">Ter 5 Mil seguidores</div>
+              <div class="goal-title-row">
+                <div class="goal-title">Ter 5 Mil seguidores</div>
+                <button class="followers-toggle-btn" id="followersToggleBtn" data-tooltip="Ver por rede social" aria-expanded="false">
+                  <span class="followers-total">870</span>
+                  <i class="fas fa-chevron-down followers-toggle-icon"></i>
+                </button>
+              </div>
               <div class="goal-desc">Postar vídeos todos os dias</div>
               <div class="goal-progress">
                 <div
                   class="progress-bar"
-                  style="
-                    --progress-width: 5%;
-                  "
-                  data-progress="5"
+                  style="--progress-width: 17.4%;"
+                  data-progress="17.4"
                 ></div>
+              </div>
+              <!-- Toggle de seguidores por rede social -->
+              <div class="followers-breakdown" id="followersBreakdown">
+                <div class="followers-network">
+                  <div class="followers-network-icon" style="color: #723ed3;">
+                    <i class="fab fa-tiktok"></i>
+                  </div>
+                  <div class="followers-network-info">
+                    <span class="followers-network-name">TikTok</span>
+                    <div class="followers-network-bar">
+                      <div class="followers-network-fill" style="--nw-width: 14%; background: linear-gradient(90deg, #723ed3, #9b59b6);"></div>
+                    </div>
+                  </div>
+                  <span class="followers-network-count">700</span>
+                </div>
+                <div class="followers-network">
+                  <div class="followers-network-icon" style="color: #e4405f;">
+                    <i class="fab fa-instagram"></i>
+                  </div>
+                  <div class="followers-network-info">
+                    <span class="followers-network-name">Instagram</span>
+                    <div class="followers-network-bar">
+                      <div class="followers-network-fill" style="--nw-width: 2.2%; background: linear-gradient(90deg, #e4405f, #f77737);"></div>
+                    </div>
+                  </div>
+                  <span class="followers-network-count">110</span>
+                </div>
+                <div class="followers-network">
+                  <div class="followers-network-icon" style="color: #da2626;">
+                    <i class="fab fa-youtube"></i>
+                  </div>
+                  <div class="followers-network-info">
+                    <span class="followers-network-name">YouTube</span>
+                    <div class="followers-network-bar">
+                      <div class="followers-network-fill" style="--nw-width: 1.2%; background: linear-gradient(90deg, #da2626, #ff6b6b);"></div>
+                    </div>
+                  </div>
+                  <span class="followers-network-count">60</span>
+                </div>
               </div>
             </div>
           </div>
@@ -374,6 +417,7 @@
         initGoalCheckboxes();
         initScrollReveal();
         initYear();
+        initFollowersToggle();
       });
 
       // Animated Particles Background
@@ -538,6 +582,36 @@
           }
         }
         type();
+      }
+
+      // Toggle de Seguidores por Rede Social
+      function initFollowersToggle() {
+        const btn = document.getElementById('followersToggleBtn');
+        const breakdown = document.getElementById('followersBreakdown');
+        if (!btn || !breakdown) return;
+
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const isOpen = breakdown.classList.contains('open');
+
+          if (isOpen) {
+            breakdown.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.classList.remove('active');
+          } else {
+            breakdown.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+            btn.classList.add('active');
+
+            // Animar as barras ao abrir
+            setTimeout(() => {
+              breakdown.querySelectorAll('.followers-network-fill').forEach(fill => {
+                fill.style.width = fill.style.getPropertyValue('--nw-width') ||
+                  getComputedStyle(fill).getPropertyValue('--nw-width');
+              });
+            }, 50);
+          }
+        });
       }
 
       // Parallax Effect on Scroll

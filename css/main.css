@@ -1209,3 +1209,153 @@ body {
     display: none;
   }
 }
+
+/* ============================================
+   Toggle de Seguidores por Rede Social
+   ============================================ */
+
+.goal-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.goal-title-row .goal-title {
+  margin-bottom: 0;
+}
+
+.followers-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(200, 245, 90, 0.08);
+  border: 1px solid rgba(200, 245, 90, 0.25);
+  border-radius: 20px;
+  padding: 5px 12px;
+  cursor: pointer;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'Syne', sans-serif;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.03em;
+}
+
+.followers-toggle-btn:hover {
+  background: rgba(200, 245, 90, 0.15);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(200, 245, 90, 0.2);
+  transform: translateY(-1px);
+}
+
+.followers-toggle-btn.active {
+  background: rgba(200, 245, 90, 0.18);
+  border-color: var(--accent);
+  box-shadow: 0 0 16px rgba(200, 245, 90, 0.25);
+}
+
+.followers-toggle-icon {
+  font-size: 10px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.followers-toggle-btn.active .followers-toggle-icon {
+  transform: rotate(180deg);
+}
+
+/* Painel expansível */
+.followers-breakdown {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.35s ease,
+              margin-top 0.35s ease;
+  opacity: 0;
+  margin-top: 0;
+}
+
+.followers-breakdown.open {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 14px;
+}
+
+/* Cada linha de rede social */
+.followers-network {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(240, 236, 227, 0.06);
+}
+
+.followers-network:last-child {
+  border-bottom: none;
+  padding-bottom: 2px;
+}
+
+.followers-network-icon {
+  font-size: 16px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.followers-breakdown.open .followers-network-icon {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.followers-network-info {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.followers-network-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 4px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.followers-network-bar {
+  width: 100%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.followers-network-fill {
+  height: 100%;
+  border-radius: 3px;
+  width: 0;
+  transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.followers-breakdown.open .followers-network-fill {
+  width: var(--nw-width, 0%);
+}
+
+.followers-network-count {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--off-white);
+  min-width: 36px;
+  text-align: right;
+  flex-shrink: 0;
+}
