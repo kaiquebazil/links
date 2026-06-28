@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TikTok Shop · Kaique Bazil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="shortcut icon" href="icon.jpg" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* ===== geral.css (mesmo estilo base) ===== */
+    * { scrollbar-color: var(--accent) var(--black); scrollbar-width: thin; margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    ::selection { background: var(--accent); color: var(--black); }
+    ::-moz-selection { background: var(--accent); color: var(--black); }
+
+    :root {
+      --black: #080808;
+      --off-white: #f0ece3;
+      --cream: #e8e2d5;
+      --accent: #c8f55a;
+      --accent2: #5af5c8;
+      --muted: #6b6560;
+      --card-bg: #111;
+      --border: rgba(240,236,227,0.1);
+      --primary-bg: var(--black);
+      --text-primary: var(--off-white);
+      --text-secondary: var(--muted);
+      --border-color: var(--border);
+      --button-bg: var(--card-bg);
+      --button-hover: #1a1a1a;
+      --accent-color: var(--accent);
+      --accent-purple: var(--accent2);
+      --accent-green: var(--accent);
+      --glass-bg: rgba(17, 17, 17, 0.8);
+      --glass-border: var(--border);
+      --glass-blur: blur(12px);
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+      --shadow-glow: 0 0 30px rgba(200, 245, 90, 0.2);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    body {
+      background: var(--black);
+      color: var(--off-white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      font-weight: 400;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    body::before {
+      content:''; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9990; opacity: 0.6;
+    }
+
+    .particles-container {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: -1; overflow: hidden;
+    }
+    .particle {
+      position: absolute; width: 3px; height: 3px;
+      background: rgba(200, 245, 90, 0.3); border-radius: 50%;
+      animation: float-particle linear infinite;
+    }
+    .particle:nth-child(odd) { background: rgba(90, 245, 200, 0.3); }
+    .particle:nth-child(3n) { background: rgba(200, 245, 90, 0.2); }
+    @keyframes float-particle {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+    }
+
+    .orb {
+      position: fixed; border-radius: 50%; pointer-events: none; z-index: -2;
+      animation: float1 8s ease-in-out infinite;
+    }
+    .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(200,245,90,0.06) 0%, transparent 70%); top: -100px; right: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(90,245,200,0.05) 0%, transparent 70%); bottom: 0; left: 100px; animation-delay: -2s; }
+    .orb-3 { width: 350px; height: 350px; background: radial-gradient(circle, rgba(200,245,90,0.04) 0%, transparent 70%); top: 50%; left: 50%; animation-delay: -5s; }
+    @keyframes float1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(20px,-20px)} }
+
+    .container {
+      width: 100%; max-width: 600px; margin: 0 auto;
+      opacity: 0; transform: translateY(30px) scale(0.98);
+      animation: containerEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: 0.2s; padding: 40px 20px;
+    }
+    @keyframes containerEntrance {
+      from { opacity: 0; transform: translateY(30px) scale(0.98); filter: blur(10px); }
+      to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    }
+
+    /* tooltip */
+    [data-tooltip] { position: relative; }
+    [data-tooltip]::before {
+      content: attr(data-tooltip);
+      position: absolute; bottom: 100%; left: 50%;
+      transform: translateX(-50%) translateY(-8px);
+      background: var(--card-bg); color: var(--text-primary);
+      padding: 8px 12px; border-radius: 8px; font-size: 12px; font-weight: 500;
+      white-space: nowrap; opacity: 0; visibility: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-color);
+      backdrop-filter: var(--glass-blur); z-index: 1000;
+      box-shadow: var(--shadow-lg);
+    }
+    [data-tooltip]::after {
+      content: ''; position: absolute; bottom: 100%; left: 50%;
+      transform: translateX(-50%) translateY(-3px);
+      border: 5px solid transparent; border-top-color: var(--card-bg);
+      opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 1000;
+    }
+    [data-tooltip]:hover::before,
+    [data-tooltip]:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(-4px); z-index: 1000; }
+
+    /* ===== estilos da página (mesmo padrão) ===== */
+    .header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 40px; flex-wrap: wrap;
+      opacity: 0; animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: 0.3s; padding-bottom: 20px; border-bottom: 1px solid var(--border);
+    }
+    @keyframes fadeInUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+
+    .app-info { display: flex; align-items: center; gap: 15px; }
+    .app-icon img { border-radius: 50%; border: 2px solid var(--border); width: 50px; height: 50px; object-fit: cover; transition: all 0.3s ease; }
+    .app-icon img:hover { transform: scale(1.05); border-color: var(--accent); box-shadow: 0 0 20px rgba(200, 245, 90, 0.2); }
+    .app-title { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; color: var(--off-white); }
+
+    .back-link {
+      color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 8px;
+      font-weight: 600; font-size: 0.9rem; transition: color 0.3s;
+      padding: 8px 16px; border-radius: 40px; border: 1px solid var(--border);
+      background: var(--card-bg);
+    }
+    .back-link:hover { color: var(--accent); border-color: rgba(200,245,90,0.2); }
+
+    .section {
+      background: var(--card-bg); border-radius: 20px; padding: 28px;
+      margin-bottom: 24px; border: 1px solid var(--border);
+      opacity: 0; transform: translateY(40px);
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      backdrop-filter: blur(12px); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative; overflow: hidden;
+    }
+    .section::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0); transition: transform 0.4s; transform-origin: left;
+    }
+    .section:hover::before { transform: scaleX(1); }
+    .section:hover { border-color: rgba(200, 245, 90, 0.2); box-shadow: 0 20px 60px rgba(0,0,0,0.5); transform: translateY(-4px); }
+    .section:nth-child(2) { animation-delay: 0.5s; }
+    .section:nth-child(3) { animation-delay: 0.65s; }
+
+    .section-title {
+      font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700;
+      margin-bottom: 24px; color: var(--off-white);
+      display: flex; align-items: center; justify-content: space-between;
+      position: relative; padding-bottom: 12px; letter-spacing: -0.02em;
+    }
+    .section-title::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 30px; height: 2px; background: var(--accent);
+      border-radius: 2px; transition: width 0.3s ease;
+    }
+    .section:hover .section-title::after { width: 60px; }
+    .section-title i { margin-right: 10px; color: var(--accent); font-size: 1rem; }
+
+    /* pedidos */
+    .order-list {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .order-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 16px; padding: 18px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all 0.3s ease;
+      opacity: 0; transform: translateY(10px);
+      animation: fadeInUp 0.5s ease forwards;
+      position: relative;
+      overflow: hidden;
+    }
+    .order-card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0); transition: transform 0.4s; transform-origin: left;
+    }
+    .order-card:hover::after { transform: scaleX(1); }
+    .order-card:hover { border-color: rgba(200,245,90,0.2); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+    .order-card:nth-child(1) { animation-delay: 0.6s; }
+    .order-card:nth-child(2) { animation-delay: 0.75s; }
+    .order-card:nth-child(3) { animation-delay: 0.9s; }
+    .order-card:nth-child(4) { animation-delay: 1.05s; }
+    .order-card:nth-child(5) { animation-delay: 1.2s; }
+
+    .order-info { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+    .order-product { font-weight: 700; font-size: 1rem; display: flex; align-items: center; gap: 8px; }
+    .order-product i { color: var(--accent); font-size: 0.9rem; }
+    .order-meta { font-size: 0.8rem; color: var(--muted); display: flex; gap: 16px; flex-wrap: wrap; }
+    .order-meta span { display: flex; align-items: center; gap: 5px; }
+    .order-meta i { font-size: 0.7rem; color: var(--accent2); }
+
+    .order-status {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 40px; letter-spacing: 0.05em;
+      background: rgba(200,245,90,0.1); color: var(--accent);
+      border: 1px solid rgba(200,245,90,0.2);
+      white-space: nowrap;
+    }
+    .order-status.shipped { background: rgba(90,245,200,0.1); color: var(--accent2); border-color: rgba(90,245,200,0.2); }
+    .order-status.delivered { background: rgba(79,172,254,0.1); color: #4facfe; border-color: rgba(79,172,254,0.2); }
+    .order-status.canceled { background: rgba(255,94,98,0.1); color: #ff5e62; border-color: rgba(255,94,98,0.2); }
+
+    .order-actions { display: flex; gap: 8px; margin-left: 12px; }
+    .order-actions a {
+      color: var(--muted); transition: all 0.3s ease;
+      width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+    }
+    .order-actions a:hover { color: var(--accent); border-color: rgba(200,245,90,0.3); transform: scale(1.1); }
+
+    .empty-state {
+      text-align: center; padding: 30px 20px; color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .empty-state i { font-size: 2.5rem; color: var(--accent); opacity: 0.3; margin-bottom: 15px; display: block; }
+
+    .add-order-btn {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: var(--black); border: none; border-radius: 40px;
+      padding: 12px 24px; font-weight: 700; font-family: 'Syne', sans-serif;
+      cursor: pointer; transition: all 0.3s ease;
+      display: inline-flex; align-items: center; gap: 10px;
+      box-shadow: 0 4px 15px rgba(200,245,90,0.25);
+    }
+    .add-order-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(200,245,90,0.35); }
+
+    .footer {
+      text-align: center; margin-top: 40px; color: var(--muted);
+      font-size: 13px; padding: 30px 0; font-weight: 500;
+      opacity: 0; animation: fadeInUp 0.8s ease-out 1.8s forwards;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 500px) {
+      .container { padding: 20px 12px; }
+      .section { padding: 18px; }
+      .header { flex-direction: row; align-items: center; gap: 10px; }
+      .header-right { display: none; }
+      .order-card { flex-wrap: wrap; gap: 10px; }
+      .order-actions { margin-left: 0; width: 100%; justify-content: flex-end; }
+    }
+  </style>
+</head>
+<body>
+  <div class="particles-container" id="particles"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="app-info">
+        <div class="app-icon"><img src="icon.jpg" width="50" alt="" /></div>
+        <h1 class="app-title">TikTok Shop</h1>
+      </div>
+      <a href="index.html" class="back-link" data-tooltip="Voltar para links">
+        <i class="fas fa-arrow-left"></i> <span class="hide-mobile">Voltar</span>
+      </a>
+    </div>
+
+    <!-- Lista de Pedidos -->
+    <div class="section">
+      <div class="section-title">
+        <span><i class="fas fa-box"></i> Pedidos</span>
+        <button class="add-order-btn" id="addOrderBtn" data-tooltip="Adicionar pedido">
+          <i class="fas fa-plus"></i> <span class="hide-mobile">Novo</span>
+        </button>
+      </div>
+
+      <div class="order-list" id="orderList">
+        <!-- Os pedidos serão inseridos via JS -->
+        <div class="empty-state" id="emptyState">
+          <i class="fas fa-inbox"></i>
+          <p>Nenhum pedido ainda.<br>Clique em "Novo" para adicionar.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dicas rápidas -->
+    <div class="section">
+      <div class="section-title">
+        <span><i class="fas fa-lightbulb"></i> Dicas</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px; font-size:0.9rem; color:var(--text-secondary);">
+        <div style="display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.02); padding:12px 16px; border-radius:12px; border:1px solid var(--border);">
+          <i class="fas fa-tag" style="color:var(--accent);"></i>
+          <span>Use <strong style="color:var(--off-white);">#tiktokshop</strong> nos vídeos para mais visibilidade.</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.02); padding:12px 16px; border-radius:12px; border:1px solid var(--border);">
+          <i class="fas fa-clock" style="color:var(--accent2);"></i>
+          <span>Responda os pedidos em até <strong style="color:var(--off-white);">24h</strong> para manter o selo.</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.02); padding:12px 16px; border-radius:12px; border:1px solid var(--border);">
+          <i class="fas fa-star" style="color:#f9d423;"></i>
+          <span>Produtos com <strong style="color:var(--off-white);">5 estrelas</strong> recebem destaque no feed.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Kaique Bazil • TikTok Shop <span id="currentYear">2026</span></p>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+
+      // ===== partículas =====
+      function initParticles() {
+        const container = document.getElementById('particles');
+        if (!container) return;
+        for (let i = 0; i < 30; i++) {
+          const p = document.createElement('div');
+          p.className = 'particle';
+          p.style.left = Math.random() * 100 + '%';
+          p.style.animationDuration = (Math.random() * 15 + 10) + 's';
+          p.style.animationDelay = Math.random() * 5 + 's';
+          p.style.opacity = Math.random() * 0.5 + 0.2;
+          container.appendChild(p);
+        }
+      }
+      initParticles();
+
+      // ===== ano =====
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+      // ===== dados iniciais =====
+      let orders = [
+        { id: 1, product: 'Camiseta Oversized', buyer: '@ana_style', status: 'pending', date: '28/06', value: 'R$ 89,90' },
+        { id: 2, product: 'Fone Bluetooth', buyer: '@marcos_sound', status: 'shipped', date: '27/06', value: 'R$ 149,90' },
+        { id: 3, product: 'Kit Canecas', buyer: '@cafe_com_leite', status: 'delivered', date: '26/06', value: 'R$ 67,50' },
+        { id: 4, product: 'Capa iPhone 15', buyer: '@tech_lovers', status: 'pending', date: '25/06', value: 'R$ 39,90' },
+        { id: 5, product: 'Mochila Tática', buyer: '@viajante_urbano', status: 'canceled', date: '24/06', value: 'R$ 199,00' }
+      ];
+
+      const orderList = document.getElementById('orderList');
+      const emptyState = document.getElementById('emptyState');
+      const addBtn = document.getElementById('addOrderBtn');
+
+      // ===== renderizar =====
+      function renderOrders() {
+        // remove todos os filhos exceto o emptyState
+        while (orderList.firstChild) {
+          orderList.removeChild(orderList.firstChild);
+        }
+
+        if (orders.length === 0) {
+          orderList.appendChild(emptyState);
+          return;
+        }
+
+        // esconde emptyState
+        emptyState.style.display = 'none';
+
+        orders.forEach((order, index) => {
+          const card = document.createElement('div');
+          card.className = 'order-card';
+          card.style.animationDelay = (0.5 + index * 0.15) + 's';
+
+          const statusMap = {
+            pending: 'Pendente',
+            shipped: 'Enviado',
+            delivered: 'Entregue',
+            canceled: 'Cancelado'
+          };
+          const statusClass = order.status || 'pending';
+
+          card.innerHTML = `
+            <div class="order-info">
+              <div class="order-product">
+                <i class="fas fa-tag"></i> ${order.product}
+              </div>
+              <div class="order-meta">
+                <span><i class="fas fa-user"></i> ${order.buyer || '—'}</span>
+                <span><i class="fas fa-calendar-alt"></i> ${order.date || '—'}</span>
+                <span><i class="fas fa-money-bill-wave"></i> ${order.value || '—'}</span>
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <span class="order-status ${statusClass}">${statusMap[statusClass] || 'Pendente'}</span>
+              <div class="order-actions">
+                <a href="#" data-tooltip="Editar" onclick="event.preventDefault(); editOrder(${order.id})"><i class="fas fa-pen"></i></a>
+                <a href="#" data-tooltip="Remover" onclick="event.preventDefault(); deleteOrder(${order.id})"><i class="fas fa-trash"></i></a>
+              </div>
+            </div>
+          `;
+          orderList.appendChild(card);
+        });
+      }
+
+      // ===== adicionar =====
+      function addOrder() {
+        const product = prompt('Nome do produto:');
+        if (!product) return;
+        const buyer = prompt('Comprador (ex: @usuario):') || '—';
+        const value = prompt('Valor (ex: R$ 99,90):') || 'R$ —';
+        const date = new Date().toLocaleDateString('pt-BR');
+
+        const newOrder = {
+          id: Date.now(),
+          product: product,
+          buyer: buyer,
+          status: 'pending',
+          date: date,
+          value: value
+        };
+        orders.push(newOrder);
+        renderOrders();
+      }
+
+      // ===== editar =====
+      window.editOrder = function(id) {
+        const order = orders.find(o => o.id === id);
+        if (!order) return;
+        const newProduct = prompt('Produto:', order.product);
+        if (newProduct !== null) order.product = newProduct;
+        const newBuyer = prompt('Comprador:', order.buyer);
+        if (newBuyer !== null) order.buyer = newBuyer;
+        const newValue = prompt('Valor:', order.value);
+        if (newValue !== null) order.value = newValue;
+        // status
+        const statusOpts = ['pending', 'shipped', 'delivered', 'canceled'];
+        const currentIdx = statusOpts.indexOf(order.status);
+        const newStatus = prompt('Status (pending, shipped, delivered, canceled):', order.status);
+        if (newStatus !== null && statusOpts.includes(newStatus)) {
+          order.status = newStatus;
+        }
+        renderOrders();
+      };
+
+      // ===== deletar =====
+      window.deleteOrder = function(id) {
+        if (!confirm('Remover este pedido?')) return;
+        orders = orders.filter(o => o.id !== id);
+        renderOrders();
+      };
+
+      // ===== eventos =====
+      addBtn.addEventListener('click', addOrder);
+
+      // ===== render inicial =====
+      renderOrders();
+
+      // ===== spotlight nos cards (mouse move) =====
+      document.addEventListener('mousemove', function(e) {
+        document.querySelectorAll('.order-card, .section, .back-link, .add-order-btn').forEach(el => {
+          const rect = el.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          el.style.setProperty('--mouse-x', x + '%');
+          el.style.setProperty('--mouse-y', y + '%');
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>
